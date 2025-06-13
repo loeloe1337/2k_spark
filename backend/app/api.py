@@ -383,9 +383,13 @@ except Exception as e:
     sys.exit(1)
             """)
 
+        # Get the virtual environment's Python executable
+        venv_python = Path(__file__).parent.parent / ".venv" / "Scripts" / "python.exe"
+        python_executable = str(venv_python) if venv_python.exists() else "python"
+        
         # Run the script in a separate process
         process = subprocess.Popen(
-            ["python", str(script_path)],
+            [python_executable, str(script_path)],
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             text=True
