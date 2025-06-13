@@ -34313,3 +34313,1747 @@
 2025-04-26 02:31:02,264 - api - INFO - get_score_predictions executed in 0.02 seconds
 2025-04-26 03:08:20,542 - api - INFO - Starting scheduled prediction refresh
 2025-04-26 03:08:20,543 - api - INFO - Scheduled prediction refresh completed
+2025-06-13 04:00:12,638 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 04:00:12,640 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 04:00:12,640 - api - INFO - Match 207162: 2025-04-26T02:35:00Z
+2025-06-13 04:00:12,641 - api - INFO - Match 207162: 2025-04-26T02:35:00Z
+2025-06-13 04:00:12,641 - api - INFO - Match 207131: 2025-04-26T02:43:00Z
+2025-06-13 04:00:12,641 - api - INFO - Match 207131: 2025-04-26T02:43:00Z
+2025-06-13 04:00:12,642 - api - INFO - Match 207141: 2025-04-26T02:51:00Z
+2025-06-13 04:00:12,643 - api - INFO - Match 207160: 2025-04-26T02:59:00Z
+2025-06-13 04:00:12,642 - api - INFO - Match 207141: 2025-04-26T02:51:00Z
+2025-06-13 04:00:12,644 - api - INFO - Match 207167: 2025-04-26T03:07:00Z
+2025-06-13 04:00:12,645 - api - INFO - Match 207160: 2025-04-26T02:59:00Z
+2025-06-13 04:00:12,646 - api - INFO - Match 207136: 2025-04-26T03:15:00Z
+2025-06-13 04:00:12,646 - api - INFO - Match 207167: 2025-04-26T03:07:00Z
+2025-06-13 04:00:12,647 - api - INFO - Match 207142: 2025-04-26T03:23:00Z
+2025-06-13 04:00:12,647 - api - INFO - Match 207136: 2025-04-26T03:15:00Z
+2025-06-13 04:00:12,647 - api - INFO - Match 207157: 2025-04-26T03:31:00Z
+2025-06-13 04:00:12,648 - api - INFO - Match 207142: 2025-04-26T03:23:00Z
+2025-06-13 04:00:12,648 - api - INFO - Match 207163: 2025-04-26T03:39:00Z
+2025-06-13 04:00:12,648 - api - INFO - Match 207157: 2025-04-26T03:31:00Z
+2025-06-13 04:00:12,649 - api - INFO - Match 207140: 2025-04-26T03:47:00Z
+2025-06-13 04:00:12,649 - api - INFO - Match 207163: 2025-04-26T03:39:00Z
+2025-06-13 04:00:12,649 - api - INFO - Match 207146: 2025-04-26T03:55:00Z
+2025-06-13 04:00:12,651 - api - INFO - Match 207140: 2025-04-26T03:47:00Z
+2025-06-13 04:00:12,652 - api - INFO - Match 207153: 2025-04-26T04:03:00Z
+2025-06-13 04:00:12,653 - api - INFO - Match 207146: 2025-04-26T03:55:00Z
+2025-06-13 04:00:12,654 - api - INFO - Match 207165: 2025-04-26T04:11:00Z
+2025-06-13 04:00:12,654 - api - INFO - Match 207153: 2025-04-26T04:03:00Z
+2025-06-13 04:00:12,654 - api - INFO - Match 207134: 2025-04-26T04:19:00Z
+2025-06-13 04:00:12,655 - api - INFO - Match 207165: 2025-04-26T04:11:00Z
+2025-06-13 04:00:12,656 - api - INFO - Match 207147: 2025-04-26T04:27:00Z
+2025-06-13 04:00:12,658 - api - INFO - Match 207134: 2025-04-26T04:19:00Z
+2025-06-13 04:00:12,659 - api - INFO - Match 207147: 2025-04-26T04:27:00Z
+2025-06-13 04:00:12,661 - api - INFO - Match 207155: 2025-04-26T04:35:00Z
+2025-06-13 04:00:12,661 - api - INFO - Match 207155: 2025-04-26T04:35:00Z
+2025-06-13 04:00:12,662 - api - INFO - Match 207168: 2025-04-26T04:43:00Z
+2025-06-13 04:00:12,662 - api - INFO - Match 207168: 2025-04-26T04:43:00Z
+2025-06-13 04:00:12,663 - api - INFO - Match 207135: 2025-04-26T04:51:00Z
+2025-06-13 04:00:12,663 - api - INFO - Match 207135: 2025-04-26T04:51:00Z
+2025-06-13 04:00:12,664 - api - INFO - Match 207145: 2025-04-26T04:59:00Z
+2025-06-13 04:00:12,664 - api - INFO - Match 207145: 2025-04-26T04:59:00Z
+2025-06-13 04:00:12,665 - api - INFO - Match 207154: 2025-04-26T05:07:00Z
+2025-06-13 04:00:12,665 - api - INFO - Match 207154: 2025-04-26T05:07:00Z
+2025-06-13 04:00:12,666 - api - INFO - Match 207171: 2025-04-26T05:15:00Z
+2025-06-13 04:00:12,666 - api - INFO - Match 207133: 2025-04-26T05:23:00Z
+2025-06-13 04:00:12,666 - api - INFO - Match 207148: 2025-04-26T05:31:00Z
+2025-06-13 04:00:12,667 - api - INFO - Match 207768: 2025-04-26T05:55:00Z
+2025-06-13 04:00:12,667 - api - INFO - Match 207789: 2025-04-26T06:03:00Z
+2025-06-13 04:00:12,667 - api - INFO - Match 207769: 2025-04-26T06:27:00Z
+2025-06-13 04:00:12,668 - api - INFO - Match 207793: 2025-04-26T06:35:00Z
+2025-06-13 04:00:12,668 - api - INFO - Match 207748: 2025-04-26T06:59:00Z
+2025-06-13 04:00:12,668 - api - INFO - Match 207794: 2025-04-26T07:07:00Z
+2025-06-13 04:00:12,669 - api - INFO - Returning 29 matches
+2025-06-13 04:00:12,670 - api - INFO - get_predictions executed in 0.05 seconds
+2025-06-13 04:00:12,674 - api - INFO - Match 207171: 2025-04-26T05:15:00Z
+2025-06-13 04:00:12,675 - api - INFO - Match 207133: 2025-04-26T05:23:00Z
+2025-06-13 04:00:12,683 - api - INFO - Match 207148: 2025-04-26T05:31:00Z
+2025-06-13 04:00:12,690 - api - INFO - Match 207768: 2025-04-26T05:55:00Z
+2025-06-13 04:00:12,694 - api - INFO - Match 207789: 2025-04-26T06:03:00Z
+2025-06-13 04:00:12,695 - api - INFO - Match 207769: 2025-04-26T06:27:00Z
+2025-06-13 04:00:12,695 - api - INFO - Match 207793: 2025-04-26T06:35:00Z
+2025-06-13 04:00:12,696 - api - INFO - Match 207748: 2025-04-26T06:59:00Z
+2025-06-13 04:00:12,698 - api - INFO - Match 207794: 2025-04-26T07:07:00Z
+2025-06-13 04:00:12,703 - api - INFO - Returning 29 matches
+2025-06-13 04:00:12,704 - api - INFO - get_predictions executed in 0.09 seconds
+2025-06-13 04:00:17,989 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 04:00:17,994 - api - INFO - Match 207162: 2025-04-26T02:35:00Z
+2025-06-13 04:00:17,994 - api - INFO - Match 207131: 2025-04-26T02:43:00Z
+2025-06-13 04:00:17,994 - api - INFO - Match 207141: 2025-04-26T02:51:00Z
+2025-06-13 04:00:17,995 - api - INFO - Match 207160: 2025-04-26T02:59:00Z
+2025-06-13 04:00:17,995 - api - INFO - Match 207167: 2025-04-26T03:07:00Z
+2025-06-13 04:00:17,995 - api - INFO - Match 207136: 2025-04-26T03:15:00Z
+2025-06-13 04:00:17,995 - api - INFO - Match 207142: 2025-04-26T03:23:00Z
+2025-06-13 04:00:17,996 - api - INFO - Match 207157: 2025-04-26T03:31:00Z
+2025-06-13 04:00:17,996 - api - INFO - Match 207163: 2025-04-26T03:39:00Z
+2025-06-13 04:00:17,996 - api - INFO - Match 207140: 2025-04-26T03:47:00Z
+2025-06-13 04:00:17,997 - api - INFO - Match 207146: 2025-04-26T03:55:00Z
+2025-06-13 04:00:17,997 - api - INFO - Match 207153: 2025-04-26T04:03:00Z
+2025-06-13 04:00:17,998 - api - INFO - Match 207165: 2025-04-26T04:11:00Z
+2025-06-13 04:00:17,998 - api - INFO - Match 207134: 2025-04-26T04:19:00Z
+2025-06-13 04:00:17,998 - api - INFO - Match 207147: 2025-04-26T04:27:00Z
+2025-06-13 04:00:17,999 - api - INFO - Match 207155: 2025-04-26T04:35:00Z
+2025-06-13 04:00:17,999 - api - INFO - Match 207168: 2025-04-26T04:43:00Z
+2025-06-13 04:00:17,999 - api - INFO - Match 207135: 2025-04-26T04:51:00Z
+2025-06-13 04:00:18,000 - api - INFO - Match 207145: 2025-04-26T04:59:00Z
+2025-06-13 04:00:18,000 - api - INFO - Match 207154: 2025-04-26T05:07:00Z
+2025-06-13 04:00:18,000 - api - INFO - Match 207171: 2025-04-26T05:15:00Z
+2025-06-13 04:00:18,000 - api - INFO - Match 207133: 2025-04-26T05:23:00Z
+2025-06-13 04:00:18,001 - api - INFO - Match 207148: 2025-04-26T05:31:00Z
+2025-06-13 04:00:18,001 - api - INFO - Match 207768: 2025-04-26T05:55:00Z
+2025-06-13 04:00:18,001 - api - INFO - Match 207789: 2025-04-26T06:03:00Z
+2025-06-13 04:00:18,001 - api - INFO - Match 207769: 2025-04-26T06:27:00Z
+2025-06-13 04:00:18,001 - api - INFO - Match 207793: 2025-04-26T06:35:00Z
+2025-06-13 04:00:18,002 - api - INFO - Match 207748: 2025-04-26T06:59:00Z
+2025-06-13 04:00:18,002 - api - INFO - Match 207794: 2025-04-26T07:07:00Z
+2025-06-13 04:00:18,002 - api - INFO - Returning 29 matches
+2025-06-13 04:00:18,003 - api - INFO - get_predictions executed in 0.01 seconds
+2025-06-13 04:00:18,285 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 04:00:18,285 - api - INFO - Returning 29 matches
+2025-06-13 04:00:18,286 - api - INFO - Retrieved score model accuracy: 4.075830549721303
+2025-06-13 04:00:18,287 - api - INFO - get_score_predictions executed in 0.00 seconds
+2025-06-13 04:00:18,301 - api - INFO - Loaded 29 upcoming matches from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_matches.json
+2025-06-13 04:00:18,302 - api - INFO - Returning 29 matches
+2025-06-13 04:00:18,304 - api - INFO - get_upcoming_matches executed in 0.02 seconds
+2025-06-13 04:00:18,309 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 04:00:18,311 - api - INFO - Match 207162: 2025-04-26T02:35:00Z
+2025-06-13 04:00:18,311 - api - INFO - Match 207131: 2025-04-26T02:43:00Z
+2025-06-13 04:00:18,312 - api - INFO - Match 207141: 2025-04-26T02:51:00Z
+2025-06-13 04:00:18,312 - api - INFO - Match 207160: 2025-04-26T02:59:00Z
+2025-06-13 04:00:18,313 - api - INFO - Match 207167: 2025-04-26T03:07:00Z
+2025-06-13 04:00:18,313 - api - INFO - Match 207136: 2025-04-26T03:15:00Z
+2025-06-13 04:00:18,313 - api - INFO - Match 207142: 2025-04-26T03:23:00Z
+2025-06-13 04:00:18,314 - api - INFO - Match 207157: 2025-04-26T03:31:00Z
+2025-06-13 04:00:18,314 - api - INFO - Match 207163: 2025-04-26T03:39:00Z
+2025-06-13 04:00:18,314 - api - INFO - Match 207140: 2025-04-26T03:47:00Z
+2025-06-13 04:00:18,314 - api - INFO - Match 207146: 2025-04-26T03:55:00Z
+2025-06-13 04:00:18,315 - api - INFO - Match 207153: 2025-04-26T04:03:00Z
+2025-06-13 04:00:18,315 - api - INFO - Match 207165: 2025-04-26T04:11:00Z
+2025-06-13 04:00:18,315 - api - INFO - Match 207134: 2025-04-26T04:19:00Z
+2025-06-13 04:00:18,315 - api - INFO - Match 207147: 2025-04-26T04:27:00Z
+2025-06-13 04:00:18,316 - api - INFO - Match 207155: 2025-04-26T04:35:00Z
+2025-06-13 04:00:18,316 - api - INFO - Match 207168: 2025-04-26T04:43:00Z
+2025-06-13 04:00:18,317 - api - INFO - Match 207135: 2025-04-26T04:51:00Z
+2025-06-13 04:00:18,317 - api - INFO - Match 207145: 2025-04-26T04:59:00Z
+2025-06-13 04:00:18,318 - api - INFO - Match 207154: 2025-04-26T05:07:00Z
+2025-06-13 04:00:18,318 - api - INFO - Match 207171: 2025-04-26T05:15:00Z
+2025-06-13 04:00:18,318 - api - INFO - Match 207133: 2025-04-26T05:23:00Z
+2025-06-13 04:00:18,319 - api - INFO - Match 207148: 2025-04-26T05:31:00Z
+2025-06-13 04:00:18,319 - api - INFO - Match 207768: 2025-04-26T05:55:00Z
+2025-06-13 04:00:18,319 - api - INFO - Match 207789: 2025-04-26T06:03:00Z
+2025-06-13 04:00:18,320 - api - INFO - Match 207769: 2025-04-26T06:27:00Z
+2025-06-13 04:00:18,320 - api - INFO - Match 207793: 2025-04-26T06:35:00Z
+2025-06-13 04:00:18,320 - api - INFO - Match 207748: 2025-04-26T06:59:00Z
+2025-06-13 04:00:18,320 - api - INFO - Match 207794: 2025-04-26T07:07:00Z
+2025-06-13 04:00:18,321 - api - INFO - Returning 29 matches
+2025-06-13 04:00:18,322 - api - INFO - get_predictions executed in 0.01 seconds
+2025-06-13 04:00:18,593 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 04:00:18,593 - api - INFO - Returning 29 matches
+2025-06-13 04:00:18,596 - api - INFO - Retrieved score model accuracy: 4.075830549721303
+2025-06-13 04:00:18,597 - api - INFO - get_score_predictions executed in 0.00 seconds
+2025-06-13 04:00:18,610 - api - INFO - Loaded 29 upcoming matches from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_matches.json
+2025-06-13 04:00:18,611 - api - INFO - Returning 29 matches
+2025-06-13 04:00:18,611 - api - INFO - get_upcoming_matches executed in 0.00 seconds
+2025-06-13 04:00:21,631 - api - INFO - Started refresh process with PID: 244
+2025-06-13 04:00:21,632 - api - INFO - refresh_data executed in 0.01 seconds
+2025-06-13 04:00:21,809 - api - ERROR - Refresh process stderr: Traceback (most recent call last):
+  File "c:\Users\sicke\OneDrive\Documents\Projects\2k_spark\backend\app\refresh_script.py", line 11, in <module>
+    from services.refresh_service import refresh_predictions
+  File "c:\Users\sicke\OneDrive\Documents\Projects\2k_spark\backend\services\refresh_service.py", line 23, in <module>
+    from utils.time import get_current_time, format_datetime
+  File "c:\Users\sicke\OneDrive\Documents\Projects\2k_spark\backend\utils\time.py", line 6, in <module>
+    import pytz
+ModuleNotFoundError: No module named 'pytz'
+
+2025-06-13 04:00:21,811 - api - INFO - Refresh process completed with exit code: 1
+2025-06-13 04:00:21,811 - api - ERROR - Refresh process stderr: Traceback (most recent call last):
+  File "c:\Users\sicke\OneDrive\Documents\Projects\2k_spark\backend\app\refresh_script.py", line 11, in <module>
+    from services.refresh_service import refresh_predictions
+  File "c:\Users\sicke\OneDrive\Documents\Projects\2k_spark\backend\services\refresh_service.py", line 23, in <module>
+    from utils.time import get_current_time, format_datetime
+  File "c:\Users\sicke\OneDrive\Documents\Projects\2k_spark\backend\utils\time.py", line 6, in <module>
+    import pytz
+ModuleNotFoundError: No module named 'pytz'
+
+2025-06-13 04:01:11,521 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 04:01:11,522 - api - INFO - Match 207162: 2025-04-26T02:35:00Z
+2025-06-13 04:01:11,522 - api - INFO - Match 207131: 2025-04-26T02:43:00Z
+2025-06-13 04:01:11,522 - api - INFO - Match 207141: 2025-04-26T02:51:00Z
+2025-06-13 04:01:11,523 - api - INFO - Match 207160: 2025-04-26T02:59:00Z
+2025-06-13 04:01:11,523 - api - INFO - Match 207167: 2025-04-26T03:07:00Z
+2025-06-13 04:01:11,524 - api - INFO - Match 207136: 2025-04-26T03:15:00Z
+2025-06-13 04:01:11,524 - api - INFO - Match 207142: 2025-04-26T03:23:00Z
+2025-06-13 04:01:11,524 - api - INFO - Match 207157: 2025-04-26T03:31:00Z
+2025-06-13 04:01:11,525 - api - INFO - Match 207163: 2025-04-26T03:39:00Z
+2025-06-13 04:01:11,525 - api - INFO - Match 207140: 2025-04-26T03:47:00Z
+2025-06-13 04:01:11,526 - api - INFO - Match 207146: 2025-04-26T03:55:00Z
+2025-06-13 04:01:11,526 - api - INFO - Match 207153: 2025-04-26T04:03:00Z
+2025-06-13 04:01:11,526 - api - INFO - Match 207165: 2025-04-26T04:11:00Z
+2025-06-13 04:01:11,527 - api - INFO - Match 207134: 2025-04-26T04:19:00Z
+2025-06-13 04:01:11,527 - api - INFO - Match 207147: 2025-04-26T04:27:00Z
+2025-06-13 04:01:11,527 - api - INFO - Match 207155: 2025-04-26T04:35:00Z
+2025-06-13 04:01:11,528 - api - INFO - Match 207168: 2025-04-26T04:43:00Z
+2025-06-13 04:01:11,528 - api - INFO - Match 207135: 2025-04-26T04:51:00Z
+2025-06-13 04:01:11,528 - api - INFO - Match 207145: 2025-04-26T04:59:00Z
+2025-06-13 04:01:11,529 - api - INFO - Match 207154: 2025-04-26T05:07:00Z
+2025-06-13 04:01:11,529 - api - INFO - Match 207171: 2025-04-26T05:15:00Z
+2025-06-13 04:01:11,529 - api - INFO - Match 207133: 2025-04-26T05:23:00Z
+2025-06-13 04:01:11,529 - api - INFO - Match 207148: 2025-04-26T05:31:00Z
+2025-06-13 04:01:11,530 - api - INFO - Match 207768: 2025-04-26T05:55:00Z
+2025-06-13 04:01:11,530 - api - INFO - Match 207789: 2025-04-26T06:03:00Z
+2025-06-13 04:01:11,531 - api - INFO - Match 207769: 2025-04-26T06:27:00Z
+2025-06-13 04:01:11,534 - api - INFO - Match 207793: 2025-04-26T06:35:00Z
+2025-06-13 04:01:11,534 - api - INFO - Match 207748: 2025-04-26T06:59:00Z
+2025-06-13 04:01:11,535 - api - INFO - Match 207794: 2025-04-26T07:07:00Z
+2025-06-13 04:01:11,535 - api - INFO - Returning 29 matches
+2025-06-13 04:01:11,536 - api - INFO - get_predictions executed in 0.02 seconds
+2025-06-13 04:01:11,838 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 04:01:11,840 - api - INFO - Match 207162: 2025-04-26T02:35:00Z
+2025-06-13 04:01:11,841 - api - INFO - Match 207131: 2025-04-26T02:43:00Z
+2025-06-13 04:01:11,841 - api - INFO - Match 207141: 2025-04-26T02:51:00Z
+2025-06-13 04:01:11,842 - api - INFO - Match 207160: 2025-04-26T02:59:00Z
+2025-06-13 04:01:11,842 - api - INFO - Match 207167: 2025-04-26T03:07:00Z
+2025-06-13 04:01:11,842 - api - INFO - Match 207136: 2025-04-26T03:15:00Z
+2025-06-13 04:01:11,843 - api - INFO - Match 207142: 2025-04-26T03:23:00Z
+2025-06-13 04:01:11,843 - api - INFO - Match 207157: 2025-04-26T03:31:00Z
+2025-06-13 04:01:11,844 - api - INFO - Match 207163: 2025-04-26T03:39:00Z
+2025-06-13 04:01:11,846 - api - INFO - Match 207140: 2025-04-26T03:47:00Z
+2025-06-13 04:01:11,846 - api - INFO - Match 207146: 2025-04-26T03:55:00Z
+2025-06-13 04:01:11,847 - api - INFO - Match 207153: 2025-04-26T04:03:00Z
+2025-06-13 04:01:11,847 - api - INFO - Match 207165: 2025-04-26T04:11:00Z
+2025-06-13 04:01:11,848 - api - INFO - Match 207134: 2025-04-26T04:19:00Z
+2025-06-13 04:01:11,848 - api - INFO - Match 207147: 2025-04-26T04:27:00Z
+2025-06-13 04:01:11,848 - api - INFO - Match 207155: 2025-04-26T04:35:00Z
+2025-06-13 04:01:11,849 - api - INFO - Match 207168: 2025-04-26T04:43:00Z
+2025-06-13 04:01:11,849 - api - INFO - Match 207135: 2025-04-26T04:51:00Z
+2025-06-13 04:01:11,849 - api - INFO - Match 207145: 2025-04-26T04:59:00Z
+2025-06-13 04:01:11,850 - api - INFO - Match 207154: 2025-04-26T05:07:00Z
+2025-06-13 04:01:11,850 - api - INFO - Match 207171: 2025-04-26T05:15:00Z
+2025-06-13 04:01:11,850 - api - INFO - Match 207133: 2025-04-26T05:23:00Z
+2025-06-13 04:01:11,853 - api - INFO - Match 207148: 2025-04-26T05:31:00Z
+2025-06-13 04:01:11,854 - api - INFO - Match 207768: 2025-04-26T05:55:00Z
+2025-06-13 04:01:11,855 - api - INFO - Match 207789: 2025-04-26T06:03:00Z
+2025-06-13 04:01:11,855 - api - INFO - Match 207769: 2025-04-26T06:27:00Z
+2025-06-13 04:01:11,856 - api - INFO - Match 207793: 2025-04-26T06:35:00Z
+2025-06-13 04:01:11,856 - api - INFO - Match 207748: 2025-04-26T06:59:00Z
+2025-06-13 04:01:11,857 - api - INFO - Match 207794: 2025-04-26T07:07:00Z
+2025-06-13 04:01:11,857 - api - INFO - Returning 29 matches
+2025-06-13 04:01:11,862 - api - INFO - get_predictions executed in 0.03 seconds
+2025-06-13 04:01:14,198 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 04:01:14,199 - api - INFO - Match 207162: 2025-04-26T02:35:00Z
+2025-06-13 04:01:14,200 - api - INFO - Match 207131: 2025-04-26T02:43:00Z
+2025-06-13 04:01:14,200 - api - INFO - Match 207141: 2025-04-26T02:51:00Z
+2025-06-13 04:01:14,200 - api - INFO - Match 207160: 2025-04-26T02:59:00Z
+2025-06-13 04:01:14,201 - api - INFO - Match 207167: 2025-04-26T03:07:00Z
+2025-06-13 04:01:14,201 - api - INFO - Match 207136: 2025-04-26T03:15:00Z
+2025-06-13 04:01:14,201 - api - INFO - Match 207142: 2025-04-26T03:23:00Z
+2025-06-13 04:01:14,201 - api - INFO - Match 207157: 2025-04-26T03:31:00Z
+2025-06-13 04:01:14,202 - api - INFO - Match 207163: 2025-04-26T03:39:00Z
+2025-06-13 04:01:14,202 - api - INFO - Match 207140: 2025-04-26T03:47:00Z
+2025-06-13 04:01:14,202 - api - INFO - Match 207146: 2025-04-26T03:55:00Z
+2025-06-13 04:01:14,202 - api - INFO - Match 207153: 2025-04-26T04:03:00Z
+2025-06-13 04:01:14,203 - api - INFO - Match 207165: 2025-04-26T04:11:00Z
+2025-06-13 04:01:14,203 - api - INFO - Match 207134: 2025-04-26T04:19:00Z
+2025-06-13 04:01:14,203 - api - INFO - Match 207147: 2025-04-26T04:27:00Z
+2025-06-13 04:01:14,203 - api - INFO - Match 207155: 2025-04-26T04:35:00Z
+2025-06-13 04:01:14,204 - api - INFO - Match 207168: 2025-04-26T04:43:00Z
+2025-06-13 04:01:14,204 - api - INFO - Match 207135: 2025-04-26T04:51:00Z
+2025-06-13 04:01:14,204 - api - INFO - Match 207145: 2025-04-26T04:59:00Z
+2025-06-13 04:01:14,206 - api - INFO - Match 207154: 2025-04-26T05:07:00Z
+2025-06-13 04:01:14,207 - api - INFO - Match 207171: 2025-04-26T05:15:00Z
+2025-06-13 04:01:14,208 - api - INFO - Match 207133: 2025-04-26T05:23:00Z
+2025-06-13 04:01:14,208 - api - INFO - Match 207148: 2025-04-26T05:31:00Z
+2025-06-13 04:01:14,209 - api - INFO - Loaded 29 upcoming matches from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_matches.json
+2025-06-13 04:01:14,209 - api - INFO - Match 207768: 2025-04-26T05:55:00Z
+2025-06-13 04:01:14,210 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 04:01:14,210 - api - INFO - Returning 29 matches
+2025-06-13 04:01:14,210 - api - INFO - Match 207789: 2025-04-26T06:03:00Z
+2025-06-13 04:01:14,211 - api - INFO - Returning 29 matches
+2025-06-13 04:01:14,212 - api - INFO - get_upcoming_matches executed in 0.00 seconds
+2025-06-13 04:01:14,213 - api - INFO - Match 207769: 2025-04-26T06:27:00Z
+2025-06-13 04:01:14,215 - api - INFO - Match 207793: 2025-04-26T06:35:00Z
+2025-06-13 04:01:14,216 - api - INFO - Retrieved score model accuracy: 4.075830549721303
+2025-06-13 04:01:14,216 - api - INFO - Match 207748: 2025-04-26T06:59:00Z
+2025-06-13 04:01:14,217 - api - INFO - get_score_predictions executed in 0.01 seconds
+2025-06-13 04:01:14,217 - api - INFO - Match 207794: 2025-04-26T07:07:00Z
+2025-06-13 04:01:14,219 - api - INFO - Returning 29 matches
+2025-06-13 04:01:14,221 - api - INFO - get_predictions executed in 0.02 seconds
+2025-06-13 04:01:14,521 - api - INFO - Loaded 29 upcoming matches from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_matches.json
+2025-06-13 04:01:14,522 - api - INFO - Returning 29 matches
+2025-06-13 04:01:14,523 - api - INFO - get_upcoming_matches executed in 0.00 seconds
+2025-06-13 04:01:14,526 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 04:01:14,528 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 04:01:14,529 - api - INFO - Returning 29 matches
+2025-06-13 04:01:14,529 - api - INFO - Match 207162: 2025-04-26T02:35:00Z
+2025-06-13 04:01:14,530 - api - INFO - Match 207131: 2025-04-26T02:43:00Z
+2025-06-13 04:01:14,530 - api - INFO - Match 207141: 2025-04-26T02:51:00Z
+2025-06-13 04:01:14,531 - api - INFO - Retrieved score model accuracy: 4.075830549721303
+2025-06-13 04:01:14,531 - api - INFO - Match 207160: 2025-04-26T02:59:00Z
+2025-06-13 04:01:14,533 - api - INFO - get_score_predictions executed in 0.01 seconds
+2025-06-13 04:01:14,535 - api - INFO - Match 207167: 2025-04-26T03:07:00Z
+2025-06-13 04:01:14,536 - api - INFO - Match 207136: 2025-04-26T03:15:00Z
+2025-06-13 04:01:14,537 - api - INFO - Match 207142: 2025-04-26T03:23:00Z
+2025-06-13 04:01:14,538 - api - INFO - Match 207157: 2025-04-26T03:31:00Z
+2025-06-13 04:01:14,540 - api - INFO - Match 207163: 2025-04-26T03:39:00Z
+2025-06-13 04:01:14,541 - api - INFO - Match 207140: 2025-04-26T03:47:00Z
+2025-06-13 04:01:14,542 - api - INFO - Match 207146: 2025-04-26T03:55:00Z
+2025-06-13 04:01:14,542 - api - INFO - Match 207153: 2025-04-26T04:03:00Z
+2025-06-13 04:01:14,543 - api - INFO - Match 207165: 2025-04-26T04:11:00Z
+2025-06-13 04:01:14,543 - api - INFO - Match 207134: 2025-04-26T04:19:00Z
+2025-06-13 04:01:14,544 - api - INFO - Match 207147: 2025-04-26T04:27:00Z
+2025-06-13 04:01:14,544 - api - INFO - Match 207155: 2025-04-26T04:35:00Z
+2025-06-13 04:01:14,544 - api - INFO - Match 207168: 2025-04-26T04:43:00Z
+2025-06-13 04:01:14,545 - api - INFO - Match 207135: 2025-04-26T04:51:00Z
+2025-06-13 04:01:14,548 - api - INFO - Match 207145: 2025-04-26T04:59:00Z
+2025-06-13 04:01:14,548 - api - INFO - Match 207154: 2025-04-26T05:07:00Z
+2025-06-13 04:01:14,549 - api - INFO - Match 207171: 2025-04-26T05:15:00Z
+2025-06-13 04:01:14,549 - api - INFO - Match 207133: 2025-04-26T05:23:00Z
+2025-06-13 04:01:14,549 - api - INFO - Match 207148: 2025-04-26T05:31:00Z
+2025-06-13 04:01:14,550 - api - INFO - Match 207768: 2025-04-26T05:55:00Z
+2025-06-13 04:01:14,550 - api - INFO - Match 207789: 2025-04-26T06:03:00Z
+2025-06-13 04:01:14,550 - api - INFO - Match 207769: 2025-04-26T06:27:00Z
+2025-06-13 04:01:14,550 - api - INFO - Match 207793: 2025-04-26T06:35:00Z
+2025-06-13 04:01:14,551 - api - INFO - Match 207748: 2025-04-26T06:59:00Z
+2025-06-13 04:01:14,551 - api - INFO - Match 207794: 2025-04-26T07:07:00Z
+2025-06-13 04:01:14,551 - api - INFO - Returning 29 matches
+2025-06-13 04:01:14,553 - api - INFO - get_predictions executed in 0.03 seconds
+2025-06-13 04:01:17,614 - api - INFO - Started refresh process with PID: 12008
+2025-06-13 04:01:17,616 - api - INFO - refresh_data executed in 0.00 seconds
+2025-06-13 04:01:17,770 - api - INFO - Loaded statistics for 94 players from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\player_stats.json
+2025-06-13 04:01:17,771 - api - INFO - Returning statistics for 94 players
+2025-06-13 04:01:17,771 - api - ERROR - Refresh process stderr: Traceback (most recent call last):
+  File "c:\Users\sicke\OneDrive\Documents\Projects\2k_spark\backend\app\refresh_script.py", line 11, in <module>
+    from services.refresh_service import refresh_predictions
+  File "c:\Users\sicke\OneDrive\Documents\Projects\2k_spark\backend\services\refresh_service.py", line 23, in <module>
+    from utils.time import get_current_time, format_datetime
+  File "c:\Users\sicke\OneDrive\Documents\Projects\2k_spark\backend\utils\time.py", line 6, in <module>
+    import pytz
+ModuleNotFoundError: No module named 'pytz'
+
+2025-06-13 04:01:17,857 - api - INFO - Refresh process completed with exit code: 1
+2025-06-13 04:01:17,857 - api - INFO - get_player_stats executed in 0.19 seconds
+2025-06-13 04:01:17,857 - api - ERROR - Refresh process stderr: Traceback (most recent call last):
+  File "c:\Users\sicke\OneDrive\Documents\Projects\2k_spark\backend\app\refresh_script.py", line 11, in <module>
+    from services.refresh_service import refresh_predictions
+  File "c:\Users\sicke\OneDrive\Documents\Projects\2k_spark\backend\services\refresh_service.py", line 23, in <module>
+    from utils.time import get_current_time, format_datetime
+  File "c:\Users\sicke\OneDrive\Documents\Projects\2k_spark\backend\utils\time.py", line 6, in <module>
+    import pytz
+ModuleNotFoundError: No module named 'pytz'
+
+2025-06-13 04:01:17,957 - api - INFO - Loaded statistics for 94 players from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\player_stats.json
+2025-06-13 04:01:17,958 - api - INFO - Returning statistics for 94 players
+2025-06-13 04:01:18,037 - api - INFO - get_player_stats executed in 0.18 seconds
+2025-06-13 04:01:23,690 - api - INFO - Loaded statistics for 94 players from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\player_stats.json
+2025-06-13 04:01:23,695 - api - INFO - Returning statistics for 94 players
+2025-06-13 04:01:23,906 - api - INFO - get_player_stats executed in 0.37 seconds
+2025-06-13 04:01:33,064 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 04:01:33,064 - api - INFO - Match 207162: 2025-04-26T02:35:00Z
+2025-06-13 04:01:33,065 - api - INFO - Match 207131: 2025-04-26T02:43:00Z
+2025-06-13 04:01:33,066 - api - INFO - Match 207141: 2025-04-26T02:51:00Z
+2025-06-13 04:01:33,067 - api - INFO - Match 207160: 2025-04-26T02:59:00Z
+2025-06-13 04:01:33,068 - api - INFO - Match 207167: 2025-04-26T03:07:00Z
+2025-06-13 04:01:33,068 - api - INFO - Match 207136: 2025-04-26T03:15:00Z
+2025-06-13 04:01:33,069 - api - INFO - Match 207142: 2025-04-26T03:23:00Z
+2025-06-13 04:01:33,069 - api - INFO - Match 207157: 2025-04-26T03:31:00Z
+2025-06-13 04:01:33,070 - api - INFO - Match 207163: 2025-04-26T03:39:00Z
+2025-06-13 04:01:33,071 - api - INFO - Match 207140: 2025-04-26T03:47:00Z
+2025-06-13 04:01:33,071 - api - INFO - Match 207146: 2025-04-26T03:55:00Z
+2025-06-13 04:01:33,072 - api - INFO - Match 207153: 2025-04-26T04:03:00Z
+2025-06-13 04:01:33,072 - api - INFO - Match 207165: 2025-04-26T04:11:00Z
+2025-06-13 04:01:33,072 - api - INFO - Match 207134: 2025-04-26T04:19:00Z
+2025-06-13 04:01:33,073 - api - INFO - Match 207147: 2025-04-26T04:27:00Z
+2025-06-13 04:01:33,074 - api - INFO - Match 207155: 2025-04-26T04:35:00Z
+2025-06-13 04:01:33,075 - api - INFO - Match 207168: 2025-04-26T04:43:00Z
+2025-06-13 04:01:33,075 - api - INFO - Match 207135: 2025-04-26T04:51:00Z
+2025-06-13 04:01:33,076 - api - INFO - Match 207145: 2025-04-26T04:59:00Z
+2025-06-13 04:01:33,076 - api - INFO - Match 207154: 2025-04-26T05:07:00Z
+2025-06-13 04:01:33,077 - api - INFO - Match 207171: 2025-04-26T05:15:00Z
+2025-06-13 04:01:33,077 - api - INFO - Match 207133: 2025-04-26T05:23:00Z
+2025-06-13 04:01:33,077 - api - INFO - Match 207148: 2025-04-26T05:31:00Z
+2025-06-13 04:01:33,077 - api - INFO - Match 207768: 2025-04-26T05:55:00Z
+2025-06-13 04:01:33,078 - api - INFO - Match 207789: 2025-04-26T06:03:00Z
+2025-06-13 04:01:33,078 - api - INFO - Match 207769: 2025-04-26T06:27:00Z
+2025-06-13 04:01:33,078 - api - INFO - Match 207793: 2025-04-26T06:35:00Z
+2025-06-13 04:01:33,079 - api - INFO - Match 207748: 2025-04-26T06:59:00Z
+2025-06-13 04:01:33,079 - api - INFO - Match 207794: 2025-04-26T07:07:00Z
+2025-06-13 04:01:33,079 - api - INFO - Returning 29 matches
+2025-06-13 04:01:33,081 - api - INFO - get_predictions executed in 0.02 seconds
+2025-06-13 04:01:33,359 - api - INFO - Loaded 29 upcoming matches from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_matches.json
+2025-06-13 04:01:33,360 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 04:01:33,361 - api - INFO - Returning 29 matches
+2025-06-13 04:01:33,362 - api - INFO - Returning 29 matches
+2025-06-13 04:01:33,363 - api - INFO - get_upcoming_matches executed in 0.01 seconds
+2025-06-13 04:01:33,367 - api - INFO - Retrieved score model accuracy: 4.075830549721303
+2025-06-13 04:01:33,369 - api - INFO - get_score_predictions executed in 0.01 seconds
+2025-06-13 04:01:33,389 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 04:01:33,390 - api - INFO - Match 207162: 2025-04-26T02:35:00Z
+2025-06-13 04:01:33,390 - api - INFO - Match 207131: 2025-04-26T02:43:00Z
+2025-06-13 04:01:33,390 - api - INFO - Match 207141: 2025-04-26T02:51:00Z
+2025-06-13 04:01:33,391 - api - INFO - Match 207160: 2025-04-26T02:59:00Z
+2025-06-13 04:01:33,391 - api - INFO - Match 207167: 2025-04-26T03:07:00Z
+2025-06-13 04:01:33,391 - api - INFO - Match 207136: 2025-04-26T03:15:00Z
+2025-06-13 04:01:33,392 - api - INFO - Match 207142: 2025-04-26T03:23:00Z
+2025-06-13 04:01:33,392 - api - INFO - Match 207157: 2025-04-26T03:31:00Z
+2025-06-13 04:01:33,394 - api - INFO - Match 207163: 2025-04-26T03:39:00Z
+2025-06-13 04:01:33,394 - api - INFO - Match 207140: 2025-04-26T03:47:00Z
+2025-06-13 04:01:33,395 - api - INFO - Match 207146: 2025-04-26T03:55:00Z
+2025-06-13 04:01:33,395 - api - INFO - Match 207153: 2025-04-26T04:03:00Z
+2025-06-13 04:01:33,396 - api - INFO - Match 207165: 2025-04-26T04:11:00Z
+2025-06-13 04:01:33,396 - api - INFO - Match 207134: 2025-04-26T04:19:00Z
+2025-06-13 04:01:33,397 - api - INFO - Match 207147: 2025-04-26T04:27:00Z
+2025-06-13 04:01:33,397 - api - INFO - Match 207155: 2025-04-26T04:35:00Z
+2025-06-13 04:01:33,397 - api - INFO - Match 207168: 2025-04-26T04:43:00Z
+2025-06-13 04:01:33,397 - api - INFO - Match 207135: 2025-04-26T04:51:00Z
+2025-06-13 04:01:33,398 - api - INFO - Match 207145: 2025-04-26T04:59:00Z
+2025-06-13 04:01:33,398 - api - INFO - Match 207154: 2025-04-26T05:07:00Z
+2025-06-13 04:01:33,398 - api - INFO - Match 207171: 2025-04-26T05:15:00Z
+2025-06-13 04:01:33,399 - api - INFO - Match 207133: 2025-04-26T05:23:00Z
+2025-06-13 04:01:33,399 - api - INFO - Match 207148: 2025-04-26T05:31:00Z
+2025-06-13 04:01:33,400 - api - INFO - Match 207768: 2025-04-26T05:55:00Z
+2025-06-13 04:01:33,401 - api - INFO - Match 207789: 2025-04-26T06:03:00Z
+2025-06-13 04:01:33,401 - api - INFO - Match 207769: 2025-04-26T06:27:00Z
+2025-06-13 04:01:33,402 - api - INFO - Match 207793: 2025-04-26T06:35:00Z
+2025-06-13 04:01:33,402 - api - INFO - Match 207748: 2025-04-26T06:59:00Z
+2025-06-13 04:01:33,403 - api - INFO - Match 207794: 2025-04-26T07:07:00Z
+2025-06-13 04:01:33,403 - api - INFO - Returning 29 matches
+2025-06-13 04:01:33,404 - api - INFO - get_predictions executed in 0.02 seconds
+2025-06-13 04:01:33,672 - api - INFO - Loaded 29 upcoming matches from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_matches.json
+2025-06-13 04:01:33,673 - api - INFO - Returning 29 matches
+2025-06-13 04:01:33,674 - api - INFO - get_upcoming_matches executed in 0.00 seconds
+2025-06-13 04:01:33,680 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 04:01:33,680 - api - INFO - Returning 29 matches
+2025-06-13 04:01:33,682 - api - INFO - Retrieved score model accuracy: 4.075830549721303
+2025-06-13 04:01:33,682 - api - INFO - get_score_predictions executed in 0.00 seconds
+2025-06-13 04:01:37,857 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 04:01:37,858 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 04:01:37,858 - api - INFO - Match 207162: 2025-04-26T02:35:00Z
+2025-06-13 04:01:37,859 - api - INFO - Match 207162: 2025-04-26T02:35:00Z
+2025-06-13 04:01:37,860 - api - INFO - Match 207131: 2025-04-26T02:43:00Z
+2025-06-13 04:01:37,860 - api - INFO - Match 207141: 2025-04-26T02:51:00Z
+2025-06-13 04:01:37,860 - api - INFO - Match 207131: 2025-04-26T02:43:00Z
+2025-06-13 04:01:37,861 - api - INFO - Match 207160: 2025-04-26T02:59:00Z
+2025-06-13 04:01:37,861 - api - INFO - Match 207141: 2025-04-26T02:51:00Z
+2025-06-13 04:01:37,862 - api - INFO - Match 207167: 2025-04-26T03:07:00Z
+2025-06-13 04:01:37,863 - api - INFO - Match 207160: 2025-04-26T02:59:00Z
+2025-06-13 04:01:37,863 - api - INFO - Match 207136: 2025-04-26T03:15:00Z
+2025-06-13 04:01:37,868 - api - INFO - Match 207167: 2025-04-26T03:07:00Z
+2025-06-13 04:01:37,868 - api - INFO - Match 207142: 2025-04-26T03:23:00Z
+2025-06-13 04:01:37,869 - api - INFO - Match 207136: 2025-04-26T03:15:00Z
+2025-06-13 04:01:37,869 - api - INFO - Match 207157: 2025-04-26T03:31:00Z
+2025-06-13 04:01:37,870 - api - INFO - Match 207142: 2025-04-26T03:23:00Z
+2025-06-13 04:01:37,870 - api - INFO - Match 207163: 2025-04-26T03:39:00Z
+2025-06-13 04:01:37,870 - api - INFO - Match 207157: 2025-04-26T03:31:00Z
+2025-06-13 04:01:37,871 - api - INFO - Match 207140: 2025-04-26T03:47:00Z
+2025-06-13 04:01:37,871 - api - INFO - Match 207163: 2025-04-26T03:39:00Z
+2025-06-13 04:01:37,871 - api - INFO - Match 207146: 2025-04-26T03:55:00Z
+2025-06-13 04:01:37,873 - api - INFO - Match 207140: 2025-04-26T03:47:00Z
+2025-06-13 04:01:37,873 - api - INFO - Match 207153: 2025-04-26T04:03:00Z
+2025-06-13 04:01:37,874 - api - INFO - Match 207165: 2025-04-26T04:11:00Z
+2025-06-13 04:01:37,874 - api - INFO - Match 207146: 2025-04-26T03:55:00Z
+2025-06-13 04:01:37,875 - api - INFO - Match 207134: 2025-04-26T04:19:00Z
+2025-06-13 04:01:37,875 - api - INFO - Match 207153: 2025-04-26T04:03:00Z
+2025-06-13 04:01:37,876 - api - INFO - Match 207147: 2025-04-26T04:27:00Z
+2025-06-13 04:01:37,876 - api - INFO - Match 207165: 2025-04-26T04:11:00Z
+2025-06-13 04:01:37,877 - api - INFO - Match 207155: 2025-04-26T04:35:00Z
+2025-06-13 04:01:37,877 - api - INFO - Match 207134: 2025-04-26T04:19:00Z
+2025-06-13 04:01:37,877 - api - INFO - Match 207168: 2025-04-26T04:43:00Z
+2025-06-13 04:01:37,878 - api - INFO - Match 207147: 2025-04-26T04:27:00Z
+2025-06-13 04:01:37,878 - api - INFO - Match 207135: 2025-04-26T04:51:00Z
+2025-06-13 04:01:37,878 - api - INFO - Match 207155: 2025-04-26T04:35:00Z
+2025-06-13 04:01:37,879 - api - INFO - Match 207145: 2025-04-26T04:59:00Z
+2025-06-13 04:01:37,880 - api - INFO - Match 207168: 2025-04-26T04:43:00Z
+2025-06-13 04:01:37,881 - api - INFO - Match 207154: 2025-04-26T05:07:00Z
+2025-06-13 04:01:37,883 - api - INFO - Match 207135: 2025-04-26T04:51:00Z
+2025-06-13 04:01:37,884 - api - INFO - Match 207145: 2025-04-26T04:59:00Z
+2025-06-13 04:01:37,884 - api - INFO - Match 207171: 2025-04-26T05:15:00Z
+2025-06-13 04:01:37,885 - api - INFO - Match 207154: 2025-04-26T05:07:00Z
+2025-06-13 04:01:37,885 - api - INFO - Match 207133: 2025-04-26T05:23:00Z
+2025-06-13 04:01:37,886 - api - INFO - Match 207148: 2025-04-26T05:31:00Z
+2025-06-13 04:01:37,886 - api - INFO - Match 207768: 2025-04-26T05:55:00Z
+2025-06-13 04:01:37,887 - api - INFO - Match 207789: 2025-04-26T06:03:00Z
+2025-06-13 04:01:37,888 - api - INFO - Match 207171: 2025-04-26T05:15:00Z
+2025-06-13 04:01:37,889 - api - INFO - Match 207769: 2025-04-26T06:27:00Z
+2025-06-13 04:01:37,890 - api - INFO - Match 207133: 2025-04-26T05:23:00Z
+2025-06-13 04:01:37,891 - api - INFO - Match 207793: 2025-04-26T06:35:00Z
+2025-06-13 04:01:37,891 - api - INFO - Match 207148: 2025-04-26T05:31:00Z
+2025-06-13 04:01:37,892 - api - INFO - Match 207748: 2025-04-26T06:59:00Z
+2025-06-13 04:01:37,892 - api - INFO - Match 207768: 2025-04-26T05:55:00Z
+2025-06-13 04:01:37,892 - api - INFO - Match 207794: 2025-04-26T07:07:00Z
+2025-06-13 04:01:37,894 - api - INFO - Match 207789: 2025-04-26T06:03:00Z
+2025-06-13 04:01:37,894 - api - INFO - Match 207769: 2025-04-26T06:27:00Z
+2025-06-13 04:01:37,895 - api - INFO - Match 207793: 2025-04-26T06:35:00Z
+2025-06-13 04:01:37,895 - api - INFO - Returning 29 matches
+2025-06-13 04:01:37,895 - api - INFO - Match 207748: 2025-04-26T06:59:00Z
+2025-06-13 04:01:37,896 - api - INFO - get_predictions executed in 0.04 seconds
+2025-06-13 04:01:37,896 - api - INFO - Match 207794: 2025-04-26T07:07:00Z
+2025-06-13 04:01:37,905 - api - INFO - Returning 29 matches
+2025-06-13 04:01:37,908 - api - INFO - get_predictions executed in 0.05 seconds
+2025-06-13 04:01:45,537 - api - INFO - get_stats executed in 0.00 seconds
+2025-06-13 04:01:45,842 - api - INFO - get_stats executed in 0.00 seconds
+2025-06-13 04:02:15,036 - api - INFO - Loaded statistics for 94 players from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\player_stats.json
+2025-06-13 04:02:15,037 - api - INFO - Returning statistics for 94 players
+2025-06-13 04:02:15,219 - api - INFO - get_player_stats executed in 0.30 seconds
+2025-06-13 04:02:15,803 - api - INFO - Loaded statistics for 94 players from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\player_stats.json
+2025-06-13 04:02:15,808 - api - INFO - Returning statistics for 94 players
+2025-06-13 04:02:16,083 - api - INFO - get_player_stats executed in 0.41 seconds
+2025-06-13 04:02:36,393 - api - INFO - get_prediction_history executed in 0.11 seconds
+2025-06-13 04:02:36,545 - api - INFO - get_prediction_history executed in 0.15 seconds
+2025-06-13 04:03:24,492 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 04:03:24,493 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 04:03:24,493 - api - INFO - Match 207162: 2025-04-26T02:35:00Z
+2025-06-13 04:03:24,493 - api - INFO - Match 207162: 2025-04-26T02:35:00Z
+2025-06-13 04:03:24,494 - api - INFO - Match 207131: 2025-04-26T02:43:00Z
+2025-06-13 04:03:24,494 - api - INFO - Match 207131: 2025-04-26T02:43:00Z
+2025-06-13 04:03:24,494 - api - INFO - Match 207141: 2025-04-26T02:51:00Z
+2025-06-13 04:03:24,494 - api - INFO - Match 207141: 2025-04-26T02:51:00Z
+2025-06-13 04:03:24,494 - api - INFO - Match 207160: 2025-04-26T02:59:00Z
+2025-06-13 04:03:24,495 - api - INFO - Match 207160: 2025-04-26T02:59:00Z
+2025-06-13 04:03:24,495 - api - INFO - Match 207167: 2025-04-26T03:07:00Z
+2025-06-13 04:03:24,495 - api - INFO - Match 207167: 2025-04-26T03:07:00Z
+2025-06-13 04:03:24,495 - api - INFO - Match 207136: 2025-04-26T03:15:00Z
+2025-06-13 04:03:24,496 - api - INFO - Match 207136: 2025-04-26T03:15:00Z
+2025-06-13 04:03:24,496 - api - INFO - Match 207142: 2025-04-26T03:23:00Z
+2025-06-13 04:03:24,496 - api - INFO - Match 207142: 2025-04-26T03:23:00Z
+2025-06-13 04:03:24,496 - api - INFO - Match 207157: 2025-04-26T03:31:00Z
+2025-06-13 04:03:24,497 - api - INFO - Match 207157: 2025-04-26T03:31:00Z
+2025-06-13 04:03:24,497 - api - INFO - Match 207163: 2025-04-26T03:39:00Z
+2025-06-13 04:03:24,498 - api - INFO - Match 207163: 2025-04-26T03:39:00Z
+2025-06-13 04:03:24,498 - api - INFO - Match 207140: 2025-04-26T03:47:00Z
+2025-06-13 04:03:24,498 - api - INFO - Match 207140: 2025-04-26T03:47:00Z
+2025-06-13 04:03:24,499 - api - INFO - Match 207146: 2025-04-26T03:55:00Z
+2025-06-13 04:03:24,499 - api - INFO - Match 207146: 2025-04-26T03:55:00Z
+2025-06-13 04:03:24,499 - api - INFO - Match 207153: 2025-04-26T04:03:00Z
+2025-06-13 04:03:24,500 - api - INFO - Match 207153: 2025-04-26T04:03:00Z
+2025-06-13 04:03:24,500 - api - INFO - Match 207165: 2025-04-26T04:11:00Z
+2025-06-13 04:03:24,500 - api - INFO - Match 207165: 2025-04-26T04:11:00Z
+2025-06-13 04:03:24,500 - api - INFO - Match 207134: 2025-04-26T04:19:00Z
+2025-06-13 04:03:24,501 - api - INFO - Match 207134: 2025-04-26T04:19:00Z
+2025-06-13 04:03:24,501 - api - INFO - Match 207147: 2025-04-26T04:27:00Z
+2025-06-13 04:03:24,501 - api - INFO - Match 207147: 2025-04-26T04:27:00Z
+2025-06-13 04:03:24,502 - api - INFO - Match 207155: 2025-04-26T04:35:00Z
+2025-06-13 04:03:24,502 - api - INFO - Match 207155: 2025-04-26T04:35:00Z
+2025-06-13 04:03:24,502 - api - INFO - Match 207168: 2025-04-26T04:43:00Z
+2025-06-13 04:03:24,503 - api - INFO - Match 207168: 2025-04-26T04:43:00Z
+2025-06-13 04:03:24,503 - api - INFO - Match 207135: 2025-04-26T04:51:00Z
+2025-06-13 04:03:24,503 - api - INFO - Match 207135: 2025-04-26T04:51:00Z
+2025-06-13 04:03:24,503 - api - INFO - Match 207145: 2025-04-26T04:59:00Z
+2025-06-13 04:03:24,504 - api - INFO - Match 207145: 2025-04-26T04:59:00Z
+2025-06-13 04:03:24,505 - api - INFO - Match 207154: 2025-04-26T05:07:00Z
+2025-06-13 04:03:24,505 - api - INFO - Match 207154: 2025-04-26T05:07:00Z
+2025-06-13 04:03:24,505 - api - INFO - Match 207171: 2025-04-26T05:15:00Z
+2025-06-13 04:03:24,506 - api - INFO - Match 207171: 2025-04-26T05:15:00Z
+2025-06-13 04:03:24,506 - api - INFO - Match 207133: 2025-04-26T05:23:00Z
+2025-06-13 04:03:24,506 - api - INFO - Match 207133: 2025-04-26T05:23:00Z
+2025-06-13 04:03:24,507 - api - INFO - Match 207148: 2025-04-26T05:31:00Z
+2025-06-13 04:03:24,507 - api - INFO - Match 207148: 2025-04-26T05:31:00Z
+2025-06-13 04:03:24,507 - api - INFO - Match 207768: 2025-04-26T05:55:00Z
+2025-06-13 04:03:24,507 - api - INFO - Match 207768: 2025-04-26T05:55:00Z
+2025-06-13 04:03:24,508 - api - INFO - Match 207789: 2025-04-26T06:03:00Z
+2025-06-13 04:03:24,508 - api - INFO - Match 207789: 2025-04-26T06:03:00Z
+2025-06-13 04:03:24,508 - api - INFO - Match 207769: 2025-04-26T06:27:00Z
+2025-06-13 04:03:24,509 - api - INFO - Match 207769: 2025-04-26T06:27:00Z
+2025-06-13 04:03:24,509 - api - INFO - Match 207793: 2025-04-26T06:35:00Z
+2025-06-13 04:03:24,509 - api - INFO - Match 207793: 2025-04-26T06:35:00Z
+2025-06-13 04:03:24,509 - api - INFO - Match 207748: 2025-04-26T06:59:00Z
+2025-06-13 04:03:24,510 - api - INFO - Match 207748: 2025-04-26T06:59:00Z
+2025-06-13 04:03:24,510 - api - INFO - Match 207794: 2025-04-26T07:07:00Z
+2025-06-13 04:03:24,510 - api - INFO - Match 207794: 2025-04-26T07:07:00Z
+2025-06-13 04:03:24,511 - api - INFO - Returning 29 matches
+2025-06-13 04:03:24,512 - api - INFO - get_predictions executed in 0.02 seconds
+2025-06-13 04:03:24,512 - api - INFO - Returning 29 matches
+2025-06-13 04:03:24,514 - api - INFO - get_predictions executed in 0.02 seconds
+2025-06-13 04:03:38,202 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 04:03:38,203 - api - INFO - Returning 29 matches
+2025-06-13 04:03:38,205 - api - INFO - Retrieved score model accuracy: 4.075830549721303
+2025-06-13 04:03:38,207 - api - INFO - get_score_predictions executed in 0.01 seconds
+2025-06-13 04:03:38,584 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 04:03:38,585 - api - INFO - Returning 29 matches
+2025-06-13 04:03:38,590 - api - INFO - Retrieved score model accuracy: 4.075830549721303
+2025-06-13 04:03:38,602 - api - INFO - get_score_predictions executed in 0.02 seconds
+2025-06-13 04:03:40,406 - api - INFO - get_stats executed in 0.00 seconds
+2025-06-13 04:03:40,472 - api - INFO - get_stats executed in 0.00 seconds
+2025-06-13 04:03:44,333 - api - INFO - get_prediction_history executed in 0.12 seconds
+2025-06-13 04:03:44,593 - api - INFO - get_prediction_history executed in 0.13 seconds
+2025-06-13 04:04:11,606 - api - INFO - Started refresh process with PID: 19120
+2025-06-13 04:04:11,607 - api - INFO - refresh_data executed in 0.00 seconds
+2025-06-13 04:04:11,797 - api - ERROR - Refresh process stderr: Traceback (most recent call last):
+  File "c:\Users\sicke\OneDrive\Documents\Projects\2k_spark\backend\app\refresh_script.py", line 11, in <module>
+    from services.refresh_service import refresh_predictions
+  File "c:\Users\sicke\OneDrive\Documents\Projects\2k_spark\backend\services\refresh_service.py", line 23, in <module>
+    from utils.time import get_current_time, format_datetime
+  File "c:\Users\sicke\OneDrive\Documents\Projects\2k_spark\backend\utils\time.py", line 6, in <module>
+    import pytz
+ModuleNotFoundError: No module named 'pytz'
+
+2025-06-13 04:04:11,799 - api - INFO - Refresh process completed with exit code: 1
+2025-06-13 04:04:11,799 - api - ERROR - Refresh process stderr: Traceback (most recent call last):
+  File "c:\Users\sicke\OneDrive\Documents\Projects\2k_spark\backend\app\refresh_script.py", line 11, in <module>
+    from services.refresh_service import refresh_predictions
+  File "c:\Users\sicke\OneDrive\Documents\Projects\2k_spark\backend\services\refresh_service.py", line 23, in <module>
+    from utils.time import get_current_time, format_datetime
+  File "c:\Users\sicke\OneDrive\Documents\Projects\2k_spark\backend\utils\time.py", line 6, in <module>
+    import pytz
+ModuleNotFoundError: No module named 'pytz'
+
+2025-06-13 04:13:18,281 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 04:13:18,281 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 04:13:18,281 - api - INFO - Match 207162: 2025-04-26T02:35:00Z
+2025-06-13 04:13:18,282 - api - INFO - Match 207162: 2025-04-26T02:35:00Z
+2025-06-13 04:13:18,282 - api - INFO - Match 207131: 2025-04-26T02:43:00Z
+2025-06-13 04:13:18,283 - api - INFO - Match 207131: 2025-04-26T02:43:00Z
+2025-06-13 04:13:18,283 - api - INFO - Match 207141: 2025-04-26T02:51:00Z
+2025-06-13 04:13:18,283 - api - INFO - Match 207141: 2025-04-26T02:51:00Z
+2025-06-13 04:13:18,284 - api - INFO - Match 207160: 2025-04-26T02:59:00Z
+2025-06-13 04:13:18,284 - api - INFO - Match 207160: 2025-04-26T02:59:00Z
+2025-06-13 04:13:18,284 - api - INFO - Match 207167: 2025-04-26T03:07:00Z
+2025-06-13 04:13:18,285 - api - INFO - Match 207167: 2025-04-26T03:07:00Z
+2025-06-13 04:13:18,285 - api - INFO - Match 207136: 2025-04-26T03:15:00Z
+2025-06-13 04:13:18,285 - api - INFO - Match 207136: 2025-04-26T03:15:00Z
+2025-06-13 04:13:18,286 - api - INFO - Match 207142: 2025-04-26T03:23:00Z
+2025-06-13 04:13:18,287 - api - INFO - Match 207142: 2025-04-26T03:23:00Z
+2025-06-13 04:13:18,287 - api - INFO - Match 207157: 2025-04-26T03:31:00Z
+2025-06-13 04:13:18,288 - api - INFO - Match 207157: 2025-04-26T03:31:00Z
+2025-06-13 04:13:18,288 - api - INFO - Match 207163: 2025-04-26T03:39:00Z
+2025-06-13 04:13:18,288 - api - INFO - Match 207163: 2025-04-26T03:39:00Z
+2025-06-13 04:13:18,289 - api - INFO - Match 207140: 2025-04-26T03:47:00Z
+2025-06-13 04:13:18,290 - api - INFO - Match 207140: 2025-04-26T03:47:00Z
+2025-06-13 04:13:18,290 - api - INFO - Match 207146: 2025-04-26T03:55:00Z
+2025-06-13 04:13:18,290 - api - INFO - Match 207146: 2025-04-26T03:55:00Z
+2025-06-13 04:13:18,291 - api - INFO - Match 207153: 2025-04-26T04:03:00Z
+2025-06-13 04:13:18,291 - api - INFO - Match 207153: 2025-04-26T04:03:00Z
+2025-06-13 04:13:18,291 - api - INFO - Match 207165: 2025-04-26T04:11:00Z
+2025-06-13 04:13:18,292 - api - INFO - Match 207165: 2025-04-26T04:11:00Z
+2025-06-13 04:13:18,292 - api - INFO - Match 207134: 2025-04-26T04:19:00Z
+2025-06-13 04:13:18,292 - api - INFO - Match 207134: 2025-04-26T04:19:00Z
+2025-06-13 04:13:18,293 - api - INFO - Match 207147: 2025-04-26T04:27:00Z
+2025-06-13 04:13:18,293 - api - INFO - Match 207147: 2025-04-26T04:27:00Z
+2025-06-13 04:13:18,293 - api - INFO - Match 207155: 2025-04-26T04:35:00Z
+2025-06-13 04:13:18,293 - api - INFO - Match 207155: 2025-04-26T04:35:00Z
+2025-06-13 04:13:18,294 - api - INFO - Match 207168: 2025-04-26T04:43:00Z
+2025-06-13 04:13:18,294 - api - INFO - Match 207168: 2025-04-26T04:43:00Z
+2025-06-13 04:13:18,294 - api - INFO - Match 207135: 2025-04-26T04:51:00Z
+2025-06-13 04:13:18,294 - api - INFO - Match 207135: 2025-04-26T04:51:00Z
+2025-06-13 04:13:18,295 - api - INFO - Match 207145: 2025-04-26T04:59:00Z
+2025-06-13 04:13:18,295 - api - INFO - Match 207145: 2025-04-26T04:59:00Z
+2025-06-13 04:13:18,295 - api - INFO - Match 207154: 2025-04-26T05:07:00Z
+2025-06-13 04:13:18,296 - api - INFO - Match 207154: 2025-04-26T05:07:00Z
+2025-06-13 04:13:18,297 - api - INFO - Match 207171: 2025-04-26T05:15:00Z
+2025-06-13 04:13:18,297 - api - INFO - Match 207171: 2025-04-26T05:15:00Z
+2025-06-13 04:13:18,297 - api - INFO - Match 207133: 2025-04-26T05:23:00Z
+2025-06-13 04:13:18,298 - api - INFO - Match 207133: 2025-04-26T05:23:00Z
+2025-06-13 04:13:18,298 - api - INFO - Match 207148: 2025-04-26T05:31:00Z
+2025-06-13 04:13:18,298 - api - INFO - Match 207148: 2025-04-26T05:31:00Z
+2025-06-13 04:13:18,299 - api - INFO - Match 207768: 2025-04-26T05:55:00Z
+2025-06-13 04:13:18,299 - api - INFO - Match 207768: 2025-04-26T05:55:00Z
+2025-06-13 04:13:18,299 - api - INFO - Match 207789: 2025-04-26T06:03:00Z
+2025-06-13 04:13:18,299 - api - INFO - Match 207789: 2025-04-26T06:03:00Z
+2025-06-13 04:13:18,300 - api - INFO - Match 207769: 2025-04-26T06:27:00Z
+2025-06-13 04:13:18,300 - api - INFO - Match 207769: 2025-04-26T06:27:00Z
+2025-06-13 04:13:18,300 - api - INFO - Match 207793: 2025-04-26T06:35:00Z
+2025-06-13 04:13:18,300 - api - INFO - Match 207793: 2025-04-26T06:35:00Z
+2025-06-13 04:13:18,301 - api - INFO - Match 207748: 2025-04-26T06:59:00Z
+2025-06-13 04:13:18,301 - api - INFO - Match 207748: 2025-04-26T06:59:00Z
+2025-06-13 04:13:18,301 - api - INFO - Match 207794: 2025-04-26T07:07:00Z
+2025-06-13 04:13:18,301 - api - INFO - Match 207794: 2025-04-26T07:07:00Z
+2025-06-13 04:13:18,302 - api - INFO - Returning 29 matches
+2025-06-13 04:13:18,302 - api - INFO - Returning 29 matches
+2025-06-13 04:13:18,303 - api - INFO - get_predictions executed in 0.02 seconds
+2025-06-13 04:13:18,304 - api - INFO - get_predictions executed in 0.02 seconds
+2025-06-13 04:13:21,356 - api - INFO - Started refresh process with PID: 15784
+2025-06-13 04:13:21,357 - api - INFO - refresh_data executed in 0.01 seconds
+2025-06-13 04:13:21,662 - api - ERROR - Refresh process stderr: Traceback (most recent call last):
+  File "C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\backend\app\refresh_script.py", line 11, in <module>
+    from services.refresh_service import refresh_predictions
+  File "C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\backend\services\refresh_service.py", line 23, in <module>
+    from utils.time import get_current_time, format_datetime
+  File "C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\backend\utils\time.py", line 7, in <module>
+    from dateutil.parser import parse
+ModuleNotFoundError: No module named 'dateutil'
+
+2025-06-13 04:13:21,666 - api - INFO - Refresh process completed with exit code: 1
+2025-06-13 04:13:21,667 - api - ERROR - Refresh process stderr: Traceback (most recent call last):
+  File "C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\backend\app\refresh_script.py", line 11, in <module>
+    from services.refresh_service import refresh_predictions
+  File "C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\backend\services\refresh_service.py", line 23, in <module>
+    from utils.time import get_current_time, format_datetime
+  File "C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\backend\utils\time.py", line 7, in <module>
+    from dateutil.parser import parse
+ModuleNotFoundError: No module named 'dateutil'
+
+2025-06-13 04:28:57,023 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 04:28:57,023 - api - INFO - Loaded 29 upcoming matches from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_matches.json
+2025-06-13 04:28:57,023 - api - INFO - Match 207162: 2025-04-26T02:35:00Z
+2025-06-13 04:28:57,024 - api - INFO - Returning 29 matches
+2025-06-13 04:28:57,024 - api - INFO - Match 207131: 2025-04-26T02:43:00Z
+2025-06-13 04:28:57,024 - api - INFO - get_upcoming_matches executed in 0.00 seconds
+2025-06-13 04:28:57,025 - api - INFO - Match 207141: 2025-04-26T02:51:00Z
+2025-06-13 04:28:57,026 - api - INFO - Match 207160: 2025-04-26T02:59:00Z
+2025-06-13 04:28:57,027 - api - INFO - Match 207167: 2025-04-26T03:07:00Z
+2025-06-13 04:28:57,028 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 04:28:57,028 - api - INFO - Match 207136: 2025-04-26T03:15:00Z
+2025-06-13 04:28:57,029 - api - INFO - Returning 29 matches
+2025-06-13 04:28:57,029 - api - INFO - Match 207142: 2025-04-26T03:23:00Z
+2025-06-13 04:28:57,030 - api - INFO - Match 207157: 2025-04-26T03:31:00Z
+2025-06-13 04:28:57,030 - api - INFO - Match 207163: 2025-04-26T03:39:00Z
+2025-06-13 04:28:57,030 - api - INFO - Match 207140: 2025-04-26T03:47:00Z
+2025-06-13 04:28:57,031 - api - INFO - Retrieved score model accuracy: 4.075830549721303
+2025-06-13 04:28:57,031 - api - INFO - Match 207146: 2025-04-26T03:55:00Z
+2025-06-13 04:28:57,032 - api - INFO - get_score_predictions executed in 0.01 seconds
+2025-06-13 04:28:57,033 - api - INFO - Match 207153: 2025-04-26T04:03:00Z
+2025-06-13 04:28:57,034 - api - INFO - Match 207165: 2025-04-26T04:11:00Z
+2025-06-13 04:28:57,034 - api - INFO - Match 207134: 2025-04-26T04:19:00Z
+2025-06-13 04:28:57,035 - api - INFO - Match 207147: 2025-04-26T04:27:00Z
+2025-06-13 04:28:57,035 - api - INFO - Match 207155: 2025-04-26T04:35:00Z
+2025-06-13 04:28:57,035 - api - INFO - Match 207168: 2025-04-26T04:43:00Z
+2025-06-13 04:28:57,036 - api - INFO - Match 207135: 2025-04-26T04:51:00Z
+2025-06-13 04:28:57,036 - api - INFO - Match 207145: 2025-04-26T04:59:00Z
+2025-06-13 04:28:57,036 - api - INFO - Match 207154: 2025-04-26T05:07:00Z
+2025-06-13 04:28:57,036 - api - INFO - Match 207171: 2025-04-26T05:15:00Z
+2025-06-13 04:28:57,037 - api - INFO - Match 207133: 2025-04-26T05:23:00Z
+2025-06-13 04:28:57,037 - api - INFO - Match 207148: 2025-04-26T05:31:00Z
+2025-06-13 04:28:57,037 - api - INFO - Match 207768: 2025-04-26T05:55:00Z
+2025-06-13 04:28:57,037 - api - INFO - Match 207789: 2025-04-26T06:03:00Z
+2025-06-13 04:28:57,038 - api - INFO - Match 207769: 2025-04-26T06:27:00Z
+2025-06-13 04:28:57,038 - api - INFO - Match 207793: 2025-04-26T06:35:00Z
+2025-06-13 04:28:57,038 - api - INFO - Match 207748: 2025-04-26T06:59:00Z
+2025-06-13 04:28:57,039 - api - INFO - Match 207794: 2025-04-26T07:07:00Z
+2025-06-13 04:28:57,041 - api - INFO - Returning 29 matches
+2025-06-13 04:28:57,042 - api - INFO - get_predictions executed in 0.02 seconds
+2025-06-13 04:28:57,329 - api - INFO - Loaded 29 upcoming matches from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_matches.json
+2025-06-13 04:28:57,330 - api - INFO - Returning 29 matches
+2025-06-13 04:28:57,330 - api - INFO - get_upcoming_matches executed in 0.00 seconds
+2025-06-13 04:28:57,339 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 04:28:57,340 - api - INFO - Returning 29 matches
+2025-06-13 04:28:57,341 - api - INFO - Retrieved score model accuracy: 4.075830549721303
+2025-06-13 04:28:57,341 - api - INFO - get_score_predictions executed in 0.00 seconds
+2025-06-13 04:28:57,347 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 04:28:57,347 - api - INFO - Match 207162: 2025-04-26T02:35:00Z
+2025-06-13 04:28:57,348 - api - INFO - Match 207131: 2025-04-26T02:43:00Z
+2025-06-13 04:28:57,348 - api - INFO - Match 207141: 2025-04-26T02:51:00Z
+2025-06-13 04:28:57,348 - api - INFO - Match 207160: 2025-04-26T02:59:00Z
+2025-06-13 04:28:57,348 - api - INFO - Match 207167: 2025-04-26T03:07:00Z
+2025-06-13 04:28:57,348 - api - INFO - Match 207136: 2025-04-26T03:15:00Z
+2025-06-13 04:28:57,349 - api - INFO - Match 207142: 2025-04-26T03:23:00Z
+2025-06-13 04:28:57,349 - api - INFO - Match 207157: 2025-04-26T03:31:00Z
+2025-06-13 04:28:57,349 - api - INFO - Match 207163: 2025-04-26T03:39:00Z
+2025-06-13 04:28:57,349 - api - INFO - Match 207140: 2025-04-26T03:47:00Z
+2025-06-13 04:28:57,349 - api - INFO - Match 207146: 2025-04-26T03:55:00Z
+2025-06-13 04:28:57,350 - api - INFO - Match 207153: 2025-04-26T04:03:00Z
+2025-06-13 04:28:57,350 - api - INFO - Match 207165: 2025-04-26T04:11:00Z
+2025-06-13 04:28:57,350 - api - INFO - Match 207134: 2025-04-26T04:19:00Z
+2025-06-13 04:28:57,350 - api - INFO - Match 207147: 2025-04-26T04:27:00Z
+2025-06-13 04:28:57,350 - api - INFO - Match 207155: 2025-04-26T04:35:00Z
+2025-06-13 04:28:57,351 - api - INFO - Match 207168: 2025-04-26T04:43:00Z
+2025-06-13 04:28:57,351 - api - INFO - Match 207135: 2025-04-26T04:51:00Z
+2025-06-13 04:28:57,351 - api - INFO - Match 207145: 2025-04-26T04:59:00Z
+2025-06-13 04:28:57,351 - api - INFO - Match 207154: 2025-04-26T05:07:00Z
+2025-06-13 04:28:57,352 - api - INFO - Match 207171: 2025-04-26T05:15:00Z
+2025-06-13 04:28:57,352 - api - INFO - Match 207133: 2025-04-26T05:23:00Z
+2025-06-13 04:28:57,353 - api - INFO - Match 207148: 2025-04-26T05:31:00Z
+2025-06-13 04:28:57,353 - api - INFO - Match 207768: 2025-04-26T05:55:00Z
+2025-06-13 04:28:57,353 - api - INFO - Match 207789: 2025-04-26T06:03:00Z
+2025-06-13 04:28:57,354 - api - INFO - Match 207769: 2025-04-26T06:27:00Z
+2025-06-13 04:28:57,354 - api - INFO - Match 207793: 2025-04-26T06:35:00Z
+2025-06-13 04:28:57,354 - api - INFO - Match 207748: 2025-04-26T06:59:00Z
+2025-06-13 04:28:57,354 - api - INFO - Match 207794: 2025-04-26T07:07:00Z
+2025-06-13 04:28:57,355 - api - INFO - Returning 29 matches
+2025-06-13 04:28:57,356 - api - INFO - get_predictions executed in 0.01 seconds
+2025-06-13 04:29:08,781 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 04:29:08,783 - api - INFO - Match 207162: 2025-04-26T02:35:00Z
+2025-06-13 04:29:08,784 - api - INFO - Match 207131: 2025-04-26T02:43:00Z
+2025-06-13 04:29:08,784 - api - INFO - Match 207141: 2025-04-26T02:51:00Z
+2025-06-13 04:29:08,785 - api - INFO - Match 207160: 2025-04-26T02:59:00Z
+2025-06-13 04:29:08,786 - api - INFO - Match 207167: 2025-04-26T03:07:00Z
+2025-06-13 04:29:08,786 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 04:29:08,787 - api - INFO - Match 207136: 2025-04-26T03:15:00Z
+2025-06-13 04:29:08,787 - api - INFO - Match 207162: 2025-04-26T02:35:00Z
+2025-06-13 04:29:08,787 - api - INFO - Match 207142: 2025-04-26T03:23:00Z
+2025-06-13 04:29:08,788 - api - INFO - Match 207131: 2025-04-26T02:43:00Z
+2025-06-13 04:29:08,788 - api - INFO - Match 207157: 2025-04-26T03:31:00Z
+2025-06-13 04:29:08,788 - api - INFO - Match 207141: 2025-04-26T02:51:00Z
+2025-06-13 04:29:08,790 - api - INFO - Match 207163: 2025-04-26T03:39:00Z
+2025-06-13 04:29:08,790 - api - INFO - Match 207160: 2025-04-26T02:59:00Z
+2025-06-13 04:29:08,791 - api - INFO - Match 207140: 2025-04-26T03:47:00Z
+2025-06-13 04:29:08,792 - api - INFO - Match 207167: 2025-04-26T03:07:00Z
+2025-06-13 04:29:08,792 - api - INFO - Match 207146: 2025-04-26T03:55:00Z
+2025-06-13 04:29:08,792 - api - INFO - Match 207136: 2025-04-26T03:15:00Z
+2025-06-13 04:29:08,793 - api - INFO - Match 207142: 2025-04-26T03:23:00Z
+2025-06-13 04:29:08,794 - api - INFO - Match 207153: 2025-04-26T04:03:00Z
+2025-06-13 04:29:08,794 - api - INFO - Match 207157: 2025-04-26T03:31:00Z
+2025-06-13 04:29:08,794 - api - INFO - Match 207165: 2025-04-26T04:11:00Z
+2025-06-13 04:29:08,795 - api - INFO - Match 207163: 2025-04-26T03:39:00Z
+2025-06-13 04:29:08,795 - api - INFO - Match 207134: 2025-04-26T04:19:00Z
+2025-06-13 04:29:08,795 - api - INFO - Match 207140: 2025-04-26T03:47:00Z
+2025-06-13 04:29:08,796 - api - INFO - Match 207147: 2025-04-26T04:27:00Z
+2025-06-13 04:29:08,797 - api - INFO - Match 207146: 2025-04-26T03:55:00Z
+2025-06-13 04:29:08,799 - api - INFO - Match 207155: 2025-04-26T04:35:00Z
+2025-06-13 04:29:08,799 - api - INFO - Match 207153: 2025-04-26T04:03:00Z
+2025-06-13 04:29:08,800 - api - INFO - Match 207168: 2025-04-26T04:43:00Z
+2025-06-13 04:29:08,800 - api - INFO - Match 207165: 2025-04-26T04:11:00Z
+2025-06-13 04:29:08,801 - api - INFO - Match 207135: 2025-04-26T04:51:00Z
+2025-06-13 04:29:08,801 - api - INFO - Match 207134: 2025-04-26T04:19:00Z
+2025-06-13 04:29:08,802 - api - INFO - Match 207145: 2025-04-26T04:59:00Z
+2025-06-13 04:29:08,802 - api - INFO - Match 207147: 2025-04-26T04:27:00Z
+2025-06-13 04:29:08,802 - api - INFO - Match 207154: 2025-04-26T05:07:00Z
+2025-06-13 04:29:08,803 - api - INFO - Match 207155: 2025-04-26T04:35:00Z
+2025-06-13 04:29:08,804 - api - INFO - Match 207168: 2025-04-26T04:43:00Z
+2025-06-13 04:29:08,804 - api - INFO - Match 207135: 2025-04-26T04:51:00Z
+2025-06-13 04:29:08,804 - api - INFO - Match 207145: 2025-04-26T04:59:00Z
+2025-06-13 04:29:08,805 - api - INFO - Match 207154: 2025-04-26T05:07:00Z
+2025-06-13 04:29:08,805 - api - INFO - Match 207171: 2025-04-26T05:15:00Z
+2025-06-13 04:29:08,805 - api - INFO - Match 207171: 2025-04-26T05:15:00Z
+2025-06-13 04:29:08,806 - api - INFO - Match 207133: 2025-04-26T05:23:00Z
+2025-06-13 04:29:08,806 - api - INFO - Match 207133: 2025-04-26T05:23:00Z
+2025-06-13 04:29:08,806 - api - INFO - Match 207148: 2025-04-26T05:31:00Z
+2025-06-13 04:29:08,807 - api - INFO - Match 207148: 2025-04-26T05:31:00Z
+2025-06-13 04:29:08,807 - api - INFO - Match 207768: 2025-04-26T05:55:00Z
+2025-06-13 04:29:08,807 - api - INFO - Match 207768: 2025-04-26T05:55:00Z
+2025-06-13 04:29:08,808 - api - INFO - Match 207789: 2025-04-26T06:03:00Z
+2025-06-13 04:29:08,808 - api - INFO - Match 207789: 2025-04-26T06:03:00Z
+2025-06-13 04:29:08,808 - api - INFO - Match 207769: 2025-04-26T06:27:00Z
+2025-06-13 04:29:08,809 - api - INFO - Match 207793: 2025-04-26T06:35:00Z
+2025-06-13 04:29:08,809 - api - INFO - Match 207748: 2025-04-26T06:59:00Z
+2025-06-13 04:29:08,813 - api - INFO - Match 207769: 2025-04-26T06:27:00Z
+2025-06-13 04:29:08,813 - api - INFO - Match 207794: 2025-04-26T07:07:00Z
+2025-06-13 04:29:08,813 - api - INFO - Match 207793: 2025-04-26T06:35:00Z
+2025-06-13 04:29:08,814 - api - INFO - Returning 29 matches
+2025-06-13 04:29:08,814 - api - INFO - Match 207748: 2025-04-26T06:59:00Z
+2025-06-13 04:29:08,815 - api - INFO - get_predictions executed in 0.03 seconds
+2025-06-13 04:29:08,816 - api - INFO - Match 207794: 2025-04-26T07:07:00Z
+2025-06-13 04:29:08,820 - api - INFO - Returning 29 matches
+2025-06-13 04:29:08,822 - api - INFO - get_predictions executed in 0.04 seconds
+2025-06-13 04:29:13,845 - api - INFO - Loaded statistics for 94 players from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\player_stats.json
+2025-06-13 04:29:13,846 - api - INFO - Returning statistics for 94 players
+2025-06-13 04:29:13,952 - api - INFO - get_player_stats executed in 0.22 seconds
+2025-06-13 04:29:14,390 - api - INFO - Loaded statistics for 94 players from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\player_stats.json
+2025-06-13 04:29:14,391 - api - INFO - Returning statistics for 94 players
+2025-06-13 04:29:14,557 - api - INFO - get_player_stats executed in 0.30 seconds
+2025-06-13 04:29:36,514 - api - INFO - Started refresh process with PID: 18532
+2025-06-13 04:29:36,515 - api - INFO - refresh_data executed in 0.01 seconds
+2025-06-13 04:29:36,910 - api - ERROR - Refresh process stderr: Traceback (most recent call last):
+  File "C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\backend\app\refresh_script.py", line 11, in <module>
+    from services.refresh_service import refresh_predictions
+  File "C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\backend\services\refresh_service.py", line 23, in <module>
+    from utils.time import get_current_time, format_datetime
+  File "C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\backend\utils\time.py", line 7, in <module>
+    from dateutil.parser import parse
+ModuleNotFoundError: No module named 'dateutil'
+
+2025-06-13 04:29:36,911 - api - INFO - Refresh process completed with exit code: 1
+2025-06-13 04:29:36,912 - api - ERROR - Refresh process stderr: Traceback (most recent call last):
+  File "C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\backend\app\refresh_script.py", line 11, in <module>
+    from services.refresh_service import refresh_predictions
+  File "C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\backend\services\refresh_service.py", line 23, in <module>
+    from utils.time import get_current_time, format_datetime
+  File "C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\backend\utils\time.py", line 7, in <module>
+    from dateutil.parser import parse
+ModuleNotFoundError: No module named 'dateutil'
+
+2025-06-13 04:29:42,149 - api - INFO - Loaded statistics for 94 players from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\player_stats.json
+2025-06-13 04:29:42,149 - api - INFO - Returning statistics for 94 players
+2025-06-13 04:29:42,267 - api - INFO - get_player_stats executed in 0.22 seconds
+2025-06-13 04:33:13,766 - api - INFO - Started refresh process with PID: 18736
+2025-06-13 04:33:13,767 - api - INFO - refresh_data executed in 0.00 seconds
+2025-06-13 04:33:13,935 - api - ERROR - Refresh process stderr: Traceback (most recent call last):
+  File "C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\backend\app\refresh_script.py", line 11, in <module>
+    from services.refresh_service import refresh_predictions
+  File "C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\backend\services\refresh_service.py", line 23, in <module>
+    from utils.time import get_current_time, format_datetime
+  File "C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\backend\utils\time.py", line 7, in <module>
+    from dateutil.parser import parse
+ModuleNotFoundError: No module named 'dateutil'
+
+2025-06-13 04:33:13,937 - api - INFO - Refresh process completed with exit code: 1
+2025-06-13 04:33:13,937 - api - ERROR - Refresh process stderr: Traceback (most recent call last):
+  File "C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\backend\app\refresh_script.py", line 11, in <module>
+    from services.refresh_service import refresh_predictions
+  File "C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\backend\services\refresh_service.py", line 23, in <module>
+    from utils.time import get_current_time, format_datetime
+  File "C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\backend\utils\time.py", line 7, in <module>
+    from dateutil.parser import parse
+ModuleNotFoundError: No module named 'dateutil'
+
+2025-06-13 04:33:19,522 - api - INFO - Loaded statistics for 94 players from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\player_stats.json
+2025-06-13 04:33:19,525 - api - INFO - Returning statistics for 94 players
+2025-06-13 04:33:19,670 - api - INFO - get_player_stats executed in 0.32 seconds
+2025-06-13 04:33:57,230 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 04:33:57,231 - api - INFO - Match 207162: 2025-04-26T02:35:00Z
+2025-06-13 04:33:57,231 - api - INFO - Match 207131: 2025-04-26T02:43:00Z
+2025-06-13 04:33:57,232 - api - INFO - Match 207141: 2025-04-26T02:51:00Z
+2025-06-13 04:33:57,232 - api - INFO - Match 207160: 2025-04-26T02:59:00Z
+2025-06-13 04:33:57,233 - api - INFO - Match 207167: 2025-04-26T03:07:00Z
+2025-06-13 04:33:57,233 - api - INFO - Match 207136: 2025-04-26T03:15:00Z
+2025-06-13 04:33:57,234 - api - INFO - Match 207142: 2025-04-26T03:23:00Z
+2025-06-13 04:33:57,235 - api - INFO - Match 207157: 2025-04-26T03:31:00Z
+2025-06-13 04:33:57,235 - api - INFO - Match 207163: 2025-04-26T03:39:00Z
+2025-06-13 04:33:57,236 - api - INFO - Match 207140: 2025-04-26T03:47:00Z
+2025-06-13 04:33:57,236 - api - INFO - Match 207146: 2025-04-26T03:55:00Z
+2025-06-13 04:33:57,236 - api - INFO - Match 207153: 2025-04-26T04:03:00Z
+2025-06-13 04:33:57,237 - api - INFO - Match 207165: 2025-04-26T04:11:00Z
+2025-06-13 04:33:57,237 - api - INFO - Match 207134: 2025-04-26T04:19:00Z
+2025-06-13 04:33:57,238 - api - INFO - Match 207147: 2025-04-26T04:27:00Z
+2025-06-13 04:33:57,238 - api - INFO - Match 207155: 2025-04-26T04:35:00Z
+2025-06-13 04:33:57,238 - api - INFO - Match 207168: 2025-04-26T04:43:00Z
+2025-06-13 04:33:57,239 - api - INFO - Match 207135: 2025-04-26T04:51:00Z
+2025-06-13 04:33:57,239 - api - INFO - Match 207145: 2025-04-26T04:59:00Z
+2025-06-13 04:33:57,239 - api - INFO - Match 207154: 2025-04-26T05:07:00Z
+2025-06-13 04:33:57,240 - api - INFO - Match 207171: 2025-04-26T05:15:00Z
+2025-06-13 04:33:57,240 - api - INFO - Match 207133: 2025-04-26T05:23:00Z
+2025-06-13 04:33:57,241 - api - INFO - Match 207148: 2025-04-26T05:31:00Z
+2025-06-13 04:33:57,241 - api - INFO - Match 207768: 2025-04-26T05:55:00Z
+2025-06-13 04:33:57,242 - api - INFO - Match 207789: 2025-04-26T06:03:00Z
+2025-06-13 04:33:57,242 - api - INFO - Match 207769: 2025-04-26T06:27:00Z
+2025-06-13 04:33:57,243 - api - INFO - Match 207793: 2025-04-26T06:35:00Z
+2025-06-13 04:33:57,243 - api - INFO - Match 207748: 2025-04-26T06:59:00Z
+2025-06-13 04:33:57,243 - api - INFO - Match 207794: 2025-04-26T07:07:00Z
+2025-06-13 04:33:57,244 - api - INFO - Returning 29 matches
+2025-06-13 04:33:57,245 - api - INFO - get_predictions executed in 0.02 seconds
+2025-06-13 04:33:57,557 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 04:33:57,558 - api - INFO - Match 207162: 2025-04-26T02:35:00Z
+2025-06-13 04:33:57,558 - api - INFO - Match 207131: 2025-04-26T02:43:00Z
+2025-06-13 04:33:57,558 - api - INFO - Match 207141: 2025-04-26T02:51:00Z
+2025-06-13 04:33:57,558 - api - INFO - Match 207160: 2025-04-26T02:59:00Z
+2025-06-13 04:33:57,559 - api - INFO - Match 207167: 2025-04-26T03:07:00Z
+2025-06-13 04:33:57,559 - api - INFO - Match 207136: 2025-04-26T03:15:00Z
+2025-06-13 04:33:57,559 - api - INFO - Match 207142: 2025-04-26T03:23:00Z
+2025-06-13 04:33:57,559 - api - INFO - Match 207157: 2025-04-26T03:31:00Z
+2025-06-13 04:33:57,560 - api - INFO - Match 207163: 2025-04-26T03:39:00Z
+2025-06-13 04:33:57,561 - api - INFO - Match 207140: 2025-04-26T03:47:00Z
+2025-06-13 04:33:57,561 - api - INFO - Match 207146: 2025-04-26T03:55:00Z
+2025-06-13 04:33:57,561 - api - INFO - Match 207153: 2025-04-26T04:03:00Z
+2025-06-13 04:33:57,562 - api - INFO - Match 207165: 2025-04-26T04:11:00Z
+2025-06-13 04:33:57,562 - api - INFO - Match 207134: 2025-04-26T04:19:00Z
+2025-06-13 04:33:57,562 - api - INFO - Match 207147: 2025-04-26T04:27:00Z
+2025-06-13 04:33:57,563 - api - INFO - Match 207155: 2025-04-26T04:35:00Z
+2025-06-13 04:33:57,563 - api - INFO - Match 207168: 2025-04-26T04:43:00Z
+2025-06-13 04:33:57,563 - api - INFO - Match 207135: 2025-04-26T04:51:00Z
+2025-06-13 04:33:57,564 - api - INFO - Match 207145: 2025-04-26T04:59:00Z
+2025-06-13 04:33:57,564 - api - INFO - Match 207154: 2025-04-26T05:07:00Z
+2025-06-13 04:33:57,564 - api - INFO - Match 207171: 2025-04-26T05:15:00Z
+2025-06-13 04:33:57,565 - api - INFO - Match 207133: 2025-04-26T05:23:00Z
+2025-06-13 04:33:57,565 - api - INFO - Match 207148: 2025-04-26T05:31:00Z
+2025-06-13 04:33:57,565 - api - INFO - Match 207768: 2025-04-26T05:55:00Z
+2025-06-13 04:33:57,566 - api - INFO - Match 207789: 2025-04-26T06:03:00Z
+2025-06-13 04:33:57,566 - api - INFO - Match 207769: 2025-04-26T06:27:00Z
+2025-06-13 04:33:57,566 - api - INFO - Match 207793: 2025-04-26T06:35:00Z
+2025-06-13 04:33:57,567 - api - INFO - Match 207748: 2025-04-26T06:59:00Z
+2025-06-13 04:33:57,568 - api - INFO - Match 207794: 2025-04-26T07:07:00Z
+2025-06-13 04:33:57,569 - api - INFO - Returning 29 matches
+2025-06-13 04:33:57,570 - api - INFO - get_predictions executed in 0.01 seconds
+2025-06-13 04:34:08,095 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 04:34:08,096 - api - INFO - Match 207162: 2025-04-26T02:35:00Z
+2025-06-13 04:34:08,097 - api - INFO - Match 207131: 2025-04-26T02:43:00Z
+2025-06-13 04:34:08,097 - api - INFO - Match 207141: 2025-04-26T02:51:00Z
+2025-06-13 04:34:08,097 - api - INFO - Match 207160: 2025-04-26T02:59:00Z
+2025-06-13 04:34:08,098 - api - INFO - Match 207167: 2025-04-26T03:07:00Z
+2025-06-13 04:34:08,098 - api - INFO - Match 207136: 2025-04-26T03:15:00Z
+2025-06-13 04:34:08,098 - api - INFO - Match 207142: 2025-04-26T03:23:00Z
+2025-06-13 04:34:08,098 - api - INFO - Match 207157: 2025-04-26T03:31:00Z
+2025-06-13 04:34:08,099 - api - INFO - Match 207163: 2025-04-26T03:39:00Z
+2025-06-13 04:34:08,099 - api - INFO - Match 207140: 2025-04-26T03:47:00Z
+2025-06-13 04:34:08,099 - api - INFO - Match 207146: 2025-04-26T03:55:00Z
+2025-06-13 04:34:08,100 - api - INFO - Match 207153: 2025-04-26T04:03:00Z
+2025-06-13 04:34:08,100 - api - INFO - Match 207165: 2025-04-26T04:11:00Z
+2025-06-13 04:34:08,100 - api - INFO - Match 207134: 2025-04-26T04:19:00Z
+2025-06-13 04:34:08,101 - api - INFO - Match 207147: 2025-04-26T04:27:00Z
+2025-06-13 04:34:08,104 - api - INFO - Loaded 29 upcoming matches from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_matches.json
+2025-06-13 04:34:08,104 - api - INFO - Match 207155: 2025-04-26T04:35:00Z
+2025-06-13 04:34:08,105 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 04:34:08,105 - api - INFO - Returning 29 matches
+2025-06-13 04:34:08,105 - api - INFO - Match 207168: 2025-04-26T04:43:00Z
+2025-06-13 04:34:08,105 - api - INFO - Returning 29 matches
+2025-06-13 04:34:08,106 - api - INFO - get_upcoming_matches executed in 0.00 seconds
+2025-06-13 04:34:08,107 - api - INFO - Match 207135: 2025-04-26T04:51:00Z
+2025-06-13 04:34:08,108 - api - INFO - Match 207145: 2025-04-26T04:59:00Z
+2025-06-13 04:34:08,110 - api - INFO - Match 207154: 2025-04-26T05:07:00Z
+2025-06-13 04:34:08,111 - api - INFO - Retrieved score model accuracy: 4.075830549721303
+2025-06-13 04:34:08,111 - api - INFO - Match 207171: 2025-04-26T05:15:00Z
+2025-06-13 04:34:08,112 - api - INFO - get_score_predictions executed in 0.01 seconds
+2025-06-13 04:34:08,112 - api - INFO - Match 207133: 2025-04-26T05:23:00Z
+2025-06-13 04:34:08,114 - api - INFO - Match 207148: 2025-04-26T05:31:00Z
+2025-06-13 04:34:08,115 - api - INFO - Match 207768: 2025-04-26T05:55:00Z
+2025-06-13 04:34:08,115 - api - INFO - Match 207789: 2025-04-26T06:03:00Z
+2025-06-13 04:34:08,119 - api - INFO - Match 207769: 2025-04-26T06:27:00Z
+2025-06-13 04:34:08,119 - api - INFO - Match 207793: 2025-04-26T06:35:00Z
+2025-06-13 04:34:08,120 - api - INFO - Match 207748: 2025-04-26T06:59:00Z
+2025-06-13 04:34:08,120 - api - INFO - Match 207794: 2025-04-26T07:07:00Z
+2025-06-13 04:34:08,121 - api - INFO - Returning 29 matches
+2025-06-13 04:34:08,122 - api - INFO - get_predictions executed in 0.03 seconds
+2025-06-13 04:34:08,292 - api - INFO - Loaded 29 upcoming matches from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_matches.json
+2025-06-13 04:34:08,292 - api - INFO - Returning 29 matches
+2025-06-13 04:34:08,293 - api - INFO - get_upcoming_matches executed in 0.00 seconds
+2025-06-13 04:34:08,415 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 04:34:08,416 - api - INFO - Returning 29 matches
+2025-06-13 04:34:08,418 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 04:34:08,418 - api - INFO - Match 207162: 2025-04-26T02:35:00Z
+2025-06-13 04:34:08,419 - api - INFO - Retrieved score model accuracy: 4.075830549721303
+2025-06-13 04:34:08,419 - api - INFO - Match 207131: 2025-04-26T02:43:00Z
+2025-06-13 04:34:08,420 - api - INFO - get_score_predictions executed in 0.01 seconds
+2025-06-13 04:34:08,420 - api - INFO - Match 207141: 2025-04-26T02:51:00Z
+2025-06-13 04:34:08,423 - api - INFO - Match 207160: 2025-04-26T02:59:00Z
+2025-06-13 04:34:08,423 - api - INFO - Match 207167: 2025-04-26T03:07:00Z
+2025-06-13 04:34:08,424 - api - INFO - Match 207136: 2025-04-26T03:15:00Z
+2025-06-13 04:34:08,424 - api - INFO - Match 207142: 2025-04-26T03:23:00Z
+2025-06-13 04:34:08,425 - api - INFO - Match 207157: 2025-04-26T03:31:00Z
+2025-06-13 04:34:08,425 - api - INFO - Match 207163: 2025-04-26T03:39:00Z
+2025-06-13 04:34:08,426 - api - INFO - Match 207140: 2025-04-26T03:47:00Z
+2025-06-13 04:34:08,427 - api - INFO - Match 207146: 2025-04-26T03:55:00Z
+2025-06-13 04:34:08,427 - api - INFO - Match 207153: 2025-04-26T04:03:00Z
+2025-06-13 04:34:08,428 - api - INFO - Match 207165: 2025-04-26T04:11:00Z
+2025-06-13 04:34:08,430 - api - INFO - Match 207134: 2025-04-26T04:19:00Z
+2025-06-13 04:34:08,430 - api - INFO - Match 207147: 2025-04-26T04:27:00Z
+2025-06-13 04:34:08,432 - api - INFO - Match 207155: 2025-04-26T04:35:00Z
+2025-06-13 04:34:08,434 - api - INFO - Match 207168: 2025-04-26T04:43:00Z
+2025-06-13 04:34:08,434 - api - INFO - Match 207135: 2025-04-26T04:51:00Z
+2025-06-13 04:34:08,434 - api - INFO - Match 207145: 2025-04-26T04:59:00Z
+2025-06-13 04:34:08,437 - api - INFO - Match 207154: 2025-04-26T05:07:00Z
+2025-06-13 04:34:08,440 - api - INFO - Match 207171: 2025-04-26T05:15:00Z
+2025-06-13 04:34:08,441 - api - INFO - Match 207133: 2025-04-26T05:23:00Z
+2025-06-13 04:34:08,443 - api - INFO - Match 207148: 2025-04-26T05:31:00Z
+2025-06-13 04:34:08,447 - api - INFO - Match 207768: 2025-04-26T05:55:00Z
+2025-06-13 04:34:08,448 - api - INFO - Match 207789: 2025-04-26T06:03:00Z
+2025-06-13 04:34:08,448 - api - INFO - Match 207769: 2025-04-26T06:27:00Z
+2025-06-13 04:34:08,451 - api - INFO - Match 207793: 2025-04-26T06:35:00Z
+2025-06-13 04:34:08,452 - api - INFO - Match 207748: 2025-04-26T06:59:00Z
+2025-06-13 04:34:08,454 - api - INFO - Match 207794: 2025-04-26T07:07:00Z
+2025-06-13 04:34:08,455 - api - INFO - Returning 29 matches
+2025-06-13 04:34:08,459 - api - INFO - get_predictions executed in 0.04 seconds
+2025-06-13 04:35:55,105 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 04:35:55,106 - api - INFO - Match 207162: 2025-04-26T02:35:00Z
+2025-06-13 04:35:55,106 - api - INFO - Match 207131: 2025-04-26T02:43:00Z
+2025-06-13 04:35:55,106 - api - INFO - Match 207141: 2025-04-26T02:51:00Z
+2025-06-13 04:35:55,107 - api - INFO - Match 207160: 2025-04-26T02:59:00Z
+2025-06-13 04:35:55,107 - api - INFO - Match 207167: 2025-04-26T03:07:00Z
+2025-06-13 04:35:55,107 - api - INFO - Match 207136: 2025-04-26T03:15:00Z
+2025-06-13 04:35:55,107 - api - INFO - Match 207142: 2025-04-26T03:23:00Z
+2025-06-13 04:35:55,108 - api - INFO - Match 207157: 2025-04-26T03:31:00Z
+2025-06-13 04:35:55,108 - api - INFO - Match 207163: 2025-04-26T03:39:00Z
+2025-06-13 04:35:55,111 - api - INFO - Match 207140: 2025-04-26T03:47:00Z
+2025-06-13 04:35:55,111 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 04:35:55,112 - api - INFO - Match 207146: 2025-04-26T03:55:00Z
+2025-06-13 04:35:55,112 - api - INFO - Match 207153: 2025-04-26T04:03:00Z
+2025-06-13 04:35:55,113 - api - INFO - Match 207162: 2025-04-26T02:35:00Z
+2025-06-13 04:35:55,113 - api - INFO - Match 207165: 2025-04-26T04:11:00Z
+2025-06-13 04:35:55,113 - api - INFO - Match 207131: 2025-04-26T02:43:00Z
+2025-06-13 04:35:55,113 - api - INFO - Match 207134: 2025-04-26T04:19:00Z
+2025-06-13 04:35:55,114 - api - INFO - Match 207141: 2025-04-26T02:51:00Z
+2025-06-13 04:35:55,114 - api - INFO - Match 207147: 2025-04-26T04:27:00Z
+2025-06-13 04:35:55,114 - api - INFO - Match 207160: 2025-04-26T02:59:00Z
+2025-06-13 04:35:55,115 - api - INFO - Match 207155: 2025-04-26T04:35:00Z
+2025-06-13 04:35:55,115 - api - INFO - Match 207167: 2025-04-26T03:07:00Z
+2025-06-13 04:35:55,117 - api - INFO - Match 207168: 2025-04-26T04:43:00Z
+2025-06-13 04:35:55,118 - api - INFO - Match 207136: 2025-04-26T03:15:00Z
+2025-06-13 04:35:55,118 - api - INFO - Match 207135: 2025-04-26T04:51:00Z
+2025-06-13 04:35:55,119 - api - INFO - Match 207142: 2025-04-26T03:23:00Z
+2025-06-13 04:35:55,119 - api - INFO - Match 207145: 2025-04-26T04:59:00Z
+2025-06-13 04:35:55,119 - api - INFO - Match 207157: 2025-04-26T03:31:00Z
+2025-06-13 04:35:55,120 - api - INFO - Match 207154: 2025-04-26T05:07:00Z
+2025-06-13 04:35:55,120 - api - INFO - Match 207163: 2025-04-26T03:39:00Z
+2025-06-13 04:35:55,120 - api - INFO - Match 207171: 2025-04-26T05:15:00Z
+2025-06-13 04:35:55,120 - api - INFO - Match 207140: 2025-04-26T03:47:00Z
+2025-06-13 04:35:55,121 - api - INFO - Match 207133: 2025-04-26T05:23:00Z
+2025-06-13 04:35:55,121 - api - INFO - Match 207146: 2025-04-26T03:55:00Z
+2025-06-13 04:35:55,121 - api - INFO - Match 207148: 2025-04-26T05:31:00Z
+2025-06-13 04:35:55,122 - api - INFO - Match 207153: 2025-04-26T04:03:00Z
+2025-06-13 04:35:55,122 - api - INFO - Match 207768: 2025-04-26T05:55:00Z
+2025-06-13 04:35:55,124 - api - INFO - Match 207165: 2025-04-26T04:11:00Z
+2025-06-13 04:35:55,125 - api - INFO - Match 207789: 2025-04-26T06:03:00Z
+2025-06-13 04:35:55,125 - api - INFO - Match 207134: 2025-04-26T04:19:00Z
+2025-06-13 04:35:55,126 - api - INFO - Match 207769: 2025-04-26T06:27:00Z
+2025-06-13 04:35:55,126 - api - INFO - Match 207147: 2025-04-26T04:27:00Z
+2025-06-13 04:35:55,126 - api - INFO - Match 207793: 2025-04-26T06:35:00Z
+2025-06-13 04:35:55,127 - api - INFO - Match 207155: 2025-04-26T04:35:00Z
+2025-06-13 04:35:55,127 - api - INFO - Match 207748: 2025-04-26T06:59:00Z
+2025-06-13 04:35:55,127 - api - INFO - Match 207168: 2025-04-26T04:43:00Z
+2025-06-13 04:35:55,127 - api - INFO - Match 207794: 2025-04-26T07:07:00Z
+2025-06-13 04:35:55,128 - api - INFO - Returning 29 matches
+2025-06-13 04:35:55,128 - api - INFO - Match 207135: 2025-04-26T04:51:00Z
+2025-06-13 04:35:55,131 - api - INFO - get_predictions executed in 0.03 seconds
+2025-06-13 04:35:55,132 - api - INFO - Match 207145: 2025-04-26T04:59:00Z
+2025-06-13 04:35:55,134 - api - INFO - Match 207154: 2025-04-26T05:07:00Z
+2025-06-13 04:35:55,134 - api - INFO - Match 207171: 2025-04-26T05:15:00Z
+2025-06-13 04:35:55,135 - api - INFO - Match 207133: 2025-04-26T05:23:00Z
+2025-06-13 04:35:55,135 - api - INFO - Match 207148: 2025-04-26T05:31:00Z
+2025-06-13 04:35:55,135 - api - INFO - Match 207768: 2025-04-26T05:55:00Z
+2025-06-13 04:35:55,136 - api - INFO - Match 207789: 2025-04-26T06:03:00Z
+2025-06-13 04:35:55,136 - api - INFO - Match 207769: 2025-04-26T06:27:00Z
+2025-06-13 04:35:55,143 - api - INFO - Match 207793: 2025-04-26T06:35:00Z
+2025-06-13 04:35:55,146 - api - INFO - Match 207748: 2025-04-26T06:59:00Z
+2025-06-13 04:35:55,147 - api - INFO - Match 207794: 2025-04-26T07:07:00Z
+2025-06-13 04:35:55,147 - api - INFO - Returning 29 matches
+2025-06-13 04:35:55,148 - api - INFO - get_predictions executed in 0.04 seconds
+2025-06-13 04:35:56,804 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 04:35:56,807 - api - INFO - Match 207162: 2025-04-26T02:35:00Z
+2025-06-13 04:35:56,807 - api - INFO - Match 207131: 2025-04-26T02:43:00Z
+2025-06-13 04:35:56,809 - api - INFO - Match 207141: 2025-04-26T02:51:00Z
+2025-06-13 04:35:56,811 - api - INFO - Match 207160: 2025-04-26T02:59:00Z
+2025-06-13 04:35:56,812 - api - INFO - Match 207167: 2025-04-26T03:07:00Z
+2025-06-13 04:35:56,812 - api - INFO - Match 207136: 2025-04-26T03:15:00Z
+2025-06-13 04:35:56,813 - api - INFO - Match 207142: 2025-04-26T03:23:00Z
+2025-06-13 04:35:56,813 - api - INFO - Match 207157: 2025-04-26T03:31:00Z
+2025-06-13 04:35:56,814 - api - INFO - Match 207163: 2025-04-26T03:39:00Z
+2025-06-13 04:35:56,814 - api - INFO - Match 207140: 2025-04-26T03:47:00Z
+2025-06-13 04:35:56,814 - api - INFO - Match 207146: 2025-04-26T03:55:00Z
+2025-06-13 04:35:56,815 - api - INFO - Match 207153: 2025-04-26T04:03:00Z
+2025-06-13 04:35:56,815 - api - INFO - Match 207165: 2025-04-26T04:11:00Z
+2025-06-13 04:35:56,815 - api - INFO - Match 207134: 2025-04-26T04:19:00Z
+2025-06-13 04:35:56,816 - api - INFO - Match 207147: 2025-04-26T04:27:00Z
+2025-06-13 04:35:56,816 - api - INFO - Match 207155: 2025-04-26T04:35:00Z
+2025-06-13 04:35:56,816 - api - INFO - Match 207168: 2025-04-26T04:43:00Z
+2025-06-13 04:35:56,816 - api - INFO - Match 207135: 2025-04-26T04:51:00Z
+2025-06-13 04:35:56,816 - api - INFO - Match 207145: 2025-04-26T04:59:00Z
+2025-06-13 04:35:56,817 - api - INFO - Match 207154: 2025-04-26T05:07:00Z
+2025-06-13 04:35:56,819 - api - INFO - Match 207171: 2025-04-26T05:15:00Z
+2025-06-13 04:35:56,819 - api - INFO - Match 207133: 2025-04-26T05:23:00Z
+2025-06-13 04:35:56,819 - api - INFO - Match 207148: 2025-04-26T05:31:00Z
+2025-06-13 04:35:56,820 - api - INFO - Match 207768: 2025-04-26T05:55:00Z
+2025-06-13 04:35:56,820 - api - INFO - Match 207789: 2025-04-26T06:03:00Z
+2025-06-13 04:35:56,821 - api - INFO - Match 207769: 2025-04-26T06:27:00Z
+2025-06-13 04:35:56,821 - api - INFO - Match 207793: 2025-04-26T06:35:00Z
+2025-06-13 04:35:56,821 - api - INFO - Match 207748: 2025-04-26T06:59:00Z
+2025-06-13 04:35:56,821 - api - INFO - Match 207794: 2025-04-26T07:07:00Z
+2025-06-13 04:35:56,822 - api - INFO - Returning 29 matches
+2025-06-13 04:35:56,823 - api - INFO - get_predictions executed in 0.02 seconds
+2025-06-13 04:35:57,049 - api - INFO - Loaded 29 upcoming matches from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_matches.json
+2025-06-13 04:35:57,049 - api - INFO - Returning 29 matches
+2025-06-13 04:35:57,050 - api - INFO - get_upcoming_matches executed in 0.00 seconds
+2025-06-13 04:35:57,110 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 04:35:57,110 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 04:35:57,111 - api - INFO - Match 207162: 2025-04-26T02:35:00Z
+2025-06-13 04:35:57,111 - api - INFO - Returning 29 matches
+2025-06-13 04:35:57,111 - api - INFO - Match 207131: 2025-04-26T02:43:00Z
+2025-06-13 04:35:57,112 - api - INFO - Match 207141: 2025-04-26T02:51:00Z
+2025-06-13 04:35:57,112 - api - INFO - Match 207160: 2025-04-26T02:59:00Z
+2025-06-13 04:35:57,112 - api - INFO - Match 207167: 2025-04-26T03:07:00Z
+2025-06-13 04:35:57,113 - api - INFO - Retrieved score model accuracy: 4.075830549721303
+2025-06-13 04:35:57,113 - api - INFO - Match 207136: 2025-04-26T03:15:00Z
+2025-06-13 04:35:57,113 - api - INFO - get_score_predictions executed in 0.01 seconds
+2025-06-13 04:35:57,113 - api - INFO - Match 207142: 2025-04-26T03:23:00Z
+2025-06-13 04:35:57,114 - api - INFO - Match 207157: 2025-04-26T03:31:00Z
+2025-06-13 04:35:57,114 - api - INFO - Match 207163: 2025-04-26T03:39:00Z
+2025-06-13 04:35:57,115 - api - INFO - Match 207140: 2025-04-26T03:47:00Z
+2025-06-13 04:35:57,115 - api - INFO - Match 207146: 2025-04-26T03:55:00Z
+2025-06-13 04:35:57,115 - api - INFO - Match 207153: 2025-04-26T04:03:00Z
+2025-06-13 04:35:57,118 - api - INFO - Match 207165: 2025-04-26T04:11:00Z
+2025-06-13 04:35:57,118 - api - INFO - Match 207134: 2025-04-26T04:19:00Z
+2025-06-13 04:35:57,119 - api - INFO - Match 207147: 2025-04-26T04:27:00Z
+2025-06-13 04:35:57,119 - api - INFO - Match 207155: 2025-04-26T04:35:00Z
+2025-06-13 04:35:57,119 - api - INFO - Match 207168: 2025-04-26T04:43:00Z
+2025-06-13 04:35:57,119 - api - INFO - Match 207135: 2025-04-26T04:51:00Z
+2025-06-13 04:35:57,120 - api - INFO - Match 207145: 2025-04-26T04:59:00Z
+2025-06-13 04:35:57,120 - api - INFO - Match 207154: 2025-04-26T05:07:00Z
+2025-06-13 04:35:57,120 - api - INFO - Match 207171: 2025-04-26T05:15:00Z
+2025-06-13 04:35:57,120 - api - INFO - Match 207133: 2025-04-26T05:23:00Z
+2025-06-13 04:35:57,120 - api - INFO - Match 207148: 2025-04-26T05:31:00Z
+2025-06-13 04:35:57,121 - api - INFO - Match 207768: 2025-04-26T05:55:00Z
+2025-06-13 04:35:57,121 - api - INFO - Match 207789: 2025-04-26T06:03:00Z
+2025-06-13 04:35:57,121 - api - INFO - Match 207769: 2025-04-26T06:27:00Z
+2025-06-13 04:35:57,121 - api - INFO - Match 207793: 2025-04-26T06:35:00Z
+2025-06-13 04:35:57,122 - api - INFO - Match 207748: 2025-04-26T06:59:00Z
+2025-06-13 04:35:57,122 - api - INFO - Match 207794: 2025-04-26T07:07:00Z
+2025-06-13 04:35:57,122 - api - INFO - Returning 29 matches
+2025-06-13 04:35:57,124 - api - INFO - get_predictions executed in 0.02 seconds
+2025-06-13 04:35:57,132 - api - INFO - Loaded 29 upcoming matches from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_matches.json
+2025-06-13 04:35:57,133 - api - INFO - Returning 29 matches
+2025-06-13 04:35:57,134 - api - INFO - get_upcoming_matches executed in 0.00 seconds
+2025-06-13 04:35:57,356 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 04:35:57,356 - api - INFO - Returning 29 matches
+2025-06-13 04:35:57,360 - api - INFO - Retrieved score model accuracy: 4.075830549721303
+2025-06-13 04:35:57,362 - api - INFO - get_score_predictions executed in 0.01 seconds
+2025-06-13 04:36:56,799 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 04:36:56,799 - api - INFO - Match 207162: 2025-04-26T02:35:00Z
+2025-06-13 04:36:56,800 - api - INFO - Match 207131: 2025-04-26T02:43:00Z
+2025-06-13 04:36:56,800 - api - INFO - Match 207141: 2025-04-26T02:51:00Z
+2025-06-13 04:36:56,800 - api - INFO - Match 207160: 2025-04-26T02:59:00Z
+2025-06-13 04:36:56,800 - api - INFO - Match 207167: 2025-04-26T03:07:00Z
+2025-06-13 04:36:56,801 - api - INFO - Match 207136: 2025-04-26T03:15:00Z
+2025-06-13 04:36:56,801 - api - INFO - Match 207142: 2025-04-26T03:23:00Z
+2025-06-13 04:36:56,801 - api - INFO - Match 207157: 2025-04-26T03:31:00Z
+2025-06-13 04:36:56,801 - api - INFO - Match 207163: 2025-04-26T03:39:00Z
+2025-06-13 04:36:56,802 - api - INFO - Match 207140: 2025-04-26T03:47:00Z
+2025-06-13 04:36:56,802 - api - INFO - Match 207146: 2025-04-26T03:55:00Z
+2025-06-13 04:36:56,802 - api - INFO - Match 207153: 2025-04-26T04:03:00Z
+2025-06-13 04:36:56,802 - api - INFO - Match 207165: 2025-04-26T04:11:00Z
+2025-06-13 04:36:56,803 - api - INFO - Match 207134: 2025-04-26T04:19:00Z
+2025-06-13 04:36:56,803 - api - INFO - Match 207147: 2025-04-26T04:27:00Z
+2025-06-13 04:36:56,804 - api - INFO - Match 207155: 2025-04-26T04:35:00Z
+2025-06-13 04:36:56,805 - api - INFO - Match 207168: 2025-04-26T04:43:00Z
+2025-06-13 04:36:56,805 - api - INFO - Match 207135: 2025-04-26T04:51:00Z
+2025-06-13 04:36:56,806 - api - INFO - Match 207145: 2025-04-26T04:59:00Z
+2025-06-13 04:36:56,806 - api - INFO - Match 207154: 2025-04-26T05:07:00Z
+2025-06-13 04:36:56,806 - api - INFO - Match 207171: 2025-04-26T05:15:00Z
+2025-06-13 04:36:56,806 - api - INFO - Match 207133: 2025-04-26T05:23:00Z
+2025-06-13 04:36:56,807 - api - INFO - Match 207148: 2025-04-26T05:31:00Z
+2025-06-13 04:36:56,807 - api - INFO - Match 207768: 2025-04-26T05:55:00Z
+2025-06-13 04:36:56,807 - api - INFO - Match 207789: 2025-04-26T06:03:00Z
+2025-06-13 04:36:56,808 - api - INFO - Match 207769: 2025-04-26T06:27:00Z
+2025-06-13 04:36:56,808 - api - INFO - Match 207793: 2025-04-26T06:35:00Z
+2025-06-13 04:36:56,808 - api - INFO - Match 207748: 2025-04-26T06:59:00Z
+2025-06-13 04:36:56,809 - api - INFO - Match 207794: 2025-04-26T07:07:00Z
+2025-06-13 04:36:56,809 - api - INFO - Returning 29 matches
+2025-06-13 04:36:56,810 - api - INFO - get_predictions executed in 0.01 seconds
+2025-06-13 04:36:57,098 - api - INFO - Loaded 29 upcoming matches from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_matches.json
+2025-06-13 04:36:57,098 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 04:36:57,099 - api - INFO - Returning 29 matches
+2025-06-13 04:36:57,099 - api - INFO - Returning 29 matches
+2025-06-13 04:36:57,099 - api - INFO - get_upcoming_matches executed in 0.00 seconds
+2025-06-13 04:36:57,101 - api - INFO - Retrieved score model accuracy: 4.075830549721303
+2025-06-13 04:36:57,101 - api - INFO - get_score_predictions executed in 0.00 seconds
+2025-06-13 04:37:03,921 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 04:37:03,923 - api - INFO - Match 207162: 2025-04-26T02:35:00Z
+2025-06-13 04:37:03,924 - api - INFO - Match 207131: 2025-04-26T02:43:00Z
+2025-06-13 04:37:03,925 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 04:37:03,925 - api - INFO - Match 207141: 2025-04-26T02:51:00Z
+2025-06-13 04:37:03,925 - api - INFO - Match 207162: 2025-04-26T02:35:00Z
+2025-06-13 04:37:03,926 - api - INFO - Match 207160: 2025-04-26T02:59:00Z
+2025-06-13 04:37:03,926 - api - INFO - Match 207131: 2025-04-26T02:43:00Z
+2025-06-13 04:37:03,926 - api - INFO - Match 207167: 2025-04-26T03:07:00Z
+2025-06-13 04:37:03,926 - api - INFO - Match 207141: 2025-04-26T02:51:00Z
+2025-06-13 04:37:03,927 - api - INFO - Match 207136: 2025-04-26T03:15:00Z
+2025-06-13 04:37:03,927 - api - INFO - Match 207160: 2025-04-26T02:59:00Z
+2025-06-13 04:37:03,927 - api - INFO - Match 207142: 2025-04-26T03:23:00Z
+2025-06-13 04:37:03,927 - api - INFO - Match 207167: 2025-04-26T03:07:00Z
+2025-06-13 04:37:03,929 - api - INFO - Match 207157: 2025-04-26T03:31:00Z
+2025-06-13 04:37:03,930 - api - INFO - Match 207163: 2025-04-26T03:39:00Z
+2025-06-13 04:37:03,930 - api - INFO - Match 207136: 2025-04-26T03:15:00Z
+2025-06-13 04:37:03,933 - api - INFO - Match 207140: 2025-04-26T03:47:00Z
+2025-06-13 04:37:03,933 - api - INFO - Match 207142: 2025-04-26T03:23:00Z
+2025-06-13 04:37:03,933 - api - INFO - Match 207146: 2025-04-26T03:55:00Z
+2025-06-13 04:37:03,933 - api - INFO - Match 207157: 2025-04-26T03:31:00Z
+2025-06-13 04:37:03,934 - api - INFO - Match 207153: 2025-04-26T04:03:00Z
+2025-06-13 04:37:03,934 - api - INFO - Match 207163: 2025-04-26T03:39:00Z
+2025-06-13 04:37:03,934 - api - INFO - Match 207165: 2025-04-26T04:11:00Z
+2025-06-13 04:37:03,935 - api - INFO - Match 207140: 2025-04-26T03:47:00Z
+2025-06-13 04:37:03,936 - api - INFO - Match 207134: 2025-04-26T04:19:00Z
+2025-06-13 04:37:03,937 - api - INFO - Match 207146: 2025-04-26T03:55:00Z
+2025-06-13 04:37:03,937 - api - INFO - Match 207147: 2025-04-26T04:27:00Z
+2025-06-13 04:37:03,938 - api - INFO - Match 207153: 2025-04-26T04:03:00Z
+2025-06-13 04:37:03,938 - api - INFO - Match 207155: 2025-04-26T04:35:00Z
+2025-06-13 04:37:03,938 - api - INFO - Match 207165: 2025-04-26T04:11:00Z
+2025-06-13 04:37:03,938 - api - INFO - Match 207168: 2025-04-26T04:43:00Z
+2025-06-13 04:37:03,939 - api - INFO - Match 207134: 2025-04-26T04:19:00Z
+2025-06-13 04:37:03,939 - api - INFO - Match 207135: 2025-04-26T04:51:00Z
+2025-06-13 04:37:03,939 - api - INFO - Match 207147: 2025-04-26T04:27:00Z
+2025-06-13 04:37:03,940 - api - INFO - Match 207145: 2025-04-26T04:59:00Z
+2025-06-13 04:37:03,940 - api - INFO - Match 207155: 2025-04-26T04:35:00Z
+2025-06-13 04:37:03,940 - api - INFO - Match 207154: 2025-04-26T05:07:00Z
+2025-06-13 04:37:03,940 - api - INFO - Match 207168: 2025-04-26T04:43:00Z
+2025-06-13 04:37:03,941 - api - INFO - Match 207171: 2025-04-26T05:15:00Z
+2025-06-13 04:37:03,941 - api - INFO - Match 207135: 2025-04-26T04:51:00Z
+2025-06-13 04:37:03,943 - api - INFO - Match 207133: 2025-04-26T05:23:00Z
+2025-06-13 04:37:03,944 - api - INFO - Match 207145: 2025-04-26T04:59:00Z
+2025-06-13 04:37:03,945 - api - INFO - Match 207148: 2025-04-26T05:31:00Z
+2025-06-13 04:37:03,945 - api - INFO - Match 207154: 2025-04-26T05:07:00Z
+2025-06-13 04:37:03,947 - api - INFO - Match 207768: 2025-04-26T05:55:00Z
+2025-06-13 04:37:03,947 - api - INFO - Match 207171: 2025-04-26T05:15:00Z
+2025-06-13 04:37:03,947 - api - INFO - Match 207789: 2025-04-26T06:03:00Z
+2025-06-13 04:37:03,948 - api - INFO - Match 207133: 2025-04-26T05:23:00Z
+2025-06-13 04:37:03,948 - api - INFO - Match 207769: 2025-04-26T06:27:00Z
+2025-06-13 04:37:03,950 - api - INFO - Match 207148: 2025-04-26T05:31:00Z
+2025-06-13 04:37:03,951 - api - INFO - Match 207793: 2025-04-26T06:35:00Z
+2025-06-13 04:37:03,952 - api - INFO - Match 207768: 2025-04-26T05:55:00Z
+2025-06-13 04:37:03,952 - api - INFO - Match 207748: 2025-04-26T06:59:00Z
+2025-06-13 04:37:03,952 - api - INFO - Match 207789: 2025-04-26T06:03:00Z
+2025-06-13 04:37:03,953 - api - INFO - Match 207794: 2025-04-26T07:07:00Z
+2025-06-13 04:37:03,953 - api - INFO - Match 207769: 2025-04-26T06:27:00Z
+2025-06-13 04:37:03,954 - api - INFO - Returning 29 matches
+2025-06-13 04:37:03,954 - api - INFO - Match 207793: 2025-04-26T06:35:00Z
+2025-06-13 04:37:03,955 - api - INFO - get_predictions executed in 0.04 seconds
+2025-06-13 04:37:03,959 - api - INFO - Match 207748: 2025-04-26T06:59:00Z
+2025-06-13 04:37:03,960 - api - INFO - Match 207794: 2025-04-26T07:07:00Z
+2025-06-13 04:37:03,961 - api - INFO - Returning 29 matches
+2025-06-13 04:37:03,962 - api - INFO - get_predictions executed in 0.04 seconds
+2025-06-13 06:34:33,195 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 06:34:33,195 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 06:34:33,196 - api - INFO - Match 207162: 2025-04-26T02:35:00Z
+2025-06-13 06:34:33,196 - api - INFO - Match 207162: 2025-04-26T02:35:00Z
+2025-06-13 06:34:33,197 - api - INFO - Match 207131: 2025-04-26T02:43:00Z
+2025-06-13 06:34:33,197 - api - INFO - Match 207131: 2025-04-26T02:43:00Z
+2025-06-13 06:34:33,197 - api - INFO - Match 207141: 2025-04-26T02:51:00Z
+2025-06-13 06:34:33,197 - api - INFO - Match 207141: 2025-04-26T02:51:00Z
+2025-06-13 06:34:33,198 - api - INFO - Match 207160: 2025-04-26T02:59:00Z
+2025-06-13 06:34:33,198 - api - INFO - Match 207160: 2025-04-26T02:59:00Z
+2025-06-13 06:34:33,198 - api - INFO - Match 207167: 2025-04-26T03:07:00Z
+2025-06-13 06:34:33,198 - api - INFO - Match 207167: 2025-04-26T03:07:00Z
+2025-06-13 06:34:33,199 - api - INFO - Match 207136: 2025-04-26T03:15:00Z
+2025-06-13 06:34:33,199 - api - INFO - Match 207136: 2025-04-26T03:15:00Z
+2025-06-13 06:34:33,199 - api - INFO - Match 207142: 2025-04-26T03:23:00Z
+2025-06-13 06:34:33,199 - api - INFO - Match 207142: 2025-04-26T03:23:00Z
+2025-06-13 06:34:33,200 - api - INFO - Match 207157: 2025-04-26T03:31:00Z
+2025-06-13 06:34:33,200 - api - INFO - Match 207157: 2025-04-26T03:31:00Z
+2025-06-13 06:34:33,200 - api - INFO - Match 207163: 2025-04-26T03:39:00Z
+2025-06-13 06:34:33,200 - api - INFO - Match 207163: 2025-04-26T03:39:00Z
+2025-06-13 06:34:33,201 - api - INFO - Match 207140: 2025-04-26T03:47:00Z
+2025-06-13 06:34:33,201 - api - INFO - Match 207140: 2025-04-26T03:47:00Z
+2025-06-13 06:34:33,202 - api - INFO - Match 207146: 2025-04-26T03:55:00Z
+2025-06-13 06:34:33,202 - api - INFO - Match 207146: 2025-04-26T03:55:00Z
+2025-06-13 06:34:33,203 - api - INFO - Match 207153: 2025-04-26T04:03:00Z
+2025-06-13 06:34:33,203 - api - INFO - Match 207153: 2025-04-26T04:03:00Z
+2025-06-13 06:34:33,203 - api - INFO - Match 207165: 2025-04-26T04:11:00Z
+2025-06-13 06:34:33,204 - api - INFO - Match 207165: 2025-04-26T04:11:00Z
+2025-06-13 06:34:33,204 - api - INFO - Match 207134: 2025-04-26T04:19:00Z
+2025-06-13 06:34:33,204 - api - INFO - Match 207134: 2025-04-26T04:19:00Z
+2025-06-13 06:34:33,205 - api - INFO - Match 207147: 2025-04-26T04:27:00Z
+2025-06-13 06:34:33,205 - api - INFO - Match 207147: 2025-04-26T04:27:00Z
+2025-06-13 06:34:33,205 - api - INFO - Match 207155: 2025-04-26T04:35:00Z
+2025-06-13 06:34:33,205 - api - INFO - Match 207155: 2025-04-26T04:35:00Z
+2025-06-13 06:34:33,206 - api - INFO - Match 207168: 2025-04-26T04:43:00Z
+2025-06-13 06:34:33,206 - api - INFO - Match 207168: 2025-04-26T04:43:00Z
+2025-06-13 06:34:33,206 - api - INFO - Match 207135: 2025-04-26T04:51:00Z
+2025-06-13 06:34:33,207 - api - INFO - Match 207135: 2025-04-26T04:51:00Z
+2025-06-13 06:34:33,207 - api - INFO - Match 207145: 2025-04-26T04:59:00Z
+2025-06-13 06:34:33,207 - api - INFO - Match 207145: 2025-04-26T04:59:00Z
+2025-06-13 06:34:33,207 - api - INFO - Match 207154: 2025-04-26T05:07:00Z
+2025-06-13 06:34:33,208 - api - INFO - Match 207154: 2025-04-26T05:07:00Z
+2025-06-13 06:34:33,208 - api - INFO - Match 207171: 2025-04-26T05:15:00Z
+2025-06-13 06:34:33,209 - api - INFO - Match 207133: 2025-04-26T05:23:00Z
+2025-06-13 06:34:33,209 - api - INFO - Match 207171: 2025-04-26T05:15:00Z
+2025-06-13 06:34:33,210 - api - INFO - Match 207148: 2025-04-26T05:31:00Z
+2025-06-13 06:34:33,210 - api - INFO - Match 207133: 2025-04-26T05:23:00Z
+2025-06-13 06:34:33,211 - api - INFO - Match 207148: 2025-04-26T05:31:00Z
+2025-06-13 06:34:33,211 - api - INFO - Match 207768: 2025-04-26T05:55:00Z
+2025-06-13 06:34:33,211 - api - INFO - Match 207768: 2025-04-26T05:55:00Z
+2025-06-13 06:34:33,212 - api - INFO - Match 207789: 2025-04-26T06:03:00Z
+2025-06-13 06:34:33,212 - api - INFO - Match 207789: 2025-04-26T06:03:00Z
+2025-06-13 06:34:33,212 - api - INFO - Match 207769: 2025-04-26T06:27:00Z
+2025-06-13 06:34:33,212 - api - INFO - Match 207769: 2025-04-26T06:27:00Z
+2025-06-13 06:34:33,212 - api - INFO - Match 207793: 2025-04-26T06:35:00Z
+2025-06-13 06:34:33,213 - api - INFO - Match 207793: 2025-04-26T06:35:00Z
+2025-06-13 06:34:33,213 - api - INFO - Match 207748: 2025-04-26T06:59:00Z
+2025-06-13 06:34:33,213 - api - INFO - Match 207748: 2025-04-26T06:59:00Z
+2025-06-13 06:34:33,213 - api - INFO - Match 207794: 2025-04-26T07:07:00Z
+2025-06-13 06:34:33,214 - api - INFO - Match 207794: 2025-04-26T07:07:00Z
+2025-06-13 06:34:33,214 - api - INFO - Returning 29 matches
+2025-06-13 06:34:33,214 - api - INFO - Returning 29 matches
+2025-06-13 06:34:33,215 - api - INFO - get_predictions executed in 0.03 seconds
+2025-06-13 06:34:33,216 - api - INFO - get_predictions executed in 0.03 seconds
+2025-06-13 06:34:37,315 - api - INFO - Started refresh process with PID: 19596
+2025-06-13 06:34:37,316 - api - INFO - refresh_data executed in 0.01 seconds
+2025-06-13 06:34:42,317 - api - INFO - Refresh process 19596 is still running (expected)
+2025-06-13 06:34:42,317 - api - INFO - Refresh process 19596 is running in the background
+2025-06-13 06:45:02,166 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 06:45:02,168 - api - INFO - Match 207162: 2025-04-26T02:35:00Z
+2025-06-13 06:45:02,169 - api - INFO - Match 207131: 2025-04-26T02:43:00Z
+2025-06-13 06:45:02,169 - api - INFO - Match 207141: 2025-04-26T02:51:00Z
+2025-06-13 06:45:02,170 - api - INFO - Match 207160: 2025-04-26T02:59:00Z
+2025-06-13 06:45:02,170 - api - INFO - Match 207167: 2025-04-26T03:07:00Z
+2025-06-13 06:45:02,170 - api - INFO - Match 207136: 2025-04-26T03:15:00Z
+2025-06-13 06:45:02,171 - api - INFO - Match 207142: 2025-04-26T03:23:00Z
+2025-06-13 06:45:02,171 - api - INFO - Match 207157: 2025-04-26T03:31:00Z
+2025-06-13 06:45:02,171 - api - INFO - Match 207163: 2025-04-26T03:39:00Z
+2025-06-13 06:45:02,172 - api - INFO - Match 207140: 2025-04-26T03:47:00Z
+2025-06-13 06:45:02,172 - api - INFO - Match 207146: 2025-04-26T03:55:00Z
+2025-06-13 06:45:02,172 - api - INFO - Match 207153: 2025-04-26T04:03:00Z
+2025-06-13 06:45:02,173 - api - INFO - Match 207165: 2025-04-26T04:11:00Z
+2025-06-13 06:45:02,173 - api - INFO - Match 207134: 2025-04-26T04:19:00Z
+2025-06-13 06:45:02,173 - api - INFO - Match 207147: 2025-04-26T04:27:00Z
+2025-06-13 06:45:02,175 - api - INFO - Match 207155: 2025-04-26T04:35:00Z
+2025-06-13 06:45:02,175 - api - INFO - Match 207168: 2025-04-26T04:43:00Z
+2025-06-13 06:45:02,176 - api - INFO - Match 207135: 2025-04-26T04:51:00Z
+2025-06-13 06:45:02,176 - api - INFO - Match 207145: 2025-04-26T04:59:00Z
+2025-06-13 06:45:02,176 - api - INFO - Match 207154: 2025-04-26T05:07:00Z
+2025-06-13 06:45:02,177 - api - INFO - Match 207171: 2025-04-26T05:15:00Z
+2025-06-13 06:45:02,177 - api - INFO - Match 207133: 2025-04-26T05:23:00Z
+2025-06-13 06:45:02,177 - api - INFO - Match 207148: 2025-04-26T05:31:00Z
+2025-06-13 06:45:02,178 - api - INFO - Match 207768: 2025-04-26T05:55:00Z
+2025-06-13 06:45:02,178 - api - INFO - Match 207789: 2025-04-26T06:03:00Z
+2025-06-13 06:45:02,178 - api - INFO - Match 207769: 2025-04-26T06:27:00Z
+2025-06-13 06:45:02,179 - api - INFO - Match 207793: 2025-04-26T06:35:00Z
+2025-06-13 06:45:02,179 - api - INFO - Match 207748: 2025-04-26T06:59:00Z
+2025-06-13 06:45:02,179 - api - INFO - Match 207794: 2025-04-26T07:07:00Z
+2025-06-13 06:45:02,180 - api - INFO - Returning 29 matches
+2025-06-13 06:45:02,181 - api - INFO - get_predictions executed in 0.02 seconds
+2025-06-13 06:45:11,825 - api - INFO - Started refresh process with PID: 244
+2025-06-13 06:45:11,826 - api - INFO - refresh_data executed in 0.01 seconds
+2025-06-13 06:45:16,831 - api - INFO - Refresh process 244 is still running (expected)
+2025-06-13 06:45:16,866 - api - INFO - Refresh process 244 is running in the background
+2025-06-13 06:54:31,124 - api - INFO - Loaded 29 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 06:54:31,126 - api - INFO - Match 207162: 2025-04-26T02:35:00Z
+2025-06-13 06:54:31,127 - api - INFO - Match 207131: 2025-04-26T02:43:00Z
+2025-06-13 06:54:31,128 - api - INFO - Match 207141: 2025-04-26T02:51:00Z
+2025-06-13 06:54:31,128 - api - INFO - Match 207160: 2025-04-26T02:59:00Z
+2025-06-13 06:54:31,129 - api - INFO - Match 207167: 2025-04-26T03:07:00Z
+2025-06-13 06:54:31,130 - api - INFO - Match 207136: 2025-04-26T03:15:00Z
+2025-06-13 06:54:31,130 - api - INFO - Match 207142: 2025-04-26T03:23:00Z
+2025-06-13 06:54:31,131 - api - INFO - Match 207157: 2025-04-26T03:31:00Z
+2025-06-13 06:54:31,131 - api - INFO - Match 207163: 2025-04-26T03:39:00Z
+2025-06-13 06:54:31,132 - api - INFO - Match 207140: 2025-04-26T03:47:00Z
+2025-06-13 06:54:31,133 - api - INFO - Match 207146: 2025-04-26T03:55:00Z
+2025-06-13 06:54:31,134 - api - INFO - Match 207153: 2025-04-26T04:03:00Z
+2025-06-13 06:54:31,135 - api - INFO - Match 207165: 2025-04-26T04:11:00Z
+2025-06-13 06:54:31,135 - api - INFO - Match 207134: 2025-04-26T04:19:00Z
+2025-06-13 06:54:31,136 - api - INFO - Match 207147: 2025-04-26T04:27:00Z
+2025-06-13 06:54:31,136 - api - INFO - Match 207155: 2025-04-26T04:35:00Z
+2025-06-13 06:54:31,137 - api - INFO - Match 207168: 2025-04-26T04:43:00Z
+2025-06-13 06:54:31,137 - api - INFO - Match 207135: 2025-04-26T04:51:00Z
+2025-06-13 06:54:31,138 - api - INFO - Match 207145: 2025-04-26T04:59:00Z
+2025-06-13 06:54:31,138 - api - INFO - Match 207154: 2025-04-26T05:07:00Z
+2025-06-13 06:54:31,142 - api - INFO - Match 207171: 2025-04-26T05:15:00Z
+2025-06-13 06:54:31,144 - api - INFO - Match 207133: 2025-04-26T05:23:00Z
+2025-06-13 06:54:31,149 - api - INFO - Match 207148: 2025-04-26T05:31:00Z
+2025-06-13 06:54:31,156 - api - INFO - Match 207768: 2025-04-26T05:55:00Z
+2025-06-13 06:54:31,162 - api - INFO - Match 207789: 2025-04-26T06:03:00Z
+2025-06-13 06:54:31,162 - api - INFO - Match 207769: 2025-04-26T06:27:00Z
+2025-06-13 06:54:31,163 - api - INFO - Match 207793: 2025-04-26T06:35:00Z
+2025-06-13 06:54:31,171 - api - INFO - Match 207748: 2025-04-26T06:59:00Z
+2025-06-13 06:54:31,179 - api - INFO - Match 207794: 2025-04-26T07:07:00Z
+2025-06-13 06:54:31,179 - api - INFO - Returning 29 matches
+2025-06-13 06:54:31,183 - api - INFO - get_predictions executed in 0.06 seconds
+2025-06-13 06:54:36,830 - api - INFO - Started refresh process with PID: 12804
+2025-06-13 06:54:36,831 - api - INFO - refresh_data executed in 0.01 seconds
+2025-06-13 06:54:41,831 - api - INFO - Refresh process 12804 is still running (expected)
+2025-06-13 06:54:41,832 - api - INFO - Refresh process 12804 is running in the background
+2025-06-13 07:00:56,641 - api - INFO - Started refresh process with PID: 6404
+2025-06-13 07:00:56,643 - api - INFO - refresh_data executed in 0.01 seconds
+2025-06-13 07:01:01,644 - api - INFO - Refresh process 6404 is still running (expected)
+2025-06-13 07:01:01,652 - api - INFO - Refresh process 6404 is running in the background
+2025-06-13 07:04:13,330 - api - INFO - Started refresh process with PID: 13144
+2025-06-13 07:04:13,349 - api - INFO - refresh_data executed in 0.03 seconds
+2025-06-13 07:04:18,357 - api - INFO - Refresh process 13144 is still running (expected)
+2025-06-13 07:04:18,387 - api - INFO - Refresh process 13144 is running in the background
+2025-06-13 07:05:31,720 - api - INFO - Loaded 37 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 07:05:31,721 - api - INFO - Loaded 37 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 07:05:31,722 - api - INFO - Match 235391: 2025-06-13T07:07:00Z
+2025-06-13 07:05:31,722 - api - INFO - Match 235391: 2025-06-13T07:07:00Z
+2025-06-13 07:05:31,722 - api - INFO - Match 235438: 2025-06-13T07:15:00Z
+2025-06-13 07:05:31,724 - api - INFO - Match 235438: 2025-06-13T07:15:00Z
+2025-06-13 07:05:31,724 - api - INFO - Match 235452: 2025-06-13T07:23:00Z
+2025-06-13 07:05:31,725 - api - INFO - Match 235452: 2025-06-13T07:23:00Z
+2025-06-13 07:05:31,725 - api - INFO - Match 235343: 2025-06-13T07:31:00Z
+2025-06-13 07:05:31,725 - api - INFO - Match 235343: 2025-06-13T07:31:00Z
+2025-06-13 07:05:31,726 - api - INFO - Match 235384: 2025-06-13T07:39:00Z
+2025-06-13 07:05:31,726 - api - INFO - Match 235384: 2025-06-13T07:39:00Z
+2025-06-13 07:05:31,726 - api - INFO - Match 235435: 2025-06-13T07:47:00Z
+2025-06-13 07:05:31,727 - api - INFO - Match 235435: 2025-06-13T07:47:00Z
+2025-06-13 07:05:31,727 - api - INFO - Match 235451: 2025-06-13T07:55:00Z
+2025-06-13 07:05:31,727 - api - INFO - Match 235451: 2025-06-13T07:55:00Z
+2025-06-13 07:05:31,728 - api - INFO - Match 235355: 2025-06-13T08:03:00Z
+2025-06-13 07:05:31,728 - api - INFO - Match 235355: 2025-06-13T08:03:00Z
+2025-06-13 07:05:31,728 - api - INFO - Match 235377: 2025-06-13T08:11:00Z
+2025-06-13 07:05:31,729 - api - INFO - Match 235377: 2025-06-13T08:11:00Z
+2025-06-13 07:05:31,729 - api - INFO - Match 235429: 2025-06-13T08:19:00Z
+2025-06-13 07:05:31,731 - api - INFO - Match 235429: 2025-06-13T08:19:00Z
+2025-06-13 07:05:31,732 - api - INFO - Match 235470: 2025-06-13T08:27:00Z
+2025-06-13 07:05:31,733 - api - INFO - Match 235470: 2025-06-13T08:27:00Z
+2025-06-13 07:05:31,733 - api - INFO - Match 235342: 2025-06-13T08:35:00Z
+2025-06-13 07:05:31,733 - api - INFO - Match 235342: 2025-06-13T08:35:00Z
+2025-06-13 07:05:31,734 - api - INFO - Match 235405: 2025-06-13T08:43:00Z
+2025-06-13 07:05:31,734 - api - INFO - Match 235405: 2025-06-13T08:43:00Z
+2025-06-13 07:05:31,734 - api - INFO - Match 235412: 2025-06-13T08:51:00Z
+2025-06-13 07:05:31,735 - api - INFO - Match 235412: 2025-06-13T08:51:00Z
+2025-06-13 07:05:31,735 - api - INFO - Match 235467: 2025-06-13T08:59:00Z
+2025-06-13 07:05:31,735 - api - INFO - Match 235467: 2025-06-13T08:59:00Z
+2025-06-13 07:05:31,736 - api - INFO - Match 235349: 2025-06-13T09:07:00Z
+2025-06-13 07:05:31,736 - api - INFO - Match 235349: 2025-06-13T09:07:00Z
+2025-06-13 07:05:31,738 - api - INFO - Match 235397: 2025-06-13T09:15:00Z
+2025-06-13 07:05:31,738 - api - INFO - Match 235397: 2025-06-13T09:15:00Z
+2025-06-13 07:05:31,738 - api - INFO - Match 235417: 2025-06-13T09:23:00Z
+2025-06-13 07:05:31,739 - api - INFO - Match 235417: 2025-06-13T09:23:00Z
+2025-06-13 07:05:31,739 - api - INFO - Match 235468: 2025-06-13T09:31:00Z
+2025-06-13 07:05:31,740 - api - INFO - Match 235468: 2025-06-13T09:31:00Z
+2025-06-13 07:05:31,740 - api - INFO - Match 235348: 2025-06-13T09:39:00Z
+2025-06-13 07:05:31,740 - api - INFO - Match 235348: 2025-06-13T09:39:00Z
+2025-06-13 07:05:31,741 - api - INFO - Match 235399: 2025-06-13T09:47:00Z
+2025-06-13 07:05:31,741 - api - INFO - Match 235399: 2025-06-13T09:47:00Z
+2025-06-13 07:05:31,741 - api - INFO - Match 235426: 2025-06-13T09:55:00Z
+2025-06-13 07:05:31,742 - api - INFO - Match 235426: 2025-06-13T09:55:00Z
+2025-06-13 07:05:31,742 - api - INFO - Match 235456: 2025-06-13T10:03:00Z
+2025-06-13 07:05:31,742 - api - INFO - Match 235456: 2025-06-13T10:03:00Z
+2025-06-13 07:05:31,743 - api - INFO - Match 235363: 2025-06-13T10:11:00Z
+2025-06-13 07:05:31,743 - api - INFO - Match 235363: 2025-06-13T10:11:00Z
+2025-06-13 07:05:31,744 - api - INFO - Match 235401: 2025-06-13T10:19:00Z
+2025-06-13 07:05:31,744 - api - INFO - Match 235418: 2025-06-13T10:27:00Z
+2025-06-13 07:05:31,745 - api - INFO - Match 235453: 2025-06-13T10:35:00Z
+2025-06-13 07:05:31,745 - api - INFO - Match 235401: 2025-06-13T10:19:00Z
+2025-06-13 07:05:31,746 - api - INFO - Match 235365: 2025-06-13T10:43:00Z
+2025-06-13 07:05:31,746 - api - INFO - Match 235418: 2025-06-13T10:27:00Z
+2025-06-13 07:05:31,746 - api - INFO - Match 235390: 2025-06-13T10:51:00Z
+2025-06-13 07:05:31,747 - api - INFO - Match 235453: 2025-06-13T10:35:00Z
+2025-06-13 07:05:31,747 - api - INFO - Match 235442: 2025-06-13T10:59:00Z
+2025-06-13 07:05:31,747 - api - INFO - Match 235365: 2025-06-13T10:43:00Z
+2025-06-13 07:05:31,748 - api - INFO - Match 235454: 2025-06-13T11:07:00Z
+2025-06-13 07:05:31,748 - api - INFO - Match 235390: 2025-06-13T10:51:00Z
+2025-06-13 07:05:31,748 - api - INFO - Match 235364: 2025-06-13T11:15:00Z
+2025-06-13 07:05:31,749 - api - INFO - Match 235442: 2025-06-13T10:59:00Z
+2025-06-13 07:05:31,749 - api - INFO - Match 235398: 2025-06-13T11:23:00Z
+2025-06-13 07:05:31,749 - api - INFO - Match 235454: 2025-06-13T11:07:00Z
+2025-06-13 07:05:31,750 - api - INFO - Match 235428: 2025-06-13T11:31:00Z
+2025-06-13 07:05:31,750 - api - INFO - Match 235364: 2025-06-13T11:15:00Z
+2025-06-13 07:05:31,750 - api - INFO - Match 235472: 2025-06-13T11:39:00Z
+2025-06-13 07:05:31,752 - api - INFO - Match 235398: 2025-06-13T11:23:00Z
+2025-06-13 07:05:31,752 - api - INFO - Match 235372: 2025-06-13T11:47:00Z
+2025-06-13 07:05:31,752 - api - INFO - Match 235428: 2025-06-13T11:31:00Z
+2025-06-13 07:05:31,753 - api - INFO - Match 235393: 2025-06-13T11:55:00Z
+2025-06-13 07:05:31,753 - api - INFO - Match 235472: 2025-06-13T11:39:00Z
+2025-06-13 07:05:31,754 - api - INFO - Returning 37 matches
+2025-06-13 07:05:31,754 - api - INFO - Match 235372: 2025-06-13T11:47:00Z
+2025-06-13 07:05:31,755 - api - INFO - get_predictions executed in 0.05 seconds
+2025-06-13 07:05:31,756 - api - INFO - Match 235393: 2025-06-13T11:55:00Z
+2025-06-13 07:05:31,758 - api - INFO - Returning 37 matches
+2025-06-13 07:05:31,759 - api - INFO - get_predictions executed in 0.05 seconds
+2025-06-13 07:06:01,952 - api - INFO - Loaded 37 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 07:06:01,953 - api - INFO - Returning 37 matches
+2025-06-13 07:06:01,955 - api - INFO - Retrieved score model accuracy: 4.075830549721303
+2025-06-13 07:06:01,956 - api - INFO - get_score_predictions executed in 0.00 seconds
+2025-06-13 07:06:02,261 - api - INFO - Loaded 37 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 07:06:02,262 - api - INFO - Returning 37 matches
+2025-06-13 07:06:02,263 - api - INFO - Retrieved score model accuracy: 4.075830549721303
+2025-06-13 07:06:02,264 - api - INFO - get_score_predictions executed in 0.00 seconds
+2025-06-13 07:06:20,061 - api - INFO - Loaded 37 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 07:06:20,061 - api - INFO - Loaded 37 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 07:06:20,061 - api - INFO - Match 235391: 2025-06-13T07:07:00Z
+2025-06-13 07:06:20,062 - api - INFO - Match 235391: 2025-06-13T07:07:00Z
+2025-06-13 07:06:20,062 - api - INFO - Match 235438: 2025-06-13T07:15:00Z
+2025-06-13 07:06:20,062 - api - INFO - Match 235438: 2025-06-13T07:15:00Z
+2025-06-13 07:06:20,062 - api - INFO - Match 235452: 2025-06-13T07:23:00Z
+2025-06-13 07:06:20,063 - api - INFO - Match 235452: 2025-06-13T07:23:00Z
+2025-06-13 07:06:20,064 - api - INFO - Match 235343: 2025-06-13T07:31:00Z
+2025-06-13 07:06:20,064 - api - INFO - Match 235343: 2025-06-13T07:31:00Z
+2025-06-13 07:06:20,065 - api - INFO - Match 235384: 2025-06-13T07:39:00Z
+2025-06-13 07:06:20,065 - api - INFO - Match 235384: 2025-06-13T07:39:00Z
+2025-06-13 07:06:20,066 - api - INFO - Match 235435: 2025-06-13T07:47:00Z
+2025-06-13 07:06:20,066 - api - INFO - Match 235435: 2025-06-13T07:47:00Z
+2025-06-13 07:06:20,066 - api - INFO - Match 235451: 2025-06-13T07:55:00Z
+2025-06-13 07:06:20,067 - api - INFO - Match 235451: 2025-06-13T07:55:00Z
+2025-06-13 07:06:20,067 - api - INFO - Match 235355: 2025-06-13T08:03:00Z
+2025-06-13 07:06:20,067 - api - INFO - Match 235355: 2025-06-13T08:03:00Z
+2025-06-13 07:06:20,068 - api - INFO - Match 235377: 2025-06-13T08:11:00Z
+2025-06-13 07:06:20,068 - api - INFO - Match 235377: 2025-06-13T08:11:00Z
+2025-06-13 07:06:20,068 - api - INFO - Match 235429: 2025-06-13T08:19:00Z
+2025-06-13 07:06:20,068 - api - INFO - Match 235429: 2025-06-13T08:19:00Z
+2025-06-13 07:06:20,068 - api - INFO - Match 235470: 2025-06-13T08:27:00Z
+2025-06-13 07:06:20,069 - api - INFO - Match 235470: 2025-06-13T08:27:00Z
+2025-06-13 07:06:20,069 - api - INFO - Match 235342: 2025-06-13T08:35:00Z
+2025-06-13 07:06:20,069 - api - INFO - Match 235342: 2025-06-13T08:35:00Z
+2025-06-13 07:06:20,069 - api - INFO - Match 235405: 2025-06-13T08:43:00Z
+2025-06-13 07:06:20,070 - api - INFO - Match 235405: 2025-06-13T08:43:00Z
+2025-06-13 07:06:20,070 - api - INFO - Match 235412: 2025-06-13T08:51:00Z
+2025-06-13 07:06:20,071 - api - INFO - Match 235412: 2025-06-13T08:51:00Z
+2025-06-13 07:06:20,071 - api - INFO - Match 235467: 2025-06-13T08:59:00Z
+2025-06-13 07:06:20,072 - api - INFO - Match 235467: 2025-06-13T08:59:00Z
+2025-06-13 07:06:20,072 - api - INFO - Match 235349: 2025-06-13T09:07:00Z
+2025-06-13 07:06:20,073 - api - INFO - Match 235349: 2025-06-13T09:07:00Z
+2025-06-13 07:06:20,073 - api - INFO - Match 235397: 2025-06-13T09:15:00Z
+2025-06-13 07:06:20,073 - api - INFO - Match 235397: 2025-06-13T09:15:00Z
+2025-06-13 07:06:20,073 - api - INFO - Match 235417: 2025-06-13T09:23:00Z
+2025-06-13 07:06:20,074 - api - INFO - Match 235417: 2025-06-13T09:23:00Z
+2025-06-13 07:06:20,074 - api - INFO - Match 235468: 2025-06-13T09:31:00Z
+2025-06-13 07:06:20,074 - api - INFO - Match 235468: 2025-06-13T09:31:00Z
+2025-06-13 07:06:20,074 - api - INFO - Match 235348: 2025-06-13T09:39:00Z
+2025-06-13 07:06:20,075 - api - INFO - Match 235348: 2025-06-13T09:39:00Z
+2025-06-13 07:06:20,075 - api - INFO - Match 235399: 2025-06-13T09:47:00Z
+2025-06-13 07:06:20,075 - api - INFO - Match 235399: 2025-06-13T09:47:00Z
+2025-06-13 07:06:20,075 - api - INFO - Match 235426: 2025-06-13T09:55:00Z
+2025-06-13 07:06:20,076 - api - INFO - Match 235426: 2025-06-13T09:55:00Z
+2025-06-13 07:06:20,076 - api - INFO - Match 235456: 2025-06-13T10:03:00Z
+2025-06-13 07:06:20,076 - api - INFO - Match 235456: 2025-06-13T10:03:00Z
+2025-06-13 07:06:20,076 - api - INFO - Match 235363: 2025-06-13T10:11:00Z
+2025-06-13 07:06:20,077 - api - INFO - Match 235363: 2025-06-13T10:11:00Z
+2025-06-13 07:06:20,078 - api - INFO - Match 235401: 2025-06-13T10:19:00Z
+2025-06-13 07:06:20,078 - api - INFO - Match 235401: 2025-06-13T10:19:00Z
+2025-06-13 07:06:20,079 - api - INFO - Match 235418: 2025-06-13T10:27:00Z
+2025-06-13 07:06:20,079 - api - INFO - Match 235418: 2025-06-13T10:27:00Z
+2025-06-13 07:06:20,080 - api - INFO - Match 235453: 2025-06-13T10:35:00Z
+2025-06-13 07:06:20,080 - api - INFO - Match 235453: 2025-06-13T10:35:00Z
+2025-06-13 07:06:20,080 - api - INFO - Match 235365: 2025-06-13T10:43:00Z
+2025-06-13 07:06:20,080 - api - INFO - Match 235365: 2025-06-13T10:43:00Z
+2025-06-13 07:06:20,081 - api - INFO - Match 235390: 2025-06-13T10:51:00Z
+2025-06-13 07:06:20,081 - api - INFO - Match 235390: 2025-06-13T10:51:00Z
+2025-06-13 07:06:20,081 - api - INFO - Match 235442: 2025-06-13T10:59:00Z
+2025-06-13 07:06:20,082 - api - INFO - Match 235442: 2025-06-13T10:59:00Z
+2025-06-13 07:06:20,082 - api - INFO - Match 235454: 2025-06-13T11:07:00Z
+2025-06-13 07:06:20,082 - api - INFO - Match 235454: 2025-06-13T11:07:00Z
+2025-06-13 07:06:20,082 - api - INFO - Match 235364: 2025-06-13T11:15:00Z
+2025-06-13 07:06:20,083 - api - INFO - Match 235364: 2025-06-13T11:15:00Z
+2025-06-13 07:06:20,083 - api - INFO - Match 235398: 2025-06-13T11:23:00Z
+2025-06-13 07:06:20,083 - api - INFO - Match 235398: 2025-06-13T11:23:00Z
+2025-06-13 07:06:20,083 - api - INFO - Match 235428: 2025-06-13T11:31:00Z
+2025-06-13 07:06:20,084 - api - INFO - Match 235428: 2025-06-13T11:31:00Z
+2025-06-13 07:06:20,084 - api - INFO - Match 235472: 2025-06-13T11:39:00Z
+2025-06-13 07:06:20,085 - api - INFO - Match 235472: 2025-06-13T11:39:00Z
+2025-06-13 07:06:20,085 - api - INFO - Match 235372: 2025-06-13T11:47:00Z
+2025-06-13 07:06:20,086 - api - INFO - Match 235372: 2025-06-13T11:47:00Z
+2025-06-13 07:06:20,086 - api - INFO - Match 235393: 2025-06-13T11:55:00Z
+2025-06-13 07:06:20,086 - api - INFO - Match 235393: 2025-06-13T11:55:00Z
+2025-06-13 07:06:20,087 - api - INFO - Returning 37 matches
+2025-06-13 07:06:20,087 - api - INFO - Returning 37 matches
+2025-06-13 07:06:20,088 - api - INFO - get_predictions executed in 0.03 seconds
+2025-06-13 07:06:20,089 - api - INFO - get_predictions executed in 0.03 seconds
+2025-06-13 07:06:37,072 - api - INFO - Loaded 37 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 07:06:37,073 - api - INFO - Match 235391: 2025-06-13T07:07:00Z
+2025-06-13 07:06:37,075 - api - INFO - Match 235438: 2025-06-13T07:15:00Z
+2025-06-13 07:06:37,076 - api - INFO - Match 235452: 2025-06-13T07:23:00Z
+2025-06-13 07:06:37,076 - api - INFO - Match 235343: 2025-06-13T07:31:00Z
+2025-06-13 07:06:37,079 - api - INFO - Match 235384: 2025-06-13T07:39:00Z
+2025-06-13 07:06:37,080 - api - INFO - Match 235435: 2025-06-13T07:47:00Z
+2025-06-13 07:06:37,081 - api - INFO - Match 235451: 2025-06-13T07:55:00Z
+2025-06-13 07:06:37,081 - api - INFO - Match 235355: 2025-06-13T08:03:00Z
+2025-06-13 07:06:37,082 - api - INFO - Match 235377: 2025-06-13T08:11:00Z
+2025-06-13 07:06:37,082 - api - INFO - Match 235429: 2025-06-13T08:19:00Z
+2025-06-13 07:06:37,083 - api - INFO - Match 235470: 2025-06-13T08:27:00Z
+2025-06-13 07:06:37,083 - api - INFO - Match 235342: 2025-06-13T08:35:00Z
+2025-06-13 07:06:37,087 - api - INFO - Match 235405: 2025-06-13T08:43:00Z
+2025-06-13 07:06:37,088 - api - INFO - Match 235412: 2025-06-13T08:51:00Z
+2025-06-13 07:06:37,088 - api - INFO - Match 235467: 2025-06-13T08:59:00Z
+2025-06-13 07:06:37,089 - api - INFO - Match 235349: 2025-06-13T09:07:00Z
+2025-06-13 07:06:37,089 - api - INFO - Match 235397: 2025-06-13T09:15:00Z
+2025-06-13 07:06:37,090 - api - INFO - Match 235417: 2025-06-13T09:23:00Z
+2025-06-13 07:06:37,094 - api - INFO - Match 235468: 2025-06-13T09:31:00Z
+2025-06-13 07:06:37,094 - api - INFO - Match 235348: 2025-06-13T09:39:00Z
+2025-06-13 07:06:37,095 - api - INFO - Match 235399: 2025-06-13T09:47:00Z
+2025-06-13 07:06:37,096 - api - INFO - Match 235426: 2025-06-13T09:55:00Z
+2025-06-13 07:06:37,096 - api - INFO - Match 235456: 2025-06-13T10:03:00Z
+2025-06-13 07:06:37,097 - api - INFO - Match 235363: 2025-06-13T10:11:00Z
+2025-06-13 07:06:37,097 - api - INFO - Match 235401: 2025-06-13T10:19:00Z
+2025-06-13 07:06:37,100 - api - INFO - Match 235418: 2025-06-13T10:27:00Z
+2025-06-13 07:06:37,101 - api - INFO - Match 235453: 2025-06-13T10:35:00Z
+2025-06-13 07:06:37,101 - api - INFO - Match 235365: 2025-06-13T10:43:00Z
+2025-06-13 07:06:37,102 - api - INFO - Match 235390: 2025-06-13T10:51:00Z
+2025-06-13 07:06:37,102 - api - INFO - Match 235442: 2025-06-13T10:59:00Z
+2025-06-13 07:06:37,103 - api - INFO - Match 235454: 2025-06-13T11:07:00Z
+2025-06-13 07:06:37,103 - api - INFO - Match 235364: 2025-06-13T11:15:00Z
+2025-06-13 07:06:37,104 - api - INFO - Match 235398: 2025-06-13T11:23:00Z
+2025-06-13 07:06:37,104 - api - INFO - Match 235428: 2025-06-13T11:31:00Z
+2025-06-13 07:06:37,104 - api - INFO - Match 235472: 2025-06-13T11:39:00Z
+2025-06-13 07:06:37,107 - api - INFO - Match 235372: 2025-06-13T11:47:00Z
+2025-06-13 07:06:37,108 - api - INFO - Match 235393: 2025-06-13T11:55:00Z
+2025-06-13 07:06:37,108 - api - INFO - Returning 37 matches
+2025-06-13 07:06:37,109 - api - INFO - get_predictions executed in 0.04 seconds
+2025-06-13 07:06:37,358 - api - INFO - Loaded 37 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 07:06:37,359 - api - INFO - Returning 37 matches
+2025-06-13 07:06:37,361 - api - INFO - Loaded 37 upcoming matches from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_matches.json
+2025-06-13 07:06:37,363 - api - INFO - Returning 37 matches
+2025-06-13 07:06:37,365 - api - INFO - get_upcoming_matches executed in 0.00 seconds
+2025-06-13 07:06:37,365 - api - INFO - Retrieved score model accuracy: 4.075830549721303
+2025-06-13 07:06:37,367 - api - INFO - get_score_predictions executed in 0.01 seconds
+2025-06-13 07:06:37,418 - api - INFO - Loaded 37 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 07:06:37,419 - api - INFO - Match 235391: 2025-06-13T07:07:00Z
+2025-06-13 07:06:37,419 - api - INFO - Match 235438: 2025-06-13T07:15:00Z
+2025-06-13 07:06:37,420 - api - INFO - Match 235452: 2025-06-13T07:23:00Z
+2025-06-13 07:06:37,420 - api - INFO - Match 235343: 2025-06-13T07:31:00Z
+2025-06-13 07:06:37,420 - api - INFO - Match 235384: 2025-06-13T07:39:00Z
+2025-06-13 07:06:37,420 - api - INFO - Match 235435: 2025-06-13T07:47:00Z
+2025-06-13 07:06:37,421 - api - INFO - Match 235451: 2025-06-13T07:55:00Z
+2025-06-13 07:06:37,421 - api - INFO - Match 235355: 2025-06-13T08:03:00Z
+2025-06-13 07:06:37,421 - api - INFO - Match 235377: 2025-06-13T08:11:00Z
+2025-06-13 07:06:37,422 - api - INFO - Match 235429: 2025-06-13T08:19:00Z
+2025-06-13 07:06:37,422 - api - INFO - Match 235470: 2025-06-13T08:27:00Z
+2025-06-13 07:06:37,422 - api - INFO - Match 235342: 2025-06-13T08:35:00Z
+2025-06-13 07:06:37,423 - api - INFO - Match 235405: 2025-06-13T08:43:00Z
+2025-06-13 07:06:37,423 - api - INFO - Match 235412: 2025-06-13T08:51:00Z
+2025-06-13 07:06:37,423 - api - INFO - Match 235467: 2025-06-13T08:59:00Z
+2025-06-13 07:06:37,424 - api - INFO - Match 235349: 2025-06-13T09:07:00Z
+2025-06-13 07:06:37,424 - api - INFO - Match 235397: 2025-06-13T09:15:00Z
+2025-06-13 07:06:37,425 - api - INFO - Match 235417: 2025-06-13T09:23:00Z
+2025-06-13 07:06:37,425 - api - INFO - Match 235468: 2025-06-13T09:31:00Z
+2025-06-13 07:06:37,426 - api - INFO - Match 235348: 2025-06-13T09:39:00Z
+2025-06-13 07:06:37,426 - api - INFO - Match 235399: 2025-06-13T09:47:00Z
+2025-06-13 07:06:37,426 - api - INFO - Match 235426: 2025-06-13T09:55:00Z
+2025-06-13 07:06:37,427 - api - INFO - Match 235456: 2025-06-13T10:03:00Z
+2025-06-13 07:06:37,427 - api - INFO - Match 235363: 2025-06-13T10:11:00Z
+2025-06-13 07:06:37,428 - api - INFO - Match 235401: 2025-06-13T10:19:00Z
+2025-06-13 07:06:37,428 - api - INFO - Match 235418: 2025-06-13T10:27:00Z
+2025-06-13 07:06:37,428 - api - INFO - Match 235453: 2025-06-13T10:35:00Z
+2025-06-13 07:06:37,429 - api - INFO - Match 235365: 2025-06-13T10:43:00Z
+2025-06-13 07:06:37,429 - api - INFO - Match 235390: 2025-06-13T10:51:00Z
+2025-06-13 07:06:37,429 - api - INFO - Match 235442: 2025-06-13T10:59:00Z
+2025-06-13 07:06:37,430 - api - INFO - Match 235454: 2025-06-13T11:07:00Z
+2025-06-13 07:06:37,430 - api - INFO - Match 235364: 2025-06-13T11:15:00Z
+2025-06-13 07:06:37,430 - api - INFO - Match 235398: 2025-06-13T11:23:00Z
+2025-06-13 07:06:37,431 - api - INFO - Match 235428: 2025-06-13T11:31:00Z
+2025-06-13 07:06:37,431 - api - INFO - Match 235472: 2025-06-13T11:39:00Z
+2025-06-13 07:06:37,432 - api - INFO - Match 235372: 2025-06-13T11:47:00Z
+2025-06-13 07:06:37,432 - api - INFO - Match 235393: 2025-06-13T11:55:00Z
+2025-06-13 07:06:37,433 - api - INFO - Returning 37 matches
+2025-06-13 07:06:37,434 - api - INFO - get_predictions executed in 0.02 seconds
+2025-06-13 07:06:37,678 - api - INFO - Loaded 37 upcoming matches from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_matches.json
+2025-06-13 07:06:37,679 - api - INFO - Loaded 37 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 07:06:37,679 - api - INFO - Returning 37 matches
+2025-06-13 07:06:37,680 - api - INFO - Returning 37 matches
+2025-06-13 07:06:37,681 - api - INFO - get_upcoming_matches executed in 0.00 seconds
+2025-06-13 07:06:37,684 - api - INFO - Retrieved score model accuracy: 4.075830549721303
+2025-06-13 07:06:37,685 - api - INFO - get_score_predictions executed in 0.01 seconds
+2025-06-13 07:07:14,212 - api - INFO - get_prediction_history executed in 0.15 seconds
+2025-06-13 07:07:14,360 - api - INFO - get_prediction_history executed in 0.14 seconds
+2025-06-13 07:07:53,451 - api - INFO - Loaded 37 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 07:07:53,453 - api - INFO - Match 235391: 2025-06-13T07:07:00Z
+2025-06-13 07:07:53,453 - api - INFO - Match 235438: 2025-06-13T07:15:00Z
+2025-06-13 07:07:53,454 - api - INFO - Match 235452: 2025-06-13T07:23:00Z
+2025-06-13 07:07:53,454 - api - INFO - Match 235343: 2025-06-13T07:31:00Z
+2025-06-13 07:07:53,454 - api - INFO - Match 235384: 2025-06-13T07:39:00Z
+2025-06-13 07:07:53,455 - api - INFO - Match 235435: 2025-06-13T07:47:00Z
+2025-06-13 07:07:53,455 - api - INFO - Match 235451: 2025-06-13T07:55:00Z
+2025-06-13 07:07:53,455 - api - INFO - Match 235355: 2025-06-13T08:03:00Z
+2025-06-13 07:07:53,456 - api - INFO - Match 235377: 2025-06-13T08:11:00Z
+2025-06-13 07:07:53,456 - api - INFO - Match 235429: 2025-06-13T08:19:00Z
+2025-06-13 07:07:53,456 - api - INFO - Match 235470: 2025-06-13T08:27:00Z
+2025-06-13 07:07:53,457 - api - INFO - Match 235342: 2025-06-13T08:35:00Z
+2025-06-13 07:07:53,457 - api - INFO - Match 235405: 2025-06-13T08:43:00Z
+2025-06-13 07:07:53,457 - api - INFO - Match 235412: 2025-06-13T08:51:00Z
+2025-06-13 07:07:53,457 - api - INFO - Match 235467: 2025-06-13T08:59:00Z
+2025-06-13 07:07:53,458 - api - INFO - Match 235349: 2025-06-13T09:07:00Z
+2025-06-13 07:07:53,458 - api - INFO - Match 235397: 2025-06-13T09:15:00Z
+2025-06-13 07:07:53,458 - api - INFO - Match 235417: 2025-06-13T09:23:00Z
+2025-06-13 07:07:53,459 - api - INFO - Match 235468: 2025-06-13T09:31:00Z
+2025-06-13 07:07:53,460 - api - INFO - Match 235348: 2025-06-13T09:39:00Z
+2025-06-13 07:07:53,461 - api - INFO - Match 235399: 2025-06-13T09:47:00Z
+2025-06-13 07:07:53,461 - api - INFO - Match 235426: 2025-06-13T09:55:00Z
+2025-06-13 07:07:53,462 - api - INFO - Match 235456: 2025-06-13T10:03:00Z
+2025-06-13 07:07:53,462 - api - INFO - Match 235363: 2025-06-13T10:11:00Z
+2025-06-13 07:07:53,463 - api - INFO - Match 235401: 2025-06-13T10:19:00Z
+2025-06-13 07:07:53,463 - api - INFO - Match 235418: 2025-06-13T10:27:00Z
+2025-06-13 07:07:53,463 - api - INFO - Match 235453: 2025-06-13T10:35:00Z
+2025-06-13 07:07:53,463 - api - INFO - Match 235365: 2025-06-13T10:43:00Z
+2025-06-13 07:07:53,464 - api - INFO - Match 235390: 2025-06-13T10:51:00Z
+2025-06-13 07:07:53,464 - api - INFO - Match 235442: 2025-06-13T10:59:00Z
+2025-06-13 07:07:53,464 - api - INFO - Match 235454: 2025-06-13T11:07:00Z
+2025-06-13 07:07:53,464 - api - INFO - Match 235364: 2025-06-13T11:15:00Z
+2025-06-13 07:07:53,465 - api - INFO - Match 235398: 2025-06-13T11:23:00Z
+2025-06-13 07:07:53,465 - api - INFO - Match 235428: 2025-06-13T11:31:00Z
+2025-06-13 07:07:53,465 - api - INFO - Match 235472: 2025-06-13T11:39:00Z
+2025-06-13 07:07:53,466 - api - INFO - Match 235372: 2025-06-13T11:47:00Z
+2025-06-13 07:07:53,467 - api - INFO - Match 235393: 2025-06-13T11:55:00Z
+2025-06-13 07:07:53,468 - api - INFO - Returning 37 matches
+2025-06-13 07:07:53,469 - api - INFO - get_predictions executed in 0.02 seconds
+2025-06-13 07:07:53,704 - api - INFO - Loaded 37 predictions from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\output\upcoming_match_predictions.json
+2025-06-13 07:07:53,705 - api - INFO - Match 235391: 2025-06-13T07:07:00Z
+2025-06-13 07:07:53,705 - api - INFO - Match 235438: 2025-06-13T07:15:00Z
+2025-06-13 07:07:53,705 - api - INFO - Match 235452: 2025-06-13T07:23:00Z
+2025-06-13 07:07:53,706 - api - INFO - Match 235343: 2025-06-13T07:31:00Z
+2025-06-13 07:07:53,706 - api - INFO - Match 235384: 2025-06-13T07:39:00Z
+2025-06-13 07:07:53,706 - api - INFO - Match 235435: 2025-06-13T07:47:00Z
+2025-06-13 07:07:53,706 - api - INFO - Match 235451: 2025-06-13T07:55:00Z
+2025-06-13 07:07:53,707 - api - INFO - Match 235355: 2025-06-13T08:03:00Z
+2025-06-13 07:07:53,707 - api - INFO - Match 235377: 2025-06-13T08:11:00Z
+2025-06-13 07:07:53,707 - api - INFO - Match 235429: 2025-06-13T08:19:00Z
+2025-06-13 07:07:53,707 - api - INFO - Match 235470: 2025-06-13T08:27:00Z
+2025-06-13 07:07:53,708 - api - INFO - Match 235342: 2025-06-13T08:35:00Z
+2025-06-13 07:07:53,708 - api - INFO - Match 235405: 2025-06-13T08:43:00Z
+2025-06-13 07:07:53,708 - api - INFO - Match 235412: 2025-06-13T08:51:00Z
+2025-06-13 07:07:53,710 - api - INFO - Match 235467: 2025-06-13T08:59:00Z
+2025-06-13 07:07:53,711 - api - INFO - Match 235349: 2025-06-13T09:07:00Z
+2025-06-13 07:07:53,711 - api - INFO - Match 235397: 2025-06-13T09:15:00Z
+2025-06-13 07:07:53,712 - api - INFO - Match 235417: 2025-06-13T09:23:00Z
+2025-06-13 07:07:53,712 - api - INFO - Match 235468: 2025-06-13T09:31:00Z
+2025-06-13 07:07:53,713 - api - INFO - Match 235348: 2025-06-13T09:39:00Z
+2025-06-13 07:07:53,713 - api - INFO - Match 235399: 2025-06-13T09:47:00Z
+2025-06-13 07:07:53,713 - api - INFO - Match 235426: 2025-06-13T09:55:00Z
+2025-06-13 07:07:53,714 - api - INFO - Match 235456: 2025-06-13T10:03:00Z
+2025-06-13 07:07:53,714 - api - INFO - Match 235363: 2025-06-13T10:11:00Z
+2025-06-13 07:07:53,714 - api - INFO - Match 235401: 2025-06-13T10:19:00Z
+2025-06-13 07:07:53,715 - api - INFO - Match 235418: 2025-06-13T10:27:00Z
+2025-06-13 07:07:53,715 - api - INFO - Match 235453: 2025-06-13T10:35:00Z
+2025-06-13 07:07:53,715 - api - INFO - Match 235365: 2025-06-13T10:43:00Z
+2025-06-13 07:07:53,716 - api - INFO - Match 235390: 2025-06-13T10:51:00Z
+2025-06-13 07:07:53,717 - api - INFO - Match 235442: 2025-06-13T10:59:00Z
+2025-06-13 07:07:53,718 - api - INFO - Match 235454: 2025-06-13T11:07:00Z
+2025-06-13 07:07:53,718 - api - INFO - Match 235364: 2025-06-13T11:15:00Z
+2025-06-13 07:07:53,718 - api - INFO - Match 235398: 2025-06-13T11:23:00Z
+2025-06-13 07:07:53,719 - api - INFO - Match 235428: 2025-06-13T11:31:00Z
+2025-06-13 07:07:53,719 - api - INFO - Match 235472: 2025-06-13T11:39:00Z
+2025-06-13 07:07:53,720 - api - INFO - Match 235372: 2025-06-13T11:47:00Z
+2025-06-13 07:07:53,720 - api - INFO - Match 235393: 2025-06-13T11:55:00Z
+2025-06-13 07:07:53,720 - api - INFO - Returning 37 matches
+2025-06-13 07:07:53,721 - api - INFO - get_predictions executed in 0.02 seconds

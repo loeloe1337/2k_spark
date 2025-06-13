@@ -38,8 +38,8 @@
       },
       "accuracy": 0.670547147846333,
       "num_samples": 12885,
-      "model_path": "C:\\Projects\\2k_spark\\models\\winnerpredictionmodel_1745600056.pkl",
-      "info_path": "C:\\Projects\\2k_spark\\models\\winnerpredictionmodel_info_1745600056.json"
+      "model_path": "C:\\Users\\sicke\\OneDrive\\Documents\\Projects\\2k_spark\\models\\winnerpredictionmodel_1745600056.pkl",
+      "info_path": "C:\\Users\\sicke\\OneDrive\\Documents\\Projects\\2k_spark\\models\\winnerpredictionmodel_info_1745600056.json"
     },
     {
       "model_id": "1745621208",
@@ -93,8 +93,8 @@
         "original": 46,
         "selected": 23
       },
-      "model_path": "C:\\Projects\\2k_spark\\models\\winnerpredictionmodel_1745621208.pkl",
-      "info_path": "C:\\Projects\\2k_spark\\models\\winnerpredictionmodel_info_1745621208.json"
+      "model_path": "C:\\Users\\sicke\\OneDrive\\Documents\\Projects\\2k_spark\\models\\winnerpredictionmodel_1745621208.pkl",
+      "info_path": "C:\\Users\\sicke\\OneDrive\\Documents\\Projects\\2k_spark\\models\\winnerpredictionmodel_info_1745621208.json"
     },
     {
       "model_id": "1745622274",
@@ -159,8 +159,8 @@
         "selected": 23
       },
       "validation_method": "5-fold cross-validation",
-      "model_path": "C:\\Projects\\2k_spark\\models\\winnerpredictionmodel_1745622274.pkl",
-      "info_path": "C:\\Projects\\2k_spark\\models\\winnerpredictionmodel_info_1745622274.json"
+      "model_path": "C:\\Users\\sicke\\OneDrive\\Documents\\Projects\\2k_spark\\models\\winnerpredictionmodel_1745622274.pkl",
+      "info_path": "C:\\Users\\sicke\\OneDrive\\Documents\\Projects\\2k_spark\\models\\winnerpredictionmodel_info_1745622274.json"
     }
   ],
   "best_model_id": "1745622274"

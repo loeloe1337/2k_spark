@@ -28,7 +28,7 @@ CORS_ORIGINS = os.environ.get("CORS_ORIGINS", "*").split(",")
 
 # H2H GG League API settings
 H2H_BASE_URL = "https://api-sis-stats.hudstats.com/v1"
-H2H_WEBSITE_URL = "https://www.h2hggl.com/en/ebasketball/players/"
+H2H_WEBSITE_URL = "https://h2hggl.com/en/match/NB122120625"
 H2H_TOKEN_LOCALSTORAGE_KEY = "sis-hudstats-token"
 H2H_DEFAULT_TOURNAMENT_ID = 1
 
