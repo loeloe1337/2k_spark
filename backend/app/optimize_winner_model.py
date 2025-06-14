@@ -52,14 +52,17 @@ def load_data():
 
 @log_execution_time(logger)
 @log_exceptions(logger)
-def optimize_winner_model(n_trials=50, test_size=0.2, random_state=DEFAULT_RANDOM_STATE):
+def optimize_winner_model(n_trials=20, test_size=0.2, random_state=DEFAULT_RANDOM_STATE, 
+                         quick_mode=True, sample_size=0.5):
     """
     Optimize the winner prediction model using Bayesian optimization.
     
     Args:
-        n_trials (int): Number of optimization trials
+        n_trials (int): Number of optimization trials (reduced default for faster training)
         test_size (float): Proportion of data to use for testing
         random_state (int): Random state for reproducibility
+        quick_mode (bool): Use faster optimization settings
+        sample_size (float): Fraction of data to use for optimization (speeds up training)
         
     Returns:
         tuple: (best_params, best_score, best_model)
@@ -68,41 +71,88 @@ def optimize_winner_model(n_trials=50, test_size=0.2, random_state=DEFAULT_RANDO
     player_stats, matches = load_data()
     
     # Define parameter space for winner prediction model
-    param_space = {
-        # Random Forest parameters
-        'n_estimators': {
-            'type': 'integer',
-            'low': 50,
-            'high': 500
-        },
-        'max_depth': {
-            'type': 'integer',
-            'low': 3,
-            'high': 20
-        },
-        'min_samples_split': {
-            'type': 'integer',
-            'low': 2,
-            'high': 20
-        },
-        'min_samples_leaf': {
-            'type': 'integer',
-            'low': 1,
-            'high': 10
-        },
-        'max_features': {
-            'type': 'categorical',
-            'categories': ['sqrt', 'log2', None]
-        },
-        'bootstrap': {
-            'type': 'categorical',
-            'categories': [True, False]
-        },
-        'class_weight': {
-            'type': 'categorical',
-            'categories': ['balanced', 'balanced_subsample', None]
+    # Optimized ranges for faster training while maintaining effectiveness
+    if quick_mode:
+        param_space = {
+            # Reduced Random Forest parameters for faster training
+            'n_estimators': {
+                'type': 'integer',
+                'low': 50,
+                'high': 200  # Reduced from 500
+            },
+            'max_depth': {
+                'type': 'integer',
+                'low': 5,
+                'high': 15  # Narrowed range
+            },
+            'min_samples_split': {
+                'type': 'integer',
+                'low': 2,
+                'high': 10  # Reduced from 20
+            },
+            'min_samples_leaf': {
+                'type': 'integer',
+                'low': 1,
+                'high': 5  # Reduced from 10
+            },
+            'max_features': {
+                'type': 'categorical',
+                'categories': ['sqrt', 'log2']  # Removed None for faster training
+            },
+            'bootstrap': {
+                'type': 'categorical',
+                'categories': [True]  # Fixed to True for faster training
+            },
+            'class_weight': {
+                'type': 'categorical',
+                'categories': ['balanced', None]  # Reduced options
+            }
         }
-    }
+    else:
+        # Full parameter space for thorough optimization
+        param_space = {
+            'n_estimators': {
+                'type': 'integer',
+                'low': 50,
+                'high': 500
+            },
+            'max_depth': {
+                'type': 'integer',
+                'low': 3,
+                'high': 20
+            },
+            'min_samples_split': {
+                'type': 'integer',
+                'low': 2,
+                'high': 20
+            },
+            'min_samples_leaf': {
+                'type': 'integer',
+                'low': 1,
+                'high': 10
+            },
+            'max_features': {
+                'type': 'categorical',
+                'categories': ['sqrt', 'log2', None]
+            },
+            'bootstrap': {
+                'type': 'categorical',
+                'categories': [True, False]
+            },
+            'class_weight': {
+                'type': 'categorical',
+                'categories': ['balanced', 'balanced_subsample', None]
+            }
+        }
+    
+    # Sample data for faster optimization if requested
+    if sample_size < 1.0 and len(matches) > 100:
+        import random
+        random.seed(random_state)
+        sample_matches = random.sample(matches, int(len(matches) * sample_size))
+        logger.info(f"Using {len(sample_matches)} matches for optimization (sample_size={sample_size})")
+    else:
+        sample_matches = matches
     
     # Create optimizer
     optimizer = BayesianOptimizer(
@@ -111,14 +161,33 @@ def optimize_winner_model(n_trials=50, test_size=0.2, random_state=DEFAULT_RANDO
         random_state=random_state
     )
     
-    # Run optimization
+    # Run optimization with sampled data
+    logger.info(f"Starting optimization with {n_trials} trials")
+    logger.info(f"Quick mode: {quick_mode}")
+    logger.info(f"Sample size: {sample_size if sample_size < 1.0 else 'Full dataset'}")
+    
+    # Set early stopping parameters based on mode
+    early_stopping_rounds = 5 if quick_mode else 10
+    min_improvement = 0.005 if quick_mode else 0.001
+    
     best_params, best_score, best_model = optimizer.optimize(
         player_stats=player_stats,
-        matches=matches,
+        matches=sample_matches,
         n_trials=n_trials,
         test_size=test_size,
-        scoring='accuracy'
+        scoring='accuracy',
+        early_stopping_rounds=early_stopping_rounds,
+        min_improvement=min_improvement
     )
+    
+    # If we used sampled data, retrain the best model on full data
+    if sample_size < 1.0 and len(matches) > 100:
+        logger.info("Retraining best model on full dataset...")
+        final_model = OptimizedWinnerPredictionModel(**best_params)
+        final_model.train(player_stats, matches, test_size=test_size)
+        best_model = final_model
+        # Update score with full data performance
+        best_score = best_model.model_info.get("metrics", {}).get('accuracy', best_score)
     
     # Save the best model
     model_path = os.path.join(MODELS_DIR, f"optimized_winner_model_{best_model.model_id}.pkl")
@@ -196,6 +265,7 @@ class OptimizedWinnerPredictionModel(WinnerPredictionModel):
         })
         
         # Initialize model with all hyperparameters
+        # Add n_jobs=-1 for parallel processing to speed up training
         self.model = RandomForestClassifier(
             n_estimators=n_estimators,
             max_depth=max_depth,
@@ -204,17 +274,24 @@ class OptimizedWinnerPredictionModel(WinnerPredictionModel):
             max_features=max_features,
             bootstrap=bootstrap,
             class_weight=class_weight,
-            random_state=random_state
+            random_state=random_state,
+            n_jobs=-1  # Use all available cores for faster training
         )
 
 
 if __name__ == "__main__":
     # Parse command line arguments
     parser = argparse.ArgumentParser(description="Optimize winner prediction model")
-    parser.add_argument("--n-trials", type=int, default=50, help="Number of optimization trials")
+    parser.add_argument("--n-trials", type=int, default=20, help="Number of optimization trials (reduced default for faster training)")
     parser.add_argument("--test-size", type=float, default=0.2, help="Proportion of data to use for testing")
     parser.add_argument("--random-state", type=int, default=DEFAULT_RANDOM_STATE, help="Random state for reproducibility")
+    parser.add_argument("--quick-mode", action="store_true", default=True, help="Use faster optimization settings")
+    parser.add_argument("--full-mode", action="store_true", help="Use full optimization settings (slower but more thorough)")
+    parser.add_argument("--sample-size", type=float, default=0.7, help="Fraction of data to use for optimization (0.1-1.0)")
     args = parser.parse_args()
+    
+    # Determine mode
+    quick_mode = not args.full_mode
     
     # Create models directory if it doesn't exist
     Path(MODELS_DIR).mkdir(parents=True, exist_ok=True)
@@ -223,8 +300,15 @@ if __name__ == "__main__":
     best_params, best_score, best_model = optimize_winner_model(
         n_trials=args.n_trials,
         test_size=args.test_size,
-        random_state=args.random_state
+        random_state=args.random_state,
+        quick_mode=quick_mode,
+        sample_size=args.sample_size
     )
+    
+    # Print mode information
+    mode_str = "Quick Mode" if quick_mode else "Full Mode"
+    print(f"\nOptimization completed in {mode_str}")
+    print(f"Trials: {args.n_trials}, Sample size: {args.sample_size}")
     
     # Print results
     print(f"Best parameters: {best_params}")

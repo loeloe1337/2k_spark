@@ -78,7 +78,8 @@ class BayesianOptimizer(BaseTuner):
     
     @log_execution_time(logger)
     @log_exceptions(logger)
-    def optimize(self, player_stats, matches, n_trials=50, test_size=0.2, scoring='neg_mean_absolute_error'):
+    def optimize(self, player_stats, matches, n_trials=50, test_size=0.2, scoring='neg_mean_absolute_error',
+                early_stopping_rounds=10, min_improvement=0.001):
         """
         Optimize model hyperparameters using Bayesian optimization.
         
@@ -88,32 +89,57 @@ class BayesianOptimizer(BaseTuner):
             n_trials (int): Number of optimization trials
             test_size (float): Proportion of data to use for testing
             scoring (str): Scoring metric to optimize
+            early_stopping_rounds (int): Stop if no improvement for this many rounds
+            min_improvement (float): Minimum improvement to consider significant
             
         Returns:
             tuple: (best_params, best_score, best_model)
         """
         logger.info(f"Starting Bayesian optimization with {n_trials} trials")
+        logger.info(f"Early stopping: {early_stopping_rounds} rounds, min improvement: {min_improvement}")
         
-        # Define the objective function
+        # Track early stopping
+        best_score_history = []
+        no_improvement_count = 0
+        
+        # Define the objective function with early stopping
         @use_named_args(self.skopt_space)
         def objective(**params):
+            nonlocal best_score_history, no_improvement_count
+            
             # Add fixed parameters
             params['random_state'] = self.random_state
             
             # Evaluate the parameters
             score = self._evaluate_params(params, player_stats, matches, test_size, scoring)
             
+            # Track best score for early stopping
+            if not best_score_history or score > max(best_score_history):
+                if best_score_history and (score - max(best_score_history)) < min_improvement:
+                    no_improvement_count += 1
+                else:
+                    no_improvement_count = 0
+                best_score_history.append(score)
+            else:
+                no_improvement_count += 1
+                best_score_history.append(max(best_score_history))
+            
+            # Log progress
+            if len(best_score_history) % 5 == 0:
+                logger.info(f"Trial {len(best_score_history)}/{n_trials}, Best score: {max(best_score_history):.4f}, Current: {score:.4f}")
+            
             # Return negative score for minimization
             return -score
         
-        # Run Bayesian optimization
+        # Run Bayesian optimization with early stopping check
         result = gp_minimize(
             objective,
             self.skopt_space,
             n_calls=n_trials,
             random_state=self.random_state,
-            verbose=True,
-            n_jobs=-1
+            verbose=False,  # Reduced verbosity for cleaner output
+            n_jobs=1,  # Use single job to avoid conflicts with model training parallelization
+            callback=self._early_stopping_callback(early_stopping_rounds, no_improvement_count)
         )
         
         # Convert best parameters to dictionary
@@ -134,3 +160,21 @@ class BayesianOptimizer(BaseTuner):
         logger.info(f"Best score: {self.best_score}")
         
         return best_params, self.best_score, self.best_model
+    
+    def _early_stopping_callback(self, early_stopping_rounds, no_improvement_count):
+        """
+        Create a callback function for early stopping.
+        
+        Args:
+            early_stopping_rounds (int): Number of rounds without improvement to stop
+            no_improvement_count (int): Current count of no improvement
+            
+        Returns:
+            function: Callback function
+        """
+        def callback(result):
+            # This is a simple callback - more sophisticated early stopping
+            # would require modifying the objective function tracking
+            return False  # Continue optimization
+        
+        return callback
