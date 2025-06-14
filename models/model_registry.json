@@ -161,7 +161,14 @@
       "validation_method": "5-fold cross-validation",
       "model_path": "C:\\Users\\sicke\\OneDrive\\Documents\\Projects\\2k_spark\\models\\winnerpredictionmodel_1745622274.pkl",
       "info_path": "C:\\Users\\sicke\\OneDrive\\Documents\\Projects\\2k_spark\\models\\winnerpredictionmodel_info_1745622274.json"
+    },
+    {
+      "model_id": "1749900907",
+      "model_path": "C:\\Users\\sicke\\OneDrive\\Documents\\Projects\\2k_spark\\models\\optimized_winner_model_1749900907.pkl",
+      "info_path": "C:\\Users\\sicke\\OneDrive\\Documents\\Projects\\2k_spark\\models\\optimized_winner_model_info_1749900907.json",
+      "accuracy": 0.7006802721088435,
+      "model_type": "WinnerPredictionModel"
     }
   ],
-  "best_model_id": "1745622274"
+  "best_model_id": "1749900907"
 }

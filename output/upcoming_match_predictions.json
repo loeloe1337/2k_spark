@@ -1,878 +1,28 @@
 [
   {
-    "fixtureId": 235391,
-    "homePlayer": {
-      "id": 66,
-      "name": "THA KID"
-    },
-    "awayPlayer": {
-      "id": 27,
-      "name": "DIMES"
-    },
-    "homeTeam": {
-      "id": 5,
-      "name": "Chicago Bulls"
-    },
-    "awayTeam": {
-      "id": 2,
-      "name": "Brooklyn Nets"
-    },
-    "fixtureStart": "2025-06-13T07:07:00Z",
-    "prediction": {
-      "home_win_probability": 0.46934905222575235,
-      "away_win_probability": 0.5306509477742477,
-      "predicted_winner": "away",
-      "confidence": 0.5306509477742477,
-      "prediction_method": "fallback_win_rates"
-    },
-    "score_prediction": {
-      "home_score": 58,
-      "away_score": 57,
-      "total_score": 115,
-      "score_diff": 1
-    },
-    "generated_at": "2025-06-13 07:04:34"
-  },
-  {
-    "fixtureId": 235438,
-    "homePlayer": {
-      "id": 1255,
-      "name": "RAPTOR"
-    },
-    "awayPlayer": {
-      "id": 456,
-      "name": "PRIMAL"
-    },
-    "homeTeam": {
-      "id": 6,
-      "name": "Cleveland Cavaliers"
-    },
-    "awayTeam": {
-      "id": 24,
-      "name": "Phoenix Suns"
-    },
-    "fixtureStart": "2025-06-13T07:15:00Z",
-    "prediction": {
-      "home_win_probability": 0.49319472169652345,
-      "away_win_probability": 0.5068052783034765,
-      "predicted_winner": "away",
-      "confidence": 0.5068052783034765,
-      "prediction_method": "fallback_win_rates"
-    },
-    "score_prediction": {
-      "home_score": 53,
-      "away_score": 54,
-      "total_score": 107,
-      "score_diff": -1
-    },
-    "generated_at": "2025-06-13 07:04:34"
-  },
-  {
-    "fixtureId": 235452,
-    "homePlayer": {
-      "id": 1552,
-      "name": "CHARM"
-    },
-    "awayPlayer": {
-      "id": 2249,
-      "name": "DOC"
-    },
-    "homeTeam": {
-      "id": 22,
-      "name": "Orlando Magic"
-    },
-    "awayTeam": {
-      "id": 8,
-      "name": "Denver Nuggets"
-    },
-    "fixtureStart": "2025-06-13T07:23:00Z",
-    "prediction": {
-      "home_win_probability": 1.0,
-      "away_win_probability": 0.0,
-      "predicted_winner": "home",
-      "confidence": 1.0,
-      "prediction_method": "fallback_win_rates"
-    },
-    "score_prediction": {
-      "home_score": 50,
-      "away_score": 41,
-      "total_score": 91,
-      "score_diff": 9
-    },
-    "generated_at": "2025-06-13 07:04:34"
-  },
-  {
-    "fixtureId": 235343,
-    "homePlayer": {
-      "id": 751,
-      "name": "JACKAL"
-    },
-    "awayPlayer": {
-      "id": 159,
-      "name": "HOLLOW"
-    },
-    "homeTeam": {
-      "id": 14,
-      "name": "Los Angeles Lakers"
-    },
-    "awayTeam": {
-      "id": 3,
-      "name": "Boston Celtics"
-    },
-    "fixtureStart": "2025-06-13T07:31:00Z",
-    "prediction": {
-      "home_win_probability": 0.5412299782479731,
-      "away_win_probability": 0.45877002175202697,
-      "predicted_winner": "home",
-      "confidence": 0.5412299782479731,
-      "prediction_method": "fallback_win_rates"
-    },
-    "score_prediction": {
-      "home_score": 58,
-      "away_score": 52,
-      "total_score": 110,
-      "score_diff": 6
-    },
-    "generated_at": "2025-06-13 07:04:34"
-  },
-  {
-    "fixtureId": 235384,
-    "homePlayer": {
-      "id": 14,
-      "name": "CARNAGE"
-    },
-    "awayPlayer": {
-      "id": 53,
-      "name": "MIST"
-    },
-    "homeTeam": {
-      "id": 28,
-      "name": "Toronto Raptors"
-    },
-    "awayTeam": {
-      "id": 16,
-      "name": "Miami Heat"
-    },
-    "fixtureStart": "2025-06-13T07:39:00Z",
-    "prediction": {
-      "home_win_probability": 0.49415927856626457,
-      "away_win_probability": 0.5058407214337354,
-      "predicted_winner": "away",
-      "confidence": 0.5058407214337354,
-      "prediction_method": "fallback_win_rates"
-    },
-    "score_prediction": {
-      "home_score": 63,
-      "away_score": 58,
-      "total_score": 121,
-      "score_diff": 5
-    },
-    "generated_at": "2025-06-13 07:04:34"
-  },
-  {
-    "fixtureId": 235435,
-    "homePlayer": {
-      "id": 160,
-      "name": "JUGGERNAUT"
-    },
-    "awayPlayer": {
-      "id": 975,
-      "name": "DOMAIN"
-    },
-    "homeTeam": {
-      "id": 5,
-      "name": "Chicago Bulls"
-    },
-    "awayTeam": {
-      "id": 28,
-      "name": "Toronto Raptors"
-    },
-    "fixtureStart": "2025-06-13T07:47:00Z",
-    "prediction": {
-      "home_win_probability": 0.5387387387387387,
-      "away_win_probability": 0.46126126126126127,
-      "predicted_winner": "home",
-      "confidence": 0.5387387387387387,
-      "prediction_method": "fallback_win_rates"
-    },
-    "score_prediction": {
-      "home_score": 55,
-      "away_score": 52,
-      "total_score": 107,
-      "score_diff": 3
-    },
-    "generated_at": "2025-06-13 07:04:34"
-  },
-  {
-    "fixtureId": 235451,
-    "homePlayer": {
-      "id": 91,
-      "name": "DOUBLEFOUR"
-    },
-    "awayPlayer": {
-      "id": 1433,
-      "name": "HERO"
-    },
-    "homeTeam": {
-      "id": 14,
-      "name": "Los Angeles Lakers"
-    },
-    "awayTeam": {
-      "id": 20,
-      "name": "New York Knicks"
-    },
-    "fixtureStart": "2025-06-13T07:55:00Z",
-    "prediction": {
-      "home_win_probability": 0.502875484820115,
-      "away_win_probability": 0.497124515179885,
-      "predicted_winner": "home",
-      "confidence": 0.502875484820115,
-      "prediction_method": "fallback_win_rates"
-    },
-    "score_prediction": {
-      "home_score": 55,
-      "away_score": 50,
-      "total_score": 105,
-      "score_diff": 5
-    },
-    "generated_at": "2025-06-13 07:04:34"
-  },
-  {
-    "fixtureId": 235355,
-    "homePlayer": {
-      "id": 751,
-      "name": "JACKAL"
-    },
-    "awayPlayer": {
-      "id": 956,
-      "name": "BULLSEYE"
-    },
-    "homeTeam": {
-      "id": 14,
-      "name": "Los Angeles Lakers"
-    },
-    "awayTeam": {
-      "id": 20,
-      "name": "New York Knicks"
-    },
-    "fixtureStart": "2025-06-13T08:03:00Z",
-    "prediction": {
-      "home_win_probability": 0.5042107060436988,
-      "away_win_probability": 0.4957892939563011,
-      "predicted_winner": "home",
-      "confidence": 0.5042107060436988,
-      "prediction_method": "fallback_win_rates"
-    },
-    "score_prediction": {
-      "home_score": 58,
-      "away_score": 58,
-      "total_score": 116,
-      "score_diff": 0
-    },
-    "generated_at": "2025-06-13 07:04:34"
-  },
-  {
-    "fixtureId": 235377,
-    "homePlayer": {
-      "id": 14,
-      "name": "CARNAGE"
-    },
-    "awayPlayer": {
-      "id": 27,
-      "name": "DIMES"
-    },
-    "homeTeam": {
-      "id": 28,
-      "name": "Toronto Raptors"
-    },
-    "awayTeam": {
-      "id": 2,
-      "name": "Brooklyn Nets"
-    },
-    "fixtureStart": "2025-06-13T08:11:00Z",
-    "prediction": {
-      "home_win_probability": 0.47707872070849916,
-      "away_win_probability": 0.5229212792915009,
-      "predicted_winner": "away",
-      "confidence": 0.5229212792915009,
-      "prediction_method": "fallback_win_rates"
-    },
-    "score_prediction": {
-      "home_score": 63,
-      "away_score": 57,
-      "total_score": 120,
-      "score_diff": 6
-    },
-    "generated_at": "2025-06-13 07:04:34"
-  },
-  {
-    "fixtureId": 235429,
-    "homePlayer": {
-      "id": 160,
-      "name": "JUGGERNAUT"
-    },
-    "awayPlayer": {
-      "id": 456,
-      "name": "PRIMAL"
-    },
-    "homeTeam": {
-      "id": 17,
-      "name": "Milwaukee Bucks"
-    },
-    "awayTeam": {
-      "id": 24,
-      "name": "Phoenix Suns"
-    },
-    "fixtureStart": "2025-06-13T08:19:00Z",
-    "prediction": {
-      "home_win_probability": 0.5215707964601769,
-      "away_win_probability": 0.478429203539823,
-      "predicted_winner": "home",
-      "confidence": 0.5215707964601769,
-      "prediction_method": "fallback_win_rates"
-    },
-    "score_prediction": {
-      "home_score": 55,
-      "away_score": 54,
-      "total_score": 109,
-      "score_diff": 1
-    },
-    "generated_at": "2025-06-13 07:04:34"
-  },
-  {
-    "fixtureId": 235470,
-    "homePlayer": {
-      "id": 91,
-      "name": "DOUBLEFOUR"
-    },
-    "awayPlayer": {
-      "id": 2249,
-      "name": "DOC"
-    },
-    "homeTeam": {
-      "id": 7,
-      "name": "Dallas Mavericks"
-    },
-    "awayTeam": {
-      "id": 8,
-      "name": "Denver Nuggets"
-    },
-    "fixtureStart": "2025-06-13T08:27:00Z",
-    "prediction": {
-      "home_win_probability": 1.0,
-      "away_win_probability": 0.0,
-      "predicted_winner": "home",
-      "confidence": 1.0,
-      "prediction_method": "fallback_win_rates"
-    },
-    "score_prediction": {
-      "home_score": 55,
-      "away_score": 41,
-      "total_score": 96,
-      "score_diff": 14
-    },
-    "generated_at": "2025-06-13 07:04:34"
-  },
-  {
-    "fixtureId": 235342,
-    "homePlayer": {
-      "id": 38,
-      "name": "VEX"
-    },
-    "awayPlayer": {
-      "id": 159,
-      "name": "HOLLOW"
-    },
-    "homeTeam": {
-      "id": 21,
-      "name": "Oklahoma City Thunder"
-    },
-    "awayTeam": {
-      "id": 3,
-      "name": "Boston Celtics"
-    },
-    "fixtureStart": "2025-06-13T08:35:00Z",
-    "prediction": {
-      "home_win_probability": 0.4778737182946573,
-      "away_win_probability": 0.5221262817053427,
-      "predicted_winner": "away",
-      "confidence": 0.5221262817053427,
-      "prediction_method": "fallback_win_rates"
-    },
-    "score_prediction": {
-      "home_score": 61,
-      "away_score": 52,
-      "total_score": 113,
-      "score_diff": 9
-    },
-    "generated_at": "2025-06-13 07:04:34"
-  },
-  {
-    "fixtureId": 235405,
-    "homePlayer": {
-      "id": 66,
-      "name": "THA KID"
-    },
-    "awayPlayer": {
-      "id": 53,
-      "name": "MIST"
-    },
-    "homeTeam": {
-      "id": 5,
-      "name": "Chicago Bulls"
-    },
-    "awayTeam": {
-      "id": 16,
-      "name": "Miami Heat"
-    },
-    "fixtureStart": "2025-06-13T08:43:00Z",
-    "prediction": {
-      "home_win_probability": 0.4864102877228007,
-      "away_win_probability": 0.5135897122771993,
-      "predicted_winner": "away",
-      "confidence": 0.5135897122771993,
-      "prediction_method": "fallback_win_rates"
-    },
-    "score_prediction": {
-      "home_score": 58,
-      "away_score": 58,
-      "total_score": 116,
-      "score_diff": 0
-    },
-    "generated_at": "2025-06-13 07:04:34"
-  },
-  {
-    "fixtureId": 235412,
-    "homePlayer": {
-      "id": 1255,
-      "name": "RAPTOR"
-    },
-    "awayPlayer": {
-      "id": 975,
-      "name": "DOMAIN"
-    },
-    "homeTeam": {
-      "id": 16,
-      "name": "Miami Heat"
-    },
-    "awayTeam": {
-      "id": 28,
-      "name": "Toronto Raptors"
-    },
-    "fixtureStart": "2025-06-13T08:51:00Z",
-    "prediction": {
-      "home_win_probability": 0.5104251286217169,
-      "away_win_probability": 0.4895748713782833,
-      "predicted_winner": "home",
-      "confidence": 0.5104251286217169,
-      "prediction_method": "fallback_win_rates"
-    },
-    "score_prediction": {
-      "home_score": 53,
-      "away_score": 52,
-      "total_score": 105,
-      "score_diff": 1
-    },
-    "generated_at": "2025-06-13 07:04:34"
-  },
-  {
-    "fixtureId": 235467,
-    "homePlayer": {
-      "id": 1552,
-      "name": "CHARM"
-    },
-    "awayPlayer": {
-      "id": 1433,
-      "name": "HERO"
-    },
-    "homeTeam": {
-      "id": 21,
-      "name": "Oklahoma City Thunder"
-    },
-    "awayTeam": {
-      "id": 20,
-      "name": "New York Knicks"
-    },
-    "fixtureStart": "2025-06-13T08:59:00Z",
-    "prediction": {
-      "home_win_probability": 0.4619164619164619,
-      "away_win_probability": 0.538083538083538,
-      "predicted_winner": "away",
-      "confidence": 0.538083538083538,
-      "prediction_method": "fallback_win_rates"
-    },
-    "score_prediction": {
-      "home_score": 50,
-      "away_score": 50,
-      "total_score": 100,
-      "score_diff": 0
-    },
-    "generated_at": "2025-06-13 07:04:34"
-  },
-  {
-    "fixtureId": 235349,
-    "homePlayer": {
-      "id": 956,
-      "name": "BULLSEYE"
-    },
-    "awayPlayer": {
-      "id": 159,
-      "name": "HOLLOW"
-    },
-    "homeTeam": {
-      "id": 20,
-      "name": "New York Knicks"
-    },
-    "awayTeam": {
-      "id": 3,
-      "name": "Boston Celtics"
-    },
-    "fixtureStart": "2025-06-13T09:07:00Z",
-    "prediction": {
-      "home_win_probability": 0.5370449973348923,
-      "away_win_probability": 0.46295500266510775,
-      "predicted_winner": "home",
-      "confidence": 0.5370449973348923,
-      "prediction_method": "fallback_win_rates"
-    },
-    "score_prediction": {
-      "home_score": 58,
-      "away_score": 52,
-      "total_score": 110,
-      "score_diff": 6
-    },
-    "generated_at": "2025-06-13 07:04:34"
-  },
-  {
-    "fixtureId": 235397,
-    "homePlayer": {
-      "id": 27,
-      "name": "DIMES"
-    },
-    "awayPlayer": {
-      "id": 53,
-      "name": "MIST"
-    },
-    "homeTeam": {
-      "id": 2,
-      "name": "Brooklyn Nets"
-    },
-    "awayTeam": {
-      "id": 16,
-      "name": "Miami Heat"
-    },
-    "fixtureStart": "2025-06-13T09:15:00Z",
-    "prediction": {
-      "home_win_probability": 0.5170897095207552,
-      "away_win_probability": 0.482910290479245,
-      "predicted_winner": "home",
-      "confidence": 0.5170897095207552,
-      "prediction_method": "fallback_win_rates"
-    },
-    "score_prediction": {
-      "home_score": 57,
-      "away_score": 58,
-      "total_score": 115,
-      "score_diff": -1
-    },
-    "generated_at": "2025-06-13 07:04:34"
-  },
-  {
-    "fixtureId": 235417,
-    "homePlayer": {
-      "id": 456,
-      "name": "PRIMAL"
-    },
-    "awayPlayer": {
-      "id": 975,
-      "name": "DOMAIN"
-    },
-    "homeTeam": {
-      "id": 24,
-      "name": "Phoenix Suns"
-    },
-    "awayTeam": {
-      "id": 15,
-      "name": "Memphis Grizzlies"
-    },
-    "fixtureStart": "2025-06-13T09:23:00Z",
-    "prediction": {
-      "home_win_probability": 0.5172255186054,
-      "away_win_probability": 0.4827744813946001,
-      "predicted_winner": "home",
-      "confidence": 0.5172255186054,
-      "prediction_method": "fallback_win_rates"
-    },
-    "score_prediction": {
-      "home_score": 54,
-      "away_score": 52,
-      "total_score": 106,
-      "score_diff": 2
-    },
-    "generated_at": "2025-06-13 07:04:34"
-  },
-  {
-    "fixtureId": 235468,
-    "homePlayer": {
-      "id": 2249,
-      "name": "DOC"
-    },
-    "awayPlayer": {
-      "id": 1433,
-      "name": "HERO"
-    },
-    "homeTeam": {
-      "id": 8,
-      "name": "Denver Nuggets"
-    },
-    "awayTeam": {
-      "id": 4,
-      "name": "Charlotte Hornets"
-    },
-    "fixtureStart": "2025-06-13T09:31:00Z",
-    "prediction": {
-      "home_win_probability": 0.0,
-      "away_win_probability": 1.0,
-      "predicted_winner": "away",
-      "confidence": 1.0,
-      "prediction_method": "fallback_win_rates"
-    },
-    "score_prediction": {
-      "home_score": 41,
-      "away_score": 50,
-      "total_score": 91,
-      "score_diff": -9
-    },
-    "generated_at": "2025-06-13 07:04:34"
-  },
-  {
-    "fixtureId": 235348,
-    "homePlayer": {
-      "id": 956,
-      "name": "BULLSEYE"
-    },
-    "awayPlayer": {
-      "id": 38,
-      "name": "VEX"
-    },
-    "homeTeam": {
-      "id": 20,
-      "name": "New York Knicks"
-    },
-    "awayTeam": {
-      "id": 21,
-      "name": "Oklahoma City Thunder"
-    },
-    "fixtureStart": "2025-06-13T09:39:00Z",
-    "prediction": {
-      "home_win_probability": 0.558977909807688,
-      "away_win_probability": 0.441022090192312,
-      "predicted_winner": "home",
-      "confidence": 0.558977909807688,
-      "prediction_method": "fallback_win_rates"
-    },
-    "score_prediction": {
-      "home_score": 58,
-      "away_score": 61,
-      "total_score": 119,
-      "score_diff": -3
-    },
-    "generated_at": "2025-06-13 07:04:34"
-  },
-  {
-    "fixtureId": 235399,
-    "homePlayer": {
-      "id": 27,
-      "name": "DIMES"
-    },
-    "awayPlayer": {
-      "id": 66,
-      "name": "THA KID"
-    },
-    "homeTeam": {
-      "id": 2,
-      "name": "Brooklyn Nets"
-    },
-    "awayTeam": {
-      "id": 5,
-      "name": "Chicago Bulls"
-    },
-    "fixtureStart": "2025-06-13T09:47:00Z",
-    "prediction": {
-      "home_win_probability": 0.5306509477742477,
-      "away_win_probability": 0.46934905222575235,
-      "predicted_winner": "home",
-      "confidence": 0.5306509477742477,
-      "prediction_method": "fallback_win_rates"
-    },
-    "score_prediction": {
-      "home_score": 57,
-      "away_score": 58,
-      "total_score": 115,
-      "score_diff": -1
-    },
-    "generated_at": "2025-06-13 07:04:34"
-  },
-  {
-    "fixtureId": 235426,
-    "homePlayer": {
-      "id": 456,
-      "name": "PRIMAL"
-    },
-    "awayPlayer": {
-      "id": 1255,
-      "name": "RAPTOR"
-    },
-    "homeTeam": {
-      "id": 2,
-      "name": "Brooklyn Nets"
-    },
-    "awayTeam": {
-      "id": 16,
-      "name": "Miami Heat"
-    },
-    "fixtureStart": "2025-06-13T09:55:00Z",
-    "prediction": {
-      "home_win_probability": 0.5068052783034765,
-      "away_win_probability": 0.49319472169652345,
-      "predicted_winner": "home",
-      "confidence": 0.5068052783034765,
-      "prediction_method": "fallback_win_rates"
-    },
-    "score_prediction": {
-      "home_score": 54,
-      "away_score": 53,
-      "total_score": 107,
-      "score_diff": 1
-    },
-    "generated_at": "2025-06-13 07:04:34"
-  },
-  {
-    "fixtureId": 235456,
-    "homePlayer": {
-      "id": 2249,
-      "name": "DOC"
-    },
-    "awayPlayer": {
-      "id": 1552,
-      "name": "CHARM"
-    },
-    "homeTeam": {
-      "id": 3,
-      "name": "Boston Celtics"
-    },
-    "awayTeam": {
-      "id": 21,
-      "name": "Oklahoma City Thunder"
-    },
-    "fixtureStart": "2025-06-13T10:03:00Z",
-    "prediction": {
-      "home_win_probability": 0.0,
-      "away_win_probability": 1.0,
-      "predicted_winner": "away",
-      "confidence": 1.0,
-      "prediction_method": "fallback_win_rates"
-    },
-    "score_prediction": {
-      "home_score": 41,
-      "away_score": 50,
-      "total_score": 91,
-      "score_diff": -9
-    },
-    "generated_at": "2025-06-13 07:04:34"
-  },
-  {
-    "fixtureId": 235363,
-    "homePlayer": {
-      "id": 159,
-      "name": "HOLLOW"
-    },
-    "awayPlayer": {
-      "id": 751,
-      "name": "JACKAL"
-    },
-    "homeTeam": {
-      "id": 3,
-      "name": "Boston Celtics"
-    },
-    "awayTeam": {
-      "id": 14,
-      "name": "Los Angeles Lakers"
-    },
-    "fixtureStart": "2025-06-13T10:11:00Z",
-    "prediction": {
-      "home_win_probability": 0.45877002175202697,
-      "away_win_probability": 0.5412299782479731,
-      "predicted_winner": "away",
-      "confidence": 0.5412299782479731,
-      "prediction_method": "fallback_win_rates"
-    },
-    "score_prediction": {
-      "home_score": 52,
-      "away_score": 58,
-      "total_score": 110,
-      "score_diff": -6
-    },
-    "generated_at": "2025-06-13 07:04:34"
-  },
-  {
-    "fixtureId": 235401,
-    "homePlayer": {
-      "id": 53,
-      "name": "MIST"
-    },
-    "awayPlayer": {
-      "id": 14,
-      "name": "CARNAGE"
-    },
-    "homeTeam": {
-      "id": 16,
-      "name": "Miami Heat"
-    },
-    "awayTeam": {
-      "id": 28,
-      "name": "Toronto Raptors"
-    },
-    "fixtureStart": "2025-06-13T10:19:00Z",
-    "prediction": {
-      "home_win_probability": 0.5058407214337354,
-      "away_win_probability": 0.49415927856626457,
-      "predicted_winner": "home",
-      "confidence": 0.5058407214337354,
-      "prediction_method": "fallback_win_rates"
-    },
-    "score_prediction": {
-      "home_score": 58,
-      "away_score": 63,
-      "total_score": 121,
-      "score_diff": -5
-    },
-    "generated_at": "2025-06-13 07:04:34"
-  },
-  {
-    "fixtureId": 235418,
+    "fixtureId": 235955,
     "homePlayer": {
       "id": 975,
       "name": "DOMAIN"
     },
     "awayPlayer": {
-      "id": 160,
-      "name": "JUGGERNAUT"
+      "id": 2238,
+      "name": "BABYLON"
     },
     "homeTeam": {
-      "id": 15,
-      "name": "Memphis Grizzlies"
+      "id": 28,
+      "name": "Toronto Raptors"
     },
     "awayTeam": {
-      "id": 17,
-      "name": "Milwaukee Bucks"
+      "id": 16,
+      "name": "Miami Heat"
     },
-    "fixtureStart": "2025-06-13T10:27:00Z",
+    "fixtureStart": "2025-06-14T07:47:00Z",
     "prediction": {
-      "home_win_probability": 0.46126126126126127,
-      "away_win_probability": 0.5387387387387387,
+      "home_win_probability": 0.4151168969181721,
+      "away_win_probability": 0.5848831030818279,
       "predicted_winner": "away",
-      "confidence": 0.5387387387387387,
+      "confidence": 0.5848831030818279,
       "prediction_method": "fallback_win_rates"
     },
     "score_prediction": {
@@ -881,44 +31,44 @@
       "total_score": 107,
       "score_diff": -3
     },
-    "generated_at": "2025-06-13 07:04:34"
+    "generated_at": "2025-06-14 07:40:30"
   },
   {
-    "fixtureId": 235453,
+    "fixtureId": 236000,
     "homePlayer": {
-      "id": 1433,
-      "name": "HERO"
+      "id": 1568,
+      "name": "TRICKSTER"
     },
     "awayPlayer": {
-      "id": 91,
-      "name": "DOUBLEFOUR"
+      "id": 2085,
+      "name": "SHIVER"
     },
     "homeTeam": {
-      "id": 4,
-      "name": "Charlotte Hornets"
+      "id": 3,
+      "name": "Boston Celtics"
     },
     "awayTeam": {
-      "id": 7,
-      "name": "Dallas Mavericks"
+      "id": 14,
+      "name": "Los Angeles Lakers"
     },
-    "fixtureStart": "2025-06-13T10:35:00Z",
+    "fixtureStart": "2025-06-14T07:55:00Z",
     "prediction": {
-      "home_win_probability": 0.497124515179885,
-      "away_win_probability": 0.502875484820115,
+      "home_win_probability": 0.38308457711442784,
+      "away_win_probability": 0.6169154228855721,
       "predicted_winner": "away",
-      "confidence": 0.502875484820115,
+      "confidence": 0.6169154228855721,
       "prediction_method": "fallback_win_rates"
     },
     "score_prediction": {
-      "home_score": 50,
-      "away_score": 55,
-      "total_score": 105,
-      "score_diff": -5
+      "home_score": 52,
+      "away_score": 52,
+      "total_score": 104,
+      "score_diff": 0
     },
-    "generated_at": "2025-06-13 07:04:34"
+    "generated_at": "2025-06-14 07:40:30"
   },
   {
-    "fixtureId": 235365,
+    "fixtureId": 236033,
     "homePlayer": {
       "id": 956,
       "name": "BULLSEYE"
@@ -928,19 +78,19 @@
       "name": "JACKAL"
     },
     "homeTeam": {
-      "id": 20,
-      "name": "New York Knicks"
-    },
-    "awayTeam": {
       "id": 14,
       "name": "Los Angeles Lakers"
     },
-    "fixtureStart": "2025-06-13T10:43:00Z",
+    "awayTeam": {
+      "id": 20,
+      "name": "New York Knicks"
+    },
+    "fixtureStart": "2025-06-14T08:03:00Z",
     "prediction": {
-      "home_win_probability": 0.4957892939563011,
-      "away_win_probability": 0.5042107060436988,
+      "home_win_probability": 0.4951749662822671,
+      "away_win_probability": 0.504825033717733,
       "predicted_winner": "away",
-      "confidence": 0.5042107060436988,
+      "confidence": 0.504825033717733,
       "prediction_method": "fallback_win_rates"
     },
     "score_prediction": {
@@ -949,153 +99,17 @@
       "total_score": 116,
       "score_diff": 0
     },
-    "generated_at": "2025-06-13 07:04:34"
+    "generated_at": "2025-06-14 07:40:30"
   },
   {
-    "fixtureId": 235390,
+    "fixtureId": 236072,
     "homePlayer": {
-      "id": 27,
-      "name": "DIMES"
+      "id": 2246,
+      "name": "ANUBIS"
     },
     "awayPlayer": {
-      "id": 14,
-      "name": "CARNAGE"
-    },
-    "homeTeam": {
-      "id": 2,
-      "name": "Brooklyn Nets"
-    },
-    "awayTeam": {
-      "id": 28,
-      "name": "Toronto Raptors"
-    },
-    "fixtureStart": "2025-06-13T10:51:00Z",
-    "prediction": {
-      "home_win_probability": 0.5229212792915009,
-      "away_win_probability": 0.47707872070849916,
-      "predicted_winner": "home",
-      "confidence": 0.5229212792915009,
-      "prediction_method": "fallback_win_rates"
-    },
-    "score_prediction": {
-      "home_score": 57,
-      "away_score": 63,
-      "total_score": 120,
-      "score_diff": -6
-    },
-    "generated_at": "2025-06-13 07:04:34"
-  },
-  {
-    "fixtureId": 235442,
-    "homePlayer": {
-      "id": 456,
-      "name": "PRIMAL"
-    },
-    "awayPlayer": {
-      "id": 160,
-      "name": "JUGGERNAUT"
-    },
-    "homeTeam": {
-      "id": 2,
-      "name": "Brooklyn Nets"
-    },
-    "awayTeam": {
-      "id": 5,
-      "name": "Chicago Bulls"
-    },
-    "fixtureStart": "2025-06-13T10:59:00Z",
-    "prediction": {
-      "home_win_probability": 0.478429203539823,
-      "away_win_probability": 0.5215707964601769,
-      "predicted_winner": "away",
-      "confidence": 0.5215707964601769,
-      "prediction_method": "fallback_win_rates"
-    },
-    "score_prediction": {
-      "home_score": 54,
-      "away_score": 55,
-      "total_score": 109,
-      "score_diff": -1
-    },
-    "generated_at": "2025-06-13 07:04:34"
-  },
-  {
-    "fixtureId": 235454,
-    "homePlayer": {
-      "id": 2249,
-      "name": "DOC"
-    },
-    "awayPlayer": {
-      "id": 91,
-      "name": "DOUBLEFOUR"
-    },
-    "homeTeam": {
-      "id": 3,
-      "name": "Boston Celtics"
-    },
-    "awayTeam": {
-      "id": 14,
-      "name": "Los Angeles Lakers"
-    },
-    "fixtureStart": "2025-06-13T11:07:00Z",
-    "prediction": {
-      "home_win_probability": 0.0,
-      "away_win_probability": 1.0,
-      "predicted_winner": "away",
-      "confidence": 1.0,
-      "prediction_method": "fallback_win_rates"
-    },
-    "score_prediction": {
-      "home_score": 41,
-      "away_score": 55,
-      "total_score": 96,
-      "score_diff": -14
-    },
-    "generated_at": "2025-06-13 07:04:34"
-  },
-  {
-    "fixtureId": 235364,
-    "homePlayer": {
-      "id": 159,
-      "name": "HOLLOW"
-    },
-    "awayPlayer": {
-      "id": 38,
-      "name": "VEX"
-    },
-    "homeTeam": {
-      "id": 3,
-      "name": "Boston Celtics"
-    },
-    "awayTeam": {
-      "id": 21,
-      "name": "Oklahoma City Thunder"
-    },
-    "fixtureStart": "2025-06-13T11:15:00Z",
-    "prediction": {
-      "home_win_probability": 0.5221262817053427,
-      "away_win_probability": 0.4778737182946573,
-      "predicted_winner": "home",
-      "confidence": 0.5221262817053427,
-      "prediction_method": "fallback_win_rates"
-    },
-    "score_prediction": {
-      "home_score": 52,
-      "away_score": 61,
-      "total_score": 113,
-      "score_diff": -9
-    },
-    "generated_at": "2025-06-13 07:04:34"
-  },
-  {
-    "fixtureId": 235398,
-    "homePlayer": {
-      "id": 53,
-      "name": "MIST"
-    },
-    "awayPlayer": {
-      "id": 66,
-      "name": "THA KID"
+      "id": 109,
+      "name": "SILVER"
     },
     "homeTeam": {
       "id": 16,
@@ -1105,31 +119,303 @@
       "id": 5,
       "name": "Chicago Bulls"
     },
-    "fixtureStart": "2025-06-13T11:23:00Z",
+    "fixtureStart": "2025-06-14T08:11:00Z",
     "prediction": {
-      "home_win_probability": 0.5135897122771993,
-      "away_win_probability": 0.4864102877228007,
-      "predicted_winner": "home",
-      "confidence": 0.5135897122771993,
+      "home_win_probability": 0.4754098360655738,
+      "away_win_probability": 0.5245901639344263,
+      "predicted_winner": "away",
+      "confidence": 0.5245901639344263,
       "prediction_method": "fallback_win_rates"
     },
     "score_prediction": {
-      "home_score": 58,
-      "away_score": 58,
-      "total_score": 116,
-      "score_diff": 0
+      "home_score": 53,
+      "away_score": 54,
+      "total_score": 107,
+      "score_diff": -1
     },
-    "generated_at": "2025-06-13 07:04:34"
+    "generated_at": "2025-06-14 07:40:30"
   },
   {
-    "fixtureId": 235428,
+    "fixtureId": 235949,
     "homePlayer": {
       "id": 975,
       "name": "DOMAIN"
     },
     "awayPlayer": {
-      "id": 1255,
-      "name": "RAPTOR"
+      "id": 2249,
+      "name": "DOC"
+    },
+    "homeTeam": {
+      "id": 17,
+      "name": "Milwaukee Bucks"
+    },
+    "awayTeam": {
+      "id": 15,
+      "name": "Memphis Grizzlies"
+    },
+    "fixtureStart": "2025-06-14T08:19:00Z",
+    "prediction": {
+      "home_win_probability": 0.5111670336583831,
+      "away_win_probability": 0.4888329663416169,
+      "predicted_winner": "home",
+      "confidence": 0.5111670336583831,
+      "prediction_method": "fallback_win_rates"
+    },
+    "score_prediction": {
+      "home_score": 52,
+      "away_score": 52,
+      "total_score": 104,
+      "score_diff": 0
+    },
+    "generated_at": "2025-06-14 07:40:30"
+  },
+  {
+    "fixtureId": 235983,
+    "homePlayer": {
+      "id": 1568,
+      "name": "TRICKSTER"
+    },
+    "awayPlayer": {
+      "id": 1467,
+      "name": "BLOODHOUND"
+    },
+    "homeTeam": {
+      "id": 8,
+      "name": "Denver Nuggets"
+    },
+    "awayTeam": {
+      "id": 7,
+      "name": "Dallas Mavericks"
+    },
+    "fixtureStart": "2025-06-14T08:27:00Z",
+    "prediction": {
+      "home_win_probability": 0.550561797752809,
+      "away_win_probability": 0.449438202247191,
+      "predicted_winner": "home",
+      "confidence": 0.550561797752809,
+      "prediction_method": "fallback_win_rates"
+    },
+    "score_prediction": {
+      "home_score": 52,
+      "away_score": 47,
+      "total_score": 99,
+      "score_diff": 5
+    },
+    "generated_at": "2025-06-14 07:40:30"
+  },
+  {
+    "fixtureId": 236038,
+    "homePlayer": {
+      "id": 957,
+      "name": "EXO"
+    },
+    "awayPlayer": {
+      "id": 14,
+      "name": "CARNAGE"
+    },
+    "homeTeam": {
+      "id": 21,
+      "name": "Oklahoma City Thunder"
+    },
+    "awayTeam": {
+      "id": 3,
+      "name": "Boston Celtics"
+    },
+    "fixtureStart": "2025-06-14T08:35:00Z",
+    "prediction": {
+      "home_win_probability": 0.526021853500607,
+      "away_win_probability": 0.47397814649939296,
+      "predicted_winner": "home",
+      "confidence": 0.526021853500607,
+      "prediction_method": "fallback_win_rates"
+    },
+    "score_prediction": {
+      "home_score": 59,
+      "away_score": 63,
+      "total_score": 122,
+      "score_diff": -4
+    },
+    "generated_at": "2025-06-14 07:40:30"
+  },
+  {
+    "fixtureId": 236056,
+    "homePlayer": {
+      "id": 1752,
+      "name": "MYTH"
+    },
+    "awayPlayer": {
+      "id": 108,
+      "name": "KOBRA"
+    },
+    "homeTeam": {
+      "id": 28,
+      "name": "Toronto Raptors"
+    },
+    "awayTeam": {
+      "id": 2,
+      "name": "Brooklyn Nets"
+    },
+    "fixtureStart": "2025-06-14T08:43:00Z",
+    "prediction": {
+      "home_win_probability": 0.5470621409522353,
+      "away_win_probability": 0.4529378590477647,
+      "predicted_winner": "home",
+      "confidence": 0.5470621409522353,
+      "prediction_method": "fallback_win_rates"
+    },
+    "score_prediction": {
+      "home_score": 48,
+      "away_score": 54,
+      "total_score": 102,
+      "score_diff": -6
+    },
+    "generated_at": "2025-06-14 07:40:30"
+  },
+  {
+    "fixtureId": 235958,
+    "homePlayer": {
+      "id": 104,
+      "name": "HARLEM"
+    },
+    "awayPlayer": {
+      "id": 2238,
+      "name": "BABYLON"
+    },
+    "homeTeam": {
+      "id": 2,
+      "name": "Brooklyn Nets"
+    },
+    "awayTeam": {
+      "id": 16,
+      "name": "Miami Heat"
+    },
+    "fixtureStart": "2025-06-14T08:51:00Z",
+    "prediction": {
+      "home_win_probability": 0.42550567340897877,
+      "away_win_probability": 0.5744943265910212,
+      "predicted_winner": "away",
+      "confidence": 0.5744943265910212,
+      "prediction_method": "fallback_win_rates"
+    },
+    "score_prediction": {
+      "home_score": 52,
+      "away_score": 55,
+      "total_score": 107,
+      "score_diff": -3
+    },
+    "generated_at": "2025-06-14 07:40:30"
+  },
+  {
+    "fixtureId": 236006,
+    "homePlayer": {
+      "id": 2121,
+      "name": "UNFORGIVEN"
+    },
+    "awayPlayer": {
+      "id": 2085,
+      "name": "SHIVER"
+    },
+    "homeTeam": {
+      "id": 21,
+      "name": "Oklahoma City Thunder"
+    },
+    "awayTeam": {
+      "id": 14,
+      "name": "Los Angeles Lakers"
+    },
+    "fixtureStart": "2025-06-14T08:59:00Z",
+    "prediction": {
+      "home_win_probability": 0.2929915099051107,
+      "away_win_probability": 0.7070084900948892,
+      "predicted_winner": "away",
+      "confidence": 0.7070084900948892,
+      "prediction_method": "fallback_win_rates"
+    },
+    "score_prediction": {
+      "home_score": 47,
+      "away_score": 52,
+      "total_score": 99,
+      "score_diff": -5
+    },
+    "generated_at": "2025-06-14 07:40:30"
+  },
+  {
+    "fixtureId": 236047,
+    "homePlayer": {
+      "id": 751,
+      "name": "JACKAL"
+    },
+    "awayPlayer": {
+      "id": 14,
+      "name": "CARNAGE"
+    },
+    "homeTeam": {
+      "id": 20,
+      "name": "New York Knicks"
+    },
+    "awayTeam": {
+      "id": 3,
+      "name": "Boston Celtics"
+    },
+    "fixtureStart": "2025-06-14T09:07:00Z",
+    "prediction": {
+      "home_win_probability": 0.5344600996362969,
+      "away_win_probability": 0.465539900363703,
+      "predicted_winner": "home",
+      "confidence": 0.5344600996362969,
+      "prediction_method": "fallback_win_rates"
+    },
+    "score_prediction": {
+      "home_score": 58,
+      "away_score": 63,
+      "total_score": 121,
+      "score_diff": -5
+    },
+    "generated_at": "2025-06-14 07:40:30"
+  },
+  {
+    "fixtureId": 236076,
+    "homePlayer": {
+      "id": 109,
+      "name": "SILVER"
+    },
+    "awayPlayer": {
+      "id": 108,
+      "name": "KOBRA"
+    },
+    "homeTeam": {
+      "id": 5,
+      "name": "Chicago Bulls"
+    },
+    "awayTeam": {
+      "id": 2,
+      "name": "Brooklyn Nets"
+    },
+    "fixtureStart": "2025-06-14T09:15:00Z",
+    "prediction": {
+      "home_win_probability": 0.4723008491710473,
+      "away_win_probability": 0.5276991508289527,
+      "predicted_winner": "away",
+      "confidence": 0.5276991508289527,
+      "prediction_method": "fallback_win_rates"
+    },
+    "score_prediction": {
+      "home_score": 54,
+      "away_score": 54,
+      "total_score": 108,
+      "score_diff": 0
+    },
+    "generated_at": "2025-06-14 07:40:30"
+  },
+  {
+    "fixtureId": 235963,
+    "homePlayer": {
+      "id": 2249,
+      "name": "DOC"
+    },
+    "awayPlayer": {
+      "id": 2238,
+      "name": "BABYLON"
     },
     "homeTeam": {
       "id": 15,
@@ -1139,31 +425,575 @@
       "id": 6,
       "name": "Cleveland Cavaliers"
     },
-    "fixtureStart": "2025-06-13T11:31:00Z",
+    "fixtureStart": "2025-06-14T09:23:00Z",
     "prediction": {
-      "home_win_probability": 0.4895748713782833,
-      "away_win_probability": 0.5104251286217169,
+      "home_win_probability": 0.40431266846361186,
+      "away_win_probability": 0.5956873315363882,
       "predicted_winner": "away",
-      "confidence": 0.5104251286217169,
+      "confidence": 0.5956873315363882,
       "prediction_method": "fallback_win_rates"
     },
     "score_prediction": {
       "home_score": 52,
-      "away_score": 53,
-      "total_score": 105,
-      "score_diff": -1
+      "away_score": 55,
+      "total_score": 107,
+      "score_diff": -3
     },
-    "generated_at": "2025-06-13 07:04:34"
+    "generated_at": "2025-06-14 07:40:30"
   },
   {
-    "fixtureId": 235472,
+    "fixtureId": 236001,
     "homePlayer": {
-      "id": 1433,
-      "name": "HERO"
+      "id": 1467,
+      "name": "BLOODHOUND"
     },
     "awayPlayer": {
-      "id": 1552,
-      "name": "CHARM"
+      "id": 2085,
+      "name": "SHIVER"
+    },
+    "homeTeam": {
+      "id": 7,
+      "name": "Dallas Mavericks"
+    },
+    "awayTeam": {
+      "id": 4,
+      "name": "Charlotte Hornets"
+    },
+    "fixtureStart": "2025-06-14T09:31:00Z",
+    "prediction": {
+      "home_win_probability": 0.3363914373088685,
+      "away_win_probability": 0.6636085626911314,
+      "predicted_winner": "away",
+      "confidence": 0.6636085626911314,
+      "prediction_method": "fallback_win_rates"
+    },
+    "score_prediction": {
+      "home_score": 47,
+      "away_score": 52,
+      "total_score": 99,
+      "score_diff": -5
+    },
+    "generated_at": "2025-06-14 07:40:30"
+  },
+  {
+    "fixtureId": 236018,
+    "homePlayer": {
+      "id": 751,
+      "name": "JACKAL"
+    },
+    "awayPlayer": {
+      "id": 957,
+      "name": "EXO"
+    },
+    "homeTeam": {
+      "id": 20,
+      "name": "New York Knicks"
+    },
+    "awayTeam": {
+      "id": 21,
+      "name": "Oklahoma City Thunder"
+    },
+    "fixtureStart": "2025-06-14T09:39:00Z",
+    "prediction": {
+      "home_win_probability": 0.5084686219194123,
+      "away_win_probability": 0.49153137808058756,
+      "predicted_winner": "home",
+      "confidence": 0.5084686219194123,
+      "prediction_method": "fallback_win_rates"
+    },
+    "score_prediction": {
+      "home_score": 58,
+      "away_score": 59,
+      "total_score": 117,
+      "score_diff": -1
+    },
+    "generated_at": "2025-06-14 07:40:30"
+  },
+  {
+    "fixtureId": 236053,
+    "homePlayer": {
+      "id": 109,
+      "name": "SILVER"
+    },
+    "awayPlayer": {
+      "id": 1752,
+      "name": "MYTH"
+    },
+    "homeTeam": {
+      "id": 5,
+      "name": "Chicago Bulls"
+    },
+    "awayTeam": {
+      "id": 28,
+      "name": "Toronto Raptors"
+    },
+    "fixtureStart": "2025-06-14T09:47:00Z",
+    "prediction": {
+      "home_win_probability": 0.425626515763945,
+      "away_win_probability": 0.5743734842360549,
+      "predicted_winner": "away",
+      "confidence": 0.5743734842360549,
+      "prediction_method": "fallback_win_rates"
+    },
+    "score_prediction": {
+      "home_score": 54,
+      "away_score": 48,
+      "total_score": 102,
+      "score_diff": 6
+    },
+    "generated_at": "2025-06-14 07:40:30"
+  },
+  {
+    "fixtureId": 235973,
+    "homePlayer": {
+      "id": 2249,
+      "name": "DOC"
+    },
+    "awayPlayer": {
+      "id": 104,
+      "name": "HARLEM"
+    },
+    "homeTeam": {
+      "id": 5,
+      "name": "Chicago Bulls"
+    },
+    "awayTeam": {
+      "id": 2,
+      "name": "Brooklyn Nets"
+    },
+    "fixtureStart": "2025-06-14T09:55:00Z",
+    "prediction": {
+      "home_win_probability": 0.4781849912739965,
+      "away_win_probability": 0.5218150087260035,
+      "predicted_winner": "away",
+      "confidence": 0.5218150087260035,
+      "prediction_method": "fallback_win_rates"
+    },
+    "score_prediction": {
+      "home_score": 52,
+      "away_score": 52,
+      "total_score": 104,
+      "score_diff": 0
+    },
+    "generated_at": "2025-06-14 07:40:30"
+  },
+  {
+    "fixtureId": 235989,
+    "homePlayer": {
+      "id": 1467,
+      "name": "BLOODHOUND"
+    },
+    "awayPlayer": {
+      "id": 2121,
+      "name": "UNFORGIVEN"
+    },
+    "homeTeam": {
+      "id": 20,
+      "name": "New York Knicks"
+    },
+    "awayTeam": {
+      "id": 21,
+      "name": "Oklahoma City Thunder"
+    },
+    "fixtureStart": "2025-06-14T10:03:00Z",
+    "prediction": {
+      "home_win_probability": 0.5502008032128514,
+      "away_win_probability": 0.4497991967871485,
+      "predicted_winner": "home",
+      "confidence": 0.5502008032128514,
+      "prediction_method": "fallback_win_rates"
+    },
+    "score_prediction": {
+      "home_score": 47,
+      "away_score": 47,
+      "total_score": 94,
+      "score_diff": 0
+    },
+    "generated_at": "2025-06-14 07:40:30"
+  },
+  {
+    "fixtureId": 236030,
+    "homePlayer": {
+      "id": 14,
+      "name": "CARNAGE"
+    },
+    "awayPlayer": {
+      "id": 956,
+      "name": "BULLSEYE"
+    },
+    "homeTeam": {
+      "id": 3,
+      "name": "Boston Celtics"
+    },
+    "awayTeam": {
+      "id": 14,
+      "name": "Los Angeles Lakers"
+    },
+    "fixtureStart": "2025-06-14T10:11:00Z",
+    "prediction": {
+      "home_win_probability": 0.47034521113891875,
+      "away_win_probability": 0.5296547888610813,
+      "predicted_winner": "away",
+      "confidence": 0.5296547888610813,
+      "prediction_method": "fallback_win_rates"
+    },
+    "score_prediction": {
+      "home_score": 63,
+      "away_score": 58,
+      "total_score": 121,
+      "score_diff": 5
+    },
+    "generated_at": "2025-06-14 07:40:30"
+  },
+  {
+    "fixtureId": 236077,
+    "homePlayer": {
+      "id": 108,
+      "name": "KOBRA"
+    },
+    "awayPlayer": {
+      "id": 2246,
+      "name": "ANUBIS"
+    },
+    "homeTeam": {
+      "id": 2,
+      "name": "Brooklyn Nets"
+    },
+    "awayTeam": {
+      "id": 16,
+      "name": "Miami Heat"
+    },
+    "fixtureStart": "2025-06-14T10:19:00Z",
+    "prediction": {
+      "home_win_probability": 0.5521472392638037,
+      "away_win_probability": 0.44785276073619634,
+      "predicted_winner": "home",
+      "confidence": 0.5521472392638037,
+      "prediction_method": "fallback_win_rates"
+    },
+    "score_prediction": {
+      "home_score": 54,
+      "away_score": 53,
+      "total_score": 107,
+      "score_diff": 1
+    },
+    "generated_at": "2025-06-14 07:40:30"
+  },
+  {
+    "fixtureId": 235978,
+    "homePlayer": {
+      "id": 2238,
+      "name": "BABYLON"
+    },
+    "awayPlayer": {
+      "id": 975,
+      "name": "DOMAIN"
+    },
+    "homeTeam": {
+      "id": 6,
+      "name": "Cleveland Cavaliers"
+    },
+    "awayTeam": {
+      "id": 17,
+      "name": "Milwaukee Bucks"
+    },
+    "fixtureStart": "2025-06-14T10:27:00Z",
+    "prediction": {
+      "home_win_probability": 0.5848831030818279,
+      "away_win_probability": 0.4151168969181721,
+      "predicted_winner": "home",
+      "confidence": 0.5848831030818279,
+      "prediction_method": "fallback_win_rates"
+    },
+    "score_prediction": {
+      "home_score": 55,
+      "away_score": 52,
+      "total_score": 107,
+      "score_diff": 3
+    },
+    "generated_at": "2025-06-14 07:40:30"
+  },
+  {
+    "fixtureId": 236010,
+    "homePlayer": {
+      "id": 2085,
+      "name": "SHIVER"
+    },
+    "awayPlayer": {
+      "id": 1568,
+      "name": "TRICKSTER"
+    },
+    "homeTeam": {
+      "id": 4,
+      "name": "Charlotte Hornets"
+    },
+    "awayTeam": {
+      "id": 8,
+      "name": "Denver Nuggets"
+    },
+    "fixtureStart": "2025-06-14T10:35:00Z",
+    "prediction": {
+      "home_win_probability": 0.6169154228855721,
+      "away_win_probability": 0.38308457711442784,
+      "predicted_winner": "home",
+      "confidence": 0.6169154228855721,
+      "prediction_method": "fallback_win_rates"
+    },
+    "score_prediction": {
+      "home_score": 52,
+      "away_score": 52,
+      "total_score": 104,
+      "score_diff": 0
+    },
+    "generated_at": "2025-06-14 07:40:30"
+  },
+  {
+    "fixtureId": 236036,
+    "homePlayer": {
+      "id": 751,
+      "name": "JACKAL"
+    },
+    "awayPlayer": {
+      "id": 956,
+      "name": "BULLSEYE"
+    },
+    "homeTeam": {
+      "id": 20,
+      "name": "New York Knicks"
+    },
+    "awayTeam": {
+      "id": 14,
+      "name": "Los Angeles Lakers"
+    },
+    "fixtureStart": "2025-06-14T10:43:00Z",
+    "prediction": {
+      "home_win_probability": 0.504825033717733,
+      "away_win_probability": 0.4951749662822671,
+      "predicted_winner": "home",
+      "confidence": 0.504825033717733,
+      "prediction_method": "fallback_win_rates"
+    },
+    "score_prediction": {
+      "home_score": 58,
+      "away_score": 58,
+      "total_score": 116,
+      "score_diff": 0
+    },
+    "generated_at": "2025-06-14 07:40:30"
+  },
+  {
+    "fixtureId": 236049,
+    "homePlayer": {
+      "id": 109,
+      "name": "SILVER"
+    },
+    "awayPlayer": {
+      "id": 2246,
+      "name": "ANUBIS"
+    },
+    "homeTeam": {
+      "id": 5,
+      "name": "Chicago Bulls"
+    },
+    "awayTeam": {
+      "id": 16,
+      "name": "Miami Heat"
+    },
+    "fixtureStart": "2025-06-14T10:51:00Z",
+    "prediction": {
+      "home_win_probability": 0.5245901639344263,
+      "away_win_probability": 0.4754098360655738,
+      "predicted_winner": "home",
+      "confidence": 0.5245901639344263,
+      "prediction_method": "fallback_win_rates"
+    },
+    "score_prediction": {
+      "home_score": 54,
+      "away_score": 53,
+      "total_score": 107,
+      "score_diff": 1
+    },
+    "generated_at": "2025-06-14 07:40:30"
+  },
+  {
+    "fixtureId": 235975,
+    "homePlayer": {
+      "id": 2249,
+      "name": "DOC"
+    },
+    "awayPlayer": {
+      "id": 975,
+      "name": "DOMAIN"
+    },
+    "homeTeam": {
+      "id": 5,
+      "name": "Chicago Bulls"
+    },
+    "awayTeam": {
+      "id": 28,
+      "name": "Toronto Raptors"
+    },
+    "fixtureStart": "2025-06-14T10:59:00Z",
+    "prediction": {
+      "home_win_probability": 0.4888329663416169,
+      "away_win_probability": 0.5111670336583831,
+      "predicted_winner": "away",
+      "confidence": 0.5111670336583831,
+      "prediction_method": "fallback_win_rates"
+    },
+    "score_prediction": {
+      "home_score": 52,
+      "away_score": 52,
+      "total_score": 104,
+      "score_diff": 0
+    },
+    "generated_at": "2025-06-14 07:40:30"
+  },
+  {
+    "fixtureId": 235988,
+    "homePlayer": {
+      "id": 1467,
+      "name": "BLOODHOUND"
+    },
+    "awayPlayer": {
+      "id": 1568,
+      "name": "TRICKSTER"
+    },
+    "homeTeam": {
+      "id": 20,
+      "name": "New York Knicks"
+    },
+    "awayTeam": {
+      "id": 3,
+      "name": "Boston Celtics"
+    },
+    "fixtureStart": "2025-06-14T11:07:00Z",
+    "prediction": {
+      "home_win_probability": 0.449438202247191,
+      "away_win_probability": 0.550561797752809,
+      "predicted_winner": "away",
+      "confidence": 0.550561797752809,
+      "prediction_method": "fallback_win_rates"
+    },
+    "score_prediction": {
+      "home_score": 47,
+      "away_score": 52,
+      "total_score": 99,
+      "score_diff": -5
+    },
+    "generated_at": "2025-06-14 07:40:30"
+  },
+  {
+    "fixtureId": 236014,
+    "homePlayer": {
+      "id": 14,
+      "name": "CARNAGE"
+    },
+    "awayPlayer": {
+      "id": 957,
+      "name": "EXO"
+    },
+    "homeTeam": {
+      "id": 3,
+      "name": "Boston Celtics"
+    },
+    "awayTeam": {
+      "id": 21,
+      "name": "Oklahoma City Thunder"
+    },
+    "fixtureStart": "2025-06-14T11:15:00Z",
+    "prediction": {
+      "home_win_probability": 0.47397814649939296,
+      "away_win_probability": 0.526021853500607,
+      "predicted_winner": "away",
+      "confidence": 0.526021853500607,
+      "prediction_method": "fallback_win_rates"
+    },
+    "score_prediction": {
+      "home_score": 63,
+      "away_score": 59,
+      "total_score": 122,
+      "score_diff": 4
+    },
+    "generated_at": "2025-06-14 07:40:30"
+  },
+  {
+    "fixtureId": 236079,
+    "homePlayer": {
+      "id": 108,
+      "name": "KOBRA"
+    },
+    "awayPlayer": {
+      "id": 1752,
+      "name": "MYTH"
+    },
+    "homeTeam": {
+      "id": 2,
+      "name": "Brooklyn Nets"
+    },
+    "awayTeam": {
+      "id": 28,
+      "name": "Toronto Raptors"
+    },
+    "fixtureStart": "2025-06-14T11:23:00Z",
+    "prediction": {
+      "home_win_probability": 0.4529378590477647,
+      "away_win_probability": 0.5470621409522353,
+      "predicted_winner": "away",
+      "confidence": 0.5470621409522353,
+      "prediction_method": "fallback_win_rates"
+    },
+    "score_prediction": {
+      "home_score": 54,
+      "away_score": 48,
+      "total_score": 102,
+      "score_diff": 6
+    },
+    "generated_at": "2025-06-14 07:40:30"
+  },
+  {
+    "fixtureId": 235977,
+    "homePlayer": {
+      "id": 2238,
+      "name": "BABYLON"
+    },
+    "awayPlayer": {
+      "id": 104,
+      "name": "HARLEM"
+    },
+    "homeTeam": {
+      "id": 6,
+      "name": "Cleveland Cavaliers"
+    },
+    "awayTeam": {
+      "id": 24,
+      "name": "Phoenix Suns"
+    },
+    "fixtureStart": "2025-06-14T11:31:00Z",
+    "prediction": {
+      "home_win_probability": 0.5744943265910212,
+      "away_win_probability": 0.42550567340897877,
+      "predicted_winner": "home",
+      "confidence": 0.5744943265910212,
+      "prediction_method": "fallback_win_rates"
+    },
+    "score_prediction": {
+      "home_score": 55,
+      "away_score": 52,
+      "total_score": 107,
+      "score_diff": 3
+    },
+    "generated_at": "2025-06-14 07:40:30"
+  },
+  {
+    "fixtureId": 236012,
+    "homePlayer": {
+      "id": 2085,
+      "name": "SHIVER"
+    },
+    "awayPlayer": {
+      "id": 2121,
+      "name": "UNFORGIVEN"
     },
     "homeTeam": {
       "id": 4,
@@ -1173,65 +1003,201 @@
       "id": 22,
       "name": "Orlando Magic"
     },
-    "fixtureStart": "2025-06-13T11:39:00Z",
+    "fixtureStart": "2025-06-14T11:39:00Z",
     "prediction": {
-      "home_win_probability": 0.538083538083538,
-      "away_win_probability": 0.4619164619164619,
+      "home_win_probability": 0.7070084900948892,
+      "away_win_probability": 0.2929915099051107,
       "predicted_winner": "home",
-      "confidence": 0.538083538083538,
+      "confidence": 0.7070084900948892,
       "prediction_method": "fallback_win_rates"
     },
     "score_prediction": {
-      "home_score": 50,
-      "away_score": 50,
-      "total_score": 100,
-      "score_diff": 0
+      "home_score": 52,
+      "away_score": 47,
+      "total_score": 99,
+      "score_diff": 5
     },
-    "generated_at": "2025-06-13 07:04:34"
+    "generated_at": "2025-06-14 07:40:30"
   },
   {
-    "fixtureId": 235372,
+    "fixtureId": 236032,
     "homePlayer": {
-      "id": 38,
-      "name": "VEX"
+      "id": 957,
+      "name": "EXO"
+    },
+    "awayPlayer": {
+      "id": 956,
+      "name": "BULLSEYE"
+    },
+    "homeTeam": {
+      "id": 8,
+      "name": "Denver Nuggets"
+    },
+    "awayTeam": {
+      "id": 7,
+      "name": "Dallas Mavericks"
+    },
+    "fixtureStart": "2025-06-14T11:47:00Z",
+    "prediction": {
+      "home_win_probability": 0.4963558161727081,
+      "away_win_probability": 0.5036441838272919,
+      "predicted_winner": "away",
+      "confidence": 0.5036441838272919,
+      "prediction_method": "fallback_win_rates"
+    },
+    "score_prediction": {
+      "home_score": 59,
+      "away_score": 58,
+      "total_score": 117,
+      "score_diff": 1
+    },
+    "generated_at": "2025-06-14 07:40:30"
+  },
+  {
+    "fixtureId": 236058,
+    "homePlayer": {
+      "id": 1752,
+      "name": "MYTH"
+    },
+    "awayPlayer": {
+      "id": 2246,
+      "name": "ANUBIS"
+    },
+    "homeTeam": {
+      "id": 15,
+      "name": "Memphis Grizzlies"
+    },
+    "awayTeam": {
+      "id": 6,
+      "name": "Cleveland Cavaliers"
+    },
+    "fixtureStart": "2025-06-14T11:55:00Z",
+    "prediction": {
+      "home_win_probability": 0.5982449446776039,
+      "away_win_probability": 0.401755055322396,
+      "predicted_winner": "home",
+      "confidence": 0.5982449446776039,
+      "prediction_method": "fallback_win_rates"
+    },
+    "score_prediction": {
+      "home_score": 48,
+      "away_score": 53,
+      "total_score": 101,
+      "score_diff": -5
+    },
+    "generated_at": "2025-06-14 07:40:30"
+  },
+  {
+    "fixtureId": 235971,
+    "homePlayer": {
+      "id": 104,
+      "name": "HARLEM"
+    },
+    "awayPlayer": {
+      "id": 975,
+      "name": "DOMAIN"
+    },
+    "homeTeam": {
+      "id": 2,
+      "name": "Brooklyn Nets"
+    },
+    "awayTeam": {
+      "id": 28,
+      "name": "Toronto Raptors"
+    },
+    "fixtureStart": "2025-06-14T12:03:00Z",
+    "prediction": {
+      "home_win_probability": 0.5106583609555377,
+      "away_win_probability": 0.48934163904446215,
+      "predicted_winner": "home",
+      "confidence": 0.5106583609555377,
+      "prediction_method": "fallback_win_rates"
+    },
+    "score_prediction": {
+      "home_score": 52,
+      "away_score": 52,
+      "total_score": 104,
+      "score_diff": 0
+    },
+    "generated_at": "2025-06-14 07:40:30"
+  },
+  {
+    "fixtureId": 236013,
+    "homePlayer": {
+      "id": 2121,
+      "name": "UNFORGIVEN"
+    },
+    "awayPlayer": {
+      "id": 1568,
+      "name": "TRICKSTER"
+    },
+    "homeTeam": {
+      "id": 21,
+      "name": "Oklahoma City Thunder"
+    },
+    "awayTeam": {
+      "id": 3,
+      "name": "Boston Celtics"
+    },
+    "fixtureStart": "2025-06-14T12:11:00Z",
+    "prediction": {
+      "home_win_probability": 0.40025015634771727,
+      "away_win_probability": 0.5997498436522826,
+      "predicted_winner": "away",
+      "confidence": 0.5997498436522826,
+      "prediction_method": "fallback_win_rates"
+    },
+    "score_prediction": {
+      "home_score": 47,
+      "away_score": 52,
+      "total_score": 99,
+      "score_diff": -5
+    },
+    "generated_at": "2025-06-14 07:40:30"
+  },
+  {
+    "fixtureId": 236021,
+    "homePlayer": {
+      "id": 14,
+      "name": "CARNAGE"
     },
     "awayPlayer": {
       "id": 751,
       "name": "JACKAL"
     },
     "homeTeam": {
-      "id": 7,
-      "name": "Dallas Mavericks"
+      "id": 22,
+      "name": "Orlando Magic"
     },
     "awayTeam": {
-      "id": 8,
-      "name": "Denver Nuggets"
+      "id": 4,
+      "name": "Charlotte Hornets"
     },
-    "fixtureStart": "2025-06-13T11:47:00Z",
+    "fixtureStart": "2025-06-14T12:19:00Z",
     "prediction": {
-      "home_win_probability": 0.4368740905589318,
-      "away_win_probability": 0.5631259094410682,
+      "home_win_probability": 0.465539900363703,
+      "away_win_probability": 0.5344600996362969,
       "predicted_winner": "away",
-      "confidence": 0.5631259094410682,
+      "confidence": 0.5344600996362969,
       "prediction_method": "fallback_win_rates"
     },
     "score_prediction": {
-      "home_score": 61,
+      "home_score": 63,
       "away_score": 58,
-      "total_score": 119,
-      "score_diff": 3
+      "total_score": 121,
+      "score_diff": 5
     },
-    "generated_at": "2025-06-13 07:04:34"
+    "generated_at": "2025-06-14 07:40:30"
   },
   {
-    "fixtureId": 235393,
+    "fixtureId": 236057,
     "homePlayer": {
-      "id": 66,
-      "name": "THA KID"
+      "id": 108,
+      "name": "KOBRA"
     },
     "awayPlayer": {
-      "id": 14,
-      "name": "CARNAGE"
+      "id": 109,
+      "name": "SILVER"
     },
     "homeTeam": {
       "id": 24,
@@ -1241,20 +1207,54 @@
       "id": 17,
       "name": "Milwaukee Bucks"
     },
-    "fixtureStart": "2025-06-13T11:55:00Z",
+    "fixtureStart": "2025-06-14T12:27:00Z",
     "prediction": {
-      "home_win_probability": 0.49224854811013147,
-      "away_win_probability": 0.5077514518898686,
-      "predicted_winner": "away",
-      "confidence": 0.5077514518898686,
+      "home_win_probability": 0.5276991508289527,
+      "away_win_probability": 0.4723008491710473,
+      "predicted_winner": "home",
+      "confidence": 0.5276991508289527,
       "prediction_method": "fallback_win_rates"
     },
     "score_prediction": {
-      "home_score": 58,
-      "away_score": 63,
-      "total_score": 121,
-      "score_diff": -5
+      "home_score": 54,
+      "away_score": 54,
+      "total_score": 108,
+      "score_diff": 0
     },
-    "generated_at": "2025-06-13 07:04:34"
+    "generated_at": "2025-06-14 07:40:30"
+  },
+  {
+    "fixtureId": 235980,
+    "homePlayer": {
+      "id": 2238,
+      "name": "BABYLON"
+    },
+    "awayPlayer": {
+      "id": 2249,
+      "name": "DOC"
+    },
+    "homeTeam": {
+      "id": 6,
+      "name": "Cleveland Cavaliers"
+    },
+    "awayTeam": {
+      "id": 15,
+      "name": "Memphis Grizzlies"
+    },
+    "fixtureStart": "2025-06-14T12:35:00Z",
+    "prediction": {
+      "home_win_probability": 0.5956873315363882,
+      "away_win_probability": 0.40431266846361186,
+      "predicted_winner": "home",
+      "confidence": 0.5956873315363882,
+      "prediction_method": "fallback_win_rates"
+    },
+    "score_prediction": {
+      "home_score": 55,
+      "away_score": 52,
+      "total_score": 107,
+      "score_diff": 3
+    },
+    "generated_at": "2025-06-14 07:40:30"
   }
 ]

@@ -129,6 +129,7 @@ class PredictionService:
     def update_prediction_history(self, predictions):
         """
         Update prediction history with new predictions.
+        Prevents duplicates based on fixture ID.
         
         Args:
             predictions (list): List of prediction dictionaries
@@ -148,24 +149,41 @@ class PredictionService:
                 except (json.JSONDecodeError, UnicodeDecodeError) as e:
                     logger.error(f"Error loading prediction history: {str(e)}")
             
-            # Add timestamp to predictions
+            # Create a set of existing fixture IDs for deduplication
+            existing_fixtures = {p.get('fixtureId') for p in history if p.get('fixtureId')}
+            logger.info(f"Found {len(existing_fixtures)} existing fixtures in history")
+            
+            # Add timestamp to predictions and filter duplicates
             timestamped_predictions = []
+            duplicates_skipped = 0
             for prediction in predictions:
-                prediction_copy = prediction.copy()
-                prediction_copy["saved_at"] = format_datetime(get_current_time())
-                timestamped_predictions.append(prediction_copy)
+                fixture_id = prediction.get('fixtureId')
+                if fixture_id not in existing_fixtures:
+                    prediction_copy = prediction.copy()
+                    prediction_copy["saved_at"] = format_datetime(get_current_time())
+                    timestamped_predictions.append(prediction_copy)
+                    existing_fixtures.add(fixture_id)
+                else:
+                    duplicates_skipped += 1
             
-            # Append new predictions to history
-            history.extend(timestamped_predictions)
-            
-            # Create directory if it doesn't exist
-            Path(PREDICTION_HISTORY_FILE).parent.mkdir(parents=True, exist_ok=True)
-            
-            # Save updated history
-            with open(PREDICTION_HISTORY_FILE, 'w', encoding='utf-8') as f:
-                json.dump(history, f, indent=2)
-            
-            logger.info(f"Prediction history updated with {len(timestamped_predictions)} new predictions")
+            # Only append if we have new predictions
+            if timestamped_predictions:
+                history.extend(timestamped_predictions)
+                
+                # Create directory if it doesn't exist
+                Path(PREDICTION_HISTORY_FILE).parent.mkdir(parents=True, exist_ok=True)
+                
+                # Save updated history
+                with open(PREDICTION_HISTORY_FILE, 'w', encoding='utf-8') as f:
+                    json.dump(history, f, indent=2)
+                
+                logger.info(f"Prediction history updated with {len(timestamped_predictions)} new predictions")
+            else:
+                logger.info("No new predictions to add to history")
+                
+            if duplicates_skipped > 0:
+                logger.info(f"Skipped {duplicates_skipped} duplicate predictions")
+                
             return True
             
         except Exception as e:
