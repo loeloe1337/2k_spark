@@ -8,6 +8,21 @@ import { useState, useEffect } from 'react';
 import { apiClient } from '@/lib/api/client';
 import { useRefreshContext } from '@/contexts/refresh-context';
 
+// Type definitions for API responses
+interface StatsResponse {
+  total_matches: number;
+  home_wins_predicted: number;
+  away_wins_predicted: number;
+  avg_confidence: number;
+  model_accuracy: number;
+  last_updated: string;
+}
+
+interface RefreshResponse {
+  status: string;
+  message?: string;
+}
+
 /**
  * Hook for fetching prediction statistics.
  *
@@ -30,7 +45,7 @@ export function useStats() {
     const fetchStats = async () => {
       try {
         setLoading(true);
-        const data = await apiClient.getStats();
+        const data = await apiClient.getStats() as StatsResponse;
         setStats(data);
         setError(null);
         console.log(`Stats refreshed after refresh ${refreshCounter}`);
@@ -65,7 +80,7 @@ export function useRefresh() {
       setSuccess(false);
       setError(null);
 
-      const response = await apiClient.refreshData();
+      const response = await apiClient.refreshData() as RefreshResponse;
 
       if (response.status === 'success') {
         setSuccess(true);

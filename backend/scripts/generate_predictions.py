@@ -14,7 +14,7 @@ backend_dir = current_dir.parent
 sys.path.append(str(backend_dir))
 
 from config.settings import (
-    PLAYER_STATS_FILE, UPCOMING_MATCHES_FILE, PREDICTIONS_FILE
+    PLAYER_STATS_FILE, UPCOMING_MATCHES_FILE, PREDICTIONS_FILE, PREDICTION_HISTORY_FILE
 )
 from config.logging_config import get_prediction_refresh_logger
 
@@ -115,15 +115,67 @@ def generate_predictions(player_stats, upcoming_matches):
 
 def save_predictions(predictions):
     """
-    Save predictions to file.
+    Save predictions to file and add to prediction history for future validation.
     
     Args:
         predictions (list): List of match predictions
     """
+    # Save current predictions
     with open(PREDICTIONS_FILE, 'w', encoding='utf-8') as f:
         json.dump(predictions, f, indent=2)
     
     logger.info(f"Saved {len(predictions)} predictions to {PREDICTIONS_FILE}")
+    
+    # Add predictions to history for future validation
+    add_predictions_to_history(predictions)
+
+def add_predictions_to_history(new_predictions):
+    """
+    Add new predictions to the prediction history file for future validation.
+    
+    Args:
+        new_predictions (list): List of new predictions to add
+    """
+    # Load existing prediction history
+    existing_predictions = []
+    if Path(PREDICTION_HISTORY_FILE).exists():
+        try:
+            with open(PREDICTION_HISTORY_FILE, 'r', encoding='utf-8') as f:
+                existing_predictions = json.load(f)
+        except (json.JSONDecodeError, UnicodeDecodeError) as e:
+            logger.warning(f"Error loading existing prediction history: {str(e)}")
+            existing_predictions = []
+    
+    # Get existing fixture IDs to avoid duplicates
+    existing_fixture_ids = {pred.get('fixtureId') for pred in existing_predictions}
+    
+    # Add new predictions that don't already exist
+    added_count = 0
+    for prediction in new_predictions:
+        fixture_id = prediction.get('fixtureId')
+        if fixture_id not in existing_fixture_ids:
+            # Add fields that will be filled during validation
+            prediction_with_validation_fields = prediction.copy()
+            prediction_with_validation_fields.update({
+                'homeScore': None,
+                'awayScore': None,
+                'result': None,
+                'prediction_correct': None,
+                'home_score_error': None,
+                'away_score_error': None,
+                'total_score_error': None
+            })
+            existing_predictions.append(prediction_with_validation_fields)
+            existing_fixture_ids.add(fixture_id)
+            added_count += 1
+    
+    # Save updated prediction history
+    if added_count > 0:
+        with open(PREDICTION_HISTORY_FILE, 'w', encoding='utf-8') as f:
+            json.dump(existing_predictions, f, indent=2)
+        logger.info(f"Added {added_count} new predictions to history for future validation")
+    else:
+        logger.info("No new predictions to add to history")
 
 def main():
     """

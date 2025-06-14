@@ -23,6 +23,11 @@ from core.data.processors.player_stats import PlayerStatsProcessor
 from core.models.winner_prediction import WinnerPredictionModel
 from core.models.score_prediction import ScorePredictionModel
 from core.models.registry import ModelRegistry, ScoreModelRegistry
+from services.refresh_service import refresh_predictions
+from services.prediction_service import PredictionService
+from services.prediction_validation_service import validate_predictions
+from scripts.validate_predictions import main as validate_predictions_script
+from scripts.clear_mock_predictions import main as clear_mock_predictions
 
 logger = get_data_fetcher_logger()
 
@@ -277,6 +282,39 @@ def clean_model_registry(args):
     subprocess.run(cmd)
 
 
+def refresh_data(args):
+    """
+    Refresh all data and predictions.
+    """
+    print("Refreshing data and predictions...")
+    success = refresh_predictions()
+    if success:
+        print("✅ Data refresh completed successfully")
+    else:
+        print("❌ Data refresh failed")
+        sys.exit(1)
+
+
+def validate_prediction_results(args):
+    """
+    Validate predictions against completed match results.
+    """
+    print("Validating predictions against completed matches...")
+    success = validate_predictions()
+    if success:
+        print("✅ Prediction validation completed successfully")
+    else:
+        print("❌ Prediction validation failed")
+        sys.exit(1)
+
+
+def clear_mock_prediction_data(args):
+    """
+    Clear mock prediction data and prepare for real prediction tracking.
+    """
+    clear_mock_predictions()
+
+
 def main():
     """
     Main entry point for the CLI.
@@ -326,6 +364,16 @@ def main():
     clean_registry_parser.add_argument('--min-samples', type=int, default=100, help='Minimum number of samples required for a model to be considered valid')
     clean_registry_parser.add_argument('--keep-files', action='store_true', help='Keep model files on disk')
 
+    # Add subcommands
+    refresh_parser = subparsers.add_parser('refresh', help='Refresh data and predictions')
+    refresh_parser.set_defaults(func=refresh_data)
+    
+    validate_parser = subparsers.add_parser('validate', help='Validate predictions against completed matches')
+    validate_parser.set_defaults(func=validate_prediction_results)
+    
+    clear_mock_parser = subparsers.add_parser('clear-mock', help='Clear mock prediction data and prepare for real tracking')
+    clear_mock_parser.set_defaults(func=clear_mock_prediction_data)
+
     args = parser.parse_args()
 
     if args.command == 'fetch-token':
@@ -348,6 +396,12 @@ def main():
         optimize_winner_model(args)
     elif args.command == 'clean-model-registry':
         clean_model_registry(args)
+    elif args.command == 'refresh':
+        refresh_data(args)
+    elif args.command == 'validate':
+        validate_prediction_results(args)
+    elif args.command == 'clear-mock':
+        clear_mock_prediction_data(args)
     else:
         parser.print_help()
 

@@ -43,17 +43,18 @@ export function usePredictions() {
           }
 
           predictionsData = data;
-        } else if (data && typeof data === 'object' && Array.isArray(data.predictions)) {
+        } else if (data && typeof data === 'object' && 'predictions' in data && Array.isArray((data as any).predictions)) {
           // Handle object format with predictions array
+          const typedData = data as { predictions: any[] };
           console.log('API Response (object format):', JSON.stringify(data).substring(0, 200) + '...');
-          console.log(`Fetched ${data.predictions.length} predictions after refresh ${refreshCounter} (object format)`);
+          console.log(`Fetched ${typedData.predictions.length} predictions after refresh ${refreshCounter} (object format)`);
 
           // Debug: Log the first prediction
-          if (data.predictions.length > 0) {
-            console.log('First prediction:', JSON.stringify(data.predictions[0]).substring(0, 200) + '...');
+          if (typedData.predictions.length > 0) {
+            console.log('First prediction:', JSON.stringify(typedData.predictions[0]).substring(0, 200) + '...');
           }
 
-          predictionsData = data.predictions;
+          predictionsData = typedData.predictions;
         } else {
           console.error('Unexpected API response format:', data);
           setPredictions([]);
@@ -72,7 +73,7 @@ export function usePredictions() {
 
         // Debug: Log all matches with their start times
         console.log('All matches:');
-        predictionsData.forEach(match => {
+        predictionsData.forEach((match: any) => {
           const fixtureStart = new Date(match.fixtureStart);
           console.log(`Match ${match.fixtureId}: ${match.homePlayer.name} vs ${match.awayPlayer.name}, Start: ${fixtureStart.toISOString()}`);
         });
@@ -83,7 +84,7 @@ export function usePredictions() {
         console.log(`Showing ${upcomingMatches.length} upcoming matches after filtering out ${predictionsData.length - upcomingMatches.length} matches that have already started`);
 
         // Sort by start time (earliest first)
-        upcomingMatches.sort((a, b) => {
+        upcomingMatches.sort((a: any, b: any) => {
           return new Date(a.fixtureStart).getTime() - new Date(b.fixtureStart).getTime();
         });
 
@@ -120,7 +121,7 @@ export function useScorePredictions() {
     const fetchScorePredictions = async () => {
       try {
         setLoading(true);
-        const data = await apiClient.getScorePredictions();
+        const data = await apiClient.getScorePredictions() as any;
 
         console.log(`Fetched ${data.predictions.length} score predictions after refresh ${refreshCounter}`);
 
@@ -128,7 +129,7 @@ export function useScorePredictions() {
         const upcomingMatches = data.predictions;
 
         // Sort by start time (earliest first)
-        upcomingMatches.sort((a, b) => {
+        upcomingMatches.sort((a: any, b: any) => {
           return new Date(a.fixtureStart).getTime() - new Date(b.fixtureStart).getTime();
         });
 
@@ -168,10 +169,32 @@ export function usePredictionHistory(player?: string, date?: string) {
     const fetchPredictionHistory = async () => {
       try {
         setLoading(true);
-        const data = await apiClient.getPredictionHistory(player, date);
+        const data = await apiClient.getPredictionHistory(player, date) as any;
+        
+        // Debug logging
+        console.log(`Prediction history refreshed after refresh ${refreshCounter}`);
+        console.log(`Total predictions received: ${data.predictions.length}`);
+        
+        // Check first few predictions for validation data
+        const validatedPredictions = data.predictions.filter((p: any) => p.homeScore !== undefined && p.awayScore !== undefined);
+        const unvalidatedPredictions = data.predictions.filter((p: any) => p.homeScore === undefined || p.awayScore === undefined);
+        console.log(`Validated predictions: ${validatedPredictions.length}`);
+        console.log(`Unvalidated predictions: ${unvalidatedPredictions.length}`);
+        
+        if (validatedPredictions.length > 0) {
+          const sample = validatedPredictions[0];
+          console.log('Sample validated prediction:', {
+            fixtureId: sample.fixtureId,
+            homeScore: sample.homeScore,
+            awayScore: sample.awayScore,
+            prediction_correct: sample.prediction_correct,
+            homeScoreType: typeof sample.homeScore,
+            awayScoreType: typeof sample.awayScore
+          });
+        }
+        
         setHistory(data.predictions);
         setError(null);
-        console.log(`Prediction history refreshed after refresh ${refreshCounter}`);
       } catch (err) {
         console.error('Error fetching prediction history:', err);
         setError('Failed to fetch prediction history. Please try again later.');
@@ -202,7 +225,7 @@ export function usePlayerStats() {
       try {
         setLoading(true);
         const data = await apiClient.getPlayerStats();
-        setPlayerStats(data);
+        setPlayerStats(data as any);
         setError(null);
         console.log(`Player stats refreshed after refresh ${refreshCounter}`);
       } catch (err) {
@@ -234,7 +257,7 @@ export function useUpcomingMatches() {
     const fetchUpcomingMatches = async () => {
       try {
         setLoading(true);
-        const data = await apiClient.getUpcomingMatches();
+        const data = await apiClient.getUpcomingMatches() as any;
 
         console.log(`Fetched ${data.length} upcoming matches after refresh ${refreshCounter}`);
 
@@ -242,7 +265,7 @@ export function useUpcomingMatches() {
         const filteredMatches = data;
 
         // Sort by start time (earliest first)
-        filteredMatches.sort((a, b) => {
+        filteredMatches.sort((a: any, b: any) => {
           return new Date(a.fixtureStart).getTime() - new Date(b.fixtureStart).getTime();
         });
 

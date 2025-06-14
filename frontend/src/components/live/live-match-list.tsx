@@ -8,8 +8,62 @@ import { useState, useEffect } from 'react';
 import { apiClient } from '@/lib/api/client';
 import { LiveMatchCard } from "./live-match-card";
 
+// Type definitions for the API responses
+interface Player {
+  name: string;
+  id: string;
+}
+
+interface PredictionData {
+  fixtureId: string;
+  prediction?: {
+    home_win_probability: number;
+    away_win_probability: number;
+  };
+  score_prediction?: {
+    home_score: number;
+    away_score: number;
+    total_score: number;
+    score_diff: number;
+  };
+}
+
+interface UpcomingMatchData {
+  id: string;
+  homePlayer: Player;
+  awayPlayer: Player;
+  fixtureStart: string;
+  [key: string]: any;
+}
+
+interface ScorePredictionsResponse {
+  predictions?: Array<{
+    fixtureId: string;
+    score_prediction?: {
+      home_score: number;
+      away_score: number;
+      total_score: number;
+      score_diff: number;
+    };
+  }>;
+}
+
+interface LiveMatch extends UpcomingMatchData {
+  fixtureId: string;
+  homeProbability: number;
+  awayProbability: number;
+  homeScorePrediction: string;
+  awayScorePrediction: string;
+  totalScore: string;
+  scoreDiff: string;
+  rawHomeScore: number | null;
+  rawAwayScore: number | null;
+  rawTotalScore: number | null;
+  rawScoreDiff: number | null;
+}
+
 export function LiveMatchList() {
-  const [liveMatches, setLiveMatches] = useState<any[]>([]);
+  const [liveMatches, setLiveMatches] = useState<LiveMatch[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -23,7 +77,7 @@ export function LiveMatchList() {
           apiClient.getPredictions(),
           apiClient.getUpcomingMatches(),
           apiClient.getScorePredictions()
-        ]);
+        ]) as [PredictionData[], UpcomingMatchData[], ScorePredictionsResponse];
 
         console.log('Raw predictions data sample:', predictionsData.length > 0 ? predictionsData[0] : 'No predictions');
         console.log('Raw score predictions data:',
@@ -33,7 +87,7 @@ export function LiveMatchList() {
         // Create a map of fixture IDs to score predictions
         const scorePredictionsMap = new Map();
         if (scorePredictionsData && scorePredictionsData.predictions) {
-          scorePredictionsData.predictions.forEach(prediction => {
+          scorePredictionsData.predictions.forEach((prediction: { fixtureId: string; score_prediction?: { home_score: number; away_score: number; total_score: number; score_diff: number; }; }) => {
             // Log each prediction to see its structure
             console.log(`Prediction for fixture ${prediction.fixtureId}:`, prediction);
 
@@ -47,9 +101,9 @@ export function LiveMatchList() {
         }
 
         // Merge predictions with upcoming matches data
-        const mergedData = upcomingMatchesData.map(match => {
+        const mergedData = upcomingMatchesData.map((match: UpcomingMatchData) => {
           // Find corresponding prediction
-          const prediction = predictionsData.find(p => p.fixtureId === match.id);
+          const prediction = predictionsData.find((p: PredictionData) => p.fixtureId === match.id);
 
           // Find corresponding score prediction
           const scorePrediction = scorePredictionsMap.get(match.id);
@@ -118,7 +172,7 @@ export function LiveMatchList() {
         const now = new Date();
         const thirtyMinutesAgo = new Date(now.getTime() - 30 * 60 * 1000);
 
-        const filteredMatches = mergedData.filter(match => {
+        const filteredMatches = mergedData.filter((match: LiveMatch) => {
           // Parse the fixture start time
           const fixtureStart = new Date(match.fixtureStart);
 
@@ -134,7 +188,7 @@ export function LiveMatchList() {
         }
 
         // Sort by most recently started first
-        filteredMatches.sort((a, b) => {
+        filteredMatches.sort((a: LiveMatch, b: LiveMatch) => {
           return new Date(b.fixtureStart).getTime() - new Date(a.fixtureStart).getTime();
         });
 
@@ -193,7 +247,7 @@ export function LiveMatchList() {
 
   return (
     <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-      {liveMatches.map((match) => (
+      {liveMatches.map((match: LiveMatch) => (
         <LiveMatchCard key={match.fixtureId} match={match} />
       ))}
     </div>

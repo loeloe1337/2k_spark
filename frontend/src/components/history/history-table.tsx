@@ -20,7 +20,9 @@ import {
   BarChart3,
   History,
   CheckCircle2,
-  AlertCircle
+  AlertCircle,
+  XCircle,
+  Target
 } from "lucide-react";
 
 export function HistoryTable() {
@@ -43,6 +45,15 @@ export function HistoryTable() {
       item => Math.round(item.prediction.confidence * 100) >= 70
     ).length;
 
+    // Calculate correct predictions - only include predictions with results (exclude pending)
+    const predictionsWithResults = history.filter(
+      item => item.prediction_correct !== undefined
+    );
+    const correctPredictions = history.filter(
+      item => item.prediction_correct === true
+    ).length;
+    const accuracy = predictionsWithResults.length > 0 ? Math.round((correctPredictions / predictionsWithResults.length) * 100) : 0;
+
     const uniquePlayers = new Set();
     history.forEach(item => {
       uniquePlayers.add(item.homePlayer.name);
@@ -58,6 +69,9 @@ export function HistoryTable() {
     return {
       totalPredictions,
       highConfidencePredictions,
+      correctPredictions,
+      accuracy,
+      predictionsWithResults: predictionsWithResults.length,
       uniquePlayers: uniquePlayers.size,
       uniqueTeams: uniqueTeams.size,
     };
@@ -152,11 +166,58 @@ export function HistoryTable() {
           <Card className="bg-purple-500/5 border-purple-500/20">
             <CardContent className="p-4 flex items-center">
               <div className="bg-purple-500/10 p-2 rounded-full mr-4">
-                <CheckCircle2 className="h-5 w-5 text-purple-500" />
+                <Users className="h-5 w-5 text-purple-500" />
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">Unique Teams</p>
                 <p className="text-2xl font-bold">{stats.uniqueTeams}</p>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      )}
+
+      {/* Accuracy Statistics */}
+      {stats && (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <Card className="bg-emerald-500/5 border-emerald-500/20">
+            <CardContent className="p-4 flex items-center">
+              <div className="bg-emerald-500/10 p-2 rounded-full mr-4">
+                <Target className="h-5 w-5 text-emerald-500" />
+              </div>
+              <div>
+                <p className="text-sm text-muted-foreground">Prediction Accuracy</p>
+                <p className="text-2xl font-bold">{stats.accuracy}%</p>
+                <p className="text-xs text-muted-foreground">{stats.correctPredictions} of {stats.predictionsWithResults} correct</p>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-orange-500/5 border-orange-500/20">
+            <CardContent className="p-4 flex items-center">
+              <div className="bg-orange-500/10 p-2 rounded-full mr-4">
+                <BarChart3 className="h-5 w-5 text-orange-500" />
+              </div>
+              <div>
+                <p className="text-sm text-muted-foreground">High Confidence Accuracy</p>
+                <p className="text-2xl font-bold">
+                  {(() => {
+                    const highConfidenceWithResults = history.filter(item => 
+                      Math.round(item.prediction.confidence * 100) >= 70 && item.prediction_correct !== undefined
+                    ).length;
+                    const highConfidenceCorrect = history.filter(item => 
+                      Math.round(item.prediction.confidence * 100) >= 70 && item.prediction_correct === true
+                    ).length;
+                    return highConfidenceWithResults > 0 ? Math.round((highConfidenceCorrect / highConfidenceWithResults) * 100) : 0;
+                  })()}%
+                </p>
+                <p className="text-xs text-muted-foreground">
+                  {history.filter(item => 
+                    Math.round(item.prediction.confidence * 100) >= 70 && item.prediction_correct === true
+                  ).length} of {history.filter(item => 
+                    Math.round(item.prediction.confidence * 100) >= 70 && item.prediction_correct !== undefined
+                  ).length} correct
+                </p>
               </div>
             </CardContent>
           </Card>
@@ -210,6 +271,12 @@ export function HistoryTable() {
                     <div className="flex items-center text-xs font-medium text-muted-foreground">
                       <CheckCircle2 className="h-3.5 w-3.5 mr-1.5" />
                       Score
+                    </div>
+                  </TableHead>
+                  <TableHead className="w-[120px]">
+                    <div className="flex items-center text-xs font-medium text-muted-foreground">
+                      <Target className="h-3.5 w-3.5 mr-1.5" />
+                      Result
                     </div>
                   </TableHead>
                   <TableHead className="w-[180px]">
@@ -307,9 +374,48 @@ export function HistoryTable() {
                         </Badge>
                       </TableCell>
                       <TableCell>
-                        <div className="font-medium">
-                          {item.score_prediction.home_score} - {item.score_prediction.away_score}
+                        <div className="space-y-1">
+                          <div className="text-xs text-muted-foreground">Predicted</div>
+                          <div className="font-medium">
+                            {item.score_prediction.home_score} - {item.score_prediction.away_score}
+                          </div>
+                          {(item.homeScore !== undefined && item.awayScore !== undefined) && (
+                            <>
+                              <div className="text-xs text-muted-foreground">Actual</div>
+                              <div className="font-medium text-sm">
+                                {item.homeScore} - {item.awayScore}
+                              </div>
+                            </>
+                          )}
                         </div>
+                      </TableCell>
+                      <TableCell>
+                        {item.prediction_correct !== undefined ? (
+                          <div className="flex items-center space-x-2">
+                            {item.prediction_correct ? (
+                              <>
+                                <CheckCircle2 className="h-4 w-4 text-green-500" />
+                                <Badge variant="outline" className="bg-green-500/10 text-green-500 border-green-500/30">
+                                  Correct
+                                </Badge>
+                              </>
+                            ) : (
+                              <>
+                                <XCircle className="h-4 w-4 text-red-500" />
+                                <Badge variant="outline" className="bg-red-500/10 text-red-500 border-red-500/30">
+                                  Incorrect
+                                </Badge>
+                              </>
+                            )}
+                          </div>
+                        ) : (
+                          <div className="flex items-center space-x-2">
+                            <AlertCircle className="h-4 w-4 text-yellow-500" />
+                            <Badge variant="outline" className="bg-yellow-500/10 text-yellow-500 border-yellow-500/30">
+                              Pending
+                            </Badge>
+                          </div>
+                        )}
                       </TableCell>
                       <TableCell className="text-sm text-muted-foreground">
                         {formattedSavedDate}

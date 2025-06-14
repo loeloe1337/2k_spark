@@ -8,7 +8,25 @@ import { Badge } from "@/components/ui/badge";
 import { formatDistanceToNow } from "date-fns";
 
 interface LiveMatchCardProps {
-  match: any;
+  match: {
+    fixtureId: string;
+    homePlayer: { name: string; id: string };
+    awayPlayer: { name: string; id: string };
+    fixtureStart: string;
+    homeProbability?: number;
+    awayProbability?: number;
+    homeWinProbability?: number;
+    awayWinProbability?: number;
+    homeScorePrediction?: string;
+    awayScorePrediction?: string;
+    totalScore?: string;
+    scoreDiff?: string;
+    rawHomeScore?: number | null;
+    rawAwayScore?: number | null;
+    rawTotalScore?: number | null;
+    rawScoreDiff?: number | null;
+    [key: string]: any;
+  };
 }
 
 export function LiveMatchCard({ match }: LiveMatchCardProps) {

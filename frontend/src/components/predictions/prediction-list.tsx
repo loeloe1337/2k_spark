@@ -8,8 +8,37 @@ import { useState, useEffect } from 'react';
 import { apiClient } from '@/lib/api/client';
 import { PredictionCard } from "./prediction-card";
 
+// Type definition for prediction data
+interface PredictionData {
+  fixtureId: string;
+  homePlayer: {
+    id: string;
+    name: string;
+  };
+  awayPlayer: {
+    id: string;
+    name: string;
+  };
+  homeTeam: {
+    id: string;
+    name: string;
+  };
+  awayTeam: {
+    id: string;
+    name: string;
+  };
+  fixtureStart: string;
+  fetched_at?: string;
+  prediction: {
+    home_win_probability: number;
+    away_win_probability: number;
+    predicted_winner: "home" | "away";
+    confidence: number;
+  };
+}
+
 export function PredictionList() {
-  const [predictions, setPredictions] = useState<any[]>([]);
+  const [predictions, setPredictions] = useState<PredictionData[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -41,7 +70,7 @@ export function PredictionList() {
         // Filter out matches that have already started
         const now = new Date();
 
-        const upcomingMatches = predictionsData.filter(match => {
+        const upcomingMatches = predictionsData.filter((match: PredictionData) => {
           // Parse the fixture start time
           const fixtureStart = new Date(match.fixtureStart);
 
@@ -52,7 +81,7 @@ export function PredictionList() {
         });
 
         // Sort by start time (earliest first)
-        upcomingMatches.sort((a, b) => {
+        upcomingMatches.sort((a: PredictionData, b: PredictionData) => {
           return new Date(a.fixtureStart).getTime() - new Date(b.fixtureStart).getTime();
         });
 

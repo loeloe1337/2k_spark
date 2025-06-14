@@ -8,8 +8,43 @@ import { useState, useEffect } from 'react';
 import { apiClient } from '@/lib/api/client';
 import { ScoreCard } from "./score-card";
 
+// Type definitions for score prediction data
+interface ScorePredictionData {
+  fixtureId: string;
+  homePlayer: {
+    id: string;
+    name: string;
+  };
+  awayPlayer: {
+    id: string;
+    name: string;
+  };
+  homeTeam: {
+    id: string;
+    name: string;
+  };
+  awayTeam: {
+    id: string;
+    name: string;
+  };
+  fixtureStart: string;
+  score_prediction: {
+    home_score: number;
+    away_score: number;
+    total_score: number;
+    score_diff: number;
+  };
+}
+
+interface ScorePredictionsResponse {
+  predictions: ScorePredictionData[];
+  summary: {
+    model_accuracy: number;
+  };
+}
+
 export function ScoreList() {
-  const [predictions, setPredictions] = useState<any[]>([]);
+  const [predictions, setPredictions] = useState<ScorePredictionData[]>([]);
   const [modelAccuracy, setModelAccuracy] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -19,12 +54,12 @@ export function ScoreList() {
       try {
         setLoading(true);
 
-        const data = await apiClient.getScorePredictions();
+        const data = await apiClient.getScorePredictions() as ScorePredictionsResponse;
 
         // Filter out matches that have already started
         const now = new Date();
 
-        const upcomingMatches = data.predictions.filter(match => {
+        const upcomingMatches = data.predictions.filter((match: ScorePredictionData) => {
           // Parse the fixture start time
           const fixtureStart = new Date(match.fixtureStart);
 
@@ -35,7 +70,7 @@ export function ScoreList() {
         });
 
         // Sort by start time (earliest first)
-        upcomingMatches.sort((a, b) => {
+        upcomingMatches.sort((a: ScorePredictionData, b: ScorePredictionData) => {
           return new Date(a.fixtureStart).getTime() - new Date(b.fixtureStart).getTime();
         });
 
