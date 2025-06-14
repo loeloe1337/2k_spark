@@ -21,6 +21,7 @@ from config.settings import (
 from config.logging_config import get_prediction_refresh_logger
 from utils.logging import log_execution_time, log_exceptions
 from utils.time import get_current_time, format_datetime
+from services.prediction_validation_service import PredictionValidationService
 from core.data.fetchers import TokenFetcher
 from core.data.fetchers.match_history import MatchHistoryFetcher
 from core.data.fetchers.upcoming_matches import UpcomingMatchesFetcher
@@ -48,6 +49,7 @@ class RefreshService:
         self.player_stats_processor = PlayerStatsProcessor()
         self.winner_model_registry = ModelRegistry()
         self.score_model_registry = ScoreModelRegistry()
+        self.validation_service = PredictionValidationService()
 
     @log_execution_time(logger)
     @log_exceptions(logger)
@@ -291,6 +293,19 @@ def refresh_predictions():
     # Refresh predictions
     if not service.refresh_predictions():
         logger.error("Prediction refresh failed")
+        return False
+
+    # Validate existing predictions against completed matches
+    logger.info("Starting prediction validation against completed matches")
+    try:
+        validation_success = service.validation_service.validate_predictions()
+        if validation_success:
+            logger.info("Prediction validation completed successfully")
+        else:
+            logger.error("Prediction validation failed")
+            return False
+    except Exception as e:
+        logger.error(f"Prediction validation failed with exception: {str(e)}")
         return False
 
     return True
