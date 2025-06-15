@@ -283,18 +283,61 @@ def refresh_predictions():
     Returns:
         bool: True if successful, False otherwise
     """
+    import json
+    import os
+    from datetime import datetime
+    from pathlib import Path
+    
+    def update_status(stage, message):
+        """Update the refresh status with stage information."""
+        try:
+            # Get the status file path relative to the app directory
+            app_dir = Path(__file__).parent.parent / "app"
+            status_file = app_dir / "refresh_status.json"
+            
+            # Read current status
+            if status_file.exists():
+                with open(status_file, 'r', encoding='utf-8') as f:
+                    status = json.load(f)
+            else:
+                status = {}
+            
+            # Update with new stage and message
+            status.update({
+                "stage": stage,
+                "message": message,
+                "status": "running"
+            })
+            
+            # Save updated status
+            with open(status_file, 'w', encoding='utf-8') as f:
+                json.dump(status, f)
+                
+            logger.info(f"Status updated: {stage} - {message}")
+        except Exception as e:
+            logger.error(f"Failed to update status: {str(e)}")
+    
     service = RefreshService()
 
+    # Update status: Loading upcoming matches
+    update_status("upcoming_matches", "Loading upcoming matches")
+    
     # Refresh data from H2H GG League API
     if not service.refresh_data():
         logger.error("Data refresh failed")
         return False
 
+    # Update status: Generating predictions
+    update_status("predictions", "Generating predictions")
+    
     # Refresh predictions
     if not service.refresh_predictions():
         logger.error("Prediction refresh failed")
         return False
 
+    # Update status: Validating predictions
+    update_status("validation", "Validating predictions")
+    
     # Validate existing predictions against completed matches
     logger.info("Starting prediction validation against completed matches")
     try:
