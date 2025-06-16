@@ -60,19 +60,114 @@ interface LiveMatch extends UpcomingMatchData {
   rawAwayScore: number | null;
   rawTotalScore: number | null;
   rawScoreDiff: number | null;
+  // Live score properties
+  liveScores?: any;
+  hasLiveScores?: boolean;
+  liveStatus?: string;
+  liveTeamAScore?: number | null;
+  liveTeamBScore?: number | null;
+  liveUpdatedAt?: string | null;
 }
 
 export function LiveMatchList() {
   const [liveMatches, setLiveMatches] = useState<LiveMatch[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [lastFullRefresh, setLastFullRefresh] = useState<number>(Date.now());
 
   useEffect(() => {
     const fetchLiveMatches = async () => {
       try {
         setLoading(true);
 
-        // Fetch both predictions and upcoming matches
+        // First try to fetch live matches with predictions
+        try {
+          const liveMatchesResponse = await apiClient.getLiveMatchesWithPredictions() as any;
+          
+          if (liveMatchesResponse && liveMatchesResponse.matches && liveMatchesResponse.matches.length > 0) {
+            // Process live matches with their predictions and scores
+            const processedLiveMatches = liveMatchesResponse.matches.map((match: any) => {
+              const liveScores = match.live_scores;
+              
+              return {
+                id: match.id || match.fixtureId,
+                fixtureId: match.fixtureId,
+                homePlayer: match.homePlayer,
+                awayPlayer: match.awayPlayer,
+                fixtureStart: match.fixtureStart,
+                homeProbability: match.homeProbability || (match.prediction?.home_win_probability) || 0.5,
+                awayProbability: match.awayProbability || (match.prediction?.away_win_probability) || 0.5,
+                homeScorePrediction: match.homeScorePrediction || (match.score_prediction?.home_score?.toString()) || 'N/A',
+                awayScorePrediction: match.awayScorePrediction || (match.score_prediction?.away_score?.toString()) || 'N/A',
+                totalScore: match.totalScore || (match.score_prediction?.total_score?.toString()) || 'N/A',
+                scoreDiff: match.scoreDiff || (match.score_prediction?.score_diff?.toString()) || 'N/A',
+                rawHomeScore: match.rawHomeScore || match.score_prediction?.home_score || null,
+                rawAwayScore: match.rawAwayScore || match.score_prediction?.away_score || null,
+                rawTotalScore: match.rawTotalScore || match.score_prediction?.total_score || null,
+                rawScoreDiff: match.rawScoreDiff || match.score_prediction?.score_diff || null,
+                // Live score data
+                liveScores: liveScores,
+                hasLiveScores: match.has_live_scores || false,
+                liveStatus: liveScores?.status || 'scheduled',
+                liveTeamAScore: liveScores?.team_a_score || null,
+                liveTeamBScore: liveScores?.team_b_score || null,
+                liveUpdatedAt: liveScores?.live_updated_at || null
+              };
+            });
+            
+            // Filter for live matches (started within the last 30 minutes)
+            const now = new Date();
+            const thirtyMinutesAgo = new Date(now.getTime() - 30 * 60 * 1000);
+
+            console.log('Current time:', now.toISOString());
+            console.log('30 minutes ago:', thirtyMinutesAgo.toISOString());
+            console.log('Total processed matches:', processedLiveMatches.length);
+
+            const filteredMatches = processedLiveMatches.filter((match: LiveMatch) => {
+              // Parse the fixture start time
+              const fixtureStart = new Date(match.fixtureStart);
+              
+              console.log(`Match ${match.id}: fixtureStart=${match.fixtureStart}, parsed=${fixtureStart.toISOString()}, hasLiveScores=${match.hasLiveScores}, status=${match.liveStatus}`);
+
+              // Check if the match started within the last 30 minutes
+              const isWithinTimeWindow = fixtureStart <= now && fixtureStart >= thirtyMinutesAgo;
+              
+              // For matches with live scores, be slightly more lenient (extend to 2 hours for active games)
+              if (match.hasLiveScores && match.liveStatus) {
+                const twoHoursAgo = new Date(now.getTime() - 2 * 60 * 60 * 1000);
+                const isRecentEnough = fixtureStart >= twoHoursAgo;
+                
+                // Only include if it's an active status and within 2 hours
+                const activeStatuses = ['live', 'inprogress', 'halftime', 'quarter', 'overtime'];
+                const isActiveGame = match.liveStatus ? activeStatuses.some(status => 
+                  match.liveStatus?.toLowerCase().includes(status)
+                ) : false;
+                
+                console.log(`Live match ${match.id}: isRecentEnough=${isRecentEnough}, isActiveGame=${isActiveGame}, status=${match.liveStatus || 'undefined'}`);
+                
+                return isRecentEnough && isActiveGame;
+              }
+
+              // For matches without live scores, use the strict 30-minute filter
+              return isWithinTimeWindow;
+            });
+
+            console.log('Filtered matches count:', filteredMatches.length);
+
+            // Sort by most recently started first
+            filteredMatches.sort((a: LiveMatch, b: LiveMatch) => {
+              return new Date(b.fixtureStart).getTime() - new Date(a.fixtureStart).getTime();
+            });
+            
+            setLiveMatches(filteredMatches);
+            setLoading(false);
+            return;
+          }
+        } catch (liveError) {
+          console.warn('Live matches API failed, falling back to predictions + upcoming matches:', liveError);
+        }
+
+        // Fallback: Fetch both predictions and upcoming matches (original logic)
         const [predictionsData, upcomingMatchesData, scorePredictionsData] = await Promise.all([
           apiClient.getPredictions(),
           apiClient.getUpcomingMatches(),
@@ -203,12 +298,56 @@ export function LiveMatchList() {
 
     fetchLiveMatches();
 
-    // Set up an interval to refresh the live matches every minute
-    const intervalId = setInterval(fetchLiveMatches, 60000);
+    // Set up an interval to refresh live scores more frequently (every 30 seconds)
+    // and do a full refresh every 5 minutes
+    const liveScoreInterval = setInterval(async () => {
+      const now = Date.now();
+      const timeSinceLastFullRefresh = now - lastFullRefresh;
+      
+      // Do a full refresh every 5 minutes
+      if (timeSinceLastFullRefresh > 5 * 60 * 1000) {
+        setLastFullRefresh(now);
+        fetchLiveMatches();
+      } else {
+        // Otherwise, just update live scores without re-rendering everything
+        updateLiveScoresOnly();
+      }
+    }, 30000);
 
     // Clean up the interval when the component unmounts
-    return () => clearInterval(intervalId);
-  }, []);
+    return () => clearInterval(liveScoreInterval);
+  }, [lastFullRefresh]);
+
+  // Function to update only live scores without full re-render
+  const updateLiveScoresOnly = async () => {
+    try {
+      const liveMatchesResponse = await apiClient.getLiveMatchesWithPredictions() as any;
+      
+      if (liveMatchesResponse && liveMatchesResponse.matches && liveMatchesResponse.matches.length > 0) {
+        setLiveMatches(prevMatches => {
+          return prevMatches.map(prevMatch => {
+            const updatedMatch = liveMatchesResponse.matches.find((m: any) => m.fixtureId === prevMatch.fixtureId);
+            
+            if (updatedMatch && updatedMatch.live_scores) {
+              return {
+                ...prevMatch,
+                liveScores: updatedMatch.live_scores,
+                hasLiveScores: updatedMatch.has_live_scores || false,
+                liveStatus: updatedMatch.live_scores?.status || 'scheduled',
+                liveTeamAScore: updatedMatch.live_scores?.team_a_score || null,
+                liveTeamBScore: updatedMatch.live_scores?.team_b_score || null,
+                liveUpdatedAt: updatedMatch.live_scores?.live_updated_at || null
+              };
+            }
+            
+            return prevMatch;
+          });
+        });
+      }
+    } catch (error) {
+      console.warn('Failed to update live scores:', error);
+    }
+  };
 
   if (loading) {
     return (

@@ -28,6 +28,10 @@ from config.settings import (
 from config.logging_config import get_api_logger
 from utils.logging import log_execution_time, log_exceptions
 from core.models.registry import ModelRegistry, ScoreModelRegistry
+from services.data_service import DataService
+from services.prediction_service import PredictionService
+from services.refresh_service import RefreshService
+from services.live_scores_service import LiveScoresService
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -321,6 +325,65 @@ def get_player_stats():
         logger.error(f"Error retrieving player statistics: {str(e)}")
         # Return empty list on error
         return jsonify([])
+
+
+@app.route('/api/live-scores', methods=['GET'])
+@log_execution_time(logger)
+@log_exceptions(logger)
+def get_live_scores():
+    """
+    Get live scores from H2H API.
+    
+    Returns:
+        flask.Response: JSON response with live scores
+    """
+    try:
+        live_service = LiveScoresService()
+        live_data = live_service.get_live_matches_with_predictions()
+        
+        logger.info(f"Returning {live_data['total_count']} live matches")
+        return jsonify(live_data)
+    except Exception as e:
+        logger.error(f"Error retrieving live scores: {str(e)}")
+        return jsonify({
+            'matches': [],
+            'total_count': 0,
+            'last_updated': datetime.now().isoformat(),
+            'error': str(e)
+        }), 500
+
+
+@app.route('/api/live-matches-with-predictions', methods=['GET'])
+@log_execution_time(logger)
+@log_exceptions(logger)
+def get_live_matches_with_predictions():
+    """
+    Get live matches merged with predictions.
+    
+    Returns:
+        flask.Response: JSON response with live matches and predictions
+    """
+    try:
+        live_service = LiveScoresService()
+        
+        # Load existing predictions
+        predictions = []
+        if Path(PREDICTIONS_FILE).exists():
+            with open(PREDICTIONS_FILE, 'r', encoding='utf-8') as f:
+                predictions = json.load(f)
+        
+        live_data = live_service.get_live_matches_with_predictions(predictions)
+        
+        logger.info(f"Returning {live_data['total_count']} live matches with predictions")
+        return jsonify(live_data)
+    except Exception as e:
+        logger.error(f"Error retrieving live matches with predictions: {str(e)}")
+        return jsonify({
+            'matches': [],
+            'total_count': 0,
+            'last_updated': datetime.now().isoformat(),
+            'error': str(e)
+        }), 500
 
 
 @app.route('/api/refresh', methods=['POST'])

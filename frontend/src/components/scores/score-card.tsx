@@ -3,8 +3,9 @@
  */
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Avatar } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { format } from "date-fns";
+import { getPlayerPhotoPath, getPlayerInitials } from "@/lib/utils/player-photos";
 
 interface ScoreCardProps {
   prediction: {
@@ -67,9 +68,8 @@ export function ScoreCard({ prediction }: ScoreCardProps) {
           {/* Home Player */}
           <div className="flex flex-col items-center text-center space-y-3">
             <Avatar className="h-16 w-16 border-2 border-primary/20 shadow-lg shadow-primary/10">
-              <div className="flex h-full w-full items-center justify-center bg-primary/10 font-bold text-primary">
-                {homePlayer.name.substring(0, 2)}
-              </div>
+              <AvatarImage src={getPlayerPhotoPath(homePlayer.name)} alt={homePlayer.name} />
+              <AvatarFallback className="bg-primary/10 text-primary font-bold">{getPlayerInitials(homePlayer.name)}</AvatarFallback>
             </Avatar>
             <div>
               <p className="font-semibold text-base">{homePlayer.name}</p>
@@ -91,9 +91,8 @@ export function ScoreCard({ prediction }: ScoreCardProps) {
           {/* Away Player */}
           <div className="flex flex-col items-center text-center space-y-3">
             <Avatar className="h-16 w-16 border-2 border-primary/20 shadow-lg shadow-primary/10">
-              <div className="flex h-full w-full items-center justify-center bg-primary/10 font-bold text-primary">
-                {awayPlayer.name.substring(0, 2)}
-              </div>
+              <AvatarImage src={getPlayerPhotoPath(awayPlayer.name)} alt={awayPlayer.name} />
+              <AvatarFallback className="bg-primary/10 text-primary font-bold">{getPlayerInitials(awayPlayer.name)}</AvatarFallback>
             </Avatar>
             <div>
               <p className="font-semibold text-base">{awayPlayer.name}</p>
@@ -132,9 +131,8 @@ export function ScoreCard({ prediction }: ScoreCardProps) {
             <p className="text-sm font-medium text-primary/90 mb-2">Predicted Winner</p>
             <div className="flex items-center space-x-2">
               <Avatar className="h-6 w-6">
-                <div className="flex h-full w-full items-center justify-center bg-primary/10 font-bold text-primary text-xs">
-                  {(homeWinner ? homePlayer.name : awayPlayer.name).substring(0, 2)}
-                </div>
+                <AvatarImage src={getPlayerPhotoPath(homeWinner ? homePlayer.name : awayPlayer.name)} alt={homeWinner ? homePlayer.name : awayPlayer.name} />
+                <AvatarFallback className="bg-primary/10 text-primary font-bold text-xs">{getPlayerInitials(homeWinner ? homePlayer.name : awayPlayer.name)}</AvatarFallback>
               </Avatar>
               <p className="text-base font-bold">{homeWinner ? homePlayer.name : awayPlayer.name}</p>
             </div>

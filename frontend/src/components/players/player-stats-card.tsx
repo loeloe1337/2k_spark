@@ -7,6 +7,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Progress } from "@/components/ui/progress";
+import { getPlayerPhotoPath, getPlayerInitials } from "@/lib/utils/player-photos";
 
 interface PlayerStatsCardProps {
   player: any;
@@ -44,8 +45,8 @@ export function PlayerStatsCard({ player }: PlayerStatsCardProps) {
       <CardContent className="pt-4">
         <div className="flex items-center space-x-4 mb-4">
           <Avatar className="h-16 w-16 border-2 border-primary">
-            <AvatarFallback>{player_name?.charAt(0) || "P"}</AvatarFallback>
-            <AvatarImage src={`/avatars/${id || "default"}.png`} />
+            <AvatarImage src={getPlayerPhotoPath(player_name)} alt={player_name} />
+            <AvatarFallback>{getPlayerInitials(player_name)}</AvatarFallback>
           </Avatar>
           <div>
             <p className="font-bold text-lg">{player_name}</p>

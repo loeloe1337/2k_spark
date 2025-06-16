@@ -3,8 +3,9 @@
  */
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Avatar } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { format } from "date-fns";
+import { getPlayerPhotoPath, getPlayerInitials } from "@/lib/utils/player-photos";
 
 interface PredictionCardProps {
   prediction: {
@@ -72,9 +73,8 @@ export function PredictionCard({ prediction }: PredictionCardProps) {
           {/* Home Player */}
           <div className="flex flex-col items-center text-center space-y-3">
             <Avatar className="h-16 w-16 border-2 border-primary/20 shadow-lg shadow-primary/10">
-              <div className="flex h-full w-full items-center justify-center bg-primary/10 font-bold text-primary">
-                {homePlayer.name.substring(0, 2)}
-              </div>
+              <AvatarImage src={getPlayerPhotoPath(homePlayer.name)} alt={homePlayer.name} />
+              <AvatarFallback className="bg-primary/10 text-primary font-bold">{getPlayerInitials(homePlayer.name)}</AvatarFallback>
             </Avatar>
             <div>
               <p className="font-semibold text-base">{homePlayer.name}</p>
@@ -94,9 +94,8 @@ export function PredictionCard({ prediction }: PredictionCardProps) {
           {/* Away Player */}
           <div className="flex flex-col items-center text-center space-y-3">
             <Avatar className="h-16 w-16 border-2 border-primary/20 shadow-lg shadow-primary/10">
-              <div className="flex h-full w-full items-center justify-center bg-primary/10 font-bold text-primary">
-                {awayPlayer.name.substring(0, 2)}
-              </div>
+              <AvatarImage src={getPlayerPhotoPath(awayPlayer.name)} alt={awayPlayer.name} />
+              <AvatarFallback className="bg-primary/10 text-primary font-bold">{getPlayerInitials(awayPlayer.name)}</AvatarFallback>
             </Avatar>
             <div>
               <p className="font-semibold text-base">{awayPlayer.name}</p>
@@ -110,11 +109,10 @@ export function PredictionCard({ prediction }: PredictionCardProps) {
         <div className="bg-muted/70 p-4 rounded-lg border border-border/30 shadow-sm">
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-3">
-              <div className="bg-primary/10 h-8 w-8 rounded-full flex items-center justify-center border border-primary/20">
-                <div className="text-primary font-bold text-sm">
-                  {isHomeWinner ? homePlayer.name.substring(0, 2) : awayPlayer.name.substring(0, 2)}
-                </div>
-              </div>
+              <Avatar className="h-8 w-8 border border-primary/20">
+                <AvatarImage src={getPlayerPhotoPath(isHomeWinner ? homePlayer.name : awayPlayer.name)} alt={isHomeWinner ? homePlayer.name : awayPlayer.name} />
+                <AvatarFallback className="bg-primary/10 text-primary font-bold text-sm">{getPlayerInitials(isHomeWinner ? homePlayer.name : awayPlayer.name)}</AvatarFallback>
+              </Avatar>
               <div>
                 <p className="text-sm font-medium text-primary/90">Predicted Winner</p>
                 <p className="text-base font-bold">{isHomeWinner ? homePlayer.name : awayPlayer.name}</p>
