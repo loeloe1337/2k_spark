@@ -3625,3 +3625,41 @@
 2025-06-15 21:49:27,949 - prediction_refresh - INFO - Prediction validation completed successfully
 2025-06-15 21:49:27,949 - prediction_refresh - INFO - refresh_predictions executed in 25.17 seconds
 2025-06-15 21:49:27,949 - prediction_refresh - INFO - Refresh completed successfully in 25.17 seconds
+2025-06-15 22:04:52,392 - prediction_refresh - INFO - Refresh script started with PID: 3848
+2025-06-15 22:04:52,394 - prediction_refresh - INFO - Status updated: upcoming_matches - Loading upcoming matches
+2025-06-15 22:04:52,394 - prediction_refresh - INFO - Starting data refresh
+2025-06-15 22:04:52,395 - prediction_refresh - INFO - Fetching match history
+2025-06-15 22:05:07,961 - prediction_refresh - INFO - Calculating player statistics
+2025-06-15 22:05:08,664 - prediction_refresh - INFO - Fetching upcoming matches for the next 30 days
+2025-06-15 22:05:09,443 - prediction_refresh - INFO - Successfully fetched 37 upcoming matches
+2025-06-15 22:05:09,443 - prediction_refresh - INFO - Match 1: ID=236615, Start=2025-06-15T22:11:00Z, Home=CHIEF, Away=TAAPZ
+2025-06-15 22:05:09,444 - prediction_refresh - INFO - Match 2: ID=236634, Start=2025-06-15T22:19:00Z, Home=RAIN, Away=OREZ
+2025-06-15 22:05:09,444 - prediction_refresh - INFO - Match 3: ID=236553, Start=2025-06-15T22:27:00Z, Home=SAINT JR, Away=UNDERRATED
+2025-06-15 22:05:09,444 - prediction_refresh - INFO - Match 4: ID=236592, Start=2025-06-15T22:35:00Z, Home=ARACHNE, Away=IMMORTAL
+2025-06-15 22:05:09,444 - prediction_refresh - INFO - Match 5: ID=236613, Start=2025-06-15T22:43:00Z, Home=SPARKZ, Away=TAAPZ
+2025-06-15 22:05:09,444 - prediction_refresh - INFO - Match 6: ID=236637, Start=2025-06-15T22:51:00Z, Home=CRUCIAL, Away=OREZ
+2025-06-15 22:05:09,444 - prediction_refresh - INFO - Match 7: ID=236549, Start=2025-06-15T22:59:00Z, Home=BRAZEN, Away=UNDERRATED
+2025-06-15 22:05:09,444 - prediction_refresh - INFO - Match 8: ID=236596, Start=2025-06-15T23:07:00Z, Home=SHERIFF, Away=IMMORTAL
+2025-06-15 22:05:09,444 - prediction_refresh - INFO - Match 9: ID=236620, Start=2025-06-15T23:15:00Z, Home=CHIEF, Away=LANES
+2025-06-15 22:05:09,444 - prediction_refresh - INFO - Match 10: ID=236651, Start=2025-06-15T23:23:00Z, Home=RAIN, Away=CRYPTO
+2025-06-15 22:05:09,445 - prediction_refresh - INFO - Data refresh completed successfully
+2025-06-15 22:05:09,464 - prediction_refresh - INFO - refresh_data executed in 17.07 seconds
+2025-06-15 22:05:09,465 - prediction_refresh - INFO - Status updated: predictions - Generating predictions
+2025-06-15 22:05:09,465 - prediction_refresh - INFO - Starting prediction refresh
+2025-06-15 22:05:09,563 - prediction_refresh - INFO - Using winner prediction model 1749900907 with accuracy 0.7006802721088435
+2025-06-15 22:05:09,568 - prediction_refresh - INFO - Successfully loaded winner prediction model from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\models\optimized_winner_model_1749900907.pkl
+2025-06-15 22:05:09,568 - prediction_refresh - INFO - Using score prediction model 1745598830 with MAE 4.075830549721303
+2025-06-15 22:05:09,703 - prediction_refresh - INFO - Successfully loaded score prediction model from C:\Users\sicke\OneDrive\Documents\Projects\2k_spark\models\scorepredictionmodel_1745598830.pkl
+2025-06-15 22:05:09,703 - prediction_refresh - INFO - Generating predictions for 37 upcoming matches
+2025-06-15 22:05:09,728 - prediction_refresh - INFO - Saving 37 predictions
+2025-06-15 22:05:09,736 - prediction_refresh - INFO - Updating prediction history
+2025-06-15 22:05:09,741 - prediction_refresh - INFO - Found 209 existing fixtures in history
+2025-06-15 22:05:09,777 - prediction_refresh - INFO - Prediction history updated with 3 new predictions
+2025-06-15 22:05:09,777 - prediction_refresh - INFO - Skipped 34 duplicate predictions
+2025-06-15 22:05:09,777 - prediction_refresh - INFO - Prediction refresh completed successfully
+2025-06-15 22:05:09,786 - prediction_refresh - INFO - refresh_predictions executed in 0.32 seconds
+2025-06-15 22:05:09,790 - prediction_refresh - INFO - Status updated: validation - Validating predictions
+2025-06-15 22:05:09,791 - prediction_refresh - INFO - Starting prediction validation against completed matches
+2025-06-15 22:05:17,921 - prediction_refresh - INFO - Prediction validation completed successfully
+2025-06-15 22:05:17,921 - prediction_refresh - INFO - refresh_predictions executed in 25.53 seconds
+2025-06-15 22:05:17,921 - prediction_refresh - INFO - Refresh completed successfully in 25.53 seconds

@@ -1,4 +1,4 @@
-# 2K Flash - NBA 2K25 eSports Match Prediction System
+# 2K Flash - NBA 2K25 eSports Match Prediction System.
 
 2K Flash is a comprehensive prediction system for NBA 2K25 eSports matches in the H2H GG League. The system collects real data from the H2H GG League API, processes player statistics, and uses advanced machine learning models to predict match winners and scores with high accuracy.
 

@@ -7439,7 +7439,15 @@
       "score_diff": -1
     },
     "generated_at": "2025-06-15 19:34:07",
-    "saved_at": "2025-06-15 19:34:07"
+    "saved_at": "2025-06-15 19:34:07",
+    "prediction_correct": true,
+    "homeScore": 50,
+    "awayScore": 40,
+    "result": "home_win",
+    "validated_at": "2025-06-15 22:05:17",
+    "home_score_error": 4,
+    "away_score_error": 15,
+    "total_score_error": 19
   },
   {
     "fixtureId": 236567,
@@ -7474,7 +7482,15 @@
       "score_diff": -2
     },
     "generated_at": "2025-06-15 19:34:07",
-    "saved_at": "2025-06-15 19:34:07"
+    "saved_at": "2025-06-15 19:34:07",
+    "prediction_correct": true,
+    "homeScore": 43,
+    "awayScore": 51,
+    "result": "away_win",
+    "validated_at": "2025-06-15 22:05:17",
+    "home_score_error": 5,
+    "away_score_error": 1,
+    "total_score_error": 4
   },
   {
     "fixtureId": 236615,
@@ -8665,5 +8681,110 @@
     },
     "generated_at": "2025-06-15 21:43:08",
     "saved_at": "2025-06-15 21:43:08"
+  },
+  {
+    "fixtureId": 236667,
+    "homePlayer": {
+      "id": 28,
+      "name": "UNDERRATED"
+    },
+    "awayPlayer": {
+      "id": 113,
+      "name": "BRAZEN"
+    },
+    "homeTeam": {
+      "id": 15,
+      "name": "Memphis Grizzlies"
+    },
+    "awayTeam": {
+      "id": 17,
+      "name": "Milwaukee Bucks"
+    },
+    "fixtureStart": "2025-06-16T02:43:00Z",
+    "prediction": {
+      "home_win_probability": 0.43675289919714544,
+      "away_win_probability": 0.5632471008028547,
+      "predicted_winner": "away",
+      "confidence": 0.5632471008028547,
+      "prediction_method": "fallback_win_rates"
+    },
+    "score_prediction": {
+      "home_score": 59,
+      "away_score": 54,
+      "total_score": 113,
+      "score_diff": 5
+    },
+    "generated_at": "2025-06-15 22:05:09",
+    "saved_at": "2025-06-15 22:05:09"
+  },
+  {
+    "fixtureId": 236678,
+    "homePlayer": {
+      "id": 2244,
+      "name": "IMMORTAL"
+    },
+    "awayPlayer": {
+      "id": 2245,
+      "name": "SHERIFF"
+    },
+    "homeTeam": {
+      "id": 8,
+      "name": "Denver Nuggets"
+    },
+    "awayTeam": {
+      "id": 22,
+      "name": "Orlando Magic"
+    },
+    "fixtureStart": "2025-06-16T02:51:00Z",
+    "prediction": {
+      "home_win_probability": 0.44680851063829785,
+      "away_win_probability": 0.5531914893617021,
+      "predicted_winner": "away",
+      "confidence": 0.5531914893617021,
+      "prediction_method": "fallback_win_rates"
+    },
+    "score_prediction": {
+      "home_score": 51,
+      "away_score": 49,
+      "total_score": 100,
+      "score_diff": 2
+    },
+    "generated_at": "2025-06-15 22:05:09",
+    "saved_at": "2025-06-15 22:05:09"
+  },
+  {
+    "fixtureId": 236694,
+    "homePlayer": {
+      "id": 32,
+      "name": "LANES"
+    },
+    "awayPlayer": {
+      "id": 1203,
+      "name": "CHIEF"
+    },
+    "homeTeam": {
+      "id": 22,
+      "name": "Orlando Magic"
+    },
+    "awayTeam": {
+      "id": 7,
+      "name": "Dallas Mavericks"
+    },
+    "fixtureStart": "2025-06-16T02:59:00Z",
+    "prediction": {
+      "home_win_probability": 0.5376018340361076,
+      "away_win_probability": 0.46239816596389244,
+      "predicted_winner": "home",
+      "confidence": 0.5376018340361076,
+      "prediction_method": "fallback_win_rates"
+    },
+    "score_prediction": {
+      "home_score": 59,
+      "away_score": 58,
+      "total_score": 117,
+      "score_diff": 1
+    },
+    "generated_at": "2025-06-15 22:05:09",
+    "saved_at": "2025-06-15 22:05:09"
   }
 ]
