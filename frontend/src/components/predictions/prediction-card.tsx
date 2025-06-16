@@ -59,7 +59,7 @@ export function PredictionCard({ prediction }: PredictionCardProps) {
   const isHomeWinner = predictionData.predicted_winner === "home";
 
   return (
-    <Card className={`overflow-hidden card-highlight card-hover ${isHomeWinner ? "border-l-4 border-l-green-500" : "border-r-4 border-r-green-500"}`}>
+    <Card className="overflow-hidden card-highlight card-hover border-2 border-border/30 shadow-lg hover:shadow-xl transition-all duration-300 relative">
       <CardContent className="p-6 pt-5">
         {/* Date/Time Badge - Moved to top right corner */}
         <div className="absolute top-3 right-4">
@@ -106,19 +106,25 @@ export function PredictionCard({ prediction }: PredictionCardProps) {
         </div>
 
         {/* Winner Prediction with Confidence */}
-        <div className="bg-muted/70 p-4 rounded-lg border border-border/30 shadow-sm">
-          <div className="flex justify-between items-center">
+        <div className="bg-gradient-to-r from-green-50/80 to-emerald-50/80 dark:from-green-950/30 dark:to-emerald-950/30 p-4 rounded-lg border border-green-200/50 dark:border-green-800/30 shadow-sm relative overflow-hidden">
+          {/* Subtle glow effect */}
+          <div className="absolute inset-0 bg-gradient-to-r from-green-400/5 to-emerald-400/5 rounded-lg"></div>
+          
+          <div className="flex justify-between items-center relative z-10">
             <div className="flex items-center space-x-3">
-              <Avatar className="h-8 w-8 border border-primary/20">
+              <Avatar className="h-8 w-8 border-2 border-green-300/50 dark:border-green-700/50 shadow-md">
                 <AvatarImage src={getPlayerPhotoPath(isHomeWinner ? homePlayer.name : awayPlayer.name)} alt={isHomeWinner ? homePlayer.name : awayPlayer.name} />
-                <AvatarFallback className="bg-primary/10 text-primary font-bold text-sm">{getPlayerInitials(isHomeWinner ? homePlayer.name : awayPlayer.name)}</AvatarFallback>
+                <AvatarFallback className="bg-green-100/80 dark:bg-green-900/50 text-green-700 dark:text-green-300 font-bold text-sm">{getPlayerInitials(isHomeWinner ? homePlayer.name : awayPlayer.name)}</AvatarFallback>
               </Avatar>
               <div>
-                <p className="text-sm font-medium text-primary/90">Predicted Winner</p>
-                <p className="text-base font-bold">{isHomeWinner ? homePlayer.name : awayPlayer.name}</p>
+                <p className="text-sm font-medium text-green-700 dark:text-green-300 flex items-center gap-1">
+                  <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                  Predicted Winner
+                </p>
+                <p className="text-base font-bold text-green-800 dark:text-green-200">{isHomeWinner ? homePlayer.name : awayPlayer.name}</p>
               </div>
             </div>
-            <div className="text-base font-bold bg-primary/10 px-3 py-1 rounded-full border border-primary/20">
+            <div className="text-base font-bold bg-green-100/80 dark:bg-green-900/50 text-green-700 dark:text-green-300 px-3 py-1 rounded-full border border-green-300/50 dark:border-green-700/50 shadow-sm">
               {isHomeWinner ? homeWinPercentage : awayWinPercentage}%
             </div>
           </div>
