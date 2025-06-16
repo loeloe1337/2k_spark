@@ -5,8 +5,10 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { formatDistanceToNow } from "date-fns";
 import { getPlayerPhotoPath, getPlayerInitials } from "@/lib/utils/player-photos";
+import { ExternalLink } from "lucide-react";
 
 interface LiveMatchCardProps {
   match: {
@@ -229,6 +231,17 @@ export function LiveMatchCard({ match }: LiveMatchCardProps) {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* FanDuel Betting Button */}
+        <div className="mt-4">
+          <Button 
+            onClick={() => window.open('https://sportsbook.fanduel.com/basketball/ebasketball-h2h-gg-league-4x5-mins', '_blank')}
+            className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-2.5 px-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2"
+          >
+            <ExternalLink className="h-4 w-4" />
+            Place Bet on FanDuel
+          </Button>
         </div>
       </CardContent>
     </Card>

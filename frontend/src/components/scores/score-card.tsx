@@ -4,8 +4,10 @@
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 import { format } from "date-fns";
 import { getPlayerPhotoPath, getPlayerInitials } from "@/lib/utils/player-photos";
+import { ExternalLink } from "lucide-react";
 
 interface ScoreCardProps {
   prediction: {
@@ -146,6 +148,17 @@ export function ScoreCard({ prediction }: ScoreCardProps) {
             <p className="text-sm font-medium text-primary/90 mb-2">Total Score</p>
             <p className="text-xl font-bold">{score_prediction.total_score} <span className="text-sm font-normal text-muted-foreground">points</span></p>
           </div>
+        </div>
+
+        {/* FanDuel Betting Button */}
+        <div className="mt-4">
+          <Button 
+            onClick={() => window.open('https://sportsbook.fanduel.com/basketball/ebasketball-h2h-gg-league-4x5-mins', '_blank')}
+            className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-2.5 px-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2"
+          >
+            <ExternalLink className="h-4 w-4" />
+            Place Bet on FanDuel
+          </Button>
         </div>
       </CardContent>
     </Card>
