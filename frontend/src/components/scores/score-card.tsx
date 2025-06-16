@@ -54,7 +54,7 @@ export function ScoreCard({ prediction }: ScoreCardProps) {
   const scoreDiff = Math.abs(score_prediction.score_diff);
 
   return (
-    <Card className={`overflow-hidden card-highlight card-hover ${homeWinner ? "border-l-4 border-l-blue-500" : "border-r-4 border-r-blue-500"}`}>
+    <Card className="overflow-hidden border border-border/50 shadow-md hover:shadow-lg transition-all duration-300 hover:border-border/80">
       <CardContent className="p-6 pt-5">
         {/* Date/Time Badge - Moved to top right corner */}
         <div className="absolute top-3 right-4">
@@ -127,14 +127,17 @@ export function ScoreCard({ prediction }: ScoreCardProps) {
         {/* Winner and Total Score */}
         <div className="grid grid-cols-2 gap-4">
           {/* Winner */}
-          <div className="bg-muted/70 p-4 rounded-lg border border-border/30 shadow-sm">
-            <p className="text-sm font-medium text-primary/90 mb-2">Predicted Winner</p>
+          <div className="bg-gradient-to-br from-green-50/80 to-emerald-50/60 dark:from-green-950/30 dark:to-emerald-950/20 p-4 rounded-lg border border-green-200/50 dark:border-green-800/30 shadow-sm shadow-green-500/10 relative overflow-hidden">
+            <div className="absolute top-2 right-2">
+              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse shadow-lg shadow-green-500/50"></div>
+            </div>
+            <p className="text-sm font-medium text-green-700 dark:text-green-300 mb-2">Predicted Winner</p>
             <div className="flex items-center space-x-2">
-              <Avatar className="h-6 w-6">
+              <Avatar className="h-6 w-6 ring-2 ring-green-500/30 shadow-md shadow-green-500/20">
                 <AvatarImage src={getPlayerPhotoPath(homeWinner ? homePlayer.name : awayPlayer.name)} alt={homeWinner ? homePlayer.name : awayPlayer.name} />
-                <AvatarFallback className="bg-primary/10 text-primary font-bold text-xs">{getPlayerInitials(homeWinner ? homePlayer.name : awayPlayer.name)}</AvatarFallback>
+                <AvatarFallback className="bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-300 font-bold text-xs">{getPlayerInitials(homeWinner ? homePlayer.name : awayPlayer.name)}</AvatarFallback>
               </Avatar>
-              <p className="text-base font-bold">{homeWinner ? homePlayer.name : awayPlayer.name}</p>
+              <p className="text-base font-bold text-green-800 dark:text-green-200">{homeWinner ? homePlayer.name : awayPlayer.name}</p>
             </div>
           </div>
 
