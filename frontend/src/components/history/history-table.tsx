@@ -53,6 +53,12 @@ export function HistoryTable() {
       item => item.prediction_correct === true
     ).length;
     const accuracy = predictionsWithResults.length > 0 ? Math.round((correctPredictions / predictionsWithResults.length) * 100) : 0;
+    const pendingPredictions = history.filter(
+      item => item.prediction_correct === undefined
+    ).length;
+    const averageConfidence = history.length > 0 
+      ? Math.round((history.reduce((sum, item) => sum + item.prediction.confidence, 0) / history.length) * 100)
+      : 0;
 
     const uniquePlayers = new Set();
     history.forEach(item => {
@@ -74,6 +80,8 @@ export function HistoryTable() {
       predictionsWithResults: predictionsWithResults.length,
       uniquePlayers: uniquePlayers.size,
       uniqueTeams: uniqueTeams.size,
+      pendingPredictions,
+      averageConfidence,
     };
   };
 
@@ -124,53 +132,75 @@ export function HistoryTable() {
     <div className="space-y-8">
       <HistoryFilters onFilterChange={handleFilterChange} />
 
-      {/* Summary Statistics */}
+      {/* Enhanced Summary Statistics */}
       {stats && (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <Card className="bg-primary/5 border-primary/20">
-            <CardContent className="p-4 flex items-center">
-              <div className="bg-primary/10 p-2 rounded-full mr-4">
-                <BarChart3 className="h-5 w-5 text-primary" />
-              </div>
-              <div>
-                <p className="text-sm text-muted-foreground">Total Predictions</p>
-                <p className="text-2xl font-bold">{stats.totalPredictions}</p>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-blue-500/5 border-blue-500/20">
-            <CardContent className="p-4 flex items-center">
-              <div className="bg-blue-500/10 p-2 rounded-full mr-4">
-                <TrendingUp className="h-5 w-5 text-blue-500" />
-              </div>
-              <div>
-                <p className="text-sm text-muted-foreground">High Confidence</p>
-                <p className="text-2xl font-bold">{stats.highConfidencePredictions}</p>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-5 mb-8">
+          <Card className="border border-border/50 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-blue-500/5 to-blue-600/10">
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-3xl font-bold text-blue-600">{stats.totalPredictions}</p>
+                  <p className="text-sm font-medium text-muted-foreground mt-1">Total Predictions</p>
+                </div>
+                <div className="bg-blue-500/15 p-3 rounded-xl">
+                  <BarChart3 className="h-6 w-6 text-blue-600" />
+                </div>
               </div>
             </CardContent>
           </Card>
-
-          <Card className="bg-green-500/5 border-green-500/20">
-            <CardContent className="p-4 flex items-center">
-              <div className="bg-green-500/10 p-2 rounded-full mr-4">
-                <Users className="h-5 w-5 text-green-500" />
-              </div>
-              <div>
-                <p className="text-sm text-muted-foreground">Unique Players</p>
-                <p className="text-2xl font-bold">{stats.uniquePlayers}</p>
+          
+          <Card className="border border-border/50 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-green-500/5 to-green-600/10">
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-3xl font-bold text-green-600">{stats.correctPredictions}</p>
+                  <p className="text-sm font-medium text-muted-foreground mt-1">Correct Predictions</p>
+                </div>
+                <div className="bg-green-500/15 p-3 rounded-xl">
+                  <CheckCircle2 className="h-6 w-6 text-green-600" />
+                </div>
               </div>
             </CardContent>
           </Card>
-
-          <Card className="bg-purple-500/5 border-purple-500/20">
-            <CardContent className="p-4 flex items-center">
-              <div className="bg-purple-500/10 p-2 rounded-full mr-4">
-                <Users className="h-5 w-5 text-purple-500" />
+          
+          <Card className="border border-border/50 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-purple-500/5 to-purple-600/10">
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-3xl font-bold text-purple-600">{stats.highConfidencePredictions}</p>
+                  <p className="text-sm font-medium text-muted-foreground mt-1">High Confidence</p>
+                </div>
+                <div className="bg-purple-500/15 p-3 rounded-xl">
+                  <TrendingUp className="h-6 w-6 text-purple-600" />
+                </div>
               </div>
-              <div>
-                <p className="text-sm text-muted-foreground">Unique Teams</p>
-                <p className="text-2xl font-bold">{stats.uniqueTeams}</p>
+            </CardContent>
+          </Card>
+          
+          <Card className="border border-border/50 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-orange-500/5 to-orange-600/10">
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-3xl font-bold text-orange-600">{stats.pendingPredictions}</p>
+                  <p className="text-sm font-medium text-muted-foreground mt-1">Pending Results</p>
+                </div>
+                <div className="bg-orange-500/15 p-3 rounded-xl">
+                  <Clock className="h-6 w-6 text-orange-600" />
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+          
+          <Card className="border border-border/50 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-indigo-500/5 to-indigo-600/10">
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-3xl font-bold text-indigo-600">{stats.averageConfidence}%</p>
+                  <p className="text-sm font-medium text-muted-foreground mt-1">Avg Confidence</p>
+                </div>
+                <div className="bg-indigo-500/15 p-3 rounded-xl">
+                  <Target className="h-6 w-6 text-indigo-600" />
+                </div>
               </div>
             </CardContent>
           </Card>
@@ -225,63 +255,67 @@ export function HistoryTable() {
       )}
 
       {/* History Table */}
-      <Card className="border border-border/50 shadow-sm overflow-hidden">
-        <CardHeader className="bg-muted/30 pb-0 pt-4 px-6">
-          <div className="flex justify-between items-center">
-            <CardTitle className="text-lg flex items-center">
-              <History className="h-4 w-4 mr-2 text-primary" />
-              Prediction History
-            </CardTitle>
-            <div className="flex items-center text-xs text-muted-foreground">
-              <Calendar className="h-3.5 w-3.5 mr-1.5" />
-              <span>Sorted by match date (newest first)</span>
+      <Card className="border border-border/50 shadow-xl bg-gradient-to-br from-background to-muted/20">
+        <CardHeader className="pb-6 bg-gradient-to-r from-primary/5 to-primary/10 rounded-t-lg">
+          <CardTitle className="text-2xl flex items-center">
+            <div className="bg-primary/15 p-3 rounded-xl mr-4 shadow-lg">
+              <Clock className="h-6 w-6 text-primary" />
             </div>
-          </div>
+            <div>
+              <h2 className="font-bold">Prediction History</h2>
+              <p className="text-sm text-muted-foreground font-normal mt-1">Complete record of your NBA 2K25 eSports predictions</p>
+            </div>
+            <div className="ml-auto flex items-center space-x-3">
+              <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20 px-3 py-1">
+                {history.length} total predictions
+              </Badge>
+            </div>
+          </CardTitle>
         </CardHeader>
         <CardContent className="p-0">
-          <div className="rounded-md">
+          <div className="overflow-x-auto">
             <Table>
               <TableHeader>
-                <TableRow className="bg-muted/50 hover:bg-muted/50">
-                  <TableHead className="w-[180px]">
-                    <div className="flex items-center text-xs font-medium text-muted-foreground">
-                      <Calendar className="h-3.5 w-3.5 mr-1.5" />
+                <TableRow className="border-b border-border/50 bg-muted/30">
+                  <TableHead className="w-[140px] py-4">
+                    <div className="flex items-center text-sm font-semibold text-foreground">
+                      <Calendar className="h-4 w-4 mr-2 text-primary" />
                       Match Date
                     </div>
                   </TableHead>
-                  <TableHead className="w-[250px]">
-                    <div className="flex items-center text-xs font-medium text-muted-foreground">
-                      <Users className="h-3.5 w-3.5 mr-1.5" />
-                      Match
+                  <TableHead className="w-[280px] py-4">
+                    <div className="flex items-center text-sm font-semibold text-foreground">
+                      <Users className="h-4 w-4 mr-2 text-primary" />
+                      Match Details
                     </div>
                   </TableHead>
-                  <TableHead>
-                    <div className="flex items-center text-xs font-medium text-muted-foreground">
-                      <TrendingUp className="h-3.5 w-3.5 mr-1.5" />
+                  <TableHead className="py-4">
+                    <div className="flex items-center text-sm font-semibold text-foreground">
+                      <TrendingUp className="h-4 w-4 mr-2 text-primary" />
                       Prediction
                     </div>
                   </TableHead>
-                  <TableHead className="w-[100px]">
-                    <div className="flex items-center text-xs font-medium text-muted-foreground">
-                      <BarChart3 className="h-3.5 w-3.5 mr-1.5" />
+                  <TableHead className="w-[120px] py-4">
+                    <div className="flex items-center text-sm font-semibold text-foreground">
+                      <BarChart3 className="h-4 w-4 mr-2 text-primary" />
                       Confidence
                     </div>
                   </TableHead>
-                  <TableHead className="w-[120px]">
-                    <div className="flex items-center text-xs font-medium text-muted-foreground">
-                      <CheckCircle2 className="h-3.5 w-3.5 mr-1.5" />
+                  <TableHead className="w-[140px] py-4">
+                    <div className="flex items-center text-sm font-semibold text-foreground">
+                      <CheckCircle2 className="h-4 w-4 mr-2 text-primary" />
                       Score
                     </div>
                   </TableHead>
-                  <TableHead className="w-[120px]">
-                    <div className="flex items-center text-xs font-medium text-muted-foreground">
-                      <Target className="h-3.5 w-3.5 mr-1.5" />
+                  <TableHead className="w-[140px] py-4">
+                    <div className="flex items-center text-sm font-semibold text-foreground">
+                      <Target className="h-4 w-4 mr-2 text-primary" />
                       Result
                     </div>
                   </TableHead>
-                  <TableHead className="w-[180px]">
-                    <div className="flex items-center text-xs font-medium text-muted-foreground">
-                      <Clock className="h-3.5 w-3.5 mr-1.5" />
+                  <TableHead className="w-[180px] py-4">
+                    <div className="flex items-center text-sm font-semibold text-foreground">
+                      <Clock className="h-4 w-4 mr-2 text-primary" />
                       Saved At
                     </div>
                   </TableHead>
@@ -321,104 +355,132 @@ export function HistoryTable() {
                   else if (confidencePercentage >= 50) confidenceLevel = "medium";
 
                   return (
-                    <TableRow key={`${item.fixtureId}-${item.saved_at}`} className="hover:bg-muted/30">
-                      <TableCell className="py-3">
-                        <div className="text-sm font-medium">{format(matchDate, "MMM d, yyyy")}</div>
-                        <div className="text-xs text-muted-foreground">{format(matchDate, "h:mm a")}</div>
-                      </TableCell>
-                      <TableCell>
-                        <div className="flex items-center justify-between px-2">
-                          <div className="flex flex-col items-center text-center max-w-[100px]">
-                            <Avatar className="h-8 w-8 mb-1">
-                              <div className="flex h-full w-full items-center justify-center bg-primary/10 font-bold text-primary text-xs">
-                                {item.homePlayer.name.substring(0, 2)}
-                              </div>
-                            </Avatar>
-                            <div className="text-xs font-medium truncate w-full">{item.homePlayer.name}</div>
-                            <div className="text-[10px] text-muted-foreground/70 truncate w-full">{item.homeTeam.name}</div>
-                          </div>
-                          <div className="text-xs font-medium text-muted-foreground px-1">vs</div>
-                          <div className="flex flex-col items-center text-center max-w-[100px]">
-                            <Avatar className="h-8 w-8 mb-1">
-                              <div className="flex h-full w-full items-center justify-center bg-primary/10 font-bold text-primary text-xs">
-                                {item.awayPlayer.name.substring(0, 2)}
-                              </div>
-                            </Avatar>
-                            <div className="text-xs font-medium truncate w-full">{item.awayPlayer.name}</div>
-                            <div className="text-[10px] text-muted-foreground/70 truncate w-full">{item.awayTeam.name}</div>
-                          </div>
+                    <TableRow key={`${item.fixtureId}-${item.saved_at}`} className="hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/10 transition-all duration-300 border-b border-border/30">
+                      <TableCell className="py-4">
+                        <div className="bg-muted/50 rounded-lg p-3 text-center">
+                          <div className="text-sm font-bold text-foreground">{format(matchDate, "MMM d")}</div>
+                          <div className="text-xs text-muted-foreground">{format(matchDate, "yyyy")}</div>
+                          <div className="text-xs text-primary font-medium mt-1">{format(matchDate, "h:mm a")}</div>
                         </div>
                       </TableCell>
                       <TableCell>
-                        <div className="flex items-center space-x-2">
-                          <Avatar className="h-6 w-6">
-                            <div className="flex h-full w-full items-center justify-center bg-primary/10 font-bold text-primary text-xs">
-                              {(homeWinner ? item.homePlayer.name : item.awayPlayer.name).substring(0, 2)}
+                        <div className="bg-gradient-to-r from-muted/30 to-muted/50 rounded-xl p-4">
+                          <div className="flex items-center justify-between">
+                            <div className="flex flex-col items-center text-center max-w-[110px]">
+                              <Avatar className="h-10 w-10 mb-2 ring-2 ring-primary/20 shadow-lg">
+                                <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-primary/20 to-primary/30 font-bold text-primary text-sm">
+                                  {item.homePlayer.name.substring(0, 2)}
+                                </div>
+                              </Avatar>
+                              <div className="text-sm font-semibold truncate w-full">{item.homePlayer.name}</div>
+                              <div className="text-xs text-muted-foreground truncate w-full">{item.homeTeam.name}</div>
                             </div>
-                          </Avatar>
-                          <span className="font-medium">
-                            {homeWinner ? item.homePlayer.name : item.awayPlayer.name}
-                          </span>
+                            <div className="text-sm font-bold text-primary bg-primary/10 px-3 py-1 rounded-full">VS</div>
+                            <div className="flex flex-col items-center text-center max-w-[110px]">
+                              <Avatar className="h-10 w-10 mb-2 ring-2 ring-primary/20 shadow-lg">
+                                <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-primary/20 to-primary/30 font-bold text-primary text-sm">
+                                  {item.awayPlayer.name.substring(0, 2)}
+                                </div>
+                              </Avatar>
+                              <div className="text-sm font-semibold truncate w-full">{item.awayPlayer.name}</div>
+                              <div className="text-xs text-muted-foreground truncate w-full">{item.awayTeam.name}</div>
+                            </div>
+                          </div>
                         </div>
                       </TableCell>
                       <TableCell>
-                        <Badge
-                          variant="outline"
-                          className={`
-                            ${confidenceLevel === 'high' ? 'bg-green-500/10 text-green-500 border-green-500/30' :
-                              confidenceLevel === 'medium' ? 'bg-blue-500/10 text-blue-500 border-blue-500/30' :
-                              'bg-orange-500/10 text-orange-500 border-orange-500/30'}
-                          `}
-                        >
-                          {confidencePercentage}%
-                        </Badge>
+                        <div className="bg-gradient-to-r from-green-500/10 to-green-600/20 rounded-lg p-3 border border-green-500/20">
+                          <div className="flex items-center space-x-3">
+                            <Avatar className="h-8 w-8 ring-2 ring-green-500/30">
+                              <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-green-500/20 to-green-600/30 font-bold text-green-600 text-xs">
+                                {(homeWinner ? item.homePlayer.name : item.awayPlayer.name).substring(0, 2)}
+                              </div>
+                            </Avatar>
+                            <div>
+                              <div className="font-semibold text-green-700">
+                                {homeWinner ? item.homePlayer.name : item.awayPlayer.name}
+                              </div>
+                              <div className="text-xs text-green-600/80">Predicted Winner</div>
+                            </div>
+                          </div>
+                        </div>
                       </TableCell>
                       <TableCell>
-                        <div className="space-y-1">
-                          <div className="text-xs text-muted-foreground">Predicted</div>
-                          <div className="font-medium">
-                            {item.score_prediction.home_score} - {item.score_prediction.away_score}
+                        <div className="text-center">
+                          <Badge
+                            variant="outline"
+                            className={`
+                              text-lg font-bold px-4 py-2 shadow-lg
+                              ${confidenceLevel === 'high' ? 'bg-gradient-to-r from-green-500/20 to-green-600/30 text-green-600 border-green-500/40 shadow-green-500/20' :
+                                confidenceLevel === 'medium' ? 'bg-gradient-to-r from-blue-500/20 to-blue-600/30 text-blue-600 border-blue-500/40 shadow-blue-500/20' :
+                                'bg-gradient-to-r from-orange-500/20 to-orange-600/30 text-orange-600 border-orange-500/40 shadow-orange-500/20'}
+                            `}
+                          >
+                            {confidencePercentage}%
+                          </Badge>
+                          <div className="text-xs text-muted-foreground mt-1">
+                            {confidenceLevel === 'high' ? 'High' : confidenceLevel === 'medium' ? 'Medium' : 'Low'} Confidence
                           </div>
-                          {(item.homeScore !== undefined && item.awayScore !== undefined) && (
-                            <>
-                              <div className="text-xs text-muted-foreground">Actual</div>
-                              <div className="font-medium text-sm">
-                                {item.homeScore} - {item.awayScore}
+                        </div>
+                      </TableCell>
+                      <TableCell>
+                        <div className="bg-muted/50 rounded-lg p-3">
+                          <div className="space-y-2">
+                            <div>
+                              <div className="text-xs text-muted-foreground mb-1">Predicted</div>
+                              <div className="font-bold text-lg text-primary">
+                                {item.score_prediction.home_score} - {item.score_prediction.away_score}
                               </div>
-                            </>
+                            </div>
+                            {(item.homeScore !== undefined && item.awayScore !== undefined) && (
+                              <div className="border-t border-border/50 pt-2">
+                                <div className="text-xs text-muted-foreground mb-1">Actual</div>
+                                <div className="font-bold text-lg">
+                                  {item.homeScore} - {item.awayScore}
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      </TableCell>
+                      <TableCell>
+                        <div className="text-center">
+                          {item.prediction_correct !== undefined ? (
+                            <div className="space-y-2">
+                              {item.prediction_correct ? (
+                                <>
+                                  <div className="bg-green-500/10 p-3 rounded-lg border border-green-500/20">
+                                    <CheckCircle2 className="h-6 w-6 text-green-500 mx-auto mb-1" />
+                                    <Badge variant="outline" className="bg-green-500/20 text-green-600 border-green-500/40 font-semibold">
+                                      Correct
+                                    </Badge>
+                                  </div>
+                                </>
+                              ) : (
+                                <>
+                                  <div className="bg-red-500/10 p-3 rounded-lg border border-red-500/20">
+                                    <XCircle className="h-6 w-6 text-red-500 mx-auto mb-1" />
+                                    <Badge variant="outline" className="bg-red-500/20 text-red-600 border-red-500/40 font-semibold">
+                                      Incorrect
+                                    </Badge>
+                                  </div>
+                                </>
+                              )}
+                            </div>
+                          ) : (
+                            <div className="bg-yellow-500/10 p-3 rounded-lg border border-yellow-500/20">
+                              <AlertCircle className="h-6 w-6 text-yellow-500 mx-auto mb-1" />
+                              <Badge variant="outline" className="bg-yellow-500/20 text-yellow-600 border-yellow-500/40 font-semibold">
+                                Pending
+                              </Badge>
+                            </div>
                           )}
                         </div>
                       </TableCell>
                       <TableCell>
-                        {item.prediction_correct !== undefined ? (
-                          <div className="flex items-center space-x-2">
-                            {item.prediction_correct ? (
-                              <>
-                                <CheckCircle2 className="h-4 w-4 text-green-500" />
-                                <Badge variant="outline" className="bg-green-500/10 text-green-500 border-green-500/30">
-                                  Correct
-                                </Badge>
-                              </>
-                            ) : (
-                              <>
-                                <XCircle className="h-4 w-4 text-red-500" />
-                                <Badge variant="outline" className="bg-red-500/10 text-red-500 border-red-500/30">
-                                  Incorrect
-                                </Badge>
-                              </>
-                            )}
-                          </div>
-                        ) : (
-                          <div className="flex items-center space-x-2">
-                            <AlertCircle className="h-4 w-4 text-yellow-500" />
-                            <Badge variant="outline" className="bg-yellow-500/10 text-yellow-500 border-yellow-500/30">
-                              Pending
-                            </Badge>
-                          </div>
-                        )}
-                      </TableCell>
-                      <TableCell className="text-sm text-muted-foreground">
-                        {formattedSavedDate}
+                        <div className="bg-muted/50 rounded-lg p-3 text-center">
+                          <div className="text-sm font-medium">{formattedSavedDate}</div>
+                        </div>
                       </TableCell>
                     </TableRow>
                   );

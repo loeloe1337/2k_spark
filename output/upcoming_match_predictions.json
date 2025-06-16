@@ -1,243 +1,5 @@
 [
   {
-    "fixtureId": 236553,
-    "homePlayer": {
-      "id": 24,
-      "name": "SAINT JR"
-    },
-    "awayPlayer": {
-      "id": 28,
-      "name": "UNDERRATED"
-    },
-    "homeTeam": {
-      "id": 6,
-      "name": "Cleveland Cavaliers"
-    },
-    "awayTeam": {
-      "id": 15,
-      "name": "Memphis Grizzlies"
-    },
-    "fixtureStart": "2025-06-15T22:27:00Z",
-    "prediction": {
-      "home_win_probability": 0.4979521448588058,
-      "away_win_probability": 0.5020478551411942,
-      "predicted_winner": "away",
-      "confidence": 0.5020478551411942,
-      "prediction_method": "fallback_win_rates"
-    },
-    "score_prediction": {
-      "home_score": 55,
-      "away_score": 59,
-      "total_score": 114,
-      "score_diff": -4
-    },
-    "generated_at": "2025-06-15 22:21:59"
-  },
-  {
-    "fixtureId": 236592,
-    "homePlayer": {
-      "id": 266,
-      "name": "ARACHNE"
-    },
-    "awayPlayer": {
-      "id": 2244,
-      "name": "IMMORTAL"
-    },
-    "homeTeam": {
-      "id": 4,
-      "name": "Charlotte Hornets"
-    },
-    "awayTeam": {
-      "id": 8,
-      "name": "Denver Nuggets"
-    },
-    "fixtureStart": "2025-06-15T22:35:00Z",
-    "prediction": {
-      "home_win_probability": 0.6622329135418141,
-      "away_win_probability": 0.337767086458186,
-      "predicted_winner": "home",
-      "confidence": 0.6622329135418141,
-      "prediction_method": "fallback_win_rates"
-    },
-    "score_prediction": {
-      "home_score": 55,
-      "away_score": 51,
-      "total_score": 106,
-      "score_diff": 4
-    },
-    "generated_at": "2025-06-15 22:21:59"
-  },
-  {
-    "fixtureId": 236613,
-    "homePlayer": {
-      "id": 23,
-      "name": "SPARKZ"
-    },
-    "awayPlayer": {
-      "id": 77,
-      "name": "TAAPZ"
-    },
-    "homeTeam": {
-      "id": 14,
-      "name": "Los Angeles Lakers"
-    },
-    "awayTeam": {
-      "id": 20,
-      "name": "New York Knicks"
-    },
-    "fixtureStart": "2025-06-15T22:43:00Z",
-    "prediction": {
-      "home_win_probability": 0.3487015561705206,
-      "away_win_probability": 0.6512984438294793,
-      "predicted_winner": "away",
-      "confidence": 0.6512984438294793,
-      "prediction_method": "fallback_win_rates"
-    },
-    "score_prediction": {
-      "home_score": 56,
-      "away_score": 58,
-      "total_score": 114,
-      "score_diff": -2
-    },
-    "generated_at": "2025-06-15 22:21:59"
-  },
-  {
-    "fixtureId": 236637,
-    "homePlayer": {
-      "id": 2034,
-      "name": "CRUCIAL"
-    },
-    "awayPlayer": {
-      "id": 18,
-      "name": "OREZ"
-    },
-    "homeTeam": {
-      "id": 28,
-      "name": "Toronto Raptors"
-    },
-    "awayTeam": {
-      "id": 2,
-      "name": "Brooklyn Nets"
-    },
-    "fixtureStart": "2025-06-15T22:51:00Z",
-    "prediction": {
-      "home_win_probability": 0.5738551433618698,
-      "away_win_probability": 0.4261448566381301,
-      "predicted_winner": "home",
-      "confidence": 0.5738551433618698,
-      "prediction_method": "fallback_win_rates"
-    },
-    "score_prediction": {
-      "home_score": 55,
-      "away_score": 60,
-      "total_score": 115,
-      "score_diff": -5
-    },
-    "generated_at": "2025-06-15 22:21:59"
-  },
-  {
-    "fixtureId": 236549,
-    "homePlayer": {
-      "id": 113,
-      "name": "BRAZEN"
-    },
-    "awayPlayer": {
-      "id": 28,
-      "name": "UNDERRATED"
-    },
-    "homeTeam": {
-      "id": 16,
-      "name": "Miami Heat"
-    },
-    "awayTeam": {
-      "id": 5,
-      "name": "Chicago Bulls"
-    },
-    "fixtureStart": "2025-06-15T22:59:00Z",
-    "prediction": {
-      "home_win_probability": 0.5632471008028547,
-      "away_win_probability": 0.43675289919714544,
-      "predicted_winner": "home",
-      "confidence": 0.5632471008028547,
-      "prediction_method": "fallback_win_rates"
-    },
-    "score_prediction": {
-      "home_score": 54,
-      "away_score": 59,
-      "total_score": 113,
-      "score_diff": -5
-    },
-    "generated_at": "2025-06-15 22:21:59"
-  },
-  {
-    "fixtureId": 236596,
-    "homePlayer": {
-      "id": 2245,
-      "name": "SHERIFF"
-    },
-    "awayPlayer": {
-      "id": 2244,
-      "name": "IMMORTAL"
-    },
-    "homeTeam": {
-      "id": 21,
-      "name": "Oklahoma City Thunder"
-    },
-    "awayTeam": {
-      "id": 20,
-      "name": "New York Knicks"
-    },
-    "fixtureStart": "2025-06-15T23:07:00Z",
-    "prediction": {
-      "home_win_probability": 0.5531914893617021,
-      "away_win_probability": 0.44680851063829785,
-      "predicted_winner": "home",
-      "confidence": 0.5531914893617021,
-      "prediction_method": "fallback_win_rates"
-    },
-    "score_prediction": {
-      "home_score": 49,
-      "away_score": 51,
-      "total_score": 100,
-      "score_diff": -2
-    },
-    "generated_at": "2025-06-15 22:21:59"
-  },
-  {
-    "fixtureId": 236620,
-    "homePlayer": {
-      "id": 1203,
-      "name": "CHIEF"
-    },
-    "awayPlayer": {
-      "id": 32,
-      "name": "LANES"
-    },
-    "homeTeam": {
-      "id": 21,
-      "name": "Oklahoma City Thunder"
-    },
-    "awayTeam": {
-      "id": 3,
-      "name": "Boston Celtics"
-    },
-    "fixtureStart": "2025-06-15T23:15:00Z",
-    "prediction": {
-      "home_win_probability": 0.46239816596389244,
-      "away_win_probability": 0.5376018340361076,
-      "predicted_winner": "away",
-      "confidence": 0.5376018340361076,
-      "prediction_method": "fallback_win_rates"
-    },
-    "score_prediction": {
-      "home_score": 58,
-      "away_score": 59,
-      "total_score": 117,
-      "score_diff": -1
-    },
-    "generated_at": "2025-06-15 22:21:59"
-  },
-  {
     "fixtureId": 236651,
     "homePlayer": {
       "id": 1369,
@@ -269,7 +31,7 @@
       "total_score": 113,
       "score_diff": 3
     },
-    "generated_at": "2025-06-15 22:21:59"
+    "generated_at": "2025-06-15 23:16:41"
   },
   {
     "fixtureId": 236543,
@@ -291,10 +53,10 @@
     },
     "fixtureStart": "2025-06-15T23:31:00Z",
     "prediction": {
-      "home_win_probability": 0.4589821920870278,
-      "away_win_probability": 0.5410178079129722,
+      "home_win_probability": 0.45837880742137116,
+      "away_win_probability": 0.5416211925786288,
       "predicted_winner": "away",
-      "confidence": 0.5410178079129722,
+      "confidence": 0.5416211925786288,
       "prediction_method": "fallback_win_rates"
     },
     "score_prediction": {
@@ -303,7 +65,7 @@
       "total_score": 110,
       "score_diff": 0
     },
-    "generated_at": "2025-06-15 22:21:59"
+    "generated_at": "2025-06-15 23:16:41"
   },
   {
     "fixtureId": 236569,
@@ -325,10 +87,10 @@
     },
     "fixtureStart": "2025-06-15T23:39:00Z",
     "prediction": {
-      "home_win_probability": 0.47853193741912714,
-      "away_win_probability": 0.5214680625808729,
+      "home_win_probability": 0.47918374997071433,
+      "away_win_probability": 0.5208162500292856,
       "predicted_winner": "away",
-      "confidence": 0.5214680625808729,
+      "confidence": 0.5208162500292856,
       "prediction_method": "fallback_win_rates"
     },
     "score_prediction": {
@@ -337,7 +99,7 @@
       "total_score": 105,
       "score_diff": 5
     },
-    "generated_at": "2025-06-15 22:21:59"
+    "generated_at": "2025-06-15 23:16:41"
   },
   {
     "fixtureId": 236625,
@@ -359,10 +121,10 @@
     },
     "fixtureStart": "2025-06-15T23:47:00Z",
     "prediction": {
-      "home_win_probability": 0.4389392031840149,
-      "away_win_probability": 0.561060796815985,
+      "home_win_probability": 0.43735836840401426,
+      "away_win_probability": 0.5626416315959858,
       "predicted_winner": "away",
-      "confidence": 0.561060796815985,
+      "confidence": 0.5626416315959858,
       "prediction_method": "fallback_win_rates"
     },
     "score_prediction": {
@@ -371,7 +133,7 @@
       "total_score": 117,
       "score_diff": 1
     },
-    "generated_at": "2025-06-15 22:21:59"
+    "generated_at": "2025-06-15 23:16:41"
   },
   {
     "fixtureId": 236640,
@@ -393,10 +155,10 @@
     },
     "fixtureStart": "2025-06-15T23:55:00Z",
     "prediction": {
-      "home_win_probability": 0.5061728395061729,
-      "away_win_probability": 0.4938271604938272,
+      "home_win_probability": 0.5053658536585366,
+      "away_win_probability": 0.4946341463414634,
       "predicted_winner": "home",
-      "confidence": 0.5061728395061729,
+      "confidence": 0.5053658536585366,
       "prediction_method": "fallback_win_rates"
     },
     "score_prediction": {
@@ -405,7 +167,7 @@
       "total_score": 115,
       "score_diff": -5
     },
-    "generated_at": "2025-06-15 22:21:59"
+    "generated_at": "2025-06-15 23:16:41"
   },
   {
     "fixtureId": 236666,
@@ -427,10 +189,10 @@
     },
     "fixtureStart": "2025-06-16T00:03:00Z",
     "prediction": {
-      "home_win_probability": 0.5389830508474576,
-      "away_win_probability": 0.4610169491525423,
+      "home_win_probability": 0.5361597642822066,
+      "away_win_probability": 0.4638402357177934,
       "predicted_winner": "home",
-      "confidence": 0.5389830508474576,
+      "confidence": 0.5361597642822066,
       "prediction_method": "fallback_win_rates"
     },
     "score_prediction": {
@@ -439,7 +201,7 @@
       "total_score": 114,
       "score_diff": -4
     },
-    "generated_at": "2025-06-15 22:21:59"
+    "generated_at": "2025-06-15 23:16:41"
   },
   {
     "fixtureId": 236686,
@@ -461,10 +223,10 @@
     },
     "fixtureStart": "2025-06-16T00:11:00Z",
     "prediction": {
-      "home_win_probability": 0.6811769447803305,
-      "away_win_probability": 0.31882305521966947,
+      "home_win_probability": 0.6970509383378016,
+      "away_win_probability": 0.30294906166219837,
       "predicted_winner": "home",
-      "confidence": 0.6811769447803305,
+      "confidence": 0.6970509383378016,
       "prediction_method": "fallback_win_rates"
     },
     "score_prediction": {
@@ -473,7 +235,7 @@
       "total_score": 101,
       "score_diff": -1
     },
-    "generated_at": "2025-06-15 22:21:59"
+    "generated_at": "2025-06-15 23:16:41"
   },
   {
     "fixtureId": 236696,
@@ -495,10 +257,10 @@
     },
     "fixtureStart": "2025-06-16T00:19:00Z",
     "prediction": {
-      "home_win_probability": 0.5569002812951548,
-      "away_win_probability": 0.44309971870484527,
+      "home_win_probability": 0.5584743880984508,
+      "away_win_probability": 0.44152561190154915,
       "predicted_winner": "home",
-      "confidence": 0.5569002812951548,
+      "confidence": 0.5584743880984508,
       "prediction_method": "fallback_win_rates"
     },
     "score_prediction": {
@@ -507,7 +269,7 @@
       "total_score": 114,
       "score_diff": 2
     },
-    "generated_at": "2025-06-15 22:21:59"
+    "generated_at": "2025-06-15 23:16:41"
   },
   {
     "fixtureId": 236707,
@@ -529,10 +291,10 @@
     },
     "fixtureStart": "2025-06-16T00:27:00Z",
     "prediction": {
-      "home_win_probability": 0.45869600919691245,
-      "away_win_probability": 0.5413039908030876,
+      "home_win_probability": 0.4594339719343563,
+      "away_win_probability": 0.5405660280656437,
       "predicted_winner": "away",
-      "confidence": 0.5413039908030876,
+      "confidence": 0.5405660280656437,
       "prediction_method": "fallback_win_rates"
     },
     "score_prediction": {
@@ -541,7 +303,7 @@
       "total_score": 113,
       "score_diff": 3
     },
-    "generated_at": "2025-06-15 22:21:59"
+    "generated_at": "2025-06-15 23:16:41"
   },
   {
     "fixtureId": 236674,
@@ -563,10 +325,10 @@
     },
     "fixtureStart": "2025-06-16T00:35:00Z",
     "prediction": {
-      "home_win_probability": 0.4347388547851464,
-      "away_win_probability": 0.5652611452148535,
+      "home_win_probability": 0.43499347760644874,
+      "away_win_probability": 0.5650065223935512,
       "predicted_winner": "away",
-      "confidence": 0.5652611452148535,
+      "confidence": 0.5650065223935512,
       "prediction_method": "fallback_win_rates"
     },
     "score_prediction": {
@@ -575,7 +337,7 @@
       "total_score": 109,
       "score_diff": 1
     },
-    "generated_at": "2025-06-15 22:21:59"
+    "generated_at": "2025-06-15 23:16:41"
   },
   {
     "fixtureId": 236683,
@@ -597,10 +359,10 @@
     },
     "fixtureStart": "2025-06-16T00:43:00Z",
     "prediction": {
-      "home_win_probability": 0.6129398410896709,
-      "away_win_probability": 0.3870601589103292,
+      "home_win_probability": 0.604573484069887,
+      "away_win_probability": 0.395426515930113,
       "predicted_winner": "home",
-      "confidence": 0.6129398410896709,
+      "confidence": 0.604573484069887,
       "prediction_method": "fallback_win_rates"
     },
     "score_prediction": {
@@ -609,7 +371,7 @@
       "total_score": 104,
       "score_diff": 6
     },
-    "generated_at": "2025-06-15 22:21:59"
+    "generated_at": "2025-06-15 23:16:41"
   },
   {
     "fixtureId": 236691,
@@ -631,10 +393,10 @@
     },
     "fixtureStart": "2025-06-16T00:51:00Z",
     "prediction": {
-      "home_win_probability": 0.561060796815985,
-      "away_win_probability": 0.4389392031840149,
+      "home_win_probability": 0.5626416315959858,
+      "away_win_probability": 0.43735836840401426,
       "predicted_winner": "home",
-      "confidence": 0.561060796815985,
+      "confidence": 0.5626416315959858,
       "prediction_method": "fallback_win_rates"
     },
     "score_prediction": {
@@ -643,7 +405,7 @@
       "total_score": 117,
       "score_diff": -1
     },
-    "generated_at": "2025-06-15 22:21:59"
+    "generated_at": "2025-06-15 23:16:41"
   },
   {
     "fixtureId": 236705,
@@ -665,10 +427,10 @@
     },
     "fixtureStart": "2025-06-16T00:59:00Z",
     "prediction": {
-      "home_win_probability": 0.4938271604938272,
-      "away_win_probability": 0.5061728395061729,
+      "home_win_probability": 0.4946341463414634,
+      "away_win_probability": 0.5053658536585366,
       "predicted_winner": "away",
-      "confidence": 0.5061728395061729,
+      "confidence": 0.5053658536585366,
       "prediction_method": "fallback_win_rates"
     },
     "score_prediction": {
@@ -677,7 +439,7 @@
       "total_score": 115,
       "score_diff": 5
     },
-    "generated_at": "2025-06-15 22:21:59"
+    "generated_at": "2025-06-15 23:16:41"
   },
   {
     "fixtureId": 236676,
@@ -699,10 +461,10 @@
     },
     "fixtureStart": "2025-06-16T01:07:00Z",
     "prediction": {
-      "home_win_probability": 0.4610169491525423,
-      "away_win_probability": 0.5389830508474576,
+      "home_win_probability": 0.4638402357177934,
+      "away_win_probability": 0.5361597642822066,
       "predicted_winner": "away",
-      "confidence": 0.5389830508474576,
+      "confidence": 0.5361597642822066,
       "prediction_method": "fallback_win_rates"
     },
     "score_prediction": {
@@ -711,7 +473,7 @@
       "total_score": 114,
       "score_diff": 4
     },
-    "generated_at": "2025-06-15 22:21:59"
+    "generated_at": "2025-06-15 23:16:41"
   },
   {
     "fixtureId": 236680,
@@ -733,10 +495,10 @@
     },
     "fixtureStart": "2025-06-16T01:15:00Z",
     "prediction": {
-      "home_win_probability": 0.31882305521966947,
-      "away_win_probability": 0.6811769447803305,
+      "home_win_probability": 0.30294906166219837,
+      "away_win_probability": 0.6970509383378016,
       "predicted_winner": "away",
-      "confidence": 0.6811769447803305,
+      "confidence": 0.6970509383378016,
       "prediction_method": "fallback_win_rates"
     },
     "score_prediction": {
@@ -745,7 +507,7 @@
       "total_score": 101,
       "score_diff": 1
     },
-    "generated_at": "2025-06-15 22:21:59"
+    "generated_at": "2025-06-15 23:16:41"
   },
   {
     "fixtureId": 236695,
@@ -767,10 +529,10 @@
     },
     "fixtureStart": "2025-06-16T01:23:00Z",
     "prediction": {
-      "home_win_probability": 0.5937002083588675,
-      "away_win_probability": 0.40629979164113245,
+      "home_win_probability": 0.5940295718390133,
+      "away_win_probability": 0.4059704281609866,
       "predicted_winner": "home",
-      "confidence": 0.5937002083588675,
+      "confidence": 0.5940295718390133,
       "prediction_method": "fallback_win_rates"
     },
     "score_prediction": {
@@ -779,7 +541,7 @@
       "total_score": 115,
       "score_diff": 3
     },
-    "generated_at": "2025-06-15 22:21:59"
+    "generated_at": "2025-06-15 23:16:41"
   },
   {
     "fixtureId": 236701,
@@ -801,10 +563,10 @@
     },
     "fixtureStart": "2025-06-16T01:31:00Z",
     "prediction": {
-      "home_win_probability": 0.43219404630650493,
-      "away_win_probability": 0.567805953693495,
+      "home_win_probability": 0.4329234721967333,
+      "away_win_probability": 0.5670765278032666,
       "predicted_winner": "away",
-      "confidence": 0.567805953693495,
+      "confidence": 0.5670765278032666,
       "prediction_method": "fallback_win_rates"
     },
     "score_prediction": {
@@ -813,7 +575,7 @@
       "total_score": 110,
       "score_diff": 0
     },
-    "generated_at": "2025-06-15 22:21:59"
+    "generated_at": "2025-06-15 23:16:41"
   },
   {
     "fixtureId": 236670,
@@ -835,10 +597,10 @@
     },
     "fixtureStart": "2025-06-16T01:39:00Z",
     "prediction": {
-      "home_win_probability": 0.4754942681508557,
-      "away_win_probability": 0.5245057318491444,
+      "home_win_probability": 0.4763588111503893,
+      "away_win_probability": 0.5236411888496108,
       "predicted_winner": "away",
-      "confidence": 0.5245057318491444,
+      "confidence": 0.5236411888496108,
       "prediction_method": "fallback_win_rates"
     },
     "score_prediction": {
@@ -847,7 +609,7 @@
       "total_score": 109,
       "score_diff": 1
     },
-    "generated_at": "2025-06-15 22:21:59"
+    "generated_at": "2025-06-15 23:16:41"
   },
   {
     "fixtureId": 236682,
@@ -869,10 +631,10 @@
     },
     "fixtureStart": "2025-06-16T01:47:00Z",
     "prediction": {
-      "home_win_probability": 0.6331168831168832,
-      "away_win_probability": 0.36688311688311687,
+      "home_win_probability": 0.6243073513114149,
+      "away_win_probability": 0.37569264868858515,
       "predicted_winner": "home",
-      "confidence": 0.6331168831168832,
+      "confidence": 0.6243073513114149,
       "prediction_method": "fallback_win_rates"
     },
     "score_prediction": {
@@ -881,7 +643,7 @@
       "total_score": 99,
       "score_diff": 1
     },
-    "generated_at": "2025-06-15 22:21:59"
+    "generated_at": "2025-06-15 23:16:41"
   },
   {
     "fixtureId": 236689,
@@ -903,10 +665,10 @@
     },
     "fixtureStart": "2025-06-16T01:55:00Z",
     "prediction": {
-      "home_win_probability": 0.5977647600978124,
-      "away_win_probability": 0.40223523990218746,
+      "home_win_probability": 0.5981027302174919,
+      "away_win_probability": 0.40189726978250817,
       "predicted_winner": "home",
-      "confidence": 0.5977647600978124,
+      "confidence": 0.5981027302174919,
       "prediction_method": "fallback_win_rates"
     },
     "score_prediction": {
@@ -915,7 +677,7 @@
       "total_score": 116,
       "score_diff": 0
     },
-    "generated_at": "2025-06-15 22:21:59"
+    "generated_at": "2025-06-15 23:16:41"
   },
   {
     "fixtureId": 236698,
@@ -937,10 +699,10 @@
     },
     "fixtureStart": "2025-06-16T02:03:00Z",
     "prediction": {
-      "home_win_probability": 0.46704675028506265,
-      "away_win_probability": 0.5329532497149373,
+      "home_win_probability": 0.4678504228215498,
+      "away_win_probability": 0.5321495771784501,
       "predicted_winner": "away",
-      "confidence": 0.5329532497149373,
+      "confidence": 0.5321495771784501,
       "prediction_method": "fallback_win_rates"
     },
     "score_prediction": {
@@ -949,7 +711,7 @@
       "total_score": 118,
       "score_diff": 2
     },
-    "generated_at": "2025-06-15 22:21:59"
+    "generated_at": "2025-06-15 23:16:41"
   },
   {
     "fixtureId": 236669,
@@ -971,10 +733,10 @@
     },
     "fixtureStart": "2025-06-16T02:11:00Z",
     "prediction": {
-      "home_win_probability": 0.5020478551411942,
-      "away_win_probability": 0.4979521448588058,
+      "home_win_probability": 0.5054945054945055,
+      "away_win_probability": 0.49450549450549447,
       "predicted_winner": "home",
-      "confidence": 0.5020478551411942,
+      "confidence": 0.5054945054945055,
       "prediction_method": "fallback_win_rates"
     },
     "score_prediction": {
@@ -983,7 +745,7 @@
       "total_score": 114,
       "score_diff": 4
     },
-    "generated_at": "2025-06-15 22:21:59"
+    "generated_at": "2025-06-15 23:16:41"
   },
   {
     "fixtureId": 236687,
@@ -1005,10 +767,10 @@
     },
     "fixtureStart": "2025-06-16T02:19:00Z",
     "prediction": {
-      "home_win_probability": 0.337767086458186,
-      "away_win_probability": 0.6622329135418141,
+      "home_win_probability": 0.32082551594746717,
+      "away_win_probability": 0.6791744840525329,
       "predicted_winner": "away",
-      "confidence": 0.6622329135418141,
+      "confidence": 0.6791744840525329,
       "prediction_method": "fallback_win_rates"
     },
     "score_prediction": {
@@ -1017,7 +779,7 @@
       "total_score": 106,
       "score_diff": -4
     },
-    "generated_at": "2025-06-15 22:21:59"
+    "generated_at": "2025-06-15 23:16:41"
   },
   {
     "fixtureId": 236697,
@@ -1039,10 +801,10 @@
     },
     "fixtureStart": "2025-06-16T02:27:00Z",
     "prediction": {
-      "home_win_probability": 0.6512984438294793,
-      "away_win_probability": 0.3487015561705206,
+      "home_win_probability": 0.6530648930433219,
+      "away_win_probability": 0.346935106956678,
       "predicted_winner": "home",
-      "confidence": 0.6512984438294793,
+      "confidence": 0.6530648930433219,
       "prediction_method": "fallback_win_rates"
     },
     "score_prediction": {
@@ -1051,7 +813,7 @@
       "total_score": 114,
       "score_diff": 2
     },
-    "generated_at": "2025-06-15 22:21:59"
+    "generated_at": "2025-06-15 23:16:41"
   },
   {
     "fixtureId": 236704,
@@ -1073,10 +835,10 @@
     },
     "fixtureStart": "2025-06-16T02:35:00Z",
     "prediction": {
-      "home_win_probability": 0.4261448566381301,
-      "away_win_probability": 0.5738551433618698,
+      "home_win_probability": 0.42766176327033256,
+      "away_win_probability": 0.5723382367296674,
       "predicted_winner": "away",
-      "confidence": 0.5738551433618698,
+      "confidence": 0.5723382367296674,
       "prediction_method": "fallback_win_rates"
     },
     "score_prediction": {
@@ -1085,7 +847,7 @@
       "total_score": 115,
       "score_diff": 5
     },
-    "generated_at": "2025-06-15 22:21:59"
+    "generated_at": "2025-06-15 23:16:41"
   },
   {
     "fixtureId": 236667,
@@ -1107,10 +869,10 @@
     },
     "fixtureStart": "2025-06-16T02:43:00Z",
     "prediction": {
-      "home_win_probability": 0.43675289919714544,
-      "away_win_probability": 0.5632471008028547,
+      "home_win_probability": 0.44040283575167294,
+      "away_win_probability": 0.5595971642483271,
       "predicted_winner": "away",
-      "confidence": 0.5632471008028547,
+      "confidence": 0.5595971642483271,
       "prediction_method": "fallback_win_rates"
     },
     "score_prediction": {
@@ -1119,7 +881,7 @@
       "total_score": 113,
       "score_diff": 5
     },
-    "generated_at": "2025-06-15 22:21:59"
+    "generated_at": "2025-06-15 23:16:41"
   },
   {
     "fixtureId": 236678,
@@ -1141,10 +903,10 @@
     },
     "fixtureStart": "2025-06-16T02:51:00Z",
     "prediction": {
-      "home_win_probability": 0.44680851063829785,
-      "away_win_probability": 0.5531914893617021,
+      "home_win_probability": 0.41935483870967744,
+      "away_win_probability": 0.5806451612903226,
       "predicted_winner": "away",
-      "confidence": 0.5531914893617021,
+      "confidence": 0.5806451612903226,
       "prediction_method": "fallback_win_rates"
     },
     "score_prediction": {
@@ -1153,7 +915,7 @@
       "total_score": 100,
       "score_diff": 2
     },
-    "generated_at": "2025-06-15 22:21:59"
+    "generated_at": "2025-06-15 23:16:41"
   },
   {
     "fixtureId": 236694,
@@ -1175,10 +937,10 @@
     },
     "fixtureStart": "2025-06-16T02:59:00Z",
     "prediction": {
-      "home_win_probability": 0.5376018340361076,
-      "away_win_probability": 0.46239816596389244,
+      "home_win_probability": 0.5363547440495599,
+      "away_win_probability": 0.4636452559504402,
       "predicted_winner": "home",
-      "confidence": 0.5376018340361076,
+      "confidence": 0.5363547440495599,
       "prediction_method": "fallback_win_rates"
     },
     "score_prediction": {
@@ -1187,7 +949,7 @@
       "total_score": 117,
       "score_diff": 1
     },
-    "generated_at": "2025-06-15 22:21:59"
+    "generated_at": "2025-06-15 23:16:41"
   },
   {
     "fixtureId": 236700,
@@ -1221,7 +983,7 @@
       "total_score": 113,
       "score_diff": -3
     },
-    "generated_at": "2025-06-15 22:21:59"
+    "generated_at": "2025-06-15 23:16:41"
   },
   {
     "fixtureId": 236675,
@@ -1243,10 +1005,10 @@
     },
     "fixtureStart": "2025-06-16T03:15:00Z",
     "prediction": {
-      "home_win_probability": 0.5410178079129722,
-      "away_win_probability": 0.4589821920870278,
+      "home_win_probability": 0.5416211925786288,
+      "away_win_probability": 0.45837880742137116,
       "predicted_winner": "home",
-      "confidence": 0.5410178079129722,
+      "confidence": 0.5416211925786288,
       "prediction_method": "fallback_win_rates"
     },
     "score_prediction": {
@@ -1255,6 +1017,210 @@
       "total_score": 110,
       "score_diff": 0
     },
-    "generated_at": "2025-06-15 22:21:59"
+    "generated_at": "2025-06-15 23:16:41"
+  },
+  {
+    "fixtureId": 236679,
+    "homePlayer": {
+      "id": 2103,
+      "name": "RIDER"
+    },
+    "awayPlayer": {
+      "id": 266,
+      "name": "ARACHNE"
+    },
+    "homeTeam": {
+      "id": 14,
+      "name": "Los Angeles Lakers"
+    },
+    "awayTeam": {
+      "id": 3,
+      "name": "Boston Celtics"
+    },
+    "fixtureStart": "2025-06-16T03:23:00Z",
+    "prediction": {
+      "home_win_probability": 0.5208162500292856,
+      "away_win_probability": 0.47918374997071433,
+      "predicted_winner": "home",
+      "confidence": 0.5208162500292856,
+      "prediction_method": "fallback_win_rates"
+    },
+    "score_prediction": {
+      "home_score": 50,
+      "away_score": 55,
+      "total_score": 105,
+      "score_diff": -5
+    },
+    "generated_at": "2025-06-15 23:16:41"
+  },
+  {
+    "fixtureId": 236690,
+    "homePlayer": {
+      "id": 23,
+      "name": "SPARKZ"
+    },
+    "awayPlayer": {
+      "id": 1203,
+      "name": "CHIEF"
+    },
+    "homeTeam": {
+      "id": 4,
+      "name": "Charlotte Hornets"
+    },
+    "awayTeam": {
+      "id": 7,
+      "name": "Dallas Mavericks"
+    },
+    "fixtureStart": "2025-06-16T03:31:00Z",
+    "prediction": {
+      "home_win_probability": 0.44152561190154915,
+      "away_win_probability": 0.5584743880984508,
+      "predicted_winner": "away",
+      "confidence": 0.5584743880984508,
+      "prediction_method": "fallback_win_rates"
+    },
+    "score_prediction": {
+      "home_score": 56,
+      "away_score": 58,
+      "total_score": 114,
+      "score_diff": -2
+    },
+    "generated_at": "2025-06-15 23:16:41"
+  },
+  {
+    "fixtureId": 236702,
+    "homePlayer": {
+      "id": 2034,
+      "name": "CRUCIAL"
+    },
+    "awayPlayer": {
+      "id": 1369,
+      "name": "RAIN"
+    },
+    "homeTeam": {
+      "id": 17,
+      "name": "Milwaukee Bucks"
+    },
+    "awayTeam": {
+      "id": 6,
+      "name": "Cleveland Cavaliers"
+    },
+    "fixtureStart": "2025-06-16T03:39:00Z",
+    "prediction": {
+      "home_win_probability": 0.5405660280656437,
+      "away_win_probability": 0.4594339719343563,
+      "predicted_winner": "home",
+      "confidence": 0.5405660280656437,
+      "prediction_method": "fallback_win_rates"
+    },
+    "score_prediction": {
+      "home_score": 55,
+      "away_score": 58,
+      "total_score": 113,
+      "score_diff": -3
+    },
+    "generated_at": "2025-06-15 23:16:41"
+  },
+  {
+    "fixtureId": 236672,
+    "homePlayer": {
+      "id": 113,
+      "name": "BRAZEN"
+    },
+    "awayPlayer": {
+      "id": 24,
+      "name": "SAINT JR"
+    },
+    "homeTeam": {
+      "id": 17,
+      "name": "Milwaukee Bucks"
+    },
+    "awayTeam": {
+      "id": 6,
+      "name": "Cleveland Cavaliers"
+    },
+    "fixtureStart": "2025-06-16T03:47:00Z",
+    "prediction": {
+      "home_win_probability": 0.5650065223935512,
+      "away_win_probability": 0.43499347760644874,
+      "predicted_winner": "home",
+      "confidence": 0.5650065223935512,
+      "prediction_method": "fallback_win_rates"
+    },
+    "score_prediction": {
+      "home_score": 54,
+      "away_score": 55,
+      "total_score": 109,
+      "score_diff": -1
+    },
+    "generated_at": "2025-06-15 23:16:41"
+  },
+  {
+    "fixtureId": 236685,
+    "homePlayer": {
+      "id": 2245,
+      "name": "SHERIFF"
+    },
+    "awayPlayer": {
+      "id": 266,
+      "name": "ARACHNE"
+    },
+    "homeTeam": {
+      "id": 22,
+      "name": "Orlando Magic"
+    },
+    "awayTeam": {
+      "id": 4,
+      "name": "Charlotte Hornets"
+    },
+    "fixtureStart": "2025-06-16T03:55:00Z",
+    "prediction": {
+      "home_win_probability": 0.395426515930113,
+      "away_win_probability": 0.604573484069887,
+      "predicted_winner": "away",
+      "confidence": 0.604573484069887,
+      "prediction_method": "fallback_win_rates"
+    },
+    "score_prediction": {
+      "home_score": 49,
+      "away_score": 55,
+      "total_score": 104,
+      "score_diff": -6
+    },
+    "generated_at": "2025-06-15 23:16:41"
+  },
+  {
+    "fixtureId": 236688,
+    "homePlayer": {
+      "id": 23,
+      "name": "SPARKZ"
+    },
+    "awayPlayer": {
+      "id": 32,
+      "name": "LANES"
+    },
+    "homeTeam": {
+      "id": 4,
+      "name": "Charlotte Hornets"
+    },
+    "awayTeam": {
+      "id": 22,
+      "name": "Orlando Magic"
+    },
+    "fixtureStart": "2025-06-16T04:03:00Z",
+    "prediction": {
+      "home_win_probability": 0.4059704281609866,
+      "away_win_probability": 0.5940295718390133,
+      "predicted_winner": "away",
+      "confidence": 0.5940295718390133,
+      "prediction_method": "fallback_win_rates"
+    },
+    "score_prediction": {
+      "home_score": 56,
+      "away_score": 59,
+      "total_score": 115,
+      "score_diff": -3
+    },
+    "generated_at": "2025-06-15 23:16:41"
   }
 ]
