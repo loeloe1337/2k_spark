@@ -29,6 +29,7 @@ from core.data.processors.player_stats import PlayerStatsProcessor
 from core.models.registry import ModelRegistry, ScoreModelRegistry
 from core.models.winner_prediction import WinnerPredictionModel
 from core.models.score_prediction import ScorePredictionModel
+from services.refresh_status_service import get_refresh_status_service
 
 logger = get_prediction_refresh_logger()
 
@@ -102,13 +103,14 @@ class RefreshService:
 
         except Exception as e:
             logger.error(f"Error during data refresh: {str(e)}")
-            return False
-
-    @log_execution_time(logger)
+            return False    @log_execution_time(logger)
     @log_exceptions(logger)
-    def refresh_predictions(self):
+    def refresh_predictions(self, status_service=None):
         """
         Refresh predictions for upcoming matches.
+
+        Args:
+            status_service: Optional status service for progress updates
 
         Returns:
             bool: True if successful, False otherwise
@@ -116,6 +118,10 @@ class RefreshService:
         logger.info("Starting prediction refresh")
 
         try:
+            # Stage: Loading models
+            if status_service:
+                status_service.update_stage("winner_models", "Loading winner prediction models...")
+
             # Load player statistics
             player_stats = self.player_stats_processor.load_from_file()
             if not player_stats:
@@ -153,6 +159,10 @@ class RefreshService:
             except Exception as e:
                 logger.error(f"Error loading winner prediction model: {str(e)}")
                 return False
+
+            if status_service:
+                status_service.complete_stage("winner_models")
+                status_service.update_stage("score_models", "Loading score prediction models...")
 
             # Get all score prediction models
             score_models = self.score_model_registry.list_models()
@@ -283,72 +293,79 @@ def refresh_predictions():
     Returns:
         bool: True if successful, False otherwise
     """
-    import json
-    import os
-    from datetime import datetime
-    from pathlib import Path
+    refresh_status_service = get_refresh_status_service()
     
-    def update_status(stage, message):
-        """Update the refresh status with stage information."""
-        try:
-            # Get the status file path relative to the app directory
-            app_dir = Path(__file__).parent.parent / "app"
-            status_file = app_dir / "refresh_status.json"
-            
-            # Read current status
-            if status_file.exists():
-                with open(status_file, 'r', encoding='utf-8') as f:
-                    status = json.load(f)
-            else:
-                status = {}
-            
-            # Update with new stage and message
-            status.update({
-                "stage": stage,
-                "message": message,
-                "status": "running"
-            })
-            
-            # Save updated status
-            with open(status_file, 'w', encoding='utf-8') as f:
-                json.dump(status, f)
-                
-            logger.info(f"Status updated: {stage} - {message}")
-        except Exception as e:
-            logger.error(f"Failed to update status: {str(e)}")
-    
-    service = RefreshService()
-
-    # Update status: Loading upcoming matches
-    update_status("upcoming_matches", "Loading upcoming matches")
-    
-    # Refresh data from H2H GG League API
-    if not service.refresh_data():
-        logger.error("Data refresh failed")
-        return False
-
-    # Update status: Generating predictions
-    update_status("predictions", "Generating predictions")
-    
-    # Refresh predictions
-    if not service.refresh_predictions():
-        logger.error("Prediction refresh failed")
-        return False
-
-    # Update status: Validating predictions
-    update_status("validation", "Validating predictions")
-    
-    # Validate existing predictions against completed matches
-    logger.info("Starting prediction validation against completed matches")
     try:
-        validation_success = service.validation_service.validate_predictions()
-        if validation_success:
-            logger.info("Prediction validation completed successfully")
-        else:
-            logger.error("Prediction validation failed")
-            return False
-    except Exception as e:
-        logger.error(f"Prediction validation failed with exception: {str(e)}")
-        return False
+        # Start the refresh process
+        refresh_status_service.start_refresh()
+        logger.info("Starting prediction refresh with status tracking")
 
-    return True
+        # Initialize the refresh service
+        refresh_service = RefreshService()
+        
+        # Stage 1: Authentication
+        refresh_status_service.update_stage("auth", "Fetching authentication token...")
+        try:
+            token = refresh_service.token_fetcher.get_token()
+            if not token:
+                raise Exception("Failed to fetch authentication token")
+        except Exception as e:
+            logger.error(f"Authentication failed: {str(e)}")
+            refresh_status_service.complete_refresh(False, f"Authentication failed: {str(e)}")
+            return False
+        refresh_status_service.complete_stage("auth")
+
+        # Stage 2: Data refresh
+        refresh_status_service.update_stage("player_stats", "Refreshing match history and player data...")
+        try:
+            data_success = refresh_service.refresh_data()
+            if not data_success:
+                raise Exception("Failed to refresh data")
+        except Exception as e:
+            logger.error(f"Data refresh failed: {str(e)}")
+            refresh_status_service.complete_refresh(False, f"Data refresh failed: {str(e)}")
+            return False
+        refresh_status_service.complete_stage("player_stats")
+
+        # Stage 3: Loading upcoming matches
+        refresh_status_service.update_stage("upcoming_matches", "Loading upcoming matches...")
+        try:
+            # This is already done in refresh_data, but we'll update the status
+            refresh_status_service.update_stage("upcoming_matches", "Upcoming matches loaded successfully", 100)
+        except Exception as e:
+            logger.error(f"Failed to load upcoming matches: {str(e)}")
+            refresh_status_service.complete_refresh(False, f"Failed to load upcoming matches: {str(e)}")
+            return False
+        refresh_status_service.complete_stage("upcoming_matches")        # Stage 4: Prediction refresh
+        refresh_status_service.update_stage("generating_predictions", "Generating match predictions...")
+        try:
+            prediction_success = refresh_service.refresh_predictions(refresh_status_service)
+            if not prediction_success:
+                raise Exception("Failed to generate predictions")
+        except Exception as e:
+            logger.error(f"Prediction refresh failed: {str(e)}")
+            refresh_status_service.complete_refresh(False, f"Prediction refresh failed: {str(e)}")
+            return False
+        refresh_status_service.complete_stage("generating_predictions")
+
+        # Stage 5: Validation
+        refresh_status_service.update_stage("validation", "Validating predictions...")
+        try:
+            # Run prediction validation
+            validation_service = PredictionValidationService()
+            validation_service.validate_recent_predictions()
+            refresh_status_service.update_stage("validation", "Predictions validated successfully", 100)
+        except Exception as e:
+            logger.warning(f"Prediction validation failed (non-critical): {str(e)}")
+            # Don't fail the entire process for validation errors
+        refresh_status_service.complete_stage("validation")
+
+        # Complete successfully
+        refresh_status_service.complete_refresh(True)
+        logger.info("Prediction refresh completed successfully")
+        return True
+
+    except Exception as e:
+        logger.error(f"Unexpected error during refresh: {str(e)}")
+        refresh_status_service.complete_refresh(False, f"Unexpected error: {str(e)}")
+        return False

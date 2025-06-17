@@ -32,6 +32,7 @@ from services.data_service import DataService
 from services.prediction_service import PredictionService
 from services.refresh_service import RefreshService
 from services.live_scores_service import LiveScoresService
+from services.refresh_status_service import get_refresh_status_service
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -391,116 +392,81 @@ def get_live_matches_with_predictions():
 @log_exceptions(logger)
 def refresh_data():
     """
-    Trigger data refresh and prediction update.
-
-    Returns:
+    Trigger data refresh and prediction update.    Returns:
         flask.Response: JSON response with refresh status
     """
     try:
-        # Run the prediction refresh process
-        # In a real implementation, this would call a function to refresh predictions
-        # For now, we'll just return a success message
-
-        # Create a temporary script to run the refresh process
-        script_path = Path(__file__).parent / "refresh_script.py"
-        with open(script_path, 'w', encoding='utf-8') as f:
-            f.write("""
-import sys
-import os
-import traceback
-import time
-
-# Add parent directory to path
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-# Import refresh function and logging
-from services.refresh_service import refresh_predictions
-from config.logging_config import get_prediction_refresh_logger
-
-# Initialize logger
-logger = get_prediction_refresh_logger()
-
-try:
-    # Log start time
-    start_time = time.time()
-    logger.info(f"Refresh script started with PID: {os.getpid()}")
-
-    # Run refresh
-    success = refresh_predictions()
-
-    # Log completion
-    end_time = time.time()
-    duration = end_time - start_time
-
-    if success:
-        logger.info(f"Refresh completed successfully in {duration:.2f} seconds")
-    else:
-        logger.error(f"Refresh failed after {duration:.2f} seconds")
-
-    # Exit with appropriate code
-    sys.exit(0 if success else 1)
-except Exception as e:
-    # Log any unhandled exceptions
-    logger.error(f"Unhandled exception in refresh script: {str(e)}")
-    logger.error(traceback.format_exc())
-    sys.exit(1)
-            """)
-
-        # Get the virtual environment's Python executable
-        venv_python = Path(__file__).parent.parent / ".venv" / "Scripts" / "python.exe"
-        python_executable = str(venv_python) if venv_python.exists() else "python"
+        # Import the refresh function
+        from services.refresh_service import refresh_predictions
         
-        # Run the script in a separate process
-        process = subprocess.Popen(
-            [python_executable, str(script_path)],
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            text=True
-        )
-
-        # Log the process ID for debugging
-        logger.info(f"Started refresh process with PID: {process.pid}")
-
-        # Create a background thread to monitor the process
-        def monitor_process():
+        # Get the status service instance
+        refresh_status_service = get_refresh_status_service()
+        
+        # Check if a refresh is already running
+        current_status = refresh_status_service.get_status()
+        
+        if current_status['status'] == 'running':
+            return jsonify({
+                "status": "error", 
+                "message": "Refresh is already in progress"
+            }), 409        # Run refresh in background thread
+        def run_refresh():
             try:
-                # Wait for the process to complete (with a timeout)
-                try:
-                    stdout, stderr = process.communicate(timeout=5)
-                    if stdout:
-                        logger.info(f"Refresh process stdout: {stdout}")
-                    if stderr:
-                        logger.error(f"Refresh process stderr: {stderr}")
-                except subprocess.TimeoutExpired:
-                    # Process is still running, which is expected for longer refreshes
-                    logger.info(f"Refresh process {process.pid} is still running (expected)")
-
-                # Check if the process is still running after the timeout
-                if process.poll() is None:
-                    logger.info(f"Refresh process {process.pid} is running in the background")
-                else:
-                    # Process completed quickly
-                    exit_code = process.returncode
-                    logger.info(f"Refresh process completed with exit code: {exit_code}")
-
-                    # Check if there was any output
-                    stdout, stderr = process.communicate()
-                    if stdout:
-                        logger.info(f"Refresh process stdout: {stdout}")
-                    if stderr:
-                        logger.error(f"Refresh process stderr: {stderr}")
+                logger.info("Starting background refresh process")
+                success = refresh_predictions()
+                logger.info(f"Background refresh completed with success: {success}")
             except Exception as e:
-                logger.error(f"Error monitoring refresh process: {str(e)}")
-
-        # Start the monitoring thread
-        monitor_thread = threading.Thread(target=monitor_process)
-        monitor_thread.daemon = True
-        monitor_thread.start()
-
+                logger.error(f"Background refresh failed with exception: {str(e)}")
+        
+        # Start the refresh in a background thread
+        refresh_thread = threading.Thread(target=run_refresh, daemon=True)
+        refresh_thread.start()
+        
+        logger.info("Refresh thread started successfully")
         return jsonify({"status": "success", "message": "Refresh process started"})
     except Exception as e:
-        logger.error(f"Error refreshing data: {str(e)}")
+        logger.error(f"Error starting refresh: {str(e)}")
         return jsonify({"status": "error", "message": str(e)}), 500
+
+
+@app.route('/api/refresh/status', methods=['GET'])
+@log_execution_time(logger)
+@log_exceptions(logger)
+def get_refresh_status():
+    """
+    Get the current refresh status and progress.
+
+    Returns:
+        flask.Response: JSON response with current refresh status
+    """
+    try:
+        refresh_status_service = get_refresh_status_service()
+        status = refresh_status_service.get_status()
+        return jsonify(status)
+    except Exception as e:
+        logger.error(f"Error getting refresh status: {str(e)}")
+        return jsonify({"status": "error", "message": str(e)}), 500
+
+
+@app.route('/api/refresh/reset', methods=['POST'])
+@log_execution_time(logger)
+@log_exceptions(logger)
+def reset_refresh_status():
+    """
+    Reset the refresh status to idle.
+
+    Returns:
+        flask.Response: JSON response confirming reset
+    """
+    try:
+        refresh_status_service = get_refresh_status_service()
+        refresh_status_service.reset()
+        return jsonify({"status": "success", "message": "Refresh status reset"})
+    except Exception as e:
+        logger.error(f"Error resetting refresh status: {str(e)}")
+        return jsonify({"status": "error", "message": str(e)}), 500
+
+
 
 
 def refresh_predictions_periodically():
