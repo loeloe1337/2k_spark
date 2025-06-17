@@ -40,12 +40,18 @@ export function useStats() {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const { refreshCounter } = useRefreshContext();
-
   useEffect(() => {
     const fetchStats = async () => {
       try {
         setLoading(true);
-        const data = await apiClient.getStats() as StatsResponse;
+        const response = await apiClient.getStats();
+        
+        if (response.error) {
+          setError(response.error);
+          return;
+        }
+        
+        const data = response.data as StatsResponse;
         setStats(data);
         setError(null);
         console.log(`Stats refreshed after refresh ${refreshCounter}`);
@@ -73,16 +79,23 @@ export function useRefresh() {
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean>(false);
   const { triggerRefresh } = useRefreshContext();
-
   const refreshData = async () => {
     try {
       setLoading(true);
       setSuccess(false);
       setError(null);
 
-      const response = await apiClient.refreshData() as RefreshResponse;
+      const response = await apiClient.refreshData();
 
-      if (response.status === 'success') {
+      // Check if the API call was successful (no error in ApiResponse)
+      if (response.error) {
+        setError(response.error);
+        return;
+      }
+
+      // Check the backend response data
+      const backendResponse = response.data as RefreshResponse;
+      if (backendResponse && backendResponse.status === 'success') {
         setSuccess(true);
 
         // Wait longer for the backend to finish processing (5 seconds)
@@ -97,7 +110,7 @@ export function useRefresh() {
           }, 3000);
         }, 5000);
       } else {
-        setError(response.message || 'Refresh failed');
+        setError(backendResponse?.message || 'Refresh failed');
       }
     } catch (err) {
       console.error('Error refreshing data:', err);

@@ -1,21 +1,39 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  output: 'export',
-  // Disable image optimization for static export
+  
+  // Remove static export for development
+  // output: 'export',
+  
+  // Allow cross-origin requests in development
+  allowedDevOrigins: ['http://192.168.1.2:3000', 'http://localhost:3000'],
+  
+  // Image configuration
   images: {
-    unoptimized: true,
+    unoptimized: process.env.NODE_ENV === 'production',
   },
-  // Set environment variables
+  
+  // Environment variables
   env: {
     NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000',
   },
-  // GitHub Pages uses a subdirectory based on the repository name
+  
+  // Production configuration for GitHub Pages
   basePath: process.env.NODE_ENV === 'production' ? '/2k_spark' : '',
-  // Set asset prefix for GitHub Pages
   assetPrefix: process.env.NODE_ENV === 'production' ? '/2k_spark' : '',
-  // Disable trailing slashes to avoid GitHub Pages redirect issues
   trailingSlash: false,
+  // Turbopack configuration (now stable)
+  turbo: {
+    rules: {
+      '*.svg': {
+        loaders: ['@svgr/webpack'],
+        as: '*.js',
+      },
+    },
+    resolveAlias: {
+      '@': './src',
+    },
+  },
 };
 
 module.exports = nextConfig;

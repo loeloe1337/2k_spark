@@ -48,13 +48,19 @@ export function ScoreList() {
   const [modelAccuracy, setModelAccuracy] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-
   useEffect(() => {
     const fetchScorePredictions = async () => {
       try {
         setLoading(true);
 
-        const data = await apiClient.getScorePredictions() as ScorePredictionsResponse;
+        const response = await apiClient.getScorePredictions();
+        
+        if (response.error) {
+          setError(response.error);
+          return;
+        }
+        
+        const data = response.data as ScorePredictionsResponse;
 
         // Filter out matches that have already started
         const now = new Date();

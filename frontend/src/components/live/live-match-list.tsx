@@ -78,11 +78,15 @@ export function LiveMatchList() {
   useEffect(() => {
     const fetchLiveMatches = async () => {
       try {
-        setLoading(true);
-
-        // First try to fetch live matches with predictions
+        setLoading(true);        // First try to fetch live matches with predictions
         try {
-          const liveMatchesResponse = await apiClient.getLiveMatchesWithPredictions() as any;
+          const apiResponse = await apiClient.getLiveMatchesWithPredictions();
+          
+          if (apiResponse.error) {
+            throw new Error(apiResponse.error);
+          }
+          
+          const liveMatchesResponse = apiResponse.data as any;
           
           if (liveMatchesResponse && liveMatchesResponse.matches && liveMatchesResponse.matches.length > 0) {
             // Process live matches with their predictions and scores
@@ -165,14 +169,26 @@ export function LiveMatchList() {
           }
         } catch (liveError) {
           console.warn('Live matches API failed, falling back to predictions + upcoming matches:', liveError);
-        }
-
-        // Fallback: Fetch both predictions and upcoming matches (original logic)
-        const [predictionsData, upcomingMatchesData, scorePredictionsData] = await Promise.all([
+        }        // Fallback: Fetch both predictions and upcoming matches (original logic)
+        const [predictionsResponse, upcomingMatchesResponse, scorePredictionsResponse] = await Promise.all([
           apiClient.getPredictions(),
           apiClient.getUpcomingMatches(),
           apiClient.getScorePredictions()
-        ]) as [PredictionData[], UpcomingMatchData[], ScorePredictionsResponse];
+        ]);
+
+        // Check for API errors
+        if (predictionsResponse.error || upcomingMatchesResponse.error || scorePredictionsResponse.error) {
+          throw new Error(
+            predictionsResponse.error || 
+            upcomingMatchesResponse.error || 
+            scorePredictionsResponse.error ||
+            'Failed to fetch match data'
+          );
+        }
+
+        const predictionsData = predictionsResponse.data as PredictionData[];
+        const upcomingMatchesData = upcomingMatchesResponse.data as UpcomingMatchData[];
+        const scorePredictionsData = scorePredictionsResponse.data as ScorePredictionsResponse;
 
         console.log('Raw predictions data sample:', predictionsData.length > 0 ? predictionsData[0] : 'No predictions');
         console.log('Raw score predictions data:',
@@ -317,11 +333,17 @@ export function LiveMatchList() {
     // Clean up the interval when the component unmounts
     return () => clearInterval(liveScoreInterval);
   }, [lastFullRefresh]);
-
   // Function to update only live scores without full re-render
   const updateLiveScoresOnly = async () => {
     try {
-      const liveMatchesResponse = await apiClient.getLiveMatchesWithPredictions() as any;
+      const apiResponse = await apiClient.getLiveMatchesWithPredictions();
+      
+      if (apiResponse.error) {
+        console.warn('Failed to update live scores:', apiResponse.error);
+        return;
+      }
+      
+      const liveMatchesResponse = apiResponse.data as any;
       
       if (liveMatchesResponse && liveMatchesResponse.matches && liveMatchesResponse.matches.length > 0) {
         setLiveMatches(prevMatches => {

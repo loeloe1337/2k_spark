@@ -34,8 +34,7 @@ export function PlayerStatsList() {
       </div>
     );
   }
-
-  if (!playerStats || playerStats.length === 0) {
+  if (!playerStats || !Array.isArray(playerStats) || playerStats.length === 0) {
     return (
       <div className="flex justify-center items-center py-12">
         <div className="text-center">
@@ -45,10 +44,12 @@ export function PlayerStatsList() {
     );
   }
 
-  // Filter players based on search query
-  const filteredPlayers = playerStats.filter(player => 
-    player.player_name.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  // Filter players based on search query - extra safety check
+  const filteredPlayers = Array.isArray(playerStats) 
+    ? playerStats.filter(player => 
+        player?.player_name?.toLowerCase()?.includes(searchQuery.toLowerCase()) || false
+      )
+    : [];
 
   // Sort players by win rate (descending)
   const sortedPlayers = [...filteredPlayers].sort((a, b) => b.win_rate - a.win_rate);

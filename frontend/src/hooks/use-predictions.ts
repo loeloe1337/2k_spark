@@ -28,7 +28,18 @@ export function usePredictions() {
         // Add a timestamp to the request to prevent caching
         const timestamp = Date.now();
         console.log(`Adding timestamp ${timestamp} to request to prevent caching`);
-        const data = await apiClient.getPredictions();
+        const response = await apiClient.getPredictions();
+
+        // Handle API response with error checking
+        if (response.error) {
+          console.error('API error fetching predictions:', response.error);
+          setError(`Failed to fetch predictions: ${response.error}`);
+          setPredictions([]);
+          return;
+        }
+
+        // Extract data from API response
+        const data = response.data;
 
         // Check if the data is in the expected format
         let predictionsData = [];
@@ -94,6 +105,7 @@ export function usePredictions() {
       } catch (err) {
         console.error('Error fetching predictions:', err);
         setError('Failed to fetch predictions. Please try again later.');
+        setPredictions([]);
       } finally {
         setLoading(false);
       }
@@ -121,12 +133,37 @@ export function useScorePredictions() {
     const fetchScorePredictions = async () => {
       try {
         setLoading(true);
-        const data = await apiClient.getScorePredictions() as any;
+        const response = await apiClient.getScorePredictions();
 
-        console.log(`Fetched ${data.predictions.length} score predictions after refresh ${refreshCounter}`);
+        // Handle API response with error checking
+        if (response.error) {
+          console.error('API error fetching score predictions:', response.error);
+          setError(`Failed to fetch score predictions: ${response.error}`);
+          setPredictions([]);
+          return;
+        }
+
+        // Extract data from API response
+        const data = response.data as any;
+        
+        let predictionsData: any[] = [];
+        let accuracy = 0;
+
+        if (data && typeof data === 'object') {
+          if ('predictions' in data && Array.isArray(data.predictions)) {
+            predictionsData = data.predictions;
+          }
+          if ('summary' in data && data.summary && 'model_accuracy' in data.summary) {
+            accuracy = data.summary.model_accuracy;
+          }
+        } else if (Array.isArray(data)) {
+          predictionsData = data;
+        }
+
+        console.log(`Fetched ${predictionsData.length} score predictions after refresh ${refreshCounter}`);
 
         // Show all matches for debugging
-        const upcomingMatches = data.predictions;
+        const upcomingMatches = predictionsData;
 
         // Sort by start time (earliest first)
         upcomingMatches.sort((a: any, b: any) => {
@@ -136,11 +173,12 @@ export function useScorePredictions() {
         console.log(`Showing ${upcomingMatches.length} upcoming score predictions after filtering`);
 
         setPredictions(upcomingMatches);
-        setModelAccuracy(data.summary.model_accuracy);
+        setModelAccuracy(accuracy);
         setError(null);
       } catch (err) {
         console.error('Error fetching score predictions:', err);
         setError('Failed to fetch score predictions. Please try again later.');
+        setPredictions([]);
       } finally {
         setLoading(false);
       }
@@ -169,15 +207,53 @@ export function usePredictionHistory(player?: string, date?: string) {
     const fetchPredictionHistory = async () => {
       try {
         setLoading(true);
-        const data = await apiClient.getPredictionHistory(player, date) as any;
+        
+        // Build parameters object
+        const params: { date_from?: string; limit?: number } = {};
+        if (date) {
+          params.date_from = date;
+        }
+        // Add a reasonable limit to prevent huge responses
+        params.limit = 1000;
+        
+        const response = await apiClient.getPredictionHistory(params);
+        
+        // Handle API response with error checking
+        if (response.error) {
+          console.error('API error fetching prediction history:', response.error);
+          setError(`Failed to fetch prediction history: ${response.error}`);
+          setHistory([]);
+          return;
+        }
+        
+        // Extract data from API response
+        const data = response.data as any;
+        let predictions: any[] = [];
+        
+        if (Array.isArray(data)) {
+          predictions = data;
+        } else if (data && typeof data === 'object' && 'predictions' in data && Array.isArray(data.predictions)) {
+          predictions = data.predictions;
+        } else {
+          console.warn('Unexpected prediction history data format:', data);
+          predictions = [];
+        }
+        
+        // Filter by player if specified
+        if (player) {
+          predictions = predictions.filter((p: any) => 
+            p.homePlayer?.name?.toLowerCase().includes(player.toLowerCase()) ||
+            p.awayPlayer?.name?.toLowerCase().includes(player.toLowerCase())
+          );
+        }
         
         // Debug logging
         console.log(`Prediction history refreshed after refresh ${refreshCounter}`);
-        console.log(`Total predictions received: ${data.predictions.length}`);
+        console.log(`Total predictions received: ${predictions.length}`);
         
         // Check first few predictions for validation data
-        const validatedPredictions = data.predictions.filter((p: any) => p.homeScore !== undefined && p.awayScore !== undefined);
-        const unvalidatedPredictions = data.predictions.filter((p: any) => p.homeScore === undefined || p.awayScore === undefined);
+        const validatedPredictions = predictions.filter((p: any) => p.homeScore !== undefined && p.awayScore !== undefined);
+        const unvalidatedPredictions = predictions.filter((p: any) => p.homeScore === undefined || p.awayScore === undefined);
         console.log(`Validated predictions: ${validatedPredictions.length}`);
         console.log(`Unvalidated predictions: ${unvalidatedPredictions.length}`);
         
@@ -193,11 +269,12 @@ export function usePredictionHistory(player?: string, date?: string) {
           });
         }
         
-        setHistory(data.predictions);
+        setHistory(predictions);
         setError(null);
       } catch (err) {
         console.error('Error fetching prediction history:', err);
         setError('Failed to fetch prediction history. Please try again later.');
+        setHistory([]);
       } finally {
         setLoading(false);
       }
@@ -224,13 +301,37 @@ export function usePlayerStats() {
     const fetchPlayerStats = async () => {
       try {
         setLoading(true);
-        const data = await apiClient.getPlayerStats();
-        setPlayerStats(data as any);
+        const response = await apiClient.getPlayerStats();
+        
+        // Handle API response with error checking
+        if (response.error) {
+          console.error('API error fetching player stats:', response.error);
+          setError(`Failed to fetch player statistics: ${response.error}`);
+          setPlayerStats([]);
+          return;
+        }
+        
+        // Extract data from API response and ensure it's an array
+        const data = response.data;
+        let statsArray: any[] = [];
+        
+        if (Array.isArray(data)) {
+          statsArray = data;
+        } else if (data && typeof data === 'object' && 'player_stats' in data && Array.isArray((data as any).player_stats)) {
+          // Handle nested structure if API returns {player_stats: [...]}
+          statsArray = (data as any).player_stats;
+        } else if (data) {
+          console.warn('Unexpected player stats data format:', data);
+          statsArray = [];
+        }
+        
+        setPlayerStats(statsArray);
         setError(null);
-        console.log(`Player stats refreshed after refresh ${refreshCounter}`);
+        console.log(`Player stats refreshed after refresh ${refreshCounter}. Loaded ${statsArray.length} players.`);
       } catch (err) {
         console.error('Error fetching player statistics:', err);
         setError('Failed to fetch player statistics. Please try again later.');
+        setPlayerStats([]);
       } finally {
         setLoading(false);
       }
@@ -257,12 +358,33 @@ export function useUpcomingMatches() {
     const fetchUpcomingMatches = async () => {
       try {
         setLoading(true);
-        const data = await apiClient.getUpcomingMatches() as any;
+        const response = await apiClient.getUpcomingMatches();
 
-        console.log(`Fetched ${data.length} upcoming matches after refresh ${refreshCounter}`);
+        // Handle API response with error checking
+        if (response.error) {
+          console.error('API error fetching upcoming matches:', response.error);
+          setError(`Failed to fetch upcoming matches: ${response.error}`);
+          setUpcomingMatches([]);
+          return;
+        }
+
+        // Extract data from API response
+        const data = response.data;
+        let matchesData: any[] = [];
+
+        if (Array.isArray(data)) {
+          matchesData = data;
+        } else if (data && typeof data === 'object' && 'matches' in data && Array.isArray((data as any).matches)) {
+          matchesData = (data as any).matches;
+        } else {
+          console.warn('Unexpected upcoming matches data format:', data);
+          matchesData = [];
+        }
+
+        console.log(`Fetched ${matchesData.length} upcoming matches after refresh ${refreshCounter}`);
 
         // Show all matches for debugging
-        const filteredMatches = data;
+        const filteredMatches = matchesData;
 
         // Sort by start time (earliest first)
         filteredMatches.sort((a: any, b: any) => {
@@ -276,6 +398,7 @@ export function useUpcomingMatches() {
       } catch (err) {
         console.error('Error fetching upcoming matches:', err);
         setError('Failed to fetch upcoming matches. Please try again later.');
+        setUpcomingMatches([]);
       } finally {
         setLoading(false);
       }
