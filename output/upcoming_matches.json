@@ -1,1837 +1,298 @@
 [
   {
-    "id": 237982,
+    "id": 237989,
     "homePlayer": {
-      "id": 54,
-      "name": "SURGEON"
+      "id": 1369,
+      "name": "RAIN"
     },
     "awayPlayer": {
-      "id": 14,
-      "name": "CARNAGE"
+      "id": 18,
+      "name": "OREZ"
     },
     "homeTeam": {
       "id": 5,
       "name": "Chicago Bulls"
     },
     "awayTeam": {
-      "id": 28,
-      "name": "Toronto Raptors"
+      "id": 2,
+      "name": "Brooklyn Nets"
     },
-    "fixtureStart": "2025-06-17T09:15:00Z",
+    "fixtureStart": "2025-06-17T19:39:00Z",
     "raw_data": {
       "sport": "NBA",
       "avaStreamId": "sis-nba-2",
       "leagueName": null,
-      "awayParticipantId": 14,
+      "awayParticipantId": 18,
       "tournamentName": "Ebasketball H2H GG League",
-      "homeParticipantExternalId": "1213",
-      "fixtureStart": "2025-06-17T09:15:00Z",
+      "homeParticipantExternalId": "4674",
+      "fixtureStart": "2025-06-17T19:39:00Z",
       "homeTeamId": 5,
       "groupId": null,
-      "awayTeamName": "Toronto Raptors",
-      "homeParticipantId": 54,
+      "awayTeamName": "Brooklyn Nets",
+      "homeParticipantId": 1369,
       "homeTeamLogo": "teams/CB.png",
       "awayTeamExternalId": null,
       "roundName": "Ebasketball H2H GG League round 1",
       "roundId": 1,
       "homeTeamName": "Chicago Bulls",
-      "awayParticipantLogo": "participants/CARNAGE.png?v=1694789076640",
-      "externalId": "NB180170625",
-      "homeParticipantName": "SURGEON",
-      "awayTeamAbbreviation": "TOR",
-      "groupName": null,
-      "leagueId": null,
-      "fixtureExternalId": "NB180170625",
-      "homeTeamExternalId": null,
-      "tournamentId": 1,
-      "fixtureId": 237982,
-      "awayParticipantName": "CARNAGE",
-      "awayParticipantExternalId": "1239",
-      "homeTeamAbbreviation": "CHI",
-      "startDate": "2025-06-17T09:15:00Z",
-      "leagueLogo": null,
-      "awayTeamId": 28,
-      "awayTeamLogo": "teams/TR.svg",
-      "streamName": "Ebasketball 2",
-      "homeParticipantLogo": "participants/SURGEON.png"
-    }
-  },
-  {
-    "id": 237906,
-    "homePlayer": {
-      "id": 53,
-      "name": "MIST"
-    },
-    "awayPlayer": {
-      "id": 1255,
-      "name": "RAPTOR"
-    },
-    "homeTeam": {
-      "id": 17,
-      "name": "Milwaukee Bucks"
-    },
-    "awayTeam": {
-      "id": 15,
-      "name": "Memphis Grizzlies"
-    },
-    "fixtureStart": "2025-06-17T09:23:00Z",
-    "raw_data": {
-      "sport": "NBA",
-      "avaStreamId": "sis-nba-3",
-      "leagueName": null,
-      "awayParticipantId": 1255,
-      "tournamentName": "Ebasketball H2H GG League",
-      "homeParticipantExternalId": "1027",
-      "fixtureStart": "2025-06-17T09:23:00Z",
-      "homeTeamId": 17,
-      "groupId": null,
-      "awayTeamName": "Memphis Grizzlies",
-      "homeParticipantId": 53,
-      "homeTeamLogo": "teams/Milwaukee_Bucks.svg",
-      "awayTeamExternalId": null,
-      "roundName": "Ebasketball H2H GG League round 1",
-      "roundId": 1,
-      "homeTeamName": "Milwaukee Bucks",
-      "awayParticipantLogo": "participants/RAPTOR.png?v=1738582787219",
-      "externalId": "NB069170625",
-      "homeParticipantName": "MIST",
-      "awayTeamAbbreviation": "MEM",
-      "groupName": null,
-      "leagueId": null,
-      "fixtureExternalId": "NB069170625",
-      "homeTeamExternalId": null,
-      "tournamentId": 1,
-      "fixtureId": 237906,
-      "awayParticipantName": "RAPTOR",
-      "awayParticipantExternalId": "4677",
-      "homeTeamAbbreviation": "MIL",
-      "startDate": "2025-06-17T09:23:00Z",
-      "leagueLogo": null,
-      "awayTeamId": 15,
-      "awayTeamLogo": "teams/Memphis_Grizzlies.svg",
-      "streamName": "Ebasketball 3",
-      "homeParticipantLogo": "participants/MIST.png"
-    }
-  },
-  {
-    "id": 237931,
-    "homePlayer": {
-      "id": 91,
-      "name": "DOUBLEFOUR"
-    },
-    "awayPlayer": {
-      "id": 637,
-      "name": "PULSE"
-    },
-    "homeTeam": {
-      "id": 22,
-      "name": "Orlando Magic"
-    },
-    "awayTeam": {
-      "id": 4,
-      "name": "Charlotte Hornets"
-    },
-    "fixtureStart": "2025-06-17T09:31:00Z",
-    "raw_data": {
-      "sport": "NBA",
-      "avaStreamId": "sis-nba-4",
-      "leagueName": null,
-      "awayParticipantId": 637,
-      "tournamentName": "Ebasketball H2H GG League",
-      "homeParticipantExternalId": "1066",
-      "fixtureStart": "2025-06-17T09:31:00Z",
-      "homeTeamId": 22,
-      "groupId": null,
-      "awayTeamName": "Charlotte Hornets",
-      "homeParticipantId": 91,
-      "homeTeamLogo": "teams/OM.png",
-      "awayTeamExternalId": null,
-      "roundName": "Ebasketball H2H GG League round 1",
-      "roundId": 1,
-      "homeTeamName": "Orlando Magic",
-      "awayParticipantLogo": "participants/PULSE.png?v=1724689075318",
-      "externalId": "NB070170625",
-      "homeParticipantName": "DOUBLEFOUR",
-      "awayTeamAbbreviation": "CHA",
-      "groupName": null,
-      "leagueId": null,
-      "fixtureExternalId": "NB070170625",
-      "homeTeamExternalId": null,
-      "tournamentId": 1,
-      "fixtureId": 237931,
-      "awayParticipantName": "PULSE",
-      "awayParticipantExternalId": "4658",
-      "homeTeamAbbreviation": "ORL",
-      "startDate": "2025-06-17T09:31:00Z",
-      "leagueLogo": null,
-      "awayTeamId": 4,
-      "awayTeamLogo": "teams/CH.png",
-      "streamName": "Ebasketball 4",
-      "homeParticipantLogo": "participants/DOUBLEFOUR.png"
-    }
-  },
-  {
-    "id": 237953,
-    "homePlayer": {
-      "id": 27,
-      "name": "DIMES"
-    },
-    "awayPlayer": {
-      "id": 33,
-      "name": "HOGGY"
-    },
-    "homeTeam": {
-      "id": 20,
-      "name": "New York Knicks"
-    },
-    "awayTeam": {
-      "id": 14,
-      "name": "Los Angeles Lakers"
-    },
-    "fixtureStart": "2025-06-17T09:39:00Z",
-    "raw_data": {
-      "sport": "NBA",
-      "avaStreamId": "sis-nba-1",
-      "leagueName": null,
-      "awayParticipantId": 33,
-      "tournamentName": "Ebasketball H2H GG League",
-      "homeParticipantExternalId": "1214",
-      "fixtureStart": "2025-06-17T09:39:00Z",
-      "homeTeamId": 20,
-      "groupId": null,
-      "awayTeamName": "Los Angeles Lakers",
-      "homeParticipantId": 27,
-      "homeTeamLogo": "teams/NYK.png",
-      "awayTeamExternalId": null,
-      "roundName": "Ebasketball H2H GG League round 1",
-      "roundId": 1,
-      "homeTeamName": "New York Knicks",
-      "awayParticipantLogo": "participants/HOGGY.png",
-      "externalId": "NB071170625",
-      "homeParticipantName": "DIMES",
-      "awayTeamAbbreviation": "LAL",
-      "groupName": null,
-      "leagueId": null,
-      "fixtureExternalId": "NB071170625",
-      "homeTeamExternalId": null,
-      "tournamentId": 1,
-      "fixtureId": 237953,
-      "awayParticipantName": "HOGGY",
-      "awayParticipantExternalId": "1064",
-      "homeTeamAbbreviation": "NYK",
-      "startDate": "2025-06-17T09:39:00Z",
-      "leagueLogo": null,
-      "awayTeamId": 14,
-      "awayTeamLogo": "teams/Los_Angeles_Lakers.svg",
-      "streamName": "Ebasketball 1",
-      "homeParticipantLogo": "participants/DIMES.png"
-    }
-  },
-  {
-    "id": 237983,
-    "homePlayer": {
-      "id": 14,
-      "name": "CARNAGE"
-    },
-    "awayPlayer": {
-      "id": 54,
-      "name": "SURGEON"
-    },
-    "homeTeam": {
-      "id": 28,
-      "name": "Toronto Raptors"
-    },
-    "awayTeam": {
-      "id": 5,
-      "name": "Chicago Bulls"
-    },
-    "fixtureStart": "2025-06-17T09:47:00Z",
-    "raw_data": {
-      "sport": "NBA",
-      "avaStreamId": "sis-nba-2",
-      "leagueName": null,
-      "awayParticipantId": 54,
-      "tournamentName": "Ebasketball H2H GG League",
-      "homeParticipantExternalId": "1239",
-      "fixtureStart": "2025-06-17T09:47:00Z",
-      "homeTeamId": 28,
-      "groupId": null,
-      "awayTeamName": "Chicago Bulls",
-      "homeParticipantId": 14,
-      "homeTeamLogo": "teams/TR.svg",
-      "awayTeamExternalId": null,
-      "roundName": "Ebasketball H2H GG League round 1",
-      "roundId": 1,
-      "homeTeamName": "Toronto Raptors",
-      "awayParticipantLogo": "participants/SURGEON.png",
-      "externalId": "NB072170625",
-      "homeParticipantName": "CARNAGE",
-      "awayTeamAbbreviation": "CHI",
-      "groupName": null,
-      "leagueId": null,
-      "fixtureExternalId": "NB072170625",
-      "homeTeamExternalId": null,
-      "tournamentId": 1,
-      "fixtureId": 237983,
-      "awayParticipantName": "SURGEON",
-      "awayParticipantExternalId": "1213",
-      "homeTeamAbbreviation": "TOR",
-      "startDate": "2025-06-17T09:47:00Z",
-      "leagueLogo": null,
-      "awayTeamId": 5,
-      "awayTeamLogo": "teams/CB.png",
-      "streamName": "Ebasketball 2",
-      "homeParticipantLogo": "participants/CARNAGE.png?v=1694789076640"
-    }
-  },
-  {
-    "id": 237907,
-    "homePlayer": {
-      "id": 53,
-      "name": "MIST"
-    },
-    "awayPlayer": {
-      "id": 1553,
-      "name": "PROTOTYPE"
-    },
-    "homeTeam": {
-      "id": 2,
-      "name": "Brooklyn Nets"
-    },
-    "awayTeam": {
-      "id": 16,
-      "name": "Miami Heat"
-    },
-    "fixtureStart": "2025-06-17T09:55:00Z",
-    "raw_data": {
-      "sport": "NBA",
-      "avaStreamId": "sis-nba-3",
-      "leagueName": null,
-      "awayParticipantId": 1553,
-      "tournamentName": "Ebasketball H2H GG League",
-      "homeParticipantExternalId": "1027",
-      "fixtureStart": "2025-06-17T09:55:00Z",
-      "homeTeamId": 2,
-      "groupId": null,
-      "awayTeamName": "Miami Heat",
-      "homeParticipantId": 53,
-      "homeTeamLogo": "teams/Brooklyn_Nets.svg",
-      "awayTeamExternalId": null,
-      "roundName": "Ebasketball H2H GG League round 1",
-      "roundId": 1,
-      "homeTeamName": "Brooklyn Nets",
-      "awayParticipantLogo": "participants/PROTOTYPE.png?v=1740572231199",
-      "externalId": "NB073170625",
-      "homeParticipantName": "MIST",
-      "awayTeamAbbreviation": "MIA",
-      "groupName": null,
-      "leagueId": null,
-      "fixtureExternalId": "NB073170625",
-      "homeTeamExternalId": null,
-      "tournamentId": 1,
-      "fixtureId": 237907,
-      "awayParticipantName": "PROTOTYPE",
-      "awayParticipantExternalId": "4654",
-      "homeTeamAbbreviation": "BKN",
-      "startDate": "2025-06-17T09:55:00Z",
-      "leagueLogo": null,
-      "awayTeamId": 16,
-      "awayTeamLogo": "teams/MH.png",
-      "streamName": "Ebasketball 3",
-      "homeParticipantLogo": "participants/MIST.png"
-    }
-  },
-  {
-    "id": 237947,
-    "homePlayer": {
-      "id": 91,
-      "name": "DOUBLEFOUR"
-    },
-    "awayPlayer": {
-      "id": 2001,
-      "name": "CLAW"
-    },
-    "homeTeam": {
-      "id": 20,
-      "name": "New York Knicks"
-    },
-    "awayTeam": {
-      "id": 21,
-      "name": "Oklahoma City Thunder"
-    },
-    "fixtureStart": "2025-06-17T10:03:00Z",
-    "raw_data": {
-      "sport": "NBA",
-      "avaStreamId": "sis-nba-4",
-      "leagueName": null,
-      "awayParticipantId": 2001,
-      "tournamentName": "Ebasketball H2H GG League",
-      "homeParticipantExternalId": "1066",
-      "fixtureStart": "2025-06-17T10:03:00Z",
-      "homeTeamId": 20,
-      "groupId": null,
-      "awayTeamName": "Oklahoma City Thunder",
-      "homeParticipantId": 91,
-      "homeTeamLogo": "teams/NYK.png",
-      "awayTeamExternalId": null,
-      "roundName": "Ebasketball H2H GG League round 1",
-      "roundId": 1,
-      "homeTeamName": "New York Knicks",
-      "awayParticipantLogo": "participants/CLAW.png?v=1747226304466",
-      "externalId": "NB074170625",
-      "homeParticipantName": "DOUBLEFOUR",
-      "awayTeamAbbreviation": "OKC",
-      "groupName": null,
-      "leagueId": null,
-      "fixtureExternalId": "NB074170625",
-      "homeTeamExternalId": null,
-      "tournamentId": 1,
-      "fixtureId": 237947,
-      "awayParticipantName": "CLAW",
-      "awayParticipantExternalId": "4155",
-      "homeTeamAbbreviation": "NYK",
-      "startDate": "2025-06-17T10:03:00Z",
-      "leagueLogo": null,
-      "awayTeamId": 21,
-      "awayTeamLogo": "teams/OKC.png",
-      "streamName": "Ebasketball 4",
-      "homeParticipantLogo": "participants/DOUBLEFOUR.png"
-    }
-  },
-  {
-    "id": 237961,
-    "homePlayer": {
-      "id": 159,
-      "name": "HOLLOW"
-    },
-    "awayPlayer": {
-      "id": 957,
-      "name": "EXO"
-    },
-    "homeTeam": {
-      "id": 3,
-      "name": "Boston Celtics"
-    },
-    "awayTeam": {
-      "id": 21,
-      "name": "Oklahoma City Thunder"
-    },
-    "fixtureStart": "2025-06-17T10:11:00Z",
-    "raw_data": {
-      "sport": "NBA",
-      "avaStreamId": "sis-nba-1",
-      "leagueName": null,
-      "awayParticipantId": 957,
-      "tournamentName": "Ebasketball H2H GG League",
-      "homeParticipantExternalId": "1268",
-      "fixtureStart": "2025-06-17T10:11:00Z",
-      "homeTeamId": 3,
-      "groupId": null,
-      "awayTeamName": "Oklahoma City Thunder",
-      "homeParticipantId": 159,
-      "homeTeamLogo": "teams/Boston_Celtics.svg",
-      "awayTeamExternalId": null,
-      "roundName": "Ebasketball H2H GG League round 1",
-      "roundId": 1,
-      "homeTeamName": "Boston Celtics",
-      "awayParticipantLogo": "participants/EXO.png?v=1738341274121",
-      "externalId": "NB075170625",
-      "homeParticipantName": "HOLLOW",
-      "awayTeamAbbreviation": "OKC",
-      "groupName": null,
-      "leagueId": null,
-      "fixtureExternalId": "NB075170625",
-      "homeTeamExternalId": null,
-      "tournamentId": 1,
-      "fixtureId": 237961,
-      "awayParticipantName": "EXO",
-      "awayParticipantExternalId": "4286",
-      "homeTeamAbbreviation": "BOS",
-      "startDate": "2025-06-17T10:11:00Z",
-      "leagueLogo": null,
-      "awayTeamId": 21,
-      "awayTeamLogo": "teams/OKC.png",
-      "streamName": "Ebasketball 1",
-      "homeParticipantLogo": "participants/HOLLOW.png?v=1714140827775"
-    }
-  },
-  {
-    "id": 237984,
-    "homePlayer": {
-      "id": 14,
-      "name": "CARNAGE"
-    },
-    "awayPlayer": {
-      "id": 30,
-      "name": "RAMZ"
-    },
-    "homeTeam": {
-      "id": 28,
-      "name": "Toronto Raptors"
-    },
-    "awayTeam": {
-      "id": 2,
-      "name": "Brooklyn Nets"
-    },
-    "fixtureStart": "2025-06-17T10:19:00Z",
-    "raw_data": {
-      "sport": "NBA",
-      "avaStreamId": "sis-nba-2",
-      "leagueName": null,
-      "awayParticipantId": 30,
-      "tournamentName": "Ebasketball H2H GG League",
-      "homeParticipantExternalId": "1239",
-      "fixtureStart": "2025-06-17T10:19:00Z",
-      "homeTeamId": 28,
-      "groupId": null,
-      "awayTeamName": "Brooklyn Nets",
-      "homeParticipantId": 14,
-      "homeTeamLogo": "teams/TR.svg",
-      "awayTeamExternalId": null,
-      "roundName": "Ebasketball H2H GG League round 1",
-      "roundId": 1,
-      "homeTeamName": "Toronto Raptors",
-      "awayParticipantLogo": "participants/RAMZ.png?v=1692809974453",
-      "externalId": "NB181170625",
-      "homeParticipantName": "CARNAGE",
+      "awayParticipantLogo": "participants/OREZ .png",
+      "externalId": "NB144170625",
+      "homeParticipantName": "RAIN",
       "awayTeamAbbreviation": "BKN",
       "groupName": null,
       "leagueId": null,
-      "fixtureExternalId": "NB181170625",
+      "fixtureExternalId": "NB144170625",
       "homeTeamExternalId": null,
       "tournamentId": 1,
-      "fixtureId": 237984,
-      "awayParticipantName": "RAMZ",
-      "awayParticipantExternalId": "1038",
-      "homeTeamAbbreviation": "TOR",
-      "startDate": "2025-06-17T10:19:00Z",
+      "fixtureId": 237989,
+      "awayParticipantName": "OREZ",
+      "awayParticipantExternalId": "1021",
+      "homeTeamAbbreviation": "CHI",
+      "startDate": "2025-06-17T19:39:00Z",
       "leagueLogo": null,
       "awayTeamId": 2,
       "awayTeamLogo": "teams/Brooklyn_Nets.svg",
       "streamName": "Ebasketball 2",
-      "homeParticipantLogo": "participants/CARNAGE.png?v=1694789076640"
+      "homeParticipantLogo": "participants/RAIN.png?v=1738582701414"
     }
   },
   {
-    "id": 237914,
+    "id": 237910,
     "homePlayer": {
-      "id": 1255,
-      "name": "RAPTOR"
+      "id": 183,
+      "name": "ARCHITECT"
     },
     "awayPlayer": {
-      "id": 1169,
-      "name": "GODFATHER"
-    },
-    "homeTeam": {
-      "id": 15,
-      "name": "Memphis Grizzlies"
-    },
-    "awayTeam": {
       "id": 24,
-      "name": "Phoenix Suns"
-    },
-    "fixtureStart": "2025-06-17T10:27:00Z",
-    "raw_data": {
-      "sport": "NBA",
-      "avaStreamId": "sis-nba-3",
-      "leagueName": null,
-      "awayParticipantId": 1169,
-      "tournamentName": "Ebasketball H2H GG League",
-      "homeParticipantExternalId": "4677",
-      "fixtureStart": "2025-06-17T10:27:00Z",
-      "homeTeamId": 15,
-      "groupId": null,
-      "awayTeamName": "Phoenix Suns",
-      "homeParticipantId": 1255,
-      "homeTeamLogo": "teams/Memphis_Grizzlies.svg",
-      "awayTeamExternalId": null,
-      "roundName": "Ebasketball H2H GG League round 1",
-      "roundId": 1,
-      "homeTeamName": "Memphis Grizzlies",
-      "awayParticipantLogo": "participants/GODFATHER.png?v=1738342374988",
-      "externalId": "NB077170625",
-      "homeParticipantName": "RAPTOR",
-      "awayTeamAbbreviation": "PHX",
-      "groupName": null,
-      "leagueId": null,
-      "fixtureExternalId": "NB077170625",
-      "homeTeamExternalId": null,
-      "tournamentId": 1,
-      "fixtureId": 237914,
-      "awayParticipantName": "GODFATHER",
-      "awayParticipantExternalId": "4348",
-      "homeTeamAbbreviation": "MEM",
-      "startDate": "2025-06-17T10:27:00Z",
-      "leagueLogo": null,
-      "awayTeamId": 24,
-      "awayTeamLogo": "teams/Phoenix_Suns.svg",
-      "streamName": "Ebasketball 3",
-      "homeParticipantLogo": "participants/RAPTOR.png?v=1738582787219"
-    }
-  },
-  {
-    "id": 237934,
-    "homePlayer": {
-      "id": 637,
-      "name": "PULSE"
-    },
-    "awayPlayer": {
-      "id": 2103,
-      "name": "RIDER"
+      "name": "SAINT JR"
     },
     "homeTeam": {
-      "id": 4,
-      "name": "Charlotte Hornets"
-    },
-    "awayTeam": {
-      "id": 8,
-      "name": "Denver Nuggets"
-    },
-    "fixtureStart": "2025-06-17T10:35:00Z",
-    "raw_data": {
-      "sport": "NBA",
-      "avaStreamId": "sis-nba-4",
-      "leagueName": null,
-      "awayParticipantId": 2103,
-      "tournamentName": "Ebasketball H2H GG League",
-      "homeParticipantExternalId": "4658",
-      "fixtureStart": "2025-06-17T10:35:00Z",
-      "homeTeamId": 4,
-      "groupId": null,
-      "awayTeamName": "Denver Nuggets",
-      "homeParticipantId": 637,
-      "homeTeamLogo": "teams/CH.png",
-      "awayTeamExternalId": null,
-      "roundName": "Ebasketball H2H GG League round 1",
-      "roundId": 1,
-      "homeTeamName": "Charlotte Hornets",
-      "awayParticipantLogo": "participants/default-player-profile.png",
-      "externalId": "NB078170625",
-      "homeParticipantName": "PULSE",
-      "awayTeamAbbreviation": "DEN",
-      "groupName": null,
-      "leagueId": null,
-      "fixtureExternalId": "NB078170625",
-      "homeTeamExternalId": null,
-      "tournamentId": 1,
-      "fixtureId": 237934,
-      "awayParticipantName": "RIDER",
-      "awayParticipantExternalId": "4709",
-      "homeTeamAbbreviation": "CHA",
-      "startDate": "2025-06-17T10:35:00Z",
-      "leagueLogo": null,
-      "awayTeamId": 8,
-      "awayTeamLogo": "teams/DN.png",
-      "streamName": "Ebasketball 4",
-      "homeParticipantLogo": "participants/PULSE.png?v=1724689075318"
-    }
-  },
-  {
-    "id": 237957,
-    "homePlayer": {
-      "id": 27,
-      "name": "DIMES"
-    },
-    "awayPlayer": {
-      "id": 957,
-      "name": "EXO"
-    },
-    "homeTeam": {
-      "id": 20,
-      "name": "New York Knicks"
-    },
-    "awayTeam": {
-      "id": 21,
-      "name": "Oklahoma City Thunder"
-    },
-    "fixtureStart": "2025-06-17T10:43:00Z",
-    "raw_data": {
-      "sport": "NBA",
-      "avaStreamId": "sis-nba-1",
-      "leagueName": null,
-      "awayParticipantId": 957,
-      "tournamentName": "Ebasketball H2H GG League",
-      "homeParticipantExternalId": "1214",
-      "fixtureStart": "2025-06-17T10:43:00Z",
-      "homeTeamId": 20,
-      "groupId": null,
-      "awayTeamName": "Oklahoma City Thunder",
-      "homeParticipantId": 27,
-      "homeTeamLogo": "teams/NYK.png",
-      "awayTeamExternalId": null,
-      "roundName": "Ebasketball H2H GG League round 1",
-      "roundId": 1,
-      "homeTeamName": "New York Knicks",
-      "awayParticipantLogo": "participants/EXO.png?v=1738341274121",
-      "externalId": "NB079170625",
-      "homeParticipantName": "DIMES",
-      "awayTeamAbbreviation": "OKC",
-      "groupName": null,
-      "leagueId": null,
-      "fixtureExternalId": "NB079170625",
-      "homeTeamExternalId": null,
-      "tournamentId": 1,
-      "fixtureId": 237957,
-      "awayParticipantName": "EXO",
-      "awayParticipantExternalId": "4286",
-      "homeTeamAbbreviation": "NYK",
-      "startDate": "2025-06-17T10:43:00Z",
-      "leagueLogo": null,
-      "awayTeamId": 21,
-      "awayTeamLogo": "teams/OKC.png",
-      "streamName": "Ebasketball 1",
-      "homeParticipantLogo": "participants/DIMES.png"
-    }
-  },
-  {
-    "id": 238006,
-    "homePlayer": {
-      "id": 54,
-      "name": "SURGEON"
-    },
-    "awayPlayer": {
-      "id": 30,
-      "name": "RAMZ"
-    },
-    "homeTeam": {
-      "id": 5,
-      "name": "Chicago Bulls"
+      "id": 28,
+      "name": "Toronto Raptors"
     },
     "awayTeam": {
       "id": 2,
       "name": "Brooklyn Nets"
     },
-    "fixtureStart": "2025-06-17T10:51:00Z",
-    "raw_data": {
-      "sport": "NBA",
-      "avaStreamId": "sis-nba-2",
-      "leagueName": null,
-      "awayParticipantId": 30,
-      "tournamentName": "Ebasketball H2H GG League",
-      "homeParticipantExternalId": "1213",
-      "fixtureStart": "2025-06-17T10:51:00Z",
-      "homeTeamId": 5,
-      "groupId": null,
-      "awayTeamName": "Brooklyn Nets",
-      "homeParticipantId": 54,
-      "homeTeamLogo": "teams/CB.png",
-      "awayTeamExternalId": null,
-      "roundName": "Ebasketball H2H GG League round 1",
-      "roundId": 1,
-      "homeTeamName": "Chicago Bulls",
-      "awayParticipantLogo": "participants/RAMZ.png?v=1692809974453",
-      "externalId": "NB182170625",
-      "homeParticipantName": "SURGEON",
-      "awayTeamAbbreviation": "BKN",
-      "groupName": null,
-      "leagueId": null,
-      "fixtureExternalId": "NB182170625",
-      "homeTeamExternalId": null,
-      "tournamentId": 1,
-      "fixtureId": 238006,
-      "awayParticipantName": "RAMZ",
-      "awayParticipantExternalId": "1038",
-      "homeTeamAbbreviation": "CHI",
-      "startDate": "2025-06-17T10:51:00Z",
-      "leagueLogo": null,
-      "awayTeamId": 2,
-      "awayTeamLogo": "teams/Brooklyn_Nets.svg",
-      "streamName": "Ebasketball 2",
-      "homeParticipantLogo": "participants/SURGEON.png"
-    }
-  },
-  {
-    "id": 237905,
-    "homePlayer": {
-      "id": 53,
-      "name": "MIST"
-    },
-    "awayPlayer": {
-      "id": 1169,
-      "name": "GODFATHER"
-    },
-    "homeTeam": {
-      "id": 2,
-      "name": "Brooklyn Nets"
-    },
-    "awayTeam": {
-      "id": 28,
-      "name": "Toronto Raptors"
-    },
-    "fixtureStart": "2025-06-17T10:59:00Z",
+    "fixtureStart": "2025-06-17T19:47:00Z",
     "raw_data": {
       "sport": "NBA",
       "avaStreamId": "sis-nba-3",
       "leagueName": null,
-      "awayParticipantId": 1169,
+      "awayParticipantId": 24,
       "tournamentName": "Ebasketball H2H GG League",
-      "homeParticipantExternalId": "1027",
-      "fixtureStart": "2025-06-17T10:59:00Z",
-      "homeTeamId": 2,
-      "groupId": null,
-      "awayTeamName": "Toronto Raptors",
-      "homeParticipantId": 53,
-      "homeTeamLogo": "teams/Brooklyn_Nets.svg",
-      "awayTeamExternalId": null,
-      "roundName": "Ebasketball H2H GG League round 1",
-      "roundId": 1,
-      "homeTeamName": "Brooklyn Nets",
-      "awayParticipantLogo": "participants/GODFATHER.png?v=1738342374988",
-      "externalId": "NB081170625",
-      "homeParticipantName": "MIST",
-      "awayTeamAbbreviation": "TOR",
-      "groupName": null,
-      "leagueId": null,
-      "fixtureExternalId": "NB081170625",
-      "homeTeamExternalId": null,
-      "tournamentId": 1,
-      "fixtureId": 237905,
-      "awayParticipantName": "GODFATHER",
-      "awayParticipantExternalId": "4348",
-      "homeTeamAbbreviation": "BKN",
-      "startDate": "2025-06-17T10:59:00Z",
-      "leagueLogo": null,
-      "awayTeamId": 28,
-      "awayTeamLogo": "teams/TR.svg",
-      "streamName": "Ebasketball 3",
-      "homeParticipantLogo": "participants/MIST.png"
-    }
-  },
-  {
-    "id": 237929,
-    "homePlayer": {
-      "id": 91,
-      "name": "DOUBLEFOUR"
-    },
-    "awayPlayer": {
-      "id": 2103,
-      "name": "RIDER"
-    },
-    "homeTeam": {
-      "id": 20,
-      "name": "New York Knicks"
-    },
-    "awayTeam": {
-      "id": 14,
-      "name": "Los Angeles Lakers"
-    },
-    "fixtureStart": "2025-06-17T11:07:00Z",
-    "raw_data": {
-      "sport": "NBA",
-      "avaStreamId": "sis-nba-4",
-      "leagueName": null,
-      "awayParticipantId": 2103,
-      "tournamentName": "Ebasketball H2H GG League",
-      "homeParticipantExternalId": "1066",
-      "fixtureStart": "2025-06-17T11:07:00Z",
-      "homeTeamId": 20,
-      "groupId": null,
-      "awayTeamName": "Los Angeles Lakers",
-      "homeParticipantId": 91,
-      "homeTeamLogo": "teams/NYK.png",
-      "awayTeamExternalId": null,
-      "roundName": "Ebasketball H2H GG League round 1",
-      "roundId": 1,
-      "homeTeamName": "New York Knicks",
-      "awayParticipantLogo": "participants/default-player-profile.png",
-      "externalId": "NB082170625",
-      "homeParticipantName": "DOUBLEFOUR",
-      "awayTeamAbbreviation": "LAL",
-      "groupName": null,
-      "leagueId": null,
-      "fixtureExternalId": "NB082170625",
-      "homeTeamExternalId": null,
-      "tournamentId": 1,
-      "fixtureId": 237929,
-      "awayParticipantName": "RIDER",
-      "awayParticipantExternalId": "4709",
-      "homeTeamAbbreviation": "NYK",
-      "startDate": "2025-06-17T11:07:00Z",
-      "leagueLogo": null,
-      "awayTeamId": 14,
-      "awayTeamLogo": "teams/Los_Angeles_Lakers.svg",
-      "streamName": "Ebasketball 4",
-      "homeParticipantLogo": "participants/DOUBLEFOUR.png"
-    }
-  },
-  {
-    "id": 237967,
-    "homePlayer": {
-      "id": 159,
-      "name": "HOLLOW"
-    },
-    "awayPlayer": {
-      "id": 33,
-      "name": "HOGGY"
-    },
-    "homeTeam": {
-      "id": 3,
-      "name": "Boston Celtics"
-    },
-    "awayTeam": {
-      "id": 14,
-      "name": "Los Angeles Lakers"
-    },
-    "fixtureStart": "2025-06-17T11:15:00Z",
-    "raw_data": {
-      "sport": "NBA",
-      "avaStreamId": "sis-nba-1",
-      "leagueName": null,
-      "awayParticipantId": 33,
-      "tournamentName": "Ebasketball H2H GG League",
-      "homeParticipantExternalId": "1268",
-      "fixtureStart": "2025-06-17T11:15:00Z",
-      "homeTeamId": 3,
-      "groupId": null,
-      "awayTeamName": "Los Angeles Lakers",
-      "homeParticipantId": 159,
-      "homeTeamLogo": "teams/Boston_Celtics.svg",
-      "awayTeamExternalId": null,
-      "roundName": "Ebasketball H2H GG League round 1",
-      "roundId": 1,
-      "homeTeamName": "Boston Celtics",
-      "awayParticipantLogo": "participants/HOGGY.png",
-      "externalId": "NB083170625",
-      "homeParticipantName": "HOLLOW",
-      "awayTeamAbbreviation": "LAL",
-      "groupName": null,
-      "leagueId": null,
-      "fixtureExternalId": "NB083170625",
-      "homeTeamExternalId": null,
-      "tournamentId": 1,
-      "fixtureId": 237967,
-      "awayParticipantName": "HOGGY",
-      "awayParticipantExternalId": "1064",
-      "homeTeamAbbreviation": "BOS",
-      "startDate": "2025-06-17T11:15:00Z",
-      "leagueLogo": null,
-      "awayTeamId": 14,
-      "awayTeamLogo": "teams/Los_Angeles_Lakers.svg",
-      "streamName": "Ebasketball 1",
-      "homeParticipantLogo": "participants/HOLLOW.png?v=1714140827775"
-    }
-  },
-  {
-    "id": 237996,
-    "homePlayer": {
-      "id": 54,
-      "name": "SURGEON"
-    },
-    "awayPlayer": {
-      "id": 14,
-      "name": "CARNAGE"
-    },
-    "homeTeam": {
-      "id": 5,
-      "name": "Chicago Bulls"
-    },
-    "awayTeam": {
-      "id": 28,
-      "name": "Toronto Raptors"
-    },
-    "fixtureStart": "2025-06-17T11:23:00Z",
-    "raw_data": {
-      "sport": "NBA",
-      "avaStreamId": "sis-nba-2",
-      "leagueName": null,
-      "awayParticipantId": 14,
-      "tournamentName": "Ebasketball H2H GG League",
-      "homeParticipantExternalId": "1213",
-      "fixtureStart": "2025-06-17T11:23:00Z",
-      "homeTeamId": 5,
-      "groupId": null,
-      "awayTeamName": "Toronto Raptors",
-      "homeParticipantId": 54,
-      "homeTeamLogo": "teams/CB.png",
-      "awayTeamExternalId": null,
-      "roundName": "Ebasketball H2H GG League round 1",
-      "roundId": 1,
-      "homeTeamName": "Chicago Bulls",
-      "awayParticipantLogo": "participants/CARNAGE.png?v=1694789076640",
-      "externalId": "NB183170625",
-      "homeParticipantName": "SURGEON",
-      "awayTeamAbbreviation": "TOR",
-      "groupName": null,
-      "leagueId": null,
-      "fixtureExternalId": "NB183170625",
-      "homeTeamExternalId": null,
-      "tournamentId": 1,
-      "fixtureId": 237996,
-      "awayParticipantName": "CARNAGE",
-      "awayParticipantExternalId": "1239",
-      "homeTeamAbbreviation": "CHI",
-      "startDate": "2025-06-17T11:23:00Z",
-      "leagueLogo": null,
-      "awayTeamId": 28,
-      "awayTeamLogo": "teams/TR.svg",
-      "streamName": "Ebasketball 2",
-      "homeParticipantLogo": "participants/SURGEON.png"
-    }
-  },
-  {
-    "id": 237895,
-    "homePlayer": {
-      "id": 1255,
-      "name": "RAPTOR"
-    },
-    "awayPlayer": {
-      "id": 1553,
-      "name": "PROTOTYPE"
-    },
-    "homeTeam": {
-      "id": 15,
-      "name": "Memphis Grizzlies"
-    },
-    "awayTeam": {
-      "id": 6,
-      "name": "Cleveland Cavaliers"
-    },
-    "fixtureStart": "2025-06-17T11:31:00Z",
-    "raw_data": {
-      "sport": "NBA",
-      "avaStreamId": "sis-nba-3",
-      "leagueName": null,
-      "awayParticipantId": 1553,
-      "tournamentName": "Ebasketball H2H GG League",
-      "homeParticipantExternalId": "4677",
-      "fixtureStart": "2025-06-17T11:31:00Z",
-      "homeTeamId": 15,
-      "groupId": null,
-      "awayTeamName": "Cleveland Cavaliers",
-      "homeParticipantId": 1255,
-      "homeTeamLogo": "teams/Memphis_Grizzlies.svg",
-      "awayTeamExternalId": null,
-      "roundName": "Ebasketball H2H GG League round 1",
-      "roundId": 1,
-      "homeTeamName": "Memphis Grizzlies",
-      "awayParticipantLogo": "participants/PROTOTYPE.png?v=1740572231199",
-      "externalId": "NB085170625",
-      "homeParticipantName": "RAPTOR",
-      "awayTeamAbbreviation": "CLE",
-      "groupName": null,
-      "leagueId": null,
-      "fixtureExternalId": "NB085170625",
-      "homeTeamExternalId": null,
-      "tournamentId": 1,
-      "fixtureId": 237895,
-      "awayParticipantName": "PROTOTYPE",
-      "awayParticipantExternalId": "4654",
-      "homeTeamAbbreviation": "MEM",
-      "startDate": "2025-06-17T11:31:00Z",
-      "leagueLogo": null,
-      "awayTeamId": 6,
-      "awayTeamLogo": "teams/Cleveland_Cavaliers.svg",
-      "streamName": "Ebasketball 3",
-      "homeParticipantLogo": "participants/RAPTOR.png?v=1738582787219"
-    }
-  },
-  {
-    "id": 237917,
-    "homePlayer": {
-      "id": 637,
-      "name": "PULSE"
-    },
-    "awayPlayer": {
-      "id": 2001,
-      "name": "CLAW"
-    },
-    "homeTeam": {
-      "id": 4,
-      "name": "Charlotte Hornets"
-    },
-    "awayTeam": {
-      "id": 7,
-      "name": "Dallas Mavericks"
-    },
-    "fixtureStart": "2025-06-17T11:39:00Z",
-    "raw_data": {
-      "sport": "NBA",
-      "avaStreamId": "sis-nba-4",
-      "leagueName": null,
-      "awayParticipantId": 2001,
-      "tournamentName": "Ebasketball H2H GG League",
-      "homeParticipantExternalId": "4658",
-      "fixtureStart": "2025-06-17T11:39:00Z",
-      "homeTeamId": 4,
-      "groupId": null,
-      "awayTeamName": "Dallas Mavericks",
-      "homeParticipantId": 637,
-      "homeTeamLogo": "teams/CH.png",
-      "awayTeamExternalId": null,
-      "roundName": "Ebasketball H2H GG League round 1",
-      "roundId": 1,
-      "homeTeamName": "Charlotte Hornets",
-      "awayParticipantLogo": "participants/CLAW.png?v=1747226304466",
-      "externalId": "NB086170625",
-      "homeParticipantName": "PULSE",
-      "awayTeamAbbreviation": "DAL",
-      "groupName": null,
-      "leagueId": null,
-      "fixtureExternalId": "NB086170625",
-      "homeTeamExternalId": null,
-      "tournamentId": 1,
-      "fixtureId": 237917,
-      "awayParticipantName": "CLAW",
-      "awayParticipantExternalId": "4155",
-      "homeTeamAbbreviation": "CHA",
-      "startDate": "2025-06-17T11:39:00Z",
-      "leagueLogo": null,
-      "awayTeamId": 7,
-      "awayTeamLogo": "teams/Dallas_Mavericks.svg",
-      "streamName": "Ebasketball 4",
-      "homeParticipantLogo": "participants/PULSE.png?v=1724689075318"
-    }
-  },
-  {
-    "id": 237958,
-    "homePlayer": {
-      "id": 33,
-      "name": "HOGGY"
-    },
-    "awayPlayer": {
-      "id": 957,
-      "name": "EXO"
-    },
-    "homeTeam": {
-      "id": 8,
-      "name": "Denver Nuggets"
-    },
-    "awayTeam": {
-      "id": 7,
-      "name": "Dallas Mavericks"
-    },
-    "fixtureStart": "2025-06-17T11:47:00Z",
-    "raw_data": {
-      "sport": "NBA",
-      "avaStreamId": "sis-nba-1",
-      "leagueName": null,
-      "awayParticipantId": 957,
-      "tournamentName": "Ebasketball H2H GG League",
-      "homeParticipantExternalId": "1064",
-      "fixtureStart": "2025-06-17T11:47:00Z",
-      "homeTeamId": 8,
-      "groupId": null,
-      "awayTeamName": "Dallas Mavericks",
-      "homeParticipantId": 33,
-      "homeTeamLogo": "teams/DN.png",
-      "awayTeamExternalId": null,
-      "roundName": "Ebasketball H2H GG League round 1",
-      "roundId": 1,
-      "homeTeamName": "Denver Nuggets",
-      "awayParticipantLogo": "participants/EXO.png?v=1738341274121",
-      "externalId": "NB087170625",
-      "homeParticipantName": "HOGGY",
-      "awayTeamAbbreviation": "DAL",
-      "groupName": null,
-      "leagueId": null,
-      "fixtureExternalId": "NB087170625",
-      "homeTeamExternalId": null,
-      "tournamentId": 1,
-      "fixtureId": 237958,
-      "awayParticipantName": "EXO",
-      "awayParticipantExternalId": "4286",
-      "homeTeamAbbreviation": "DEN",
-      "startDate": "2025-06-17T11:47:00Z",
-      "leagueLogo": null,
-      "awayTeamId": 7,
-      "awayTeamLogo": "teams/Dallas_Mavericks.svg",
-      "streamName": "Ebasketball 1",
-      "homeParticipantLogo": "participants/HOGGY.png"
-    }
-  },
-  {
-    "id": 238013,
-    "homePlayer": {
-      "id": 54,
-      "name": "SURGEON"
-    },
-    "awayPlayer": {
-      "id": 30,
-      "name": "RAMZ"
-    },
-    "homeTeam": {
-      "id": 17,
-      "name": "Milwaukee Bucks"
-    },
-    "awayTeam": {
-      "id": 24,
-      "name": "Phoenix Suns"
-    },
-    "fixtureStart": "2025-06-17T11:55:00Z",
-    "raw_data": {
-      "sport": "NBA",
-      "avaStreamId": "sis-nba-2",
-      "leagueName": null,
-      "awayParticipantId": 30,
-      "tournamentName": "Ebasketball H2H GG League",
-      "homeParticipantExternalId": "1213",
-      "fixtureStart": "2025-06-17T11:55:00Z",
-      "homeTeamId": 17,
-      "groupId": null,
-      "awayTeamName": "Phoenix Suns",
-      "homeParticipantId": 54,
-      "homeTeamLogo": "teams/Milwaukee_Bucks.svg",
-      "awayTeamExternalId": null,
-      "roundName": "Ebasketball H2H GG League round 1",
-      "roundId": 1,
-      "homeTeamName": "Milwaukee Bucks",
-      "awayParticipantLogo": "participants/RAMZ.png?v=1692809974453",
-      "externalId": "NB088170625",
-      "homeParticipantName": "SURGEON",
-      "awayTeamAbbreviation": "PHX",
-      "groupName": null,
-      "leagueId": null,
-      "fixtureExternalId": "NB088170625",
-      "homeTeamExternalId": null,
-      "tournamentId": 1,
-      "fixtureId": 238013,
-      "awayParticipantName": "RAMZ",
-      "awayParticipantExternalId": "1038",
-      "homeTeamAbbreviation": "MIL",
-      "startDate": "2025-06-17T11:55:00Z",
-      "leagueLogo": null,
-      "awayTeamId": 24,
-      "awayTeamLogo": "teams/Phoenix_Suns.svg",
-      "streamName": "Ebasketball 2",
-      "homeParticipantLogo": "participants/SURGEON.png"
-    }
-  },
-  {
-    "id": 237884,
-    "homePlayer": {
-      "id": 1553,
-      "name": "PROTOTYPE"
-    },
-    "awayPlayer": {
-      "id": 1169,
-      "name": "GODFATHER"
-    },
-    "homeTeam": {
-      "id": 16,
-      "name": "Miami Heat"
-    },
-    "awayTeam": {
-      "id": 28,
-      "name": "Toronto Raptors"
-    },
-    "fixtureStart": "2025-06-17T12:03:00Z",
-    "raw_data": {
-      "sport": "NBA",
-      "avaStreamId": "sis-nba-3",
-      "leagueName": null,
-      "awayParticipantId": 1169,
-      "tournamentName": "Ebasketball H2H GG League",
-      "homeParticipantExternalId": "4654",
-      "fixtureStart": "2025-06-17T12:03:00Z",
-      "homeTeamId": 16,
-      "groupId": null,
-      "awayTeamName": "Toronto Raptors",
-      "homeParticipantId": 1553,
-      "homeTeamLogo": "teams/MH.png",
-      "awayTeamExternalId": null,
-      "roundName": "Ebasketball H2H GG League round 1",
-      "roundId": 1,
-      "homeTeamName": "Miami Heat",
-      "awayParticipantLogo": "participants/GODFATHER.png?v=1738342374988",
-      "externalId": "NB089170625",
-      "homeParticipantName": "PROTOTYPE",
-      "awayTeamAbbreviation": "TOR",
-      "groupName": null,
-      "leagueId": null,
-      "fixtureExternalId": "NB089170625",
-      "homeTeamExternalId": null,
-      "tournamentId": 1,
-      "fixtureId": 237884,
-      "awayParticipantName": "GODFATHER",
-      "awayParticipantExternalId": "4348",
-      "homeTeamAbbreviation": "MIA",
-      "startDate": "2025-06-17T12:03:00Z",
-      "leagueLogo": null,
-      "awayTeamId": 28,
-      "awayTeamLogo": "teams/TR.svg",
-      "streamName": "Ebasketball 3",
-      "homeParticipantLogo": "participants/PROTOTYPE.png?v=1740572231199"
-    }
-  },
-  {
-    "id": 237943,
-    "homePlayer": {
-      "id": 2001,
-      "name": "CLAW"
-    },
-    "awayPlayer": {
-      "id": 2103,
-      "name": "RIDER"
-    },
-    "homeTeam": {
-      "id": 21,
-      "name": "Oklahoma City Thunder"
-    },
-    "awayTeam": {
-      "id": 14,
-      "name": "Los Angeles Lakers"
-    },
-    "fixtureStart": "2025-06-17T12:11:00Z",
-    "raw_data": {
-      "sport": "NBA",
-      "avaStreamId": "sis-nba-4",
-      "leagueName": null,
-      "awayParticipantId": 2103,
-      "tournamentName": "Ebasketball H2H GG League",
-      "homeParticipantExternalId": "4155",
-      "fixtureStart": "2025-06-17T12:11:00Z",
-      "homeTeamId": 21,
-      "groupId": null,
-      "awayTeamName": "Los Angeles Lakers",
-      "homeParticipantId": 2001,
-      "homeTeamLogo": "teams/OKC.png",
-      "awayTeamExternalId": null,
-      "roundName": "Ebasketball H2H GG League round 1",
-      "roundId": 1,
-      "homeTeamName": "Oklahoma City Thunder",
-      "awayParticipantLogo": "participants/default-player-profile.png",
-      "externalId": "NB090170625",
-      "homeParticipantName": "CLAW",
-      "awayTeamAbbreviation": "LAL",
-      "groupName": null,
-      "leagueId": null,
-      "fixtureExternalId": "NB090170625",
-      "homeTeamExternalId": null,
-      "tournamentId": 1,
-      "fixtureId": 237943,
-      "awayParticipantName": "RIDER",
-      "awayParticipantExternalId": "4709",
-      "homeTeamAbbreviation": "OKC",
-      "startDate": "2025-06-17T12:11:00Z",
-      "leagueLogo": null,
-      "awayTeamId": 14,
-      "awayTeamLogo": "teams/Los_Angeles_Lakers.svg",
-      "streamName": "Ebasketball 4",
-      "homeParticipantLogo": "participants/CLAW.png?v=1747226304466"
-    }
-  },
-  {
-    "id": 237962,
-    "homePlayer": {
-      "id": 159,
-      "name": "HOLLOW"
-    },
-    "awayPlayer": {
-      "id": 27,
-      "name": "DIMES"
-    },
-    "homeTeam": {
-      "id": 4,
-      "name": "Charlotte Hornets"
-    },
-    "awayTeam": {
-      "id": 22,
-      "name": "Orlando Magic"
-    },
-    "fixtureStart": "2025-06-17T12:19:00Z",
-    "raw_data": {
-      "sport": "NBA",
-      "avaStreamId": "sis-nba-1",
-      "leagueName": null,
-      "awayParticipantId": 27,
-      "tournamentName": "Ebasketball H2H GG League",
-      "homeParticipantExternalId": "1268",
-      "fixtureStart": "2025-06-17T12:19:00Z",
-      "homeTeamId": 4,
-      "groupId": null,
-      "awayTeamName": "Orlando Magic",
-      "homeParticipantId": 159,
-      "homeTeamLogo": "teams/CH.png",
-      "awayTeamExternalId": null,
-      "roundName": "Ebasketball H2H GG League round 1",
-      "roundId": 1,
-      "homeTeamName": "Charlotte Hornets",
-      "awayParticipantLogo": "participants/DIMES.png",
-      "externalId": "NB091170625",
-      "homeParticipantName": "HOLLOW",
-      "awayTeamAbbreviation": "ORL",
-      "groupName": null,
-      "leagueId": null,
-      "fixtureExternalId": "NB091170625",
-      "homeTeamExternalId": null,
-      "tournamentId": 1,
-      "fixtureId": 237962,
-      "awayParticipantName": "DIMES",
-      "awayParticipantExternalId": "1214",
-      "homeTeamAbbreviation": "CHA",
-      "startDate": "2025-06-17T12:19:00Z",
-      "leagueLogo": null,
-      "awayTeamId": 22,
-      "awayTeamLogo": "teams/OM.png",
-      "streamName": "Ebasketball 1",
-      "homeParticipantLogo": "participants/HOLLOW.png?v=1714140827775"
-    }
-  },
-  {
-    "id": 238015,
-    "homePlayer": {
-      "id": 30,
-      "name": "RAMZ"
-    },
-    "awayPlayer": {
-      "id": 14,
-      "name": "CARNAGE"
-    },
-    "homeTeam": {
-      "id": 24,
-      "name": "Phoenix Suns"
-    },
-    "awayTeam": {
-      "id": 15,
-      "name": "Memphis Grizzlies"
-    },
-    "fixtureStart": "2025-06-17T12:27:00Z",
-    "raw_data": {
-      "sport": "NBA",
-      "avaStreamId": "sis-nba-2",
-      "leagueName": null,
-      "awayParticipantId": 14,
-      "tournamentName": "Ebasketball H2H GG League",
-      "homeParticipantExternalId": "1038",
-      "fixtureStart": "2025-06-17T12:27:00Z",
-      "homeTeamId": 24,
-      "groupId": null,
-      "awayTeamName": "Memphis Grizzlies",
-      "homeParticipantId": 30,
-      "homeTeamLogo": "teams/Phoenix_Suns.svg",
-      "awayTeamExternalId": null,
-      "roundName": "Ebasketball H2H GG League round 1",
-      "roundId": 1,
-      "homeTeamName": "Phoenix Suns",
-      "awayParticipantLogo": "participants/CARNAGE.png?v=1694789076640",
-      "externalId": "NB184170625",
-      "homeParticipantName": "RAMZ",
-      "awayTeamAbbreviation": "MEM",
-      "groupName": null,
-      "leagueId": null,
-      "fixtureExternalId": "NB184170625",
-      "homeTeamExternalId": null,
-      "tournamentId": 1,
-      "fixtureId": 238015,
-      "awayParticipantName": "CARNAGE",
-      "awayParticipantExternalId": "1239",
-      "homeTeamAbbreviation": "PHX",
-      "startDate": "2025-06-17T12:27:00Z",
-      "leagueLogo": null,
-      "awayTeamId": 15,
-      "awayTeamLogo": "teams/Memphis_Grizzlies.svg",
-      "streamName": "Ebasketball 2",
-      "homeParticipantLogo": "participants/RAMZ.png?v=1692809974453"
-    }
-  },
-  {
-    "id": 237901,
-    "homePlayer": {
-      "id": 1255,
-      "name": "RAPTOR"
-    },
-    "awayPlayer": {
-      "id": 53,
-      "name": "MIST"
-    },
-    "homeTeam": {
-      "id": 15,
-      "name": "Memphis Grizzlies"
-    },
-    "awayTeam": {
-      "id": 17,
-      "name": "Milwaukee Bucks"
-    },
-    "fixtureStart": "2025-06-17T12:35:00Z",
-    "raw_data": {
-      "sport": "NBA",
-      "avaStreamId": "sis-nba-3",
-      "leagueName": null,
-      "awayParticipantId": 53,
-      "tournamentName": "Ebasketball H2H GG League",
-      "homeParticipantExternalId": "4677",
-      "fixtureStart": "2025-06-17T12:35:00Z",
-      "homeTeamId": 15,
-      "groupId": null,
-      "awayTeamName": "Milwaukee Bucks",
-      "homeParticipantId": 1255,
-      "homeTeamLogo": "teams/Memphis_Grizzlies.svg",
-      "awayTeamExternalId": null,
-      "roundName": "Ebasketball H2H GG League round 1",
-      "roundId": 1,
-      "homeTeamName": "Memphis Grizzlies",
-      "awayParticipantLogo": "participants/MIST.png",
-      "externalId": "NB093170625",
-      "homeParticipantName": "RAPTOR",
-      "awayTeamAbbreviation": "MIL",
-      "groupName": null,
-      "leagueId": null,
-      "fixtureExternalId": "NB093170625",
-      "homeTeamExternalId": null,
-      "tournamentId": 1,
-      "fixtureId": 237901,
-      "awayParticipantName": "MIST",
-      "awayParticipantExternalId": "1027",
-      "homeTeamAbbreviation": "MEM",
-      "startDate": "2025-06-17T12:35:00Z",
-      "leagueLogo": null,
-      "awayTeamId": 17,
-      "awayTeamLogo": "teams/Milwaukee_Bucks.svg",
-      "streamName": "Ebasketball 3",
-      "homeParticipantLogo": "participants/RAPTOR.png?v=1738582787219"
-    }
-  },
-  {
-    "id": 237930,
-    "homePlayer": {
-      "id": 637,
-      "name": "PULSE"
-    },
-    "awayPlayer": {
-      "id": 91,
-      "name": "DOUBLEFOUR"
-    },
-    "homeTeam": {
-      "id": 4,
-      "name": "Charlotte Hornets"
-    },
-    "awayTeam": {
-      "id": 22,
-      "name": "Orlando Magic"
-    },
-    "fixtureStart": "2025-06-17T12:43:00Z",
-    "raw_data": {
-      "sport": "NBA",
-      "avaStreamId": "sis-nba-4",
-      "leagueName": null,
-      "awayParticipantId": 91,
-      "tournamentName": "Ebasketball H2H GG League",
-      "homeParticipantExternalId": "4658",
-      "fixtureStart": "2025-06-17T12:43:00Z",
-      "homeTeamId": 4,
-      "groupId": null,
-      "awayTeamName": "Orlando Magic",
-      "homeParticipantId": 637,
-      "homeTeamLogo": "teams/CH.png",
-      "awayTeamExternalId": null,
-      "roundName": "Ebasketball H2H GG League round 1",
-      "roundId": 1,
-      "homeTeamName": "Charlotte Hornets",
-      "awayParticipantLogo": "participants/DOUBLEFOUR.png",
-      "externalId": "NB094170625",
-      "homeParticipantName": "PULSE",
-      "awayTeamAbbreviation": "ORL",
-      "groupName": null,
-      "leagueId": null,
-      "fixtureExternalId": "NB094170625",
-      "homeTeamExternalId": null,
-      "tournamentId": 1,
-      "fixtureId": 237930,
-      "awayParticipantName": "DOUBLEFOUR",
-      "awayParticipantExternalId": "1066",
-      "homeTeamAbbreviation": "CHA",
-      "startDate": "2025-06-17T12:43:00Z",
-      "leagueLogo": null,
-      "awayTeamId": 22,
-      "awayTeamLogo": "teams/OM.png",
-      "streamName": "Ebasketball 4",
-      "homeParticipantLogo": "participants/PULSE.png?v=1724689075318"
-    }
-  },
-  {
-    "id": 237959,
-    "homePlayer": {
-      "id": 957,
-      "name": "EXO"
-    },
-    "awayPlayer": {
-      "id": 33,
-      "name": "HOGGY"
-    },
-    "homeTeam": {
-      "id": 7,
-      "name": "Dallas Mavericks"
-    },
-    "awayTeam": {
-      "id": 8,
-      "name": "Denver Nuggets"
-    },
-    "fixtureStart": "2025-06-17T12:51:00Z",
-    "raw_data": {
-      "sport": "NBA",
-      "avaStreamId": "sis-nba-1",
-      "leagueName": null,
-      "awayParticipantId": 33,
-      "tournamentName": "Ebasketball H2H GG League",
-      "homeParticipantExternalId": "4286",
-      "fixtureStart": "2025-06-17T12:51:00Z",
-      "homeTeamId": 7,
-      "groupId": null,
-      "awayTeamName": "Denver Nuggets",
-      "homeParticipantId": 957,
-      "homeTeamLogo": "teams/Dallas_Mavericks.svg",
-      "awayTeamExternalId": null,
-      "roundName": "Ebasketball H2H GG League round 1",
-      "roundId": 1,
-      "homeTeamName": "Dallas Mavericks",
-      "awayParticipantLogo": "participants/HOGGY.png",
-      "externalId": "NB095170625",
-      "homeParticipantName": "EXO",
-      "awayTeamAbbreviation": "DEN",
-      "groupName": null,
-      "leagueId": null,
-      "fixtureExternalId": "NB095170625",
-      "homeTeamExternalId": null,
-      "tournamentId": 1,
-      "fixtureId": 237959,
-      "awayParticipantName": "HOGGY",
-      "awayParticipantExternalId": "1064",
-      "homeTeamAbbreviation": "DAL",
-      "startDate": "2025-06-17T12:51:00Z",
-      "leagueLogo": null,
-      "awayTeamId": 8,
-      "awayTeamLogo": "teams/DN.png",
-      "streamName": "Ebasketball 1",
-      "homeParticipantLogo": "participants/EXO.png?v=1738341274121"
-    }
-  },
-  {
-    "id": 238010,
-    "homePlayer": {
-      "id": 30,
-      "name": "RAMZ"
-    },
-    "awayPlayer": {
-      "id": 54,
-      "name": "SURGEON"
-    },
-    "homeTeam": {
-      "id": 24,
-      "name": "Phoenix Suns"
-    },
-    "awayTeam": {
-      "id": 17,
-      "name": "Milwaukee Bucks"
-    },
-    "fixtureStart": "2025-06-17T12:59:00Z",
-    "raw_data": {
-      "sport": "NBA",
-      "avaStreamId": "sis-nba-2",
-      "leagueName": null,
-      "awayParticipantId": 54,
-      "tournamentName": "Ebasketball H2H GG League",
-      "homeParticipantExternalId": "1038",
-      "fixtureStart": "2025-06-17T12:59:00Z",
-      "homeTeamId": 24,
-      "groupId": null,
-      "awayTeamName": "Milwaukee Bucks",
-      "homeParticipantId": 30,
-      "homeTeamLogo": "teams/Phoenix_Suns.svg",
-      "awayTeamExternalId": null,
-      "roundName": "Ebasketball H2H GG League round 1",
-      "roundId": 1,
-      "homeTeamName": "Phoenix Suns",
-      "awayParticipantLogo": "participants/SURGEON.png",
-      "externalId": "NB096170625",
-      "homeParticipantName": "RAMZ",
-      "awayTeamAbbreviation": "MIL",
-      "groupName": null,
-      "leagueId": null,
-      "fixtureExternalId": "NB096170625",
-      "homeTeamExternalId": null,
-      "tournamentId": 1,
-      "fixtureId": 238010,
-      "awayParticipantName": "SURGEON",
-      "awayParticipantExternalId": "1213",
-      "homeTeamAbbreviation": "PHX",
-      "startDate": "2025-06-17T12:59:00Z",
-      "leagueLogo": null,
-      "awayTeamId": 17,
-      "awayTeamLogo": "teams/Milwaukee_Bucks.svg",
-      "streamName": "Ebasketball 2",
-      "homeParticipantLogo": "participants/RAMZ.png?v=1692809974453"
-    }
-  },
-  {
-    "id": 237889,
-    "homePlayer": {
-      "id": 1169,
-      "name": "GODFATHER"
-    },
-    "awayPlayer": {
-      "id": 1553,
-      "name": "PROTOTYPE"
-    },
-    "homeTeam": {
-      "id": 28,
-      "name": "Toronto Raptors"
-    },
-    "awayTeam": {
-      "id": 16,
-      "name": "Miami Heat"
-    },
-    "fixtureStart": "2025-06-17T13:07:00Z",
-    "raw_data": {
-      "sport": "NBA",
-      "avaStreamId": "sis-nba-3",
-      "leagueName": null,
-      "awayParticipantId": 1553,
-      "tournamentName": "Ebasketball H2H GG League",
-      "homeParticipantExternalId": "4348",
-      "fixtureStart": "2025-06-17T13:07:00Z",
+      "homeParticipantExternalId": "3093",
+      "fixtureStart": "2025-06-17T19:47:00Z",
       "homeTeamId": 28,
       "groupId": null,
-      "awayTeamName": "Miami Heat",
-      "homeParticipantId": 1169,
+      "awayTeamName": "Brooklyn Nets",
+      "homeParticipantId": 183,
       "homeTeamLogo": "teams/TR.svg",
       "awayTeamExternalId": null,
       "roundName": "Ebasketball H2H GG League round 1",
       "roundId": 1,
       "homeTeamName": "Toronto Raptors",
-      "awayParticipantLogo": "participants/PROTOTYPE.png?v=1740572231199",
-      "externalId": "NB097170625",
-      "homeParticipantName": "GODFATHER",
-      "awayTeamAbbreviation": "MIA",
+      "awayParticipantLogo": "participants/SAINT JR.png",
+      "externalId": "NB145170625",
+      "homeParticipantName": "ARCHITECT",
+      "awayTeamAbbreviation": "BKN",
       "groupName": null,
       "leagueId": null,
-      "fixtureExternalId": "NB097170625",
+      "fixtureExternalId": "NB145170625",
       "homeTeamExternalId": null,
       "tournamentId": 1,
-      "fixtureId": 237889,
-      "awayParticipantName": "PROTOTYPE",
-      "awayParticipantExternalId": "4654",
+      "fixtureId": 237910,
+      "awayParticipantName": "SAINT JR",
+      "awayParticipantExternalId": "1235",
       "homeTeamAbbreviation": "TOR",
-      "startDate": "2025-06-17T13:07:00Z",
+      "startDate": "2025-06-17T19:47:00Z",
       "leagueLogo": null,
-      "awayTeamId": 16,
-      "awayTeamLogo": "teams/MH.png",
+      "awayTeamId": 2,
+      "awayTeamLogo": "teams/Brooklyn_Nets.svg",
       "streamName": "Ebasketball 3",
-      "homeParticipantLogo": "participants/GODFATHER.png?v=1738342374988"
+      "homeParticipantLogo": "participants/ARCHITECT.png?v=1716799043340"
     }
   },
   {
-    "id": 237940,
+    "id": 237946,
     "homePlayer": {
-      "id": 2103,
-      "name": "RIDER"
+      "id": 113,
+      "name": "BRAZEN"
     },
     "awayPlayer": {
-      "id": 2001,
-      "name": "CLAW"
+      "id": 1752,
+      "name": "MYTH"
     },
     "homeTeam": {
       "id": 14,
       "name": "Los Angeles Lakers"
     },
     "awayTeam": {
-      "id": 21,
-      "name": "Oklahoma City Thunder"
+      "id": 20,
+      "name": "New York Knicks"
     },
-    "fixtureStart": "2025-06-17T13:15:00Z",
+    "fixtureStart": "2025-06-17T19:55:00Z",
     "raw_data": {
       "sport": "NBA",
       "avaStreamId": "sis-nba-4",
       "leagueName": null,
-      "awayParticipantId": 2001,
+      "awayParticipantId": 1752,
       "tournamentName": "Ebasketball H2H GG League",
-      "homeParticipantExternalId": "4709",
-      "fixtureStart": "2025-06-17T13:15:00Z",
+      "homeParticipantExternalId": "1249",
+      "fixtureStart": "2025-06-17T19:55:00Z",
       "homeTeamId": 14,
       "groupId": null,
-      "awayTeamName": "Oklahoma City Thunder",
-      "homeParticipantId": 2103,
+      "awayTeamName": "New York Knicks",
+      "homeParticipantId": 113,
       "homeTeamLogo": "teams/Los_Angeles_Lakers.svg",
       "awayTeamExternalId": null,
       "roundName": "Ebasketball H2H GG League round 1",
       "roundId": 1,
       "homeTeamName": "Los Angeles Lakers",
-      "awayParticipantLogo": "participants/CLAW.png?v=1747226304466",
-      "externalId": "NB098170625",
-      "homeParticipantName": "RIDER",
-      "awayTeamAbbreviation": "OKC",
+      "awayParticipantLogo": "participants/MYTH.png?v=1746800487376",
+      "externalId": "NB146170625",
+      "homeParticipantName": "BRAZEN",
+      "awayTeamAbbreviation": "NYK",
       "groupName": null,
       "leagueId": null,
-      "fixtureExternalId": "NB098170625",
+      "fixtureExternalId": "NB146170625",
       "homeTeamExternalId": null,
       "tournamentId": 1,
-      "fixtureId": 237940,
-      "awayParticipantName": "CLAW",
-      "awayParticipantExternalId": "4155",
+      "fixtureId": 237946,
+      "awayParticipantName": "MYTH",
+      "awayParticipantExternalId": "4566",
       "homeTeamAbbreviation": "LAL",
-      "startDate": "2025-06-17T13:15:00Z",
+      "startDate": "2025-06-17T19:55:00Z",
       "leagueLogo": null,
-      "awayTeamId": 21,
-      "awayTeamLogo": "teams/OKC.png",
+      "awayTeamId": 20,
+      "awayTeamLogo": "teams/NYK.png",
       "streamName": "Ebasketball 4",
-      "homeParticipantLogo": "participants/default-player-profile.png"
+      "homeParticipantLogo": "participants/BRAZEN.png?v=1695200050713"
     }
   },
   {
-    "id": 237954,
+    "id": 237960,
     "homePlayer": {
-      "id": 33,
-      "name": "HOGGY"
+      "id": 22,
+      "name": "HUNCHO"
     },
     "awayPlayer": {
-      "id": 27,
-      "name": "DIMES"
+      "id": 127,
+      "name": "FIVESTAR"
     },
     "homeTeam": {
-      "id": 8,
-      "name": "Denver Nuggets"
+      "id": 14,
+      "name": "Los Angeles Lakers"
     },
     "awayTeam": {
-      "id": 22,
-      "name": "Orlando Magic"
+      "id": 20,
+      "name": "New York Knicks"
     },
-    "fixtureStart": "2025-06-17T13:23:00Z",
+    "fixtureStart": "2025-06-17T20:03:00Z",
     "raw_data": {
       "sport": "NBA",
       "avaStreamId": "sis-nba-1",
       "leagueName": null,
-      "awayParticipantId": 27,
+      "awayParticipantId": 127,
       "tournamentName": "Ebasketball H2H GG League",
-      "homeParticipantExternalId": "1064",
-      "fixtureStart": "2025-06-17T13:23:00Z",
-      "homeTeamId": 8,
+      "homeParticipantExternalId": "1080",
+      "fixtureStart": "2025-06-17T20:03:00Z",
+      "homeTeamId": 14,
       "groupId": null,
-      "awayTeamName": "Orlando Magic",
-      "homeParticipantId": 33,
-      "homeTeamLogo": "teams/DN.png",
+      "awayTeamName": "New York Knicks",
+      "homeParticipantId": 22,
+      "homeTeamLogo": "teams/Los_Angeles_Lakers.svg",
       "awayTeamExternalId": null,
       "roundName": "Ebasketball H2H GG League round 1",
       "roundId": 1,
-      "homeTeamName": "Denver Nuggets",
-      "awayParticipantLogo": "participants/DIMES.png",
-      "externalId": "NB099170625",
-      "homeParticipantName": "HOGGY",
-      "awayTeamAbbreviation": "ORL",
+      "homeTeamName": "Los Angeles Lakers",
+      "awayParticipantLogo": "participants/FIVESTAR.png?v=1704987337806",
+      "externalId": "NB147170625",
+      "homeParticipantName": "HUNCHO",
+      "awayTeamAbbreviation": "NYK",
       "groupName": null,
       "leagueId": null,
-      "fixtureExternalId": "NB099170625",
+      "fixtureExternalId": "NB147170625",
       "homeTeamExternalId": null,
       "tournamentId": 1,
-      "fixtureId": 237954,
-      "awayParticipantName": "DIMES",
-      "awayParticipantExternalId": "1214",
-      "homeTeamAbbreviation": "DEN",
-      "startDate": "2025-06-17T13:23:00Z",
+      "fixtureId": 237960,
+      "awayParticipantName": "FIVESTAR",
+      "awayParticipantExternalId": "1257",
+      "homeTeamAbbreviation": "LAL",
+      "startDate": "2025-06-17T20:03:00Z",
       "leagueLogo": null,
-      "awayTeamId": 22,
-      "awayTeamLogo": "teams/OM.png",
+      "awayTeamId": 20,
+      "awayTeamLogo": "teams/NYK.png",
       "streamName": "Ebasketball 1",
-      "homeParticipantLogo": "participants/HOGGY.png"
+      "homeParticipantLogo": "participants/HUNCHO.png"
     }
   },
   {
-    "id": 237990,
+    "id": 238008,
     "homePlayer": {
-      "id": 54,
-      "name": "SURGEON"
+      "id": 1369,
+      "name": "RAIN"
     },
     "awayPlayer": {
-      "id": 14,
-      "name": "CARNAGE"
+      "id": 31,
+      "name": "ENIGMA"
+    },
+    "homeTeam": {
+      "id": 5,
+      "name": "Chicago Bulls"
+    },
+    "awayTeam": {
+      "id": 16,
+      "name": "Miami Heat"
+    },
+    "fixtureStart": "2025-06-17T20:11:00Z",
+    "raw_data": {
+      "sport": "NBA",
+      "avaStreamId": "sis-nba-2",
+      "leagueName": null,
+      "awayParticipantId": 31,
+      "tournamentName": "Ebasketball H2H GG League",
+      "homeParticipantExternalId": "4674",
+      "fixtureStart": "2025-06-17T20:11:00Z",
+      "homeTeamId": 5,
+      "groupId": null,
+      "awayTeamName": "Miami Heat",
+      "homeParticipantId": 1369,
+      "homeTeamLogo": "teams/CB.png",
+      "awayTeamExternalId": null,
+      "roundName": "Ebasketball H2H GG League round 1",
+      "roundId": 1,
+      "homeTeamName": "Chicago Bulls",
+      "awayParticipantLogo": "participants/ENIGMA.png",
+      "externalId": "NB148170625",
+      "homeParticipantName": "RAIN",
+      "awayTeamAbbreviation": "MIA",
+      "groupName": null,
+      "leagueId": null,
+      "fixtureExternalId": "NB148170625",
+      "homeTeamExternalId": null,
+      "tournamentId": 1,
+      "fixtureId": 238008,
+      "awayParticipantName": "ENIGMA",
+      "awayParticipantExternalId": "1082",
+      "homeTeamAbbreviation": "CHI",
+      "startDate": "2025-06-17T20:11:00Z",
+      "leagueLogo": null,
+      "awayTeamId": 16,
+      "awayTeamLogo": "teams/MH.png",
+      "streamName": "Ebasketball 2",
+      "homeParticipantLogo": "participants/RAIN.png?v=1738582701414"
+    }
+  },
+  {
+    "id": 237894,
+    "homePlayer": {
+      "id": 183,
+      "name": "ARCHITECT"
+    },
+    "awayPlayer": {
+      "id": 1468,
+      "name": "AVATAR"
     },
     "homeTeam": {
       "id": 17,
@@ -1841,225 +302,453 @@
       "id": 15,
       "name": "Memphis Grizzlies"
     },
-    "fixtureStart": "2025-06-17T13:31:00Z",
+    "fixtureStart": "2025-06-17T20:19:00Z",
     "raw_data": {
       "sport": "NBA",
-      "avaStreamId": "sis-nba-2",
+      "avaStreamId": "sis-nba-3",
       "leagueName": null,
-      "awayParticipantId": 14,
+      "awayParticipantId": 1468,
       "tournamentName": "Ebasketball H2H GG League",
-      "homeParticipantExternalId": "1213",
-      "fixtureStart": "2025-06-17T13:31:00Z",
+      "homeParticipantExternalId": "3093",
+      "fixtureStart": "2025-06-17T20:19:00Z",
       "homeTeamId": 17,
       "groupId": null,
       "awayTeamName": "Memphis Grizzlies",
-      "homeParticipantId": 54,
+      "homeParticipantId": 183,
       "homeTeamLogo": "teams/Milwaukee_Bucks.svg",
       "awayTeamExternalId": null,
       "roundName": "Ebasketball H2H GG League round 1",
       "roundId": 1,
       "homeTeamName": "Milwaukee Bucks",
-      "awayParticipantLogo": "participants/CARNAGE.png?v=1694789076640",
-      "externalId": "NB100170625",
-      "homeParticipantName": "SURGEON",
+      "awayParticipantLogo": "participants/AVATAR.png?v=1738339447393",
+      "externalId": "NB149170625",
+      "homeParticipantName": "ARCHITECT",
       "awayTeamAbbreviation": "MEM",
       "groupName": null,
       "leagueId": null,
-      "fixtureExternalId": "NB100170625",
+      "fixtureExternalId": "NB149170625",
       "homeTeamExternalId": null,
       "tournamentId": 1,
-      "fixtureId": 237990,
-      "awayParticipantName": "CARNAGE",
-      "awayParticipantExternalId": "1239",
+      "fixtureId": 237894,
+      "awayParticipantName": "AVATAR",
+      "awayParticipantExternalId": "4065",
       "homeTeamAbbreviation": "MIL",
-      "startDate": "2025-06-17T13:31:00Z",
+      "startDate": "2025-06-17T20:19:00Z",
       "leagueLogo": null,
       "awayTeamId": 15,
       "awayTeamLogo": "teams/Memphis_Grizzlies.svg",
-      "streamName": "Ebasketball 2",
-      "homeParticipantLogo": "participants/SURGEON.png"
+      "streamName": "Ebasketball 3",
+      "homeParticipantLogo": "participants/ARCHITECT.png?v=1716799043340"
     }
   },
   {
-    "id": 237913,
+    "id": 237926,
     "homePlayer": {
-      "id": 1553,
-      "name": "PROTOTYPE"
+      "id": 113,
+      "name": "BRAZEN"
     },
     "awayPlayer": {
-      "id": 53,
-      "name": "MIST"
+      "id": 2238,
+      "name": "BABYLON"
     },
     "homeTeam": {
-      "id": 6,
-      "name": "Cleveland Cavaliers"
+      "id": 8,
+      "name": "Denver Nuggets"
     },
     "awayTeam": {
-      "id": 17,
-      "name": "Milwaukee Bucks"
-    },
-    "fixtureStart": "2025-06-17T13:39:00Z",
-    "raw_data": {
-      "sport": "NBA",
-      "avaStreamId": "sis-nba-3",
-      "leagueName": null,
-      "awayParticipantId": 53,
-      "tournamentName": "Ebasketball H2H GG League",
-      "homeParticipantExternalId": "4654",
-      "fixtureStart": "2025-06-17T13:39:00Z",
-      "homeTeamId": 6,
-      "groupId": null,
-      "awayTeamName": "Milwaukee Bucks",
-      "homeParticipantId": 1553,
-      "homeTeamLogo": "teams/Cleveland_Cavaliers.svg",
-      "awayTeamExternalId": null,
-      "roundName": "Ebasketball H2H GG League round 1",
-      "roundId": 1,
-      "homeTeamName": "Cleveland Cavaliers",
-      "awayParticipantLogo": "participants/MIST.png",
-      "externalId": "NB101170625",
-      "homeParticipantName": "PROTOTYPE",
-      "awayTeamAbbreviation": "MIL",
-      "groupName": null,
-      "leagueId": null,
-      "fixtureExternalId": "NB101170625",
-      "homeTeamExternalId": null,
-      "tournamentId": 1,
-      "fixtureId": 237913,
-      "awayParticipantName": "MIST",
-      "awayParticipantExternalId": "1027",
-      "homeTeamAbbreviation": "CLE",
-      "startDate": "2025-06-17T13:39:00Z",
-      "leagueLogo": null,
-      "awayTeamId": 17,
-      "awayTeamLogo": "teams/Milwaukee_Bucks.svg",
-      "streamName": "Ebasketball 3",
-      "homeParticipantLogo": "participants/PROTOTYPE.png?v=1740572231199"
-    }
-  },
-  {
-    "id": 237922,
-    "homePlayer": {
-      "id": 2001,
-      "name": "CLAW"
-    },
-    "awayPlayer": {
-      "id": 91,
-      "name": "DOUBLEFOUR"
-    },
-    "homeTeam": {
       "id": 7,
       "name": "Dallas Mavericks"
     },
-    "awayTeam": {
-      "id": 22,
-      "name": "Orlando Magic"
-    },
-    "fixtureStart": "2025-06-17T13:47:00Z",
+    "fixtureStart": "2025-06-17T20:27:00Z",
     "raw_data": {
       "sport": "NBA",
       "avaStreamId": "sis-nba-4",
       "leagueName": null,
-      "awayParticipantId": 91,
+      "awayParticipantId": 2238,
       "tournamentName": "Ebasketball H2H GG League",
-      "homeParticipantExternalId": "4155",
-      "fixtureStart": "2025-06-17T13:47:00Z",
-      "homeTeamId": 7,
+      "homeParticipantExternalId": "1249",
+      "fixtureStart": "2025-06-17T20:27:00Z",
+      "homeTeamId": 8,
       "groupId": null,
-      "awayTeamName": "Orlando Magic",
-      "homeParticipantId": 2001,
-      "homeTeamLogo": "teams/Dallas_Mavericks.svg",
+      "awayTeamName": "Dallas Mavericks",
+      "homeParticipantId": 113,
+      "homeTeamLogo": "teams/DN.png",
       "awayTeamExternalId": null,
       "roundName": "Ebasketball H2H GG League round 1",
       "roundId": 1,
-      "homeTeamName": "Dallas Mavericks",
-      "awayParticipantLogo": "participants/DOUBLEFOUR.png",
-      "externalId": "NB102170625",
-      "homeParticipantName": "CLAW",
-      "awayTeamAbbreviation": "ORL",
+      "homeTeamName": "Denver Nuggets",
+      "awayParticipantLogo": "participants/BABYLON.png?v=1747227423884",
+      "externalId": "NB150170625",
+      "homeParticipantName": "BRAZEN",
+      "awayTeamAbbreviation": "DAL",
       "groupName": null,
       "leagueId": null,
-      "fixtureExternalId": "NB102170625",
+      "fixtureExternalId": "NB150170625",
       "homeTeamExternalId": null,
       "tournamentId": 1,
-      "fixtureId": 237922,
-      "awayParticipantName": "DOUBLEFOUR",
-      "awayParticipantExternalId": "1066",
-      "homeTeamAbbreviation": "DAL",
-      "startDate": "2025-06-17T13:47:00Z",
+      "fixtureId": 237926,
+      "awayParticipantName": "BABYLON",
+      "awayParticipantExternalId": "4071",
+      "homeTeamAbbreviation": "DEN",
+      "startDate": "2025-06-17T20:27:00Z",
       "leagueLogo": null,
-      "awayTeamId": 22,
-      "awayTeamLogo": "teams/OM.png",
+      "awayTeamId": 7,
+      "awayTeamLogo": "teams/Dallas_Mavericks.svg",
       "streamName": "Ebasketball 4",
-      "homeParticipantLogo": "participants/CLAW.png?v=1747226304466"
+      "homeParticipantLogo": "participants/BRAZEN.png?v=1695200050713"
     }
   },
   {
-    "id": 237969,
+    "id": 237974,
     "homePlayer": {
-      "id": 957,
-      "name": "EXO"
+      "id": 37,
+      "name": "GRANDMASTER"
     },
     "awayPlayer": {
-      "id": 159,
-      "name": "HOLLOW"
+      "id": 15,
+      "name": "KARMA"
     },
     "homeTeam": {
-      "id": 7,
-      "name": "Dallas Mavericks"
+      "id": 21,
+      "name": "Oklahoma City Thunder"
     },
     "awayTeam": {
-      "id": 4,
-      "name": "Charlotte Hornets"
+      "id": 3,
+      "name": "Boston Celtics"
     },
-    "fixtureStart": "2025-06-17T13:55:00Z",
+    "fixtureStart": "2025-06-17T20:35:00Z",
     "raw_data": {
       "sport": "NBA",
       "avaStreamId": "sis-nba-1",
       "leagueName": null,
-      "awayParticipantId": 159,
+      "awayParticipantId": 15,
       "tournamentName": "Ebasketball H2H GG League",
-      "homeParticipantExternalId": "4286",
-      "fixtureStart": "2025-06-17T13:55:00Z",
-      "homeTeamId": 7,
+      "homeParticipantExternalId": "1004",
+      "fixtureStart": "2025-06-17T20:35:00Z",
+      "homeTeamId": 21,
       "groupId": null,
-      "awayTeamName": "Charlotte Hornets",
-      "homeParticipantId": 957,
-      "homeTeamLogo": "teams/Dallas_Mavericks.svg",
+      "awayTeamName": "Boston Celtics",
+      "homeParticipantId": 37,
+      "homeTeamLogo": "teams/OKC.png",
       "awayTeamExternalId": null,
       "roundName": "Ebasketball H2H GG League round 1",
       "roundId": 1,
-      "homeTeamName": "Dallas Mavericks",
-      "awayParticipantLogo": "participants/HOLLOW.png?v=1714140827775",
-      "externalId": "NB103170625",
-      "homeParticipantName": "EXO",
-      "awayTeamAbbreviation": "CHA",
+      "homeTeamName": "Oklahoma City Thunder",
+      "awayParticipantLogo": "participants/KARMA.png",
+      "externalId": "NB151170625",
+      "homeParticipantName": "GRANDMASTER",
+      "awayTeamAbbreviation": "BOS",
       "groupName": null,
       "leagueId": null,
-      "fixtureExternalId": "NB103170625",
+      "fixtureExternalId": "NB151170625",
       "homeTeamExternalId": null,
       "tournamentId": 1,
-      "fixtureId": 237969,
-      "awayParticipantName": "HOLLOW",
-      "awayParticipantExternalId": "1268",
-      "homeTeamAbbreviation": "DAL",
-      "startDate": "2025-06-17T13:55:00Z",
+      "fixtureId": 237974,
+      "awayParticipantName": "KARMA",
+      "awayParticipantExternalId": "1006",
+      "homeTeamAbbreviation": "OKC",
+      "startDate": "2025-06-17T20:35:00Z",
       "leagueLogo": null,
-      "awayTeamId": 4,
-      "awayTeamLogo": "teams/CH.png",
+      "awayTeamId": 3,
+      "awayTeamLogo": "teams/Boston_Celtics.svg",
       "streamName": "Ebasketball 1",
-      "homeParticipantLogo": "participants/EXO.png?v=1738341274121"
+      "homeParticipantLogo": "participants/GRANDMASTER.png"
     }
   },
   {
-    "id": 237995,
+    "id": 237986,
     "homePlayer": {
-      "id": 14,
-      "name": "CARNAGE"
+      "id": 1369,
+      "name": "RAIN"
     },
     "awayPlayer": {
-      "id": 30,
-      "name": "RAMZ"
+      "id": 18,
+      "name": "OREZ"
+    },
+    "homeTeam": {
+      "id": 5,
+      "name": "Chicago Bulls"
+    },
+    "awayTeam": {
+      "id": 2,
+      "name": "Brooklyn Nets"
+    },
+    "fixtureStart": "2025-06-17T20:43:00Z",
+    "raw_data": {
+      "sport": "NBA",
+      "avaStreamId": "sis-nba-2",
+      "leagueName": null,
+      "awayParticipantId": 18,
+      "tournamentName": "Ebasketball H2H GG League",
+      "homeParticipantExternalId": "4674",
+      "fixtureStart": "2025-06-17T20:43:00Z",
+      "homeTeamId": 5,
+      "groupId": null,
+      "awayTeamName": "Brooklyn Nets",
+      "homeParticipantId": 1369,
+      "homeTeamLogo": "teams/CB.png",
+      "awayTeamExternalId": null,
+      "roundName": "Ebasketball H2H GG League round 1",
+      "roundId": 1,
+      "homeTeamName": "Chicago Bulls",
+      "awayParticipantLogo": "participants/OREZ .png",
+      "externalId": "NB191170625",
+      "homeParticipantName": "RAIN",
+      "awayTeamAbbreviation": "BKN",
+      "groupName": null,
+      "leagueId": null,
+      "fixtureExternalId": "NB191170625",
+      "homeTeamExternalId": null,
+      "tournamentId": 1,
+      "fixtureId": 237986,
+      "awayParticipantName": "OREZ",
+      "awayParticipantExternalId": "1021",
+      "homeTeamAbbreviation": "CHI",
+      "startDate": "2025-06-17T20:43:00Z",
+      "leagueLogo": null,
+      "awayTeamId": 2,
+      "awayTeamLogo": "teams/Brooklyn_Nets.svg",
+      "streamName": "Ebasketball 2",
+      "homeParticipantLogo": "participants/RAIN.png?v=1738582701414"
+    }
+  },
+  {
+    "id": 237893,
+    "homePlayer": {
+      "id": 1768,
+      "name": "PRODIGY"
+    },
+    "awayPlayer": {
+      "id": 24,
+      "name": "SAINT JR"
+    },
+    "homeTeam": {
+      "id": 5,
+      "name": "Chicago Bulls"
+    },
+    "awayTeam": {
+      "id": 2,
+      "name": "Brooklyn Nets"
+    },
+    "fixtureStart": "2025-06-17T20:51:00Z",
+    "raw_data": {
+      "sport": "NBA",
+      "avaStreamId": "sis-nba-3",
+      "leagueName": null,
+      "awayParticipantId": 24,
+      "tournamentName": "Ebasketball H2H GG League",
+      "homeParticipantExternalId": "4649",
+      "fixtureStart": "2025-06-17T20:51:00Z",
+      "homeTeamId": 5,
+      "groupId": null,
+      "awayTeamName": "Brooklyn Nets",
+      "homeParticipantId": 1768,
+      "homeTeamLogo": "teams/CB.png",
+      "awayTeamExternalId": null,
+      "roundName": "Ebasketball H2H GG League round 1",
+      "roundId": 1,
+      "homeTeamName": "Chicago Bulls",
+      "awayParticipantLogo": "participants/SAINT JR.png",
+      "externalId": "NB153170625",
+      "homeParticipantName": "PRODIGY",
+      "awayTeamAbbreviation": "BKN",
+      "groupName": null,
+      "leagueId": null,
+      "fixtureExternalId": "NB153170625",
+      "homeTeamExternalId": null,
+      "tournamentId": 1,
+      "fixtureId": 237893,
+      "awayParticipantName": "SAINT JR",
+      "awayParticipantExternalId": "1235",
+      "homeTeamAbbreviation": "CHI",
+      "startDate": "2025-06-17T20:51:00Z",
+      "leagueLogo": null,
+      "awayTeamId": 2,
+      "awayTeamLogo": "teams/Brooklyn_Nets.svg",
+      "streamName": "Ebasketball 3",
+      "homeParticipantLogo": "participants/PRODIGY.png?v=1742551982742"
+    }
+  },
+  {
+    "id": 237921,
+    "homePlayer": {
+      "id": 71,
+      "name": "HERMES"
+    },
+    "awayPlayer": {
+      "id": 1752,
+      "name": "MYTH"
+    },
+    "homeTeam": {
+      "id": 3,
+      "name": "Boston Celtics"
+    },
+    "awayTeam": {
+      "id": 20,
+      "name": "New York Knicks"
+    },
+    "fixtureStart": "2025-06-17T20:59:00Z",
+    "raw_data": {
+      "sport": "NBA",
+      "avaStreamId": "sis-nba-4",
+      "leagueName": null,
+      "awayParticipantId": 1752,
+      "tournamentName": "Ebasketball H2H GG League",
+      "homeParticipantExternalId": "1218",
+      "fixtureStart": "2025-06-17T20:59:00Z",
+      "homeTeamId": 3,
+      "groupId": null,
+      "awayTeamName": "New York Knicks",
+      "homeParticipantId": 71,
+      "homeTeamLogo": "teams/Boston_Celtics.svg",
+      "awayTeamExternalId": null,
+      "roundName": "Ebasketball H2H GG League round 1",
+      "roundId": 1,
+      "homeTeamName": "Boston Celtics",
+      "awayParticipantLogo": "participants/MYTH.png?v=1746800487376",
+      "externalId": "NB154170625",
+      "homeParticipantName": "HERMES",
+      "awayTeamAbbreviation": "NYK",
+      "groupName": null,
+      "leagueId": null,
+      "fixtureExternalId": "NB154170625",
+      "homeTeamExternalId": null,
+      "tournamentId": 1,
+      "fixtureId": 237921,
+      "awayParticipantName": "MYTH",
+      "awayParticipantExternalId": "4566",
+      "homeTeamAbbreviation": "BOS",
+      "startDate": "2025-06-17T20:59:00Z",
+      "leagueLogo": null,
+      "awayTeamId": 20,
+      "awayTeamLogo": "teams/NYK.png",
+      "streamName": "Ebasketball 4",
+      "homeParticipantLogo": "participants/HERMES.png"
+    }
+  },
+  {
+    "id": 237977,
+    "homePlayer": {
+      "id": 127,
+      "name": "FIVESTAR"
+    },
+    "awayPlayer": {
+      "id": 15,
+      "name": "KARMA"
+    },
+    "homeTeam": {
+      "id": 20,
+      "name": "New York Knicks"
+    },
+    "awayTeam": {
+      "id": 3,
+      "name": "Boston Celtics"
+    },
+    "fixtureStart": "2025-06-17T21:07:00Z",
+    "raw_data": {
+      "sport": "NBA",
+      "avaStreamId": "sis-nba-1",
+      "leagueName": null,
+      "awayParticipantId": 15,
+      "tournamentName": "Ebasketball H2H GG League",
+      "homeParticipantExternalId": "1257",
+      "fixtureStart": "2025-06-17T21:07:00Z",
+      "homeTeamId": 20,
+      "groupId": null,
+      "awayTeamName": "Boston Celtics",
+      "homeParticipantId": 127,
+      "homeTeamLogo": "teams/NYK.png",
+      "awayTeamExternalId": null,
+      "roundName": "Ebasketball H2H GG League round 1",
+      "roundId": 1,
+      "homeTeamName": "New York Knicks",
+      "awayParticipantLogo": "participants/KARMA.png",
+      "externalId": "NB155170625",
+      "homeParticipantName": "FIVESTAR",
+      "awayTeamAbbreviation": "BOS",
+      "groupName": null,
+      "leagueId": null,
+      "fixtureExternalId": "NB155170625",
+      "homeTeamExternalId": null,
+      "tournamentId": 1,
+      "fixtureId": 237977,
+      "awayParticipantName": "KARMA",
+      "awayParticipantExternalId": "1006",
+      "homeTeamAbbreviation": "NYK",
+      "startDate": "2025-06-17T21:07:00Z",
+      "leagueLogo": null,
+      "awayTeamId": 3,
+      "awayTeamLogo": "teams/Boston_Celtics.svg",
+      "streamName": "Ebasketball 1",
+      "homeParticipantLogo": "participants/FIVESTAR.png?v=1704987337806"
+    }
+  },
+  {
+    "id": 237991,
+    "homePlayer": {
+      "id": 31,
+      "name": "ENIGMA"
+    },
+    "awayPlayer": {
+      "id": 18,
+      "name": "OREZ"
+    },
+    "homeTeam": {
+      "id": 16,
+      "name": "Miami Heat"
+    },
+    "awayTeam": {
+      "id": 2,
+      "name": "Brooklyn Nets"
+    },
+    "fixtureStart": "2025-06-17T21:15:00Z",
+    "raw_data": {
+      "sport": "NBA",
+      "avaStreamId": "sis-nba-2",
+      "leagueName": null,
+      "awayParticipantId": 18,
+      "tournamentName": "Ebasketball H2H GG League",
+      "homeParticipantExternalId": "1082",
+      "fixtureStart": "2025-06-17T21:15:00Z",
+      "homeTeamId": 16,
+      "groupId": null,
+      "awayTeamName": "Brooklyn Nets",
+      "homeParticipantId": 31,
+      "homeTeamLogo": "teams/MH.png",
+      "awayTeamExternalId": null,
+      "roundName": "Ebasketball H2H GG League round 1",
+      "roundId": 1,
+      "homeTeamName": "Miami Heat",
+      "awayParticipantLogo": "participants/OREZ .png",
+      "externalId": "NB156170625",
+      "homeParticipantName": "ENIGMA",
+      "awayTeamAbbreviation": "BKN",
+      "groupName": null,
+      "leagueId": null,
+      "fixtureExternalId": "NB156170625",
+      "homeTeamExternalId": null,
+      "tournamentId": 1,
+      "fixtureId": 237991,
+      "awayParticipantName": "OREZ",
+      "awayParticipantExternalId": "1021",
+      "homeTeamAbbreviation": "MIA",
+      "startDate": "2025-06-17T21:15:00Z",
+      "leagueLogo": null,
+      "awayTeamId": 2,
+      "awayTeamLogo": "teams/Brooklyn_Nets.svg",
+      "streamName": "Ebasketball 2",
+      "homeParticipantLogo": "participants/ENIGMA.png"
+    }
+  },
+  {
+    "id": 237886,
+    "homePlayer": {
+      "id": 1468,
+      "name": "AVATAR"
+    },
+    "awayPlayer": {
+      "id": 24,
+      "name": "SAINT JR"
     },
     "homeTeam": {
       "id": 15,
@@ -2069,43 +758,1354 @@
       "id": 24,
       "name": "Phoenix Suns"
     },
-    "fixtureStart": "2025-06-17T14:03:00Z",
+    "fixtureStart": "2025-06-17T21:23:00Z",
     "raw_data": {
       "sport": "NBA",
-      "avaStreamId": "sis-nba-2",
+      "avaStreamId": "sis-nba-3",
       "leagueName": null,
-      "awayParticipantId": 30,
+      "awayParticipantId": 24,
       "tournamentName": "Ebasketball H2H GG League",
-      "homeParticipantExternalId": "1239",
-      "fixtureStart": "2025-06-17T14:03:00Z",
+      "homeParticipantExternalId": "4065",
+      "fixtureStart": "2025-06-17T21:23:00Z",
       "homeTeamId": 15,
       "groupId": null,
       "awayTeamName": "Phoenix Suns",
-      "homeParticipantId": 14,
+      "homeParticipantId": 1468,
       "homeTeamLogo": "teams/Memphis_Grizzlies.svg",
       "awayTeamExternalId": null,
       "roundName": "Ebasketball H2H GG League round 1",
       "roundId": 1,
       "homeTeamName": "Memphis Grizzlies",
-      "awayParticipantLogo": "participants/RAMZ.png?v=1692809974453",
-      "externalId": "NB185170625",
-      "homeParticipantName": "CARNAGE",
+      "awayParticipantLogo": "participants/SAINT JR.png",
+      "externalId": "NB157170625",
+      "homeParticipantName": "AVATAR",
       "awayTeamAbbreviation": "PHX",
       "groupName": null,
       "leagueId": null,
-      "fixtureExternalId": "NB185170625",
+      "fixtureExternalId": "NB157170625",
       "homeTeamExternalId": null,
       "tournamentId": 1,
-      "fixtureId": 237995,
-      "awayParticipantName": "RAMZ",
-      "awayParticipantExternalId": "1038",
+      "fixtureId": 237886,
+      "awayParticipantName": "SAINT JR",
+      "awayParticipantExternalId": "1235",
       "homeTeamAbbreviation": "MEM",
-      "startDate": "2025-06-17T14:03:00Z",
+      "startDate": "2025-06-17T21:23:00Z",
       "leagueLogo": null,
       "awayTeamId": 24,
       "awayTeamLogo": "teams/Phoenix_Suns.svg",
+      "streamName": "Ebasketball 3",
+      "homeParticipantLogo": "participants/AVATAR.png?v=1738339447393"
+    }
+  },
+  {
+    "id": 237915,
+    "homePlayer": {
+      "id": 2238,
+      "name": "BABYLON"
+    },
+    "awayPlayer": {
+      "id": 1752,
+      "name": "MYTH"
+    },
+    "homeTeam": {
+      "id": 7,
+      "name": "Dallas Mavericks"
+    },
+    "awayTeam": {
+      "id": 4,
+      "name": "Charlotte Hornets"
+    },
+    "fixtureStart": "2025-06-17T21:31:00Z",
+    "raw_data": {
+      "sport": "NBA",
+      "avaStreamId": "sis-nba-4",
+      "leagueName": null,
+      "awayParticipantId": 1752,
+      "tournamentName": "Ebasketball H2H GG League",
+      "homeParticipantExternalId": "4071",
+      "fixtureStart": "2025-06-17T21:31:00Z",
+      "homeTeamId": 7,
+      "groupId": null,
+      "awayTeamName": "Charlotte Hornets",
+      "homeParticipantId": 2238,
+      "homeTeamLogo": "teams/Dallas_Mavericks.svg",
+      "awayTeamExternalId": null,
+      "roundName": "Ebasketball H2H GG League round 1",
+      "roundId": 1,
+      "homeTeamName": "Dallas Mavericks",
+      "awayParticipantLogo": "participants/MYTH.png?v=1746800487376",
+      "externalId": "NB158170625",
+      "homeParticipantName": "BABYLON",
+      "awayTeamAbbreviation": "CHA",
+      "groupName": null,
+      "leagueId": null,
+      "fixtureExternalId": "NB158170625",
+      "homeTeamExternalId": null,
+      "tournamentId": 1,
+      "fixtureId": 237915,
+      "awayParticipantName": "MYTH",
+      "awayParticipantExternalId": "4566",
+      "homeTeamAbbreviation": "DAL",
+      "startDate": "2025-06-17T21:31:00Z",
+      "leagueLogo": null,
+      "awayTeamId": 4,
+      "awayTeamLogo": "teams/CH.png",
+      "streamName": "Ebasketball 4",
+      "homeParticipantLogo": "participants/BABYLON.png?v=1747227423884"
+    }
+  },
+  {
+    "id": 237970,
+    "homePlayer": {
+      "id": 127,
+      "name": "FIVESTAR"
+    },
+    "awayPlayer": {
+      "id": 37,
+      "name": "GRANDMASTER"
+    },
+    "homeTeam": {
+      "id": 20,
+      "name": "New York Knicks"
+    },
+    "awayTeam": {
+      "id": 21,
+      "name": "Oklahoma City Thunder"
+    },
+    "fixtureStart": "2025-06-17T21:39:00Z",
+    "raw_data": {
+      "sport": "NBA",
+      "avaStreamId": "sis-nba-1",
+      "leagueName": null,
+      "awayParticipantId": 37,
+      "tournamentName": "Ebasketball H2H GG League",
+      "homeParticipantExternalId": "1257",
+      "fixtureStart": "2025-06-17T21:39:00Z",
+      "homeTeamId": 20,
+      "groupId": null,
+      "awayTeamName": "Oklahoma City Thunder",
+      "homeParticipantId": 127,
+      "homeTeamLogo": "teams/NYK.png",
+      "awayTeamExternalId": null,
+      "roundName": "Ebasketball H2H GG League round 1",
+      "roundId": 1,
+      "homeTeamName": "New York Knicks",
+      "awayParticipantLogo": "participants/GRANDMASTER.png",
+      "externalId": "NB159170625",
+      "homeParticipantName": "FIVESTAR",
+      "awayTeamAbbreviation": "OKC",
+      "groupName": null,
+      "leagueId": null,
+      "fixtureExternalId": "NB159170625",
+      "homeTeamExternalId": null,
+      "tournamentId": 1,
+      "fixtureId": 237970,
+      "awayParticipantName": "GRANDMASTER",
+      "awayParticipantExternalId": "1004",
+      "homeTeamAbbreviation": "NYK",
+      "startDate": "2025-06-17T21:39:00Z",
+      "leagueLogo": null,
+      "awayTeamId": 21,
+      "awayTeamLogo": "teams/OKC.png",
+      "streamName": "Ebasketball 1",
+      "homeParticipantLogo": "participants/FIVESTAR.png?v=1704987337806"
+    }
+  },
+  {
+    "id": 238011,
+    "homePlayer": {
+      "id": 31,
+      "name": "ENIGMA"
+    },
+    "awayPlayer": {
+      "id": 1369,
+      "name": "RAIN"
+    },
+    "homeTeam": {
+      "id": 16,
+      "name": "Miami Heat"
+    },
+    "awayTeam": {
+      "id": 5,
+      "name": "Chicago Bulls"
+    },
+    "fixtureStart": "2025-06-17T21:47:00Z",
+    "raw_data": {
+      "sport": "NBA",
+      "avaStreamId": "sis-nba-2",
+      "leagueName": null,
+      "awayParticipantId": 1369,
+      "tournamentName": "Ebasketball H2H GG League",
+      "homeParticipantExternalId": "1082",
+      "fixtureStart": "2025-06-17T21:47:00Z",
+      "homeTeamId": 16,
+      "groupId": null,
+      "awayTeamName": "Chicago Bulls",
+      "homeParticipantId": 31,
+      "homeTeamLogo": "teams/MH.png",
+      "awayTeamExternalId": null,
+      "roundName": "Ebasketball H2H GG League round 1",
+      "roundId": 1,
+      "homeTeamName": "Miami Heat",
+      "awayParticipantLogo": "participants/RAIN.png?v=1738582701414",
+      "externalId": "NB192170625",
+      "homeParticipantName": "ENIGMA",
+      "awayTeamAbbreviation": "CHI",
+      "groupName": null,
+      "leagueId": null,
+      "fixtureExternalId": "NB192170625",
+      "homeTeamExternalId": null,
+      "tournamentId": 1,
+      "fixtureId": 238011,
+      "awayParticipantName": "RAIN",
+      "awayParticipantExternalId": "4674",
+      "homeTeamAbbreviation": "MIA",
+      "startDate": "2025-06-17T21:47:00Z",
+      "leagueLogo": null,
+      "awayTeamId": 5,
+      "awayTeamLogo": "teams/CB.png",
       "streamName": "Ebasketball 2",
-      "homeParticipantLogo": "participants/CARNAGE.png?v=1694789076640"
+      "homeParticipantLogo": "participants/ENIGMA.png"
+    }
+  },
+  {
+    "id": 237896,
+    "homePlayer": {
+      "id": 1468,
+      "name": "AVATAR"
+    },
+    "awayPlayer": {
+      "id": 1768,
+      "name": "PRODIGY"
+    },
+    "homeTeam": {
+      "id": 16,
+      "name": "Miami Heat"
+    },
+    "awayTeam": {
+      "id": 5,
+      "name": "Chicago Bulls"
+    },
+    "fixtureStart": "2025-06-17T21:55:00Z",
+    "raw_data": {
+      "sport": "NBA",
+      "avaStreamId": "sis-nba-3",
+      "leagueName": null,
+      "awayParticipantId": 1768,
+      "tournamentName": "Ebasketball H2H GG League",
+      "homeParticipantExternalId": "4065",
+      "fixtureStart": "2025-06-17T21:55:00Z",
+      "homeTeamId": 16,
+      "groupId": null,
+      "awayTeamName": "Chicago Bulls",
+      "homeParticipantId": 1468,
+      "homeTeamLogo": "teams/MH.png",
+      "awayTeamExternalId": null,
+      "roundName": "Ebasketball H2H GG League round 1",
+      "roundId": 1,
+      "homeTeamName": "Miami Heat",
+      "awayParticipantLogo": "participants/PRODIGY.png?v=1742551982742",
+      "externalId": "NB161170625",
+      "homeParticipantName": "AVATAR",
+      "awayTeamAbbreviation": "CHI",
+      "groupName": null,
+      "leagueId": null,
+      "fixtureExternalId": "NB161170625",
+      "homeTeamExternalId": null,
+      "tournamentId": 1,
+      "fixtureId": 237896,
+      "awayParticipantName": "PRODIGY",
+      "awayParticipantExternalId": "4649",
+      "homeTeamAbbreviation": "MIA",
+      "startDate": "2025-06-17T21:55:00Z",
+      "leagueLogo": null,
+      "awayTeamId": 5,
+      "awayTeamLogo": "teams/CB.png",
+      "streamName": "Ebasketball 3",
+      "homeParticipantLogo": "participants/AVATAR.png?v=1738339447393"
+    }
+  },
+  {
+    "id": 237935,
+    "homePlayer": {
+      "id": 2238,
+      "name": "BABYLON"
+    },
+    "awayPlayer": {
+      "id": 71,
+      "name": "HERMES"
+    },
+    "homeTeam": {
+      "id": 21,
+      "name": "Oklahoma City Thunder"
+    },
+    "awayTeam": {
+      "id": 3,
+      "name": "Boston Celtics"
+    },
+    "fixtureStart": "2025-06-17T22:03:00Z",
+    "raw_data": {
+      "sport": "NBA",
+      "avaStreamId": "sis-nba-4",
+      "leagueName": null,
+      "awayParticipantId": 71,
+      "tournamentName": "Ebasketball H2H GG League",
+      "homeParticipantExternalId": "4071",
+      "fixtureStart": "2025-06-17T22:03:00Z",
+      "homeTeamId": 21,
+      "groupId": null,
+      "awayTeamName": "Boston Celtics",
+      "homeParticipantId": 2238,
+      "homeTeamLogo": "teams/OKC.png",
+      "awayTeamExternalId": null,
+      "roundName": "Ebasketball H2H GG League round 1",
+      "roundId": 1,
+      "homeTeamName": "Oklahoma City Thunder",
+      "awayParticipantLogo": "participants/HERMES.png",
+      "externalId": "NB162170625",
+      "homeParticipantName": "BABYLON",
+      "awayTeamAbbreviation": "BOS",
+      "groupName": null,
+      "leagueId": null,
+      "fixtureExternalId": "NB162170625",
+      "homeTeamExternalId": null,
+      "tournamentId": 1,
+      "fixtureId": 237935,
+      "awayParticipantName": "HERMES",
+      "awayParticipantExternalId": "1218",
+      "homeTeamAbbreviation": "OKC",
+      "startDate": "2025-06-17T22:03:00Z",
+      "leagueLogo": null,
+      "awayTeamId": 3,
+      "awayTeamLogo": "teams/Boston_Celtics.svg",
+      "streamName": "Ebasketball 4",
+      "homeParticipantLogo": "participants/BABYLON.png?v=1747227423884"
+    }
+  },
+  {
+    "id": 237979,
+    "homePlayer": {
+      "id": 15,
+      "name": "KARMA"
+    },
+    "awayPlayer": {
+      "id": 22,
+      "name": "HUNCHO"
+    },
+    "homeTeam": {
+      "id": 3,
+      "name": "Boston Celtics"
+    },
+    "awayTeam": {
+      "id": 14,
+      "name": "Los Angeles Lakers"
+    },
+    "fixtureStart": "2025-06-17T22:11:00Z",
+    "raw_data": {
+      "sport": "NBA",
+      "avaStreamId": "sis-nba-1",
+      "leagueName": null,
+      "awayParticipantId": 22,
+      "tournamentName": "Ebasketball H2H GG League",
+      "homeParticipantExternalId": "1006",
+      "fixtureStart": "2025-06-17T22:11:00Z",
+      "homeTeamId": 3,
+      "groupId": null,
+      "awayTeamName": "Los Angeles Lakers",
+      "homeParticipantId": 15,
+      "homeTeamLogo": "teams/Boston_Celtics.svg",
+      "awayTeamExternalId": null,
+      "roundName": "Ebasketball H2H GG League round 1",
+      "roundId": 1,
+      "homeTeamName": "Boston Celtics",
+      "awayParticipantLogo": "participants/HUNCHO.png",
+      "externalId": "NB163170625",
+      "homeParticipantName": "KARMA",
+      "awayTeamAbbreviation": "LAL",
+      "groupName": null,
+      "leagueId": null,
+      "fixtureExternalId": "NB163170625",
+      "homeTeamExternalId": null,
+      "tournamentId": 1,
+      "fixtureId": 237979,
+      "awayParticipantName": "HUNCHO",
+      "awayParticipantExternalId": "1080",
+      "homeTeamAbbreviation": "BOS",
+      "startDate": "2025-06-17T22:11:00Z",
+      "leagueLogo": null,
+      "awayTeamId": 14,
+      "awayTeamLogo": "teams/Los_Angeles_Lakers.svg",
+      "streamName": "Ebasketball 1",
+      "homeParticipantLogo": "participants/KARMA.png"
+    }
+  },
+  {
+    "id": 238001,
+    "homePlayer": {
+      "id": 18,
+      "name": "OREZ"
+    },
+    "awayPlayer": {
+      "id": 1369,
+      "name": "RAIN"
+    },
+    "homeTeam": {
+      "id": 2,
+      "name": "Brooklyn Nets"
+    },
+    "awayTeam": {
+      "id": 5,
+      "name": "Chicago Bulls"
+    },
+    "fixtureStart": "2025-06-17T22:19:00Z",
+    "raw_data": {
+      "sport": "NBA",
+      "avaStreamId": "sis-nba-2",
+      "leagueName": null,
+      "awayParticipantId": 1369,
+      "tournamentName": "Ebasketball H2H GG League",
+      "homeParticipantExternalId": "1021",
+      "fixtureStart": "2025-06-17T22:19:00Z",
+      "homeTeamId": 2,
+      "groupId": null,
+      "awayTeamName": "Chicago Bulls",
+      "homeParticipantId": 18,
+      "homeTeamLogo": "teams/Brooklyn_Nets.svg",
+      "awayTeamExternalId": null,
+      "roundName": "Ebasketball H2H GG League round 1",
+      "roundId": 1,
+      "homeTeamName": "Brooklyn Nets",
+      "awayParticipantLogo": "participants/RAIN.png?v=1738582701414",
+      "externalId": "NB164170625",
+      "homeParticipantName": "OREZ",
+      "awayTeamAbbreviation": "CHI",
+      "groupName": null,
+      "leagueId": null,
+      "fixtureExternalId": "NB164170625",
+      "homeTeamExternalId": null,
+      "tournamentId": 1,
+      "fixtureId": 238001,
+      "awayParticipantName": "RAIN",
+      "awayParticipantExternalId": "4674",
+      "homeTeamAbbreviation": "BKN",
+      "startDate": "2025-06-17T22:19:00Z",
+      "leagueLogo": null,
+      "awayTeamId": 5,
+      "awayTeamLogo": "teams/CB.png",
+      "streamName": "Ebasketball 2",
+      "homeParticipantLogo": "participants/OREZ .png"
+    }
+  },
+  {
+    "id": 237897,
+    "homePlayer": {
+      "id": 24,
+      "name": "SAINT JR"
+    },
+    "awayPlayer": {
+      "id": 183,
+      "name": "ARCHITECT"
+    },
+    "homeTeam": {
+      "id": 24,
+      "name": "Phoenix Suns"
+    },
+    "awayTeam": {
+      "id": 17,
+      "name": "Milwaukee Bucks"
+    },
+    "fixtureStart": "2025-06-17T22:27:00Z",
+    "raw_data": {
+      "sport": "NBA",
+      "avaStreamId": "sis-nba-3",
+      "leagueName": null,
+      "awayParticipantId": 183,
+      "tournamentName": "Ebasketball H2H GG League",
+      "homeParticipantExternalId": "1235",
+      "fixtureStart": "2025-06-17T22:27:00Z",
+      "homeTeamId": 24,
+      "groupId": null,
+      "awayTeamName": "Milwaukee Bucks",
+      "homeParticipantId": 24,
+      "homeTeamLogo": "teams/Phoenix_Suns.svg",
+      "awayTeamExternalId": null,
+      "roundName": "Ebasketball H2H GG League round 1",
+      "roundId": 1,
+      "homeTeamName": "Phoenix Suns",
+      "awayParticipantLogo": "participants/ARCHITECT.png?v=1716799043340",
+      "externalId": "NB165170625",
+      "homeParticipantName": "SAINT JR",
+      "awayTeamAbbreviation": "MIL",
+      "groupName": null,
+      "leagueId": null,
+      "fixtureExternalId": "NB165170625",
+      "homeTeamExternalId": null,
+      "tournamentId": 1,
+      "fixtureId": 237897,
+      "awayParticipantName": "ARCHITECT",
+      "awayParticipantExternalId": "3093",
+      "homeTeamAbbreviation": "PHX",
+      "startDate": "2025-06-17T22:27:00Z",
+      "leagueLogo": null,
+      "awayTeamId": 17,
+      "awayTeamLogo": "teams/Milwaukee_Bucks.svg",
+      "streamName": "Ebasketball 3",
+      "homeParticipantLogo": "participants/SAINT JR.png"
+    }
+  },
+  {
+    "id": 237941,
+    "homePlayer": {
+      "id": 1752,
+      "name": "MYTH"
+    },
+    "awayPlayer": {
+      "id": 113,
+      "name": "BRAZEN"
+    },
+    "homeTeam": {
+      "id": 4,
+      "name": "Charlotte Hornets"
+    },
+    "awayTeam": {
+      "id": 8,
+      "name": "Denver Nuggets"
+    },
+    "fixtureStart": "2025-06-17T22:35:00Z",
+    "raw_data": {
+      "sport": "NBA",
+      "avaStreamId": "sis-nba-4",
+      "leagueName": null,
+      "awayParticipantId": 113,
+      "tournamentName": "Ebasketball H2H GG League",
+      "homeParticipantExternalId": "4566",
+      "fixtureStart": "2025-06-17T22:35:00Z",
+      "homeTeamId": 4,
+      "groupId": null,
+      "awayTeamName": "Denver Nuggets",
+      "homeParticipantId": 1752,
+      "homeTeamLogo": "teams/CH.png",
+      "awayTeamExternalId": null,
+      "roundName": "Ebasketball H2H GG League round 1",
+      "roundId": 1,
+      "homeTeamName": "Charlotte Hornets",
+      "awayParticipantLogo": "participants/BRAZEN.png?v=1695200050713",
+      "externalId": "NB166170625",
+      "homeParticipantName": "MYTH",
+      "awayTeamAbbreviation": "DEN",
+      "groupName": null,
+      "leagueId": null,
+      "fixtureExternalId": "NB166170625",
+      "homeTeamExternalId": null,
+      "tournamentId": 1,
+      "fixtureId": 237941,
+      "awayParticipantName": "BRAZEN",
+      "awayParticipantExternalId": "1249",
+      "homeTeamAbbreviation": "CHA",
+      "startDate": "2025-06-17T22:35:00Z",
+      "leagueLogo": null,
+      "awayTeamId": 8,
+      "awayTeamLogo": "teams/DN.png",
+      "streamName": "Ebasketball 4",
+      "homeParticipantLogo": "participants/MYTH.png?v=1746800487376"
+    }
+  },
+  {
+    "id": 237976,
+    "homePlayer": {
+      "id": 127,
+      "name": "FIVESTAR"
+    },
+    "awayPlayer": {
+      "id": 22,
+      "name": "HUNCHO"
+    },
+    "homeTeam": {
+      "id": 20,
+      "name": "New York Knicks"
+    },
+    "awayTeam": {
+      "id": 14,
+      "name": "Los Angeles Lakers"
+    },
+    "fixtureStart": "2025-06-17T22:43:00Z",
+    "raw_data": {
+      "sport": "NBA",
+      "avaStreamId": "sis-nba-1",
+      "leagueName": null,
+      "awayParticipantId": 22,
+      "tournamentName": "Ebasketball H2H GG League",
+      "homeParticipantExternalId": "1257",
+      "fixtureStart": "2025-06-17T22:43:00Z",
+      "homeTeamId": 20,
+      "groupId": null,
+      "awayTeamName": "Los Angeles Lakers",
+      "homeParticipantId": 127,
+      "homeTeamLogo": "teams/NYK.png",
+      "awayTeamExternalId": null,
+      "roundName": "Ebasketball H2H GG League round 1",
+      "roundId": 1,
+      "homeTeamName": "New York Knicks",
+      "awayParticipantLogo": "participants/HUNCHO.png",
+      "externalId": "NB167170625",
+      "homeParticipantName": "FIVESTAR",
+      "awayTeamAbbreviation": "LAL",
+      "groupName": null,
+      "leagueId": null,
+      "fixtureExternalId": "NB167170625",
+      "homeTeamExternalId": null,
+      "tournamentId": 1,
+      "fixtureId": 237976,
+      "awayParticipantName": "HUNCHO",
+      "awayParticipantExternalId": "1080",
+      "homeTeamAbbreviation": "NYK",
+      "startDate": "2025-06-17T22:43:00Z",
+      "leagueLogo": null,
+      "awayTeamId": 14,
+      "awayTeamLogo": "teams/Los_Angeles_Lakers.svg",
+      "streamName": "Ebasketball 1",
+      "homeParticipantLogo": "participants/FIVESTAR.png?v=1704987337806"
+    }
+  },
+  {
+    "id": 237997,
+    "homePlayer": {
+      "id": 31,
+      "name": "ENIGMA"
+    },
+    "awayPlayer": {
+      "id": 1369,
+      "name": "RAIN"
+    },
+    "homeTeam": {
+      "id": 16,
+      "name": "Miami Heat"
+    },
+    "awayTeam": {
+      "id": 5,
+      "name": "Chicago Bulls"
+    },
+    "fixtureStart": "2025-06-17T22:51:00Z",
+    "raw_data": {
+      "sport": "NBA",
+      "avaStreamId": "sis-nba-2",
+      "leagueName": null,
+      "awayParticipantId": 1369,
+      "tournamentName": "Ebasketball H2H GG League",
+      "homeParticipantExternalId": "1082",
+      "fixtureStart": "2025-06-17T22:51:00Z",
+      "homeTeamId": 16,
+      "groupId": null,
+      "awayTeamName": "Chicago Bulls",
+      "homeParticipantId": 31,
+      "homeTeamLogo": "teams/MH.png",
+      "awayTeamExternalId": null,
+      "roundName": "Ebasketball H2H GG League round 1",
+      "roundId": 1,
+      "homeTeamName": "Miami Heat",
+      "awayParticipantLogo": "participants/RAIN.png?v=1738582701414",
+      "externalId": "NB168170625",
+      "homeParticipantName": "ENIGMA",
+      "awayTeamAbbreviation": "CHI",
+      "groupName": null,
+      "leagueId": null,
+      "fixtureExternalId": "NB168170625",
+      "homeTeamExternalId": null,
+      "tournamentId": 1,
+      "fixtureId": 237997,
+      "awayParticipantName": "RAIN",
+      "awayParticipantExternalId": "4674",
+      "homeTeamAbbreviation": "MIA",
+      "startDate": "2025-06-17T22:51:00Z",
+      "leagueLogo": null,
+      "awayTeamId": 5,
+      "awayTeamLogo": "teams/CB.png",
+      "streamName": "Ebasketball 2",
+      "homeParticipantLogo": "participants/ENIGMA.png"
+    }
+  },
+  {
+    "id": 237890,
+    "homePlayer": {
+      "id": 1468,
+      "name": "AVATAR"
+    },
+    "awayPlayer": {
+      "id": 183,
+      "name": "ARCHITECT"
+    },
+    "homeTeam": {
+      "id": 16,
+      "name": "Miami Heat"
+    },
+    "awayTeam": {
+      "id": 28,
+      "name": "Toronto Raptors"
+    },
+    "fixtureStart": "2025-06-17T22:59:00Z",
+    "raw_data": {
+      "sport": "NBA",
+      "avaStreamId": "sis-nba-3",
+      "leagueName": null,
+      "awayParticipantId": 183,
+      "tournamentName": "Ebasketball H2H GG League",
+      "homeParticipantExternalId": "4065",
+      "fixtureStart": "2025-06-17T22:59:00Z",
+      "homeTeamId": 16,
+      "groupId": null,
+      "awayTeamName": "Toronto Raptors",
+      "homeParticipantId": 1468,
+      "homeTeamLogo": "teams/MH.png",
+      "awayTeamExternalId": null,
+      "roundName": "Ebasketball H2H GG League round 1",
+      "roundId": 1,
+      "homeTeamName": "Miami Heat",
+      "awayParticipantLogo": "participants/ARCHITECT.png?v=1716799043340",
+      "externalId": "NB169170625",
+      "homeParticipantName": "AVATAR",
+      "awayTeamAbbreviation": "TOR",
+      "groupName": null,
+      "leagueId": null,
+      "fixtureExternalId": "NB169170625",
+      "homeTeamExternalId": null,
+      "tournamentId": 1,
+      "fixtureId": 237890,
+      "awayParticipantName": "ARCHITECT",
+      "awayParticipantExternalId": "3093",
+      "homeTeamAbbreviation": "MIA",
+      "startDate": "2025-06-17T22:59:00Z",
+      "leagueLogo": null,
+      "awayTeamId": 28,
+      "awayTeamLogo": "teams/TR.svg",
+      "streamName": "Ebasketball 3",
+      "homeParticipantLogo": "participants/AVATAR.png?v=1738339447393"
+    }
+  },
+  {
+    "id": 237925,
+    "homePlayer": {
+      "id": 2238,
+      "name": "BABYLON"
+    },
+    "awayPlayer": {
+      "id": 113,
+      "name": "BRAZEN"
+    },
+    "homeTeam": {
+      "id": 21,
+      "name": "Oklahoma City Thunder"
+    },
+    "awayTeam": {
+      "id": 14,
+      "name": "Los Angeles Lakers"
+    },
+    "fixtureStart": "2025-06-17T23:07:00Z",
+    "raw_data": {
+      "sport": "NBA",
+      "avaStreamId": "sis-nba-4",
+      "leagueName": null,
+      "awayParticipantId": 113,
+      "tournamentName": "Ebasketball H2H GG League",
+      "homeParticipantExternalId": "4071",
+      "fixtureStart": "2025-06-17T23:07:00Z",
+      "homeTeamId": 21,
+      "groupId": null,
+      "awayTeamName": "Los Angeles Lakers",
+      "homeParticipantId": 2238,
+      "homeTeamLogo": "teams/OKC.png",
+      "awayTeamExternalId": null,
+      "roundName": "Ebasketball H2H GG League round 1",
+      "roundId": 1,
+      "homeTeamName": "Oklahoma City Thunder",
+      "awayParticipantLogo": "participants/BRAZEN.png?v=1695200050713",
+      "externalId": "NB170170625",
+      "homeParticipantName": "BABYLON",
+      "awayTeamAbbreviation": "LAL",
+      "groupName": null,
+      "leagueId": null,
+      "fixtureExternalId": "NB170170625",
+      "homeTeamExternalId": null,
+      "tournamentId": 1,
+      "fixtureId": 237925,
+      "awayParticipantName": "BRAZEN",
+      "awayParticipantExternalId": "1249",
+      "homeTeamAbbreviation": "OKC",
+      "startDate": "2025-06-17T23:07:00Z",
+      "leagueLogo": null,
+      "awayTeamId": 14,
+      "awayTeamLogo": "teams/Los_Angeles_Lakers.svg",
+      "streamName": "Ebasketball 4",
+      "homeParticipantLogo": "participants/BABYLON.png?v=1747227423884"
+    }
+  },
+  {
+    "id": 237949,
+    "homePlayer": {
+      "id": 15,
+      "name": "KARMA"
+    },
+    "awayPlayer": {
+      "id": 37,
+      "name": "GRANDMASTER"
+    },
+    "homeTeam": {
+      "id": 3,
+      "name": "Boston Celtics"
+    },
+    "awayTeam": {
+      "id": 21,
+      "name": "Oklahoma City Thunder"
+    },
+    "fixtureStart": "2025-06-17T23:15:00Z",
+    "raw_data": {
+      "sport": "NBA",
+      "avaStreamId": "sis-nba-1",
+      "leagueName": null,
+      "awayParticipantId": 37,
+      "tournamentName": "Ebasketball H2H GG League",
+      "homeParticipantExternalId": "1006",
+      "fixtureStart": "2025-06-17T23:15:00Z",
+      "homeTeamId": 3,
+      "groupId": null,
+      "awayTeamName": "Oklahoma City Thunder",
+      "homeParticipantId": 15,
+      "homeTeamLogo": "teams/Boston_Celtics.svg",
+      "awayTeamExternalId": null,
+      "roundName": "Ebasketball H2H GG League round 1",
+      "roundId": 1,
+      "homeTeamName": "Boston Celtics",
+      "awayParticipantLogo": "participants/GRANDMASTER.png",
+      "externalId": "NB171170625",
+      "homeParticipantName": "KARMA",
+      "awayTeamAbbreviation": "OKC",
+      "groupName": null,
+      "leagueId": null,
+      "fixtureExternalId": "NB171170625",
+      "homeTeamExternalId": null,
+      "tournamentId": 1,
+      "fixtureId": 237949,
+      "awayParticipantName": "GRANDMASTER",
+      "awayParticipantExternalId": "1004",
+      "homeTeamAbbreviation": "BOS",
+      "startDate": "2025-06-17T23:15:00Z",
+      "leagueLogo": null,
+      "awayTeamId": 21,
+      "awayTeamLogo": "teams/OKC.png",
+      "streamName": "Ebasketball 1",
+      "homeParticipantLogo": "participants/KARMA.png"
+    }
+  },
+  {
+    "id": 238003,
+    "homePlayer": {
+      "id": 18,
+      "name": "OREZ"
+    },
+    "awayPlayer": {
+      "id": 31,
+      "name": "ENIGMA"
+    },
+    "homeTeam": {
+      "id": 2,
+      "name": "Brooklyn Nets"
+    },
+    "awayTeam": {
+      "id": 16,
+      "name": "Miami Heat"
+    },
+    "fixtureStart": "2025-06-17T23:23:00Z",
+    "raw_data": {
+      "sport": "NBA",
+      "avaStreamId": "sis-nba-2",
+      "leagueName": null,
+      "awayParticipantId": 31,
+      "tournamentName": "Ebasketball H2H GG League",
+      "homeParticipantExternalId": "1021",
+      "fixtureStart": "2025-06-17T23:23:00Z",
+      "homeTeamId": 2,
+      "groupId": null,
+      "awayTeamName": "Miami Heat",
+      "homeParticipantId": 18,
+      "homeTeamLogo": "teams/Brooklyn_Nets.svg",
+      "awayTeamExternalId": null,
+      "roundName": "Ebasketball H2H GG League round 1",
+      "roundId": 1,
+      "homeTeamName": "Brooklyn Nets",
+      "awayParticipantLogo": "participants/ENIGMA.png",
+      "externalId": "NB193170625",
+      "homeParticipantName": "OREZ",
+      "awayTeamAbbreviation": "MIA",
+      "groupName": null,
+      "leagueId": null,
+      "fixtureExternalId": "NB193170625",
+      "homeTeamExternalId": null,
+      "tournamentId": 1,
+      "fixtureId": 238003,
+      "awayParticipantName": "ENIGMA",
+      "awayParticipantExternalId": "1082",
+      "homeTeamAbbreviation": "BKN",
+      "startDate": "2025-06-17T23:23:00Z",
+      "leagueLogo": null,
+      "awayTeamId": 16,
+      "awayTeamLogo": "teams/MH.png",
+      "streamName": "Ebasketball 2",
+      "homeParticipantLogo": "participants/OREZ .png"
+    }
+  },
+  {
+    "id": 237887,
+    "homePlayer": {
+      "id": 24,
+      "name": "SAINT JR"
+    },
+    "awayPlayer": {
+      "id": 1768,
+      "name": "PRODIGY"
+    },
+    "homeTeam": {
+      "id": 24,
+      "name": "Phoenix Suns"
+    },
+    "awayTeam": {
+      "id": 6,
+      "name": "Cleveland Cavaliers"
+    },
+    "fixtureStart": "2025-06-17T23:31:00Z",
+    "raw_data": {
+      "sport": "NBA",
+      "avaStreamId": "sis-nba-3",
+      "leagueName": null,
+      "awayParticipantId": 1768,
+      "tournamentName": "Ebasketball H2H GG League",
+      "homeParticipantExternalId": "1235",
+      "fixtureStart": "2025-06-17T23:31:00Z",
+      "homeTeamId": 24,
+      "groupId": null,
+      "awayTeamName": "Cleveland Cavaliers",
+      "homeParticipantId": 24,
+      "homeTeamLogo": "teams/Phoenix_Suns.svg",
+      "awayTeamExternalId": null,
+      "roundName": "Ebasketball H2H GG League round 1",
+      "roundId": 1,
+      "homeTeamName": "Phoenix Suns",
+      "awayParticipantLogo": "participants/PRODIGY.png?v=1742551982742",
+      "externalId": "NB173170625",
+      "homeParticipantName": "SAINT JR",
+      "awayTeamAbbreviation": "CLE",
+      "groupName": null,
+      "leagueId": null,
+      "fixtureExternalId": "NB173170625",
+      "homeTeamExternalId": null,
+      "tournamentId": 1,
+      "fixtureId": 237887,
+      "awayParticipantName": "PRODIGY",
+      "awayParticipantExternalId": "4649",
+      "homeTeamAbbreviation": "PHX",
+      "startDate": "2025-06-17T23:31:00Z",
+      "leagueLogo": null,
+      "awayTeamId": 6,
+      "awayTeamLogo": "teams/Cleveland_Cavaliers.svg",
+      "streamName": "Ebasketball 3",
+      "homeParticipantLogo": "participants/SAINT JR.png"
+    }
+  },
+  {
+    "id": 237923,
+    "homePlayer": {
+      "id": 1752,
+      "name": "MYTH"
+    },
+    "awayPlayer": {
+      "id": 71,
+      "name": "HERMES"
+    },
+    "homeTeam": {
+      "id": 4,
+      "name": "Charlotte Hornets"
+    },
+    "awayTeam": {
+      "id": 22,
+      "name": "Orlando Magic"
+    },
+    "fixtureStart": "2025-06-17T23:39:00Z",
+    "raw_data": {
+      "sport": "NBA",
+      "avaStreamId": "sis-nba-4",
+      "leagueName": null,
+      "awayParticipantId": 71,
+      "tournamentName": "Ebasketball H2H GG League",
+      "homeParticipantExternalId": "4566",
+      "fixtureStart": "2025-06-17T23:39:00Z",
+      "homeTeamId": 4,
+      "groupId": null,
+      "awayTeamName": "Orlando Magic",
+      "homeParticipantId": 1752,
+      "homeTeamLogo": "teams/CH.png",
+      "awayTeamExternalId": null,
+      "roundName": "Ebasketball H2H GG League round 1",
+      "roundId": 1,
+      "homeTeamName": "Charlotte Hornets",
+      "awayParticipantLogo": "participants/HERMES.png",
+      "externalId": "NB174170625",
+      "homeParticipantName": "MYTH",
+      "awayTeamAbbreviation": "ORL",
+      "groupName": null,
+      "leagueId": null,
+      "fixtureExternalId": "NB174170625",
+      "homeTeamExternalId": null,
+      "tournamentId": 1,
+      "fixtureId": 237923,
+      "awayParticipantName": "HERMES",
+      "awayParticipantExternalId": "1218",
+      "homeTeamAbbreviation": "CHA",
+      "startDate": "2025-06-17T23:39:00Z",
+      "leagueLogo": null,
+      "awayTeamId": 22,
+      "awayTeamLogo": "teams/OM.png",
+      "streamName": "Ebasketball 4",
+      "homeParticipantLogo": "participants/MYTH.png?v=1746800487376"
+    }
+  },
+  {
+    "id": 237963,
+    "homePlayer": {
+      "id": 37,
+      "name": "GRANDMASTER"
+    },
+    "awayPlayer": {
+      "id": 22,
+      "name": "HUNCHO"
+    },
+    "homeTeam": {
+      "id": 8,
+      "name": "Denver Nuggets"
+    },
+    "awayTeam": {
+      "id": 7,
+      "name": "Dallas Mavericks"
+    },
+    "fixtureStart": "2025-06-17T23:47:00Z",
+    "raw_data": {
+      "sport": "NBA",
+      "avaStreamId": "sis-nba-1",
+      "leagueName": null,
+      "awayParticipantId": 22,
+      "tournamentName": "Ebasketball H2H GG League",
+      "homeParticipantExternalId": "1004",
+      "fixtureStart": "2025-06-17T23:47:00Z",
+      "homeTeamId": 8,
+      "groupId": null,
+      "awayTeamName": "Dallas Mavericks",
+      "homeParticipantId": 37,
+      "homeTeamLogo": "teams/DN.png",
+      "awayTeamExternalId": null,
+      "roundName": "Ebasketball H2H GG League round 1",
+      "roundId": 1,
+      "homeTeamName": "Denver Nuggets",
+      "awayParticipantLogo": "participants/HUNCHO.png",
+      "externalId": "NB175170625",
+      "homeParticipantName": "GRANDMASTER",
+      "awayTeamAbbreviation": "DAL",
+      "groupName": null,
+      "leagueId": null,
+      "fixtureExternalId": "NB175170625",
+      "homeTeamExternalId": null,
+      "tournamentId": 1,
+      "fixtureId": 237963,
+      "awayParticipantName": "HUNCHO",
+      "awayParticipantExternalId": "1080",
+      "homeTeamAbbreviation": "DEN",
+      "startDate": "2025-06-17T23:47:00Z",
+      "leagueLogo": null,
+      "awayTeamId": 7,
+      "awayTeamLogo": "teams/Dallas_Mavericks.svg",
+      "streamName": "Ebasketball 1",
+      "homeParticipantLogo": "participants/GRANDMASTER.png"
+    }
+  },
+  {
+    "id": 238012,
+    "homePlayer": {
+      "id": 18,
+      "name": "OREZ"
+    },
+    "awayPlayer": {
+      "id": 1369,
+      "name": "RAIN"
+    },
+    "homeTeam": {
+      "id": 15,
+      "name": "Memphis Grizzlies"
+    },
+    "awayTeam": {
+      "id": 6,
+      "name": "Cleveland Cavaliers"
+    },
+    "fixtureStart": "2025-06-17T23:55:00Z",
+    "raw_data": {
+      "sport": "NBA",
+      "avaStreamId": "sis-nba-2",
+      "leagueName": null,
+      "awayParticipantId": 1369,
+      "tournamentName": "Ebasketball H2H GG League",
+      "homeParticipantExternalId": "1021",
+      "fixtureStart": "2025-06-17T23:55:00Z",
+      "homeTeamId": 15,
+      "groupId": null,
+      "awayTeamName": "Cleveland Cavaliers",
+      "homeParticipantId": 18,
+      "homeTeamLogo": "teams/Memphis_Grizzlies.svg",
+      "awayTeamExternalId": null,
+      "roundName": "Ebasketball H2H GG League round 1",
+      "roundId": 1,
+      "homeTeamName": "Memphis Grizzlies",
+      "awayParticipantLogo": "participants/RAIN.png?v=1738582701414",
+      "externalId": "NB194170625",
+      "homeParticipantName": "OREZ",
+      "awayTeamAbbreviation": "CLE",
+      "groupName": null,
+      "leagueId": null,
+      "fixtureExternalId": "NB194170625",
+      "homeTeamExternalId": null,
+      "tournamentId": 1,
+      "fixtureId": 238012,
+      "awayParticipantName": "RAIN",
+      "awayParticipantExternalId": "4674",
+      "homeTeamAbbreviation": "MEM",
+      "startDate": "2025-06-17T23:55:00Z",
+      "leagueLogo": null,
+      "awayTeamId": 6,
+      "awayTeamLogo": "teams/Cleveland_Cavaliers.svg",
+      "streamName": "Ebasketball 2",
+      "homeParticipantLogo": "participants/OREZ .png"
+    }
+  },
+  {
+    "id": 237723,
+    "homePlayer": {
+      "id": 1768,
+      "name": "PRODIGY"
+    },
+    "awayPlayer": {
+      "id": 183,
+      "name": "ARCHITECT"
+    },
+    "homeTeam": {
+      "id": 5,
+      "name": "Chicago Bulls"
+    },
+    "awayTeam": {
+      "id": 28,
+      "name": "Toronto Raptors"
+    },
+    "fixtureStart": "2025-06-18T00:03:00Z",
+    "raw_data": {
+      "sport": "NBA",
+      "avaStreamId": "sis-nba-3",
+      "leagueName": null,
+      "awayParticipantId": 183,
+      "tournamentName": "Ebasketball H2H GG League",
+      "homeParticipantExternalId": "4649",
+      "fixtureStart": "2025-06-18T00:03:00Z",
+      "homeTeamId": 5,
+      "groupId": null,
+      "awayTeamName": "Toronto Raptors",
+      "homeParticipantId": 1768,
+      "homeTeamLogo": "teams/CB.png",
+      "awayTeamExternalId": null,
+      "roundName": "Ebasketball H2H GG League round 1",
+      "roundId": 1,
+      "homeTeamName": "Chicago Bulls",
+      "awayParticipantLogo": "participants/ARCHITECT.png?v=1716799043340",
+      "externalId": "NB001180625",
+      "homeParticipantName": "PRODIGY",
+      "awayTeamAbbreviation": "TOR",
+      "groupName": null,
+      "leagueId": null,
+      "fixtureExternalId": "NB001180625",
+      "homeTeamExternalId": null,
+      "tournamentId": 1,
+      "fixtureId": 237723,
+      "awayParticipantName": "ARCHITECT",
+      "awayParticipantExternalId": "3093",
+      "homeTeamAbbreviation": "CHI",
+      "startDate": "2025-06-18T00:03:00Z",
+      "leagueLogo": null,
+      "awayTeamId": 28,
+      "awayTeamLogo": "teams/TR.svg",
+      "streamName": "Ebasketball 3",
+      "homeParticipantLogo": "participants/PRODIGY.png?v=1742551982742"
+    }
+  },
+  {
+    "id": 237732,
+    "homePlayer": {
+      "id": 71,
+      "name": "HERMES"
+    },
+    "awayPlayer": {
+      "id": 113,
+      "name": "BRAZEN"
+    },
+    "homeTeam": {
+      "id": 3,
+      "name": "Boston Celtics"
+    },
+    "awayTeam": {
+      "id": 14,
+      "name": "Los Angeles Lakers"
+    },
+    "fixtureStart": "2025-06-18T00:11:00Z",
+    "raw_data": {
+      "sport": "NBA",
+      "avaStreamId": "sis-nba-4",
+      "leagueName": null,
+      "awayParticipantId": 113,
+      "tournamentName": "Ebasketball H2H GG League",
+      "homeParticipantExternalId": "1218",
+      "fixtureStart": "2025-06-18T00:11:00Z",
+      "homeTeamId": 3,
+      "groupId": null,
+      "awayTeamName": "Los Angeles Lakers",
+      "homeParticipantId": 71,
+      "homeTeamLogo": "teams/Boston_Celtics.svg",
+      "awayTeamExternalId": null,
+      "roundName": "Ebasketball H2H GG League round 1",
+      "roundId": 1,
+      "homeTeamName": "Boston Celtics",
+      "awayParticipantLogo": "participants/BRAZEN.png?v=1695200050713",
+      "externalId": "NB002180625",
+      "homeParticipantName": "HERMES",
+      "awayTeamAbbreviation": "LAL",
+      "groupName": null,
+      "leagueId": null,
+      "fixtureExternalId": "NB002180625",
+      "homeTeamExternalId": null,
+      "tournamentId": 1,
+      "fixtureId": 237732,
+      "awayParticipantName": "BRAZEN",
+      "awayParticipantExternalId": "1249",
+      "homeTeamAbbreviation": "BOS",
+      "startDate": "2025-06-18T00:11:00Z",
+      "leagueLogo": null,
+      "awayTeamId": 14,
+      "awayTeamLogo": "teams/Los_Angeles_Lakers.svg",
+      "streamName": "Ebasketball 4",
+      "homeParticipantLogo": "participants/HERMES.png"
+    }
+  },
+  {
+    "id": 237743,
+    "homePlayer": {
+      "id": 15,
+      "name": "KARMA"
+    },
+    "awayPlayer": {
+      "id": 127,
+      "name": "FIVESTAR"
+    },
+    "homeTeam": {
+      "id": 4,
+      "name": "Charlotte Hornets"
+    },
+    "awayTeam": {
+      "id": 22,
+      "name": "Orlando Magic"
+    },
+    "fixtureStart": "2025-06-18T00:19:00Z",
+    "raw_data": {
+      "sport": "NBA",
+      "avaStreamId": "sis-nba-1",
+      "leagueName": null,
+      "awayParticipantId": 127,
+      "tournamentName": "Ebasketball H2H GG League",
+      "homeParticipantExternalId": "1006",
+      "fixtureStart": "2025-06-18T00:19:00Z",
+      "homeTeamId": 4,
+      "groupId": null,
+      "awayTeamName": "Orlando Magic",
+      "homeParticipantId": 15,
+      "homeTeamLogo": "teams/CH.png",
+      "awayTeamExternalId": null,
+      "roundName": "Ebasketball H2H GG League round 1",
+      "roundId": 1,
+      "homeTeamName": "Charlotte Hornets",
+      "awayParticipantLogo": "participants/FIVESTAR.png?v=1704987337806",
+      "externalId": "NB003180625",
+      "homeParticipantName": "KARMA",
+      "awayTeamAbbreviation": "ORL",
+      "groupName": null,
+      "leagueId": null,
+      "fixtureExternalId": "NB003180625",
+      "homeTeamExternalId": null,
+      "tournamentId": 1,
+      "fixtureId": 237743,
+      "awayParticipantName": "FIVESTAR",
+      "awayParticipantExternalId": "1257",
+      "homeTeamAbbreviation": "CHA",
+      "startDate": "2025-06-18T00:19:00Z",
+      "leagueLogo": null,
+      "awayTeamId": 22,
+      "awayTeamLogo": "teams/OM.png",
+      "streamName": "Ebasketball 1",
+      "homeParticipantLogo": "participants/KARMA.png"
+    }
+  },
+  {
+    "id": 237747,
+    "homePlayer": {
+      "id": 18,
+      "name": "OREZ"
+    },
+    "awayPlayer": {
+      "id": 31,
+      "name": "ENIGMA"
+    },
+    "homeTeam": {
+      "id": 15,
+      "name": "Memphis Grizzlies"
+    },
+    "awayTeam": {
+      "id": 17,
+      "name": "Milwaukee Bucks"
+    },
+    "fixtureStart": "2025-06-18T00:27:00Z",
+    "raw_data": {
+      "sport": "NBA",
+      "avaStreamId": "sis-nba-2",
+      "leagueName": null,
+      "awayParticipantId": 31,
+      "tournamentName": "Ebasketball H2H GG League",
+      "homeParticipantExternalId": "1021",
+      "fixtureStart": "2025-06-18T00:27:00Z",
+      "homeTeamId": 15,
+      "groupId": null,
+      "awayTeamName": "Milwaukee Bucks",
+      "homeParticipantId": 18,
+      "homeTeamLogo": "teams/Memphis_Grizzlies.svg",
+      "awayTeamExternalId": null,
+      "roundName": "Ebasketball H2H GG League round 1",
+      "roundId": 1,
+      "homeTeamName": "Memphis Grizzlies",
+      "awayParticipantLogo": "participants/ENIGMA.png",
+      "externalId": "NB004180625",
+      "homeParticipantName": "OREZ",
+      "awayTeamAbbreviation": "MIL",
+      "groupName": null,
+      "leagueId": null,
+      "fixtureExternalId": "NB004180625",
+      "homeTeamExternalId": null,
+      "tournamentId": 1,
+      "fixtureId": 237747,
+      "awayParticipantName": "ENIGMA",
+      "awayParticipantExternalId": "1082",
+      "homeTeamAbbreviation": "MEM",
+      "startDate": "2025-06-18T00:27:00Z",
+      "leagueLogo": null,
+      "awayTeamId": 17,
+      "awayTeamLogo": "teams/Milwaukee_Bucks.svg",
+      "streamName": "Ebasketball 2",
+      "homeParticipantLogo": "participants/OREZ .png"
     }
   }
 ]

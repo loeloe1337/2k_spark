@@ -8,14 +8,16 @@ import json
 import argparse
 from pathlib import Path
 import numpy as np
-from sklearn.ensemble import GradientBoostingRegressor
-from sklearn.linear_model import Ridge, Lasso
+from sklearn.ensemble import GradientBoostingRegressor, VotingRegressor, RandomForestRegressor
+from sklearn.linear_model import Ridge, Lasso, ElasticNet
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
 from sklearn.ensemble import StackingRegressor
 from xgboost import XGBRegressor
+from lightgbm import LGBMRegressor
+from datetime import datetime
 
 # Add parent directory to path
 current_dir = Path(__file__).resolve().parent
@@ -73,6 +75,42 @@ def optimize_score_model(n_trials=50, test_size=0.2, random_state=DEFAULT_RANDOM
 
     # Define parameter space for score prediction model
     param_space = {
+        # Ensemble type selection
+        'ensemble_type': {
+            'type': 'categorical',
+            'choices': ['stacking', 'voting']
+        },
+        
+        # Advanced validation option
+        'use_advanced_validation': {
+            'type': 'categorical',
+            'choices': [True, False]
+        },
+        
+        # Feature engineering options
+        'use_momentum_features': {
+            'type': 'categorical',
+            'choices': [True, False]
+        },
+        'use_streak_features': {
+            'type': 'categorical',
+            'choices': [True, False]
+        },
+        'use_efficiency_features': {
+            'type': 'categorical',
+            'choices': [True, False]
+        },
+        'momentum_window': {
+            'type': 'integer',
+            'low': 3,
+            'high': 10
+        },
+        'streak_window': {
+            'type': 'integer',
+            'low': 3,
+            'high': 8
+        },
+        
         # XGBoost parameters for home model
         'xgb_home_n_estimators': {
             'type': 'integer',
@@ -266,6 +304,13 @@ class OptimizedScorePredictionModel(ScorePredictionModel):
         self,
         model_id=None,
         random_state=DEFAULT_RANDOM_STATE,
+        ensemble_type='stacking',
+        use_advanced_validation=False,
+        use_momentum_features=True,
+        use_streak_features=True,
+        use_efficiency_features=True,
+        momentum_window=5,
+        streak_window=5,
         xgb_home_n_estimators=100,
         xgb_home_learning_rate=0.1,
         xgb_home_max_depth=5,
@@ -322,8 +367,29 @@ class OptimizedScorePredictionModel(ScorePredictionModel):
             lasso_away_alpha (float): Alpha for away Lasso model
             final_away_alpha (float): Alpha for away final estimator
         """
-        # Initialize base class
-        super().__init__(model_id, random_state)
+        # Initialize base class with new parameters
+        super().__init__(
+            model_id=model_id, 
+            random_state=random_state,
+            ensemble_type=ensemble_type,
+            use_advanced_validation=use_advanced_validation
+        )
+        
+        # Store feature engineering parameters
+        self.use_momentum_features = use_momentum_features
+        self.use_streak_features = use_streak_features
+        self.use_efficiency_features = use_efficiency_features
+        self.momentum_window = momentum_window
+        self.streak_window = streak_window
+        
+        # Update feature engineer configuration
+        self.feature_engineer.config.update({
+            'use_momentum_features': use_momentum_features,
+            'use_streak_features': use_streak_features,
+            'use_efficiency_features': use_efficiency_features,
+            'momentum_window': momentum_window,
+            'streak_window': streak_window
+        })
 
         # Store hyperparameters
         self.xgb_home_n_estimators = xgb_home_n_estimators
@@ -351,12 +417,17 @@ class OptimizedScorePredictionModel(ScorePredictionModel):
         self.lasso_away_alpha = lasso_away_alpha
         self.final_away_alpha = final_away_alpha
 
-        # Create home and away score models with optimized hyperparameters
-        self.home_model, self.away_model = self._create_optimized_models()
-
+        # Models will be created by parent class with ensemble_type
         # Update model info
         self.model_info["parameters"] = {
             "random_state": random_state,
+            "ensemble_type": ensemble_type,
+            "use_advanced_validation": use_advanced_validation,
+            "use_momentum_features": use_momentum_features,
+            "use_streak_features": use_streak_features,
+            "use_efficiency_features": use_efficiency_features,
+            "momentum_window": momentum_window,
+            "streak_window": streak_window,
             "xgb_home_n_estimators": xgb_home_n_estimators,
             "xgb_home_learning_rate": xgb_home_learning_rate,
             "xgb_home_max_depth": xgb_home_max_depth,
@@ -382,101 +453,6 @@ class OptimizedScorePredictionModel(ScorePredictionModel):
             "lasso_away_alpha": lasso_away_alpha,
             "final_away_alpha": final_away_alpha
         }
-
-        # Store both models
-        self.model = {
-            "home_model": self.home_model,
-            "away_model": self.away_model
-        }
-
-    @log_exceptions(logger)
-    def _create_optimized_models(self):
-        """
-        Create home and away score prediction models with optimized hyperparameters.
-
-        Returns:
-            tuple: (home_model, away_model)
-        """
-        # Create base models for home score
-        xgb_model_home = XGBRegressor(
-            n_estimators=self.xgb_home_n_estimators,
-            learning_rate=self.xgb_home_learning_rate,
-            max_depth=self.xgb_home_max_depth,
-            subsample=self.xgb_home_subsample,
-            colsample_bytree=self.xgb_home_colsample_bytree,
-            random_state=self.random_state
-        )
-
-        gb_model_home = GradientBoostingRegressor(
-            n_estimators=self.gb_home_n_estimators,
-            learning_rate=self.gb_home_learning_rate,
-            max_depth=self.gb_home_max_depth,
-            subsample=self.gb_home_subsample,
-            random_state=self.random_state
-        )
-
-        ridge_model_home = Ridge(alpha=self.ridge_home_alpha, random_state=self.random_state)
-        lasso_model_home = Lasso(alpha=self.lasso_home_alpha, random_state=self.random_state)
-
-        # Create stacking ensemble for home score
-        home_stacking_model = StackingRegressor(
-            estimators=[
-                ('xgb', xgb_model_home),
-                ('gb', gb_model_home),
-                ('ridge', ridge_model_home),
-                ('lasso', lasso_model_home)
-            ],
-            final_estimator=Ridge(alpha=self.final_home_alpha, random_state=self.random_state),
-            cv=5,
-            n_jobs=-1
-        )
-
-        # Create base models for away score
-        xgb_model_away = XGBRegressor(
-            n_estimators=self.xgb_away_n_estimators,
-            learning_rate=self.xgb_away_learning_rate,
-            max_depth=self.xgb_away_max_depth,
-            subsample=self.xgb_away_subsample,
-            colsample_bytree=self.xgb_away_colsample_bytree,
-            random_state=self.random_state
-        )
-
-        gb_model_away = GradientBoostingRegressor(
-            n_estimators=self.gb_away_n_estimators,
-            learning_rate=self.gb_away_learning_rate,
-            max_depth=self.gb_away_max_depth,
-            subsample=self.gb_away_subsample,
-            random_state=self.random_state
-        )
-
-        ridge_model_away = Ridge(alpha=self.ridge_away_alpha, random_state=self.random_state)
-        lasso_model_away = Lasso(alpha=self.lasso_away_alpha, random_state=self.random_state)
-
-        # Create stacking ensemble for away score
-        away_stacking_model = StackingRegressor(
-            estimators=[
-                ('xgb', xgb_model_away),
-                ('gb', gb_model_away),
-                ('ridge', ridge_model_away),
-                ('lasso', lasso_model_away)
-            ],
-            final_estimator=Ridge(alpha=self.final_away_alpha, random_state=self.random_state),
-            cv=5,
-            n_jobs=-1
-        )
-
-        # Create feature scaling and model pipeline
-        home_pipeline = Pipeline([
-            ('scaler', StandardScaler()),
-            ('model', home_stacking_model)
-        ])
-
-        away_pipeline = Pipeline([
-            ('scaler', StandardScaler()),
-            ('model', away_stacking_model)
-        ])
-
-        return home_pipeline, away_pipeline
 
 
 if __name__ == "__main__":

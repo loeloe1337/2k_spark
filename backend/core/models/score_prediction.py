@@ -3,15 +3,19 @@ Score prediction model for NBA 2K25 eSports matches.
 """
 
 import numpy as np
-from sklearn.ensemble import GradientBoostingRegressor
-from sklearn.linear_model import Ridge, Lasso
-from sklearn.model_selection import train_test_split, KFold, cross_val_score
+from sklearn.ensemble import GradientBoostingRegressor, VotingRegressor, RandomForestRegressor
+from sklearn.linear_model import Ridge, Lasso, ElasticNet
+from sklearn.model_selection import train_test_split, KFold, cross_val_score, StratifiedKFold
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
 from sklearn.ensemble import StackingRegressor
-from sklearn.feature_selection import SelectFromModel
+from sklearn.feature_selection import SelectFromModel, RFE, SelectKBest, f_regression
+from sklearn.svm import SVR
 from xgboost import XGBRegressor
+from lightgbm import LGBMRegressor
+import warnings
+warnings.filterwarnings('ignore')
 
 from config.settings import DEFAULT_RANDOM_STATE
 from config.logging_config import get_score_model_training_logger
@@ -27,7 +31,8 @@ class ScorePredictionModel(BaseModel):
     Model for predicting match scores.
     """
 
-    def __init__(self, model_id=None, random_state=DEFAULT_RANDOM_STATE, feature_config=None):
+    def __init__(self, model_id=None, random_state=DEFAULT_RANDOM_STATE, feature_config=None, 
+                 ensemble_type='stacking', use_advanced_validation=True):
         """
         Initialize the score prediction model.
 
@@ -35,19 +40,31 @@ class ScorePredictionModel(BaseModel):
             model_id (str): Model ID
             random_state (int): Random state for reproducibility
             feature_config (dict): Feature configuration dictionary
+            ensemble_type (str): Type of ensemble ('stacking', 'voting', 'single')
+            use_advanced_validation (bool): Whether to use advanced validation techniques
         """
         super().__init__(model_id, random_state)
 
+        # Store configuration
+        self.ensemble_type = ensemble_type
+        self.use_advanced_validation = use_advanced_validation
+        
         # Create feature engineer
         self.feature_engineer = FeatureEngineer(feature_config)
 
         # Create home and away score models
         self.home_model, self.away_model = self._create_models(random_state)
 
+        # Initialize feature selectors
+        self.home_selector = None
+        self.away_selector = None
+
         # Update model info
         self.model_info["parameters"] = {
             "random_state": random_state,
-            "feature_config": feature_config
+            "feature_config": feature_config,
+            "ensemble_type": ensemble_type,
+            "use_advanced_validation": use_advanced_validation
         }
 
         # Store both models
@@ -67,80 +84,101 @@ class ScorePredictionModel(BaseModel):
         Returns:
             tuple: (home_model, away_model)
         """
-        # Create base models for home score
-        xgb_model_home = XGBRegressor(
-            n_estimators=100,
-            learning_rate=0.1,
-            max_depth=5,
-            random_state=random_state
-        )
+        # Create base models
+        base_models = {
+            'xgb': XGBRegressor(
+                n_estimators=150,
+                learning_rate=0.1,
+                max_depth=6,
+                subsample=0.8,
+                colsample_bytree=0.8,
+                random_state=random_state,
+                verbosity=0
+            ),
+            'lgb': LGBMRegressor(
+                n_estimators=150,
+                learning_rate=0.1,
+                max_depth=6,
+                subsample=0.8,
+                colsample_bytree=0.8,
+                random_state=random_state,
+                verbosity=-1
+            ),
+            'gb': GradientBoostingRegressor(
+                n_estimators=100,
+                learning_rate=0.1,
+                max_depth=5,
+                subsample=0.8,
+                random_state=random_state
+            ),
+            'rf': RandomForestRegressor(
+                n_estimators=100,
+                max_depth=10,
+                min_samples_split=5,
+                min_samples_leaf=2,
+                random_state=random_state,
+                n_jobs=-1
+            ),
+            'ridge': Ridge(alpha=1.0, random_state=random_state),
+            'lasso': Lasso(alpha=0.1, random_state=random_state),
+            'elastic': ElasticNet(alpha=0.1, l1_ratio=0.5, random_state=random_state),
+            'svr': SVR(kernel='rbf', C=1.0, gamma='scale')
+        }
 
-        gb_model_home = GradientBoostingRegressor(
-            n_estimators=100,
-            learning_rate=0.1,
-            max_depth=5,
-            random_state=random_state
-        )
-
-        ridge_model_home = Ridge(alpha=1.0, random_state=random_state)
-        lasso_model_home = Lasso(alpha=0.1, random_state=random_state)
-
-        # Create stacking ensemble for home score
-        home_stacking_model = StackingRegressor(
-            estimators=[
-                ('xgb', xgb_model_home),
-                ('gb', gb_model_home),
-                ('ridge', ridge_model_home),
-                ('lasso', lasso_model_home)
-            ],
-            final_estimator=Ridge(alpha=0.5, random_state=random_state),
-            cv=5,
-            n_jobs=-1
-        )
-
-        # Create base models for away score
-        xgb_model_away = XGBRegressor(
-            n_estimators=100,
-            learning_rate=0.1,
-            max_depth=5,
-            random_state=random_state
-        )
-
-        gb_model_away = GradientBoostingRegressor(
-            n_estimators=100,
-            learning_rate=0.1,
-            max_depth=5,
-            random_state=random_state
-        )
-
-        ridge_model_away = Ridge(alpha=1.0, random_state=random_state)
-        lasso_model_away = Lasso(alpha=0.1, random_state=random_state)
-
-        # Create stacking ensemble for away score
-        away_stacking_model = StackingRegressor(
-            estimators=[
-                ('xgb', xgb_model_away),
-                ('gb', gb_model_away),
-                ('ridge', ridge_model_away),
-                ('lasso', lasso_model_away)
-            ],
-            final_estimator=Ridge(alpha=0.5, random_state=random_state),
-            cv=5,
-            n_jobs=-1
-        )
+        # Create ensemble models based on type
+        if self.ensemble_type == 'stacking':
+            home_ensemble = self._create_stacking_ensemble(base_models, random_state)
+            away_ensemble = self._create_stacking_ensemble(base_models, random_state)
+        elif self.ensemble_type == 'voting':
+            home_ensemble = self._create_voting_ensemble(base_models)
+            away_ensemble = self._create_voting_ensemble(base_models)
+        else:  # single model
+            home_ensemble = base_models['xgb']
+            away_ensemble = base_models['xgb']
 
         # Create feature scaling and model pipeline
         home_pipeline = Pipeline([
             ('scaler', StandardScaler()),
-            ('model', home_stacking_model)
+            ('model', home_ensemble)
         ])
 
         away_pipeline = Pipeline([
             ('scaler', StandardScaler()),
-            ('model', away_stacking_model)
+            ('model', away_ensemble)
         ])
 
         return home_pipeline, away_pipeline
+
+    def _create_stacking_ensemble(self, base_models, random_state):
+        """Create a stacking ensemble."""
+        estimators = [
+            ('xgb', base_models['xgb']),
+            ('lgb', base_models['lgb']),
+            ('gb', base_models['gb']),
+            ('rf', base_models['rf']),
+            ('ridge', base_models['ridge'])
+        ]
+        
+        return StackingRegressor(
+            estimators=estimators,
+            final_estimator=Ridge(alpha=0.5, random_state=random_state),
+            cv=5,
+            n_jobs=-1
+        )
+
+    def _create_voting_ensemble(self, base_models):
+        """Create a voting ensemble."""
+        estimators = [
+            ('xgb', base_models['xgb']),
+            ('lgb', base_models['lgb']),
+            ('gb', base_models['gb']),
+            ('rf', base_models['rf'])
+        ]
+        
+        return VotingRegressor(
+            estimators=estimators,
+            n_jobs=-1
+        )
 
     @log_execution_time(logger)
     @log_exceptions(logger)
@@ -174,23 +212,18 @@ class ScorePredictionModel(BaseModel):
             X, y_home, y_away, test_size=test_size, random_state=self.random_state
         )
 
-        # Feature selection for home model
-        logger.info("Performing feature selection for home model")
-        home_selector = SelectFromModel(
-            XGBRegressor(n_estimators=100, random_state=self.random_state),
-            threshold="median"
+        # Advanced feature selection
+        logger.info("Performing advanced feature selection")
+        X_train_home, X_test_home, home_selector = self._perform_feature_selection(
+            X_train, X_test, y_home_train, 'home'
         )
-        X_train_home = home_selector.fit_transform(X_train, y_home_train)
-        X_test_home = home_selector.transform(X_test)
-
-        # Feature selection for away model
-        logger.info("Performing feature selection for away model")
-        away_selector = SelectFromModel(
-            XGBRegressor(n_estimators=100, random_state=self.random_state),
-            threshold="median"
+        X_train_away, X_test_away, away_selector = self._perform_feature_selection(
+            X_train, X_test, y_away_train, 'away'
         )
-        X_train_away = away_selector.fit_transform(X_train, y_away_train)
-        X_test_away = away_selector.transform(X_test)
+        
+        # Store feature selectors
+        self.home_selector = home_selector
+        self.away_selector = away_selector
 
         # Train home score model
         logger.info(f"Training home score model with {len(X_train_home)} samples")
@@ -200,15 +233,21 @@ class ScorePredictionModel(BaseModel):
         logger.info(f"Training away score model with {len(X_train_away)} samples")
         self.away_model.fit(X_train_away, y_away_train)
 
+        # Perform cross-validation if advanced validation is enabled
+        cv_metrics = {}
+        if self.use_advanced_validation:
+            logger.info("Performing cross-validation")
+            cv_metrics = self._perform_cross_validation(X_train_home, X_train_away, y_home_train, y_away_train)
+
         # Evaluate models
         logger.info("Evaluating models")
         metrics = self._evaluate_models(
             X_test_home, X_test_away, y_home_test, y_away_test
         )
-
-        # Store feature selectors
-        self.home_selector = home_selector
-        self.away_selector = away_selector
+        
+        # Combine metrics with cross-validation results
+        if cv_metrics:
+            metrics.update(cv_metrics)
 
         # Update model info
         self.model_info["metrics"] = metrics
@@ -399,24 +438,103 @@ class ScorePredictionModel(BaseModel):
             "score_diff": int(score_diff)
         }
 
-    @log_exceptions(logger)
-    def evaluate(self, player_stats, matches):
+    def _perform_feature_selection(self, X_train, X_test, y_train, model_type):
         """
-        Evaluate the model on match data.
-
+        Perform advanced feature selection combining multiple methods.
+        
         Args:
-            player_stats (dict): Player statistics dictionary
-            matches (list): List of match data dictionaries
-
+            X_train: Training features
+            X_test: Test features
+            y_train: Training labels
+            model_type: 'home' or 'away'
+            
         Returns:
-            dict: Evaluation metrics
+            tuple: (X_train_selected, X_test_selected, selector)
         """
-        # Extract features and labels
-        X, y_home, y_away = self._extract_features(player_stats, matches)
-
-        if len(X) == 0:
-            logger.error("No valid features extracted from matches")
-            raise ValueError("No valid features extracted from matches")
-
-        # Evaluate models
-        return self._evaluate_models(X, y_home, y_away)
+        logger.info(f"Performing feature selection for {model_type} model")
+        
+        # Method 1: Tree-based feature importance
+        tree_selector = SelectFromModel(
+            XGBRegressor(n_estimators=50, random_state=self.random_state, verbosity=0),
+            threshold="median"
+        )
+        
+        # Method 2: Statistical feature selection
+        k_best_selector = SelectKBest(score_func=f_regression, k=min(50, X_train.shape[1]))
+        
+        # Method 3: Recursive Feature Elimination
+        rfe_selector = RFE(
+            estimator=Ridge(random_state=self.random_state),
+            n_features_to_select=min(30, X_train.shape[1]),
+            step=1
+        )
+        
+        # Apply tree-based selection first
+        X_train_tree = tree_selector.fit_transform(X_train, y_train)
+        X_test_tree = tree_selector.transform(X_test)
+        
+        # Apply statistical selection on tree-selected features
+        if X_train_tree.shape[1] > 10:
+            k_best_selector.set_params(k=min(X_train_tree.shape[1], 25))
+            X_train_final = k_best_selector.fit_transform(X_train_tree, y_train)
+            X_test_final = k_best_selector.transform(X_test_tree)
+        else:
+            X_train_final = X_train_tree
+            X_test_final = X_test_tree
+            
+        logger.info(f"Selected {X_train_final.shape[1]} features for {model_type} model")
+        
+        # Create combined selector
+        class CombinedSelector:
+            def __init__(self, tree_sel, stat_sel=None):
+                self.tree_selector = tree_sel
+                self.stat_selector = stat_sel
+                
+            def transform(self, X):
+                X_tree = self.tree_selector.transform(X)
+                if self.stat_selector is not None:
+                    return self.stat_selector.transform(X_tree)
+                return X_tree
+        
+        combined_selector = CombinedSelector(
+            tree_selector, 
+            k_best_selector if X_train_tree.shape[1] > 10 else None
+        )
+        
+        return X_train_final, X_test_final, combined_selector
+    
+    def _perform_cross_validation(self, X_train_home, X_train_away, y_home_train, y_away_train):
+        """
+        Perform cross-validation to get robust performance estimates.
+        
+        Args:
+            X_train_home: Home model training features
+            X_train_away: Away model training features
+            y_home_train: Home training labels
+            y_away_train: Away training labels
+            
+        Returns:
+            dict: Cross-validation metrics
+        """
+        cv_folds = 5
+        kfold = KFold(n_splits=cv_folds, shuffle=True, random_state=self.random_state)
+        
+        # Cross-validation for home model
+        home_cv_scores = cross_val_score(
+            self.home_model, X_train_home, y_home_train,
+            cv=kfold, scoring='neg_mean_absolute_error', n_jobs=-1
+        )
+        
+        # Cross-validation for away model
+        away_cv_scores = cross_val_score(
+            self.away_model, X_train_away, y_away_train,
+            cv=kfold, scoring='neg_mean_absolute_error', n_jobs=-1
+        )
+        
+        return {
+            'home_cv_mae_mean': float(-home_cv_scores.mean()),
+            'home_cv_mae_std': float(home_cv_scores.std()),
+            'away_cv_mae_mean': float(-away_cv_scores.mean()),
+            'away_cv_mae_std': float(away_cv_scores.std()),
+            'cv_folds': cv_folds
+        }

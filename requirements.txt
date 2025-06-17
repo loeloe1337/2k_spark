@@ -1,16 +1,26 @@
 # Core data processing and machine learning
+# Core data science libraries
 numpy
 pandas
-scikit-learn
 scipy
+python-dateutil
+pytz
+
+# Machine learning and modeling
+scikit-learn
 xgboost
+lightgbm
+catboost
+
+# Model optimization and hyperparameter tuning
+scikit-optimize
+
+# Advanced validation and model selection
+imbalanced-learn
 
 # Web scraping and browser automation
 selenium
 webdriver-manager
-
-# Model optimization
-scikit-optimize
 
 # API Server
 flask
@@ -19,6 +29,5 @@ flask-cors
 # HTTP requests
 requests
 
-# Utilities
-python-dateutil
-pytz
+# Utilities for enhanced features
+joblib
