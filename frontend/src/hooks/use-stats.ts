@@ -23,6 +23,17 @@ interface RefreshResponse {
   message?: string;
 }
 
+interface RefreshStatusResponse {
+  status: 'idle' | 'running' | 'completed' | 'failed';
+  stage: string;
+  progress: number;
+  message: string;
+  start_time?: string;
+  end_time?: string;
+  error?: string;
+  duration_seconds?: number;
+}
+
 /**
  * Hook for fetching prediction statistics.
  *
@@ -78,48 +89,100 @@ export function useRefresh() {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean>(false);
+  const [refreshStatus, setRefreshStatus] = useState<RefreshStatusResponse | null>(null);
   const { triggerRefresh } = useRefreshContext();
+
+  // Poll for refresh status
+  const pollRefreshStatus = async () => {
+    try {
+      const response = await apiClient.getRefreshStatus();
+      if (response.error) {
+        console.error('Error getting refresh status:', response.error);
+        return;
+      }
+      
+      const status = response.data as RefreshStatusResponse;
+      setRefreshStatus(status);
+      
+      // Check if refresh is completed
+      if (status.status === 'completed') {
+        setSuccess(true);
+        setLoading(false);
+        setError(null);
+        
+        // Trigger component refresh after completion
+        setTimeout(() => {
+          triggerRefresh();
+          // Clear success message after 3 seconds
+          setTimeout(() => {
+            setSuccess(false);
+            setRefreshStatus(null);
+          }, 3000);
+        }, 1000);
+        
+        return false; // Stop polling
+      } else if (status.status === 'failed') {
+        setError(status.error || 'Refresh failed');
+        setLoading(false);
+        setSuccess(false);
+        setRefreshStatus(null);
+        return false; // Stop polling
+      }
+      
+      return true; // Continue polling
+    } catch (err) {
+      console.error('Error polling refresh status:', err);
+      return true; // Continue polling despite error
+    }
+  };
+
   const refreshData = async () => {
     try {
       setLoading(true);
       setSuccess(false);
       setError(null);
+      setRefreshStatus(null);
 
       const response = await apiClient.refreshData();
 
       // Check if the API call was successful (no error in ApiResponse)
       if (response.error) {
         setError(response.error);
+        setLoading(false);
         return;
       }
 
       // Check the backend response data
       const backendResponse = response.data as RefreshResponse;
       if (backendResponse && backendResponse.status === 'success') {
-        setSuccess(true);
+        // Start polling for status updates
+        const pollInterval = setInterval(async () => {
+          const shouldContinue = await pollRefreshStatus();
+          if (!shouldContinue) {
+            clearInterval(pollInterval);
+          }
+        }, 1000); // Poll every second
 
-        // Wait longer for the backend to finish processing (5 seconds)
+        // Set a maximum polling time of 5 minutes
         setTimeout(() => {
-          console.log("Triggering component refresh after waiting for backend processing");
-          // Trigger refresh for all components
-          triggerRefresh();
-
-          // Show success message for 3 seconds
-          setTimeout(() => {
-            setSuccess(false);
-          }, 3000);
-        }, 5000);
+          clearInterval(pollInterval);
+          if (loading) {
+            setLoading(false);
+            setError('Refresh timed out. Please try again.');
+            setRefreshStatus(null);
+          }
+        }, 300000); // 5 minutes
       } else {
         setError(backendResponse?.message || 'Refresh failed');
+        setLoading(false);
       }
     } catch (err) {
       console.error('Error refreshing data:', err);
       setError('Failed to refresh data. Please try again later.');
       setSuccess(false);
-    } finally {
       setLoading(false);
     }
   };
 
-  return { refreshData, loading, error, success };
+  return { refreshData, loading, error, success, refreshStatus };
 }

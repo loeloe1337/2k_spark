@@ -13,7 +13,7 @@ import { ThemeToggle } from '@/components/theme';
 import { RefreshCw } from 'lucide-react';
 
 export function Header() {
-  const { refreshData, loading, success, error } = useRefresh();
+  const { refreshData, loading, success, error, refreshStatus } = useRefresh();
   const pathname = usePathname();
 
   // Use a state to track client-side rendering
@@ -64,8 +64,7 @@ export function Header() {
             <Link href="/stats" className={`nav-link ${isActive('/stats') ? 'active' : ''}`}>
               Stats
             </Link>
-          </nav>
-          <div className="flex items-center space-x-3">
+          </nav>          <div className="flex items-center space-x-3">
             <Button
               variant="outline"
               size="sm"
@@ -74,13 +73,39 @@ export function Header() {
               className="flex items-center gap-1.5 border-border/70 hover:border-primary/50 hover:bg-primary/5 transition-all duration-300"
             >
               <RefreshCw className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} />
-              {loading ? 'Refreshing...' : 'Refresh'}
+              {loading ? (refreshStatus?.stage || 'Refreshing...') : 'Refresh'}
             </Button>
+            
+            {/* Progress status display */}
+            {loading && refreshStatus && (
+              <div className="flex flex-col items-start">
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-medium text-blue-600 animate-fadeIn">
+                    {refreshStatus.message}
+                  </span>
+                  <span className="text-xs text-muted-foreground">
+                    {Math.round(refreshStatus.progress)}%
+                  </span>
+                </div>
+                {/* Progress bar */}
+                <div className="w-32 h-1 bg-gray-200 rounded-full mt-1">
+                  <div 
+                    className="h-1 bg-blue-500 rounded-full transition-all duration-300 ease-out"
+                    style={{ width: `${refreshStatus.progress}%` }}
+                  />
+                </div>
+              </div>
+            )}
+            
             {success && (
-              <span className="text-xs font-medium text-green-500 animate-fadeIn">Refresh successful!</span>
+              <span className="text-xs font-medium text-green-500 animate-fadeIn">
+                Refresh successful!
+              </span>
             )}
             {error && (
-              <span className="text-xs font-medium text-red-500 animate-fadeIn">Refresh failed</span>
+              <span className="text-xs font-medium text-red-500 animate-fadeIn">
+                Refresh failed
+              </span>
             )}
             <div className="border-l border-border/50 h-6 mx-1"></div>
             <ThemeToggle />

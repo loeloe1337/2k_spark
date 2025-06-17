@@ -141,6 +141,10 @@ class ApiClient {
   async refreshData() {
     return this.post('/api/refresh');
   }
+
+  async getRefreshStatus() {
+    return this.get('/api/refresh/status');
+  }
 }
 
 // Export singleton instance
