@@ -14,7 +14,6 @@ backend_dir = current_dir.parent
 sys.path.append(str(backend_dir))
 
 from config.logging_config import get_data_fetcher_logger
-from config.settings import DEFAULT_RANDOM_STATE
 from utils.logging import log_execution_time, log_exceptions
 from core.data.fetchers import TokenFetcher
 from core.data.fetchers.match_history import MatchHistoryFetcher
@@ -101,7 +100,7 @@ def main():
     token_parser.add_argument('--force-refresh', action='store_true', help='Force token refresh')
 
     # Match history fetcher
-    history_parser = subparsers.add_parser('fetch-history', help='Fetch match history')
+    history_parser = subparsers.add_parser('fetch-matches', help='Fetch match history')
     history_parser.add_argument('--days', type=int, default=90, help='Number of days of history to fetch')
 
     # Upcoming matches fetcher
@@ -115,7 +114,7 @@ def main():
 
     if args.command == 'fetch-token':
         fetch_token(args)
-    elif args.command == 'fetch-history':
+    elif args.command == 'fetch-matches':
         fetch_match_history(args)
     elif args.command == 'fetch-upcoming':
         fetch_upcoming_matches(args)
