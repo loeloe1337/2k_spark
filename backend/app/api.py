@@ -12,8 +12,10 @@ current_dir = Path(__file__).resolve().parent
 backend_dir = current_dir.parent
 sys.path.append(str(backend_dir))
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
+from typing import Optional
 
 from config.settings import (
     API_HOST, API_PORT, CORS_ORIGINS,
@@ -24,6 +26,11 @@ from utils.logging import log_execution_time, log_exceptions
 from services.live_scores_service import LiveScoresService
 from services.data_service import DataService
 from services.enhanced_prediction_service import EnhancedMatchPredictionService
+# Import CLI functionality for pipeline
+from core.data.fetchers import TokenFetcher
+from core.data.fetchers.match_history import MatchHistoryFetcher
+from core.data.fetchers.upcoming_matches import UpcomingMatchesFetcher
+from core.data.processors.player_stats import PlayerStatsProcessor
 
 # Initialize FastAPI app
 app = FastAPI(title="2K Flash API", description="API server for the 2K Flash application", version="1.0.0")
@@ -777,6 +784,196 @@ def get_active_model():
     except Exception as e:
         logger.error(f"Error getting active model: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
+
+
+# Pydantic models for request bodies
+class PipelineRequest(BaseModel):
+    """
+    Request model for the pipeline endpoint.
+    """
+    train_new_model: bool = False
+    refresh_token: bool = False
+    history_days: int = 90
+    training_days: int = 60
+    min_matches: int = 5
+
+
+@app.post('/api/run-pipeline')
+@log_execution_time(logger)
+@log_exceptions(logger)
+def run_pipeline_endpoint(request: PipelineRequest):
+    """
+    Run the complete prediction pipeline with fresh data via API.
+    
+    This endpoint executes the full workflow:
+    1. Fetch authentication token (if needed)
+    2. Fetch latest match history
+    3. Fetch latest player statistics
+    4. Fetch upcoming matches
+    5. Train new model (if requested)
+    6. Generate predictions using the best model
+    
+    Args:
+        request (PipelineRequest): Pipeline configuration parameters
+        
+    Returns:
+        dict: Pipeline execution results and summary
+    """
+    try:
+        pipeline_results = {
+            "status": "success",
+            "timestamp": datetime.now().isoformat(),
+            "steps_completed": [],
+            "steps_failed": [],
+            "summary": {},
+            "errors": []
+        }
+        
+        logger.info("🚀 Starting API Pipeline execution...")
+        
+        # Step 1: Authentication token
+        try:
+            logger.info("📝 Step 1/6: Checking authentication token...")
+            token_fetcher = TokenFetcher()
+            token = token_fetcher.get_token(force_refresh=request.refresh_token)
+            pipeline_results["steps_completed"].append("authentication_token")
+            logger.info("✅ Authentication token ready")
+        except Exception as e:
+            error_msg = f"Token fetch failed: {str(e)}"
+            pipeline_results["steps_failed"].append("authentication_token")
+            pipeline_results["errors"].append(error_msg)
+            logger.error(f"❌ {error_msg}")
+            raise HTTPException(status_code=500, detail=error_msg)
+        
+        # Step 2: Fetch match history
+        try:
+            logger.info("📊 Step 2/6: Fetching latest match history...")
+            match_fetcher = MatchHistoryFetcher(days_back=request.history_days)
+            matches = match_fetcher.fetch_match_history(save_to_file=True)
+            pipeline_results["steps_completed"].append("match_history")
+            pipeline_results["summary"]["matches_fetched"] = len(matches) if matches else 0
+            logger.info("✅ Match history updated")
+        except Exception as e:
+            error_msg = f"Match history fetch failed: {str(e)}"
+            pipeline_results["steps_failed"].append("match_history")
+            pipeline_results["errors"].append(error_msg)
+            logger.error(f"❌ {error_msg}")
+            raise HTTPException(status_code=500, detail=error_msg)
+        
+        # Step 3: Calculate player statistics
+        try:
+            logger.info("🏀 Step 3/6: Calculating player statistics...")
+            stats_processor = PlayerStatsProcessor()
+            match_fetcher = MatchHistoryFetcher()
+            matches = match_fetcher.load_from_file()
+            player_stats = stats_processor.calculate_player_stats(matches, save_to_file=True)
+            pipeline_results["steps_completed"].append("player_statistics")
+            pipeline_results["summary"]["players_processed"] = len(player_stats) if player_stats else 0
+            logger.info("✅ Player statistics updated")
+        except Exception as e:
+            error_msg = f"Player stats calculation failed: {str(e)}"
+            pipeline_results["steps_failed"].append("player_statistics")
+            pipeline_results["errors"].append(error_msg)
+            logger.error(f"❌ {error_msg}")
+            raise HTTPException(status_code=500, detail=error_msg)
+        
+        # Step 4: Fetch upcoming matches
+        try:
+            logger.info("🔮 Step 4/6: Fetching upcoming matches...")
+            upcoming_fetcher = UpcomingMatchesFetcher()
+            upcoming_matches = upcoming_fetcher.fetch_upcoming_matches(save_to_file=True)
+            pipeline_results["steps_completed"].append("upcoming_matches")
+            pipeline_results["summary"]["upcoming_matches"] = len(upcoming_matches) if upcoming_matches else 0
+            logger.info("✅ Upcoming matches updated")
+        except Exception as e:
+            error_msg = f"Upcoming matches fetch failed: {str(e)}"
+            pipeline_results["steps_failed"].append("upcoming_matches")
+            pipeline_results["errors"].append(error_msg)
+            logger.error(f"❌ {error_msg}")
+            raise HTTPException(status_code=500, detail=error_msg)
+        
+        # Step 5: Train new model (if requested)
+        if request.train_new_model:
+            try:
+                logger.info("🤖 Step 5/6: Training new prediction model...")
+                prediction_service = EnhancedMatchPredictionService()
+                
+                # Prepare training data
+                training_df = prediction_service.prepare_training_data(
+                    days_back=request.training_days,
+                    min_matches_per_player=request.min_matches
+                )
+                
+                # Train new model
+                version, metrics = prediction_service.train_model_with_versioning(
+                    training_df=training_df, 
+                    auto_activate=True,
+                    performance_threshold=0.6
+                )
+                
+                pipeline_results["steps_completed"].append("model_training")
+                pipeline_results["summary"]["model_version"] = version
+                pipeline_results["summary"]["model_accuracy"] = metrics.get('val_winner_accuracy', 0)
+                pipeline_results["summary"]["home_mae"] = metrics.get('val_home_mae', 0)
+                pipeline_results["summary"]["away_mae"] = metrics.get('val_away_mae', 0)
+                pipeline_results["summary"]["training_samples"] = len(training_df)
+                
+                logger.info(f"✅ New model trained: {version}")
+                logger.info(f"   Accuracy: {metrics.get('val_winner_accuracy', 0):.1%}")
+                
+            except Exception as e:
+                error_msg = f"Model training failed: {str(e)}"
+                pipeline_results["steps_failed"].append("model_training")
+                pipeline_results["errors"].append(error_msg)
+                logger.error(f"❌ {error_msg}")
+                # Continue with existing model instead of failing
+                logger.info("⚠️  Continuing with existing model...")
+        else:
+            logger.info("⏭️  Step 5/6: Skipping model training")
+            pipeline_results["steps_completed"].append("model_training_skipped")
+        
+        # Step 6: Generate predictions
+        try:
+            logger.info("🎯 Step 6/6: Generating predictions...")
+            prediction_service = EnhancedMatchPredictionService()
+            
+            predictions_df = prediction_service.predict_upcoming_matches(load_model=True)
+            
+            if not predictions_df.empty:
+                summary = prediction_service.get_prediction_summary(predictions_df)
+                pipeline_results["steps_completed"].append("predictions")
+                pipeline_results["summary"]["total_predictions"] = summary["total_matches"]
+                pipeline_results["summary"]["average_confidence"] = summary["average_confidence"]
+                pipeline_results["summary"]["high_confidence_matches"] = summary["high_confidence_matches"]
+            else:
+                pipeline_results["summary"]["total_predictions"] = 0
+                pipeline_results["summary"]["message"] = "No upcoming matches to predict"
+            
+            logger.info("✅ Predictions generated successfully!")
+            
+        except Exception as e:
+            error_msg = f"Prediction generation failed: {str(e)}"
+            pipeline_results["steps_failed"].append("predictions")
+            pipeline_results["errors"].append(error_msg)
+            logger.error(f"❌ {error_msg}")
+            raise HTTPException(status_code=500, detail=error_msg)
+        
+        # Final summary
+        pipeline_results["summary"]["total_steps"] = 6
+        pipeline_results["summary"]["completed_steps"] = len(pipeline_results["steps_completed"])
+        pipeline_results["summary"]["failed_steps"] = len(pipeline_results["steps_failed"])
+        
+        logger.info("🎉 API Pipeline completed successfully!")
+        
+        return pipeline_results
+        
+    except HTTPException:
+        # Re-raise HTTP exceptions as-is
+        raise
+    except Exception as e:
+        error_msg = f"Pipeline failed with unexpected error: {str(e)}"
+        logger.error(f"❌ {error_msg}")
+        raise HTTPException(status_code=500, detail=error_msg)
 
 
 def run_api_server():
