@@ -407,13 +407,126 @@ class DataService:
 
     def cleanup(self):
         """
-        Cleanup resources before shutting down.
+        Cleanup resources.
         """
-        logger.info("Cleaning up resources")
+        logger.info("Cleaning up data service resources")
+
+    def save_match_history_to_db(self, matches_data):
+        """
+        Save match history data to database.
         
+        Args:
+            matches_data (list): List of match data
+            
+        Returns:
+            bool: True if successful, False otherwise
+        """
+        if not self.supabase_service.is_connected():
+            logger.warning("Database not connected, cannot save match history")
+            return False
+            
         try:
-            # Perform any necessary cleanup actions
-            pass
-        
+            # Convert the match data format to match our database schema
+            processed_matches = []
+            for i, match in enumerate(matches_data):
+                # Handle different possible data structures
+                if isinstance(match, dict):
+                    # Extract match ID from various possible fields
+                    match_id = (match.get('id') or 
+                              match.get('fixtureId') or 
+                              match.get('match_id') or 
+                              f"match_{i}")
+                    
+                    # Extract team names safely
+                    home_team = 'Unknown'
+                    away_team = 'Unknown'
+                    
+                    if 'homeTeam' in match and isinstance(match['homeTeam'], dict):
+                        home_team = match['homeTeam'].get('name', 'Unknown')
+                    elif 'home_team' in match:
+                        home_team = match['home_team']
+                    
+                    if 'awayTeam' in match and isinstance(match['awayTeam'], dict):
+                        away_team = match['awayTeam'].get('name', 'Unknown')
+                    elif 'away_team' in match:
+                        away_team = match['away_team']
+                    
+                    processed_match = {
+                        'match_id': str(match_id),
+                        'home_team': home_team,
+                        'away_team': away_team,
+                        'home_score': match.get('homeScore') or match.get('home_score'),
+                        'away_score': match.get('awayScore') or match.get('away_score'),
+                        'match_date': match.get('fixtureStart') or match.get('startDate') or match.get('match_date'),
+                        'tournament_id': match.get('tournamentId', 1),
+                        'status': match.get('status', 'completed'),
+                        'raw_data': match
+                    }
+                    processed_matches.append(processed_match)
+            
+            logger.info(f"Attempting to save {len(processed_matches)} matches to database")
+            return self.supabase_service.save_match_history(processed_matches)
+            
         except Exception as e:
-            logger.error(f"Error during cleanup: {str(e)}")
+            logger.error(f"Error saving match history to database: {str(e)}")
+            return False
+
+    def save_player_stats_to_db(self, stats_data):
+        """
+        Save player statistics to database.
+        
+        Args:
+            stats_data (list or dict): Player statistics data
+            
+        Returns:
+            bool: True if successful, False otherwise
+        """
+        if not self.supabase_service.is_connected():
+            logger.warning("Database not connected, cannot save player stats")
+            return False
+            
+        try:
+            # Handle different data formats
+            processed_stats = []
+            
+            # If stats_data is a dict with a 'players' key, extract that
+            if isinstance(stats_data, dict):
+                if 'players' in stats_data:
+                    stats_list = stats_data['players']
+                else:
+                    # Convert dict to list
+                    stats_list = [stats_data]
+            else:
+                stats_list = stats_data
+            
+            for stat in stats_list:
+                # Handle case where stat might be a string key with dict value
+                if isinstance(stat, str) and isinstance(stats_data, dict):
+                    # This is a player name key, get the actual data
+                    stat_data = stats_data[stat]
+                    player_name = stat
+                elif isinstance(stat, dict):
+                    stat_data = stat
+                    player_name = stat_data.get('player_name', stat_data.get('name', 'Unknown'))
+                else:
+                    continue
+                
+                processed_stat = {
+                    'player_name': player_name,
+                    'team': stat_data.get('team', 'Unknown'),
+                    'games_played': int(stat_data.get('games_played', 0)),
+                    'wins': int(stat_data.get('wins', 0)),
+                    'losses': int(stat_data.get('losses', 0)),
+                    'win_rate': float(stat_data.get('win_rate', 0.0)),
+                    'total_score': int(stat_data.get('total_score', 0)),
+                    'avg_score': float(stat_data.get('avg_score', 0.0)),
+                    'raw_data': stat_data
+                }
+                processed_stats.append(processed_stat)
+            
+            logger.info(f"Attempting to save {len(processed_stats)} player stats to database")
+            return self.supabase_service.save_player_stats(processed_stats)
+            
+        except Exception as e:
+            logger.error(f"Error saving player stats to database: {str(e)}")
+            return False

@@ -254,6 +254,167 @@ def get_live_scores():
         })
 
 
+@app.post('/api/data/fetch-matches')
+@log_execution_time(logger)
+@log_exceptions(logger)
+def fetch_match_history():
+    """
+    Fetch and store historical match data.
+    
+    Returns:
+        dict: Fetch result with count of matches processed
+    """
+    try:
+        logger.info("Starting match history fetch")
+        
+        # Fetch match history using the data service
+        result = data_service.fetch_match_history()
+        
+        if result:
+            # If we have database connection, also save to database
+            if data_service.supabase_service.is_connected():
+                # Read the fetched data from JSON file and save to database
+                import json
+                from config.settings import MATCH_HISTORY_FILE
+                
+                if MATCH_HISTORY_FILE.exists():
+                    with open(MATCH_HISTORY_FILE, 'r') as f:
+                        matches_data = json.load(f)
+                    
+                    # Save to database
+                    saved = data_service.save_match_history_to_db(matches_data)
+                    
+                    return {
+                        "status": "success",
+                        "message": f"Fetched {len(matches_data)} matches",
+                        "saved_to_database": saved,
+                        "timestamp": datetime.now().isoformat()
+                    }
+            
+            return {
+                "status": "success", 
+                "message": "Match history fetched to file",
+                "database_save": "skipped - no database connection",
+                "timestamp": datetime.now().isoformat()
+            }
+        else:
+            return {
+                "status": "failed",
+                "message": "Failed to fetch match history",
+                "timestamp": datetime.now().isoformat()
+            }
+            
+    except Exception as e:
+        logger.error(f"Error fetching match history: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post('/api/data/calculate-stats')
+@log_execution_time(logger) 
+@log_exceptions(logger)
+def calculate_player_statistics():
+    """
+    Calculate player statistics from match data.
+    
+    Returns:
+        dict: Calculation result with count of players processed
+    """
+    try:
+        logger.info("Starting player statistics calculation")
+        
+        # Calculate player stats using the data service
+        result = data_service.calculate_player_stats()
+        
+        if result:
+            # If we have database connection, also save to database
+            if data_service.supabase_service.is_connected():
+                # Read the calculated stats from JSON file and save to database
+                import json
+                from config.settings import PLAYER_STATS_FILE
+                
+                if PLAYER_STATS_FILE.exists():
+                    with open(PLAYER_STATS_FILE, 'r') as f:
+                        stats_data = json.load(f)
+                    
+                    # Save to database
+                    saved = data_service.save_player_stats_to_db(stats_data)
+                    
+                    return {
+                        "status": "success",
+                        "message": f"Calculated stats for {len(stats_data)} players",
+                        "saved_to_database": saved,
+                        "timestamp": datetime.now().isoformat()
+                    }
+            
+            return {
+                "status": "success",
+                "message": "Player statistics calculated to file", 
+                "database_save": "skipped - no database connection",
+                "timestamp": datetime.now().isoformat()
+            }
+        else:
+            return {
+                "status": "failed",
+                "message": "Failed to calculate player statistics",
+                "timestamp": datetime.now().isoformat()
+            }
+            
+    except Exception as e:
+        logger.error(f"Error calculating player statistics: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post('/api/data/refresh-all')
+@log_execution_time(logger)
+@log_exceptions(logger) 
+def refresh_all_data():
+    """
+    Refresh all data: fetch matches, calculate stats, and update database.
+    
+    Returns:
+        dict: Complete refresh result
+    """
+    try:
+        logger.info("Starting complete data refresh")
+        results = {}
+        
+        # Step 1: Fetch match history
+        match_result = data_service.fetch_match_history()
+        results["match_fetch"] = "success" if match_result else "failed"
+        
+        # Step 2: Calculate player stats (only if matches were fetched)
+        if match_result:
+            stats_result = data_service.calculate_player_stats()
+            results["stats_calculation"] = "success" if stats_result else "failed"
+            
+            # Step 3: Save to database if connected
+            if data_service.supabase_service.is_connected():
+                import json
+                from config.settings import MATCH_HISTORY_FILE, PLAYER_STATS_FILE
+                
+                # Save matches to database
+                if MATCH_HISTORY_FILE.exists():
+                    with open(MATCH_HISTORY_FILE, 'r') as f:
+                        matches_data = json.load(f)
+                    results["matches_saved"] = data_service.save_match_history_to_db(matches_data)
+                
+                # Save stats to database
+                if PLAYER_STATS_FILE.exists() and stats_result:
+                    with open(PLAYER_STATS_FILE, 'r') as f:
+                        stats_data = json.load(f)
+                    results["stats_saved"] = data_service.save_player_stats_to_db(stats_data)
+        
+        return {
+            "status": "success",
+            "results": results,
+            "timestamp": datetime.now().isoformat()
+        }
+        
+    except Exception as e:
+        logger.error(f"Error during complete data refresh: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 def run_api_server():
     """
     Run the API server.
