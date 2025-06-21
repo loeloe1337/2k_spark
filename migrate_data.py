@@ -10,15 +10,14 @@ from typing import Dict, List, Any
 
 # Add the parent directory to the Python path so we can import our modules
 current_dir = Path(__file__).resolve().parent
-backend_dir = current_dir / "backend"
-sys.path.append(str(backend_dir))
+sys.path.append(str(current_dir))
 
-from config.settings import (
+from backend.config.settings import (
     MATCH_HISTORY_FILE, PLAYER_STATS_FILE, UPCOMING_MATCHES_FILE,
     SUPABASE_URL, SUPABASE_KEY
 )
-from config.logging_config import get_data_fetcher_logger
-from services.supabase_service import SupabaseService
+from backend.config.logging_config import get_data_fetcher_logger
+from backend.services.supabase_service import SupabaseService
 
 logger = get_data_fetcher_logger()
 
