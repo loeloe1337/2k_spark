@@ -39,11 +39,11 @@ COPY logs/ ./logs/
 RUN mkdir -p /app/output /app/logs
 
 # Expose the port that FastAPI will run on
-EXPOSE $PORT
+EXPOSE 10000
 
-# Health check (disable for now as it might interfere with Render)
-# HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
-#     CMD curl -f http://localhost:$PORT/api/health || exit 1
+# Health check
+HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:10000/api/health || exit 1
 
 # Command to run the application
-CMD python -m uvicorn backend.app.api:app --host 0.0.0.0 --port ${PORT:-10000}
+CMD ["sh", "-c", "python -m uvicorn backend.app.api:app --host 0.0.0.0 --port ${PORT:-10000}"]
