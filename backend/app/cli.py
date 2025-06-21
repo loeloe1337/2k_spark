@@ -298,6 +298,133 @@ def compare_model_versions(args):
         print(f"Error: {e}")
 
 
+@log_execution_time(logger)
+@log_exceptions(logger)
+def run_pipeline(args):
+    """
+    Run the complete prediction pipeline with fresh data.
+    
+    This command executes the full workflow:
+    1. Fetch authentication token (if needed)
+    2. Fetch latest match history
+    3. Fetch latest player statistics
+    4. Fetch upcoming matches
+    5. Train new model (if requested)
+    6. Generate predictions using the best model
+    
+    Args:
+        args (argparse.Namespace): Command-line arguments
+    """
+    print("🚀 Starting Complete Prediction Pipeline...")
+    print("=" * 60)
+    
+    try:
+        # Step 1: Ensure we have a valid token
+        print("\n📝 Step 1/6: Checking authentication token...")
+        try:
+            token_fetcher = TokenFetcher()
+            token = token_fetcher.get_token(force_refresh=args.refresh_token)
+            print("✅ Authentication token ready")
+        except Exception as e:
+            print(f"❌ Token fetch failed: {e}")
+            return
+          # Step 2: Fetch latest match history
+        print("\n📊 Step 2/6: Fetching latest match history...")
+        try:
+            match_fetcher = MatchHistoryFetcher(days_back=args.history_days)
+            match_fetcher.fetch_match_history(save_to_file=True)
+            print("✅ Match history updated")
+        except Exception as e:
+            print(f"❌ Match history fetch failed: {e}")
+            return
+        
+        # Step 3: Fetch latest player statistics
+        print("\n🏀 Step 3/6: Fetching latest player statistics...")
+        try:
+            stats_processor = PlayerStatsProcessor()
+            # Load match history and calculate stats
+            match_fetcher = MatchHistoryFetcher()
+            matches = match_fetcher.load_from_file()
+            stats_processor.calculate_player_stats(matches, save_to_file=True)
+            print("✅ Player statistics updated")
+        except Exception as e:
+            print(f"❌ Player stats fetch failed: {e}")
+            return
+        
+        # Step 4: Fetch upcoming matches
+        print("\n🔮 Step 4/6: Fetching upcoming matches...")
+        try:
+            upcoming_fetcher = UpcomingMatchesFetcher()
+            upcoming_fetcher.fetch_upcoming_matches(save_to_file=True)
+            print("✅ Upcoming matches updated")
+        except Exception as e:
+            print(f"❌ Upcoming matches fetch failed: {e}")
+            return
+        
+        # Step 5: Train new model (if requested)
+        if args.train_new_model:
+            print("\n🤖 Step 5/6: Training new prediction model...")
+            try:
+                prediction_service = EnhancedMatchPredictionService()
+                
+                # Train new model
+                result = prediction_service.train_model(
+                    days_back=args.training_days,
+                    min_matches_per_player=args.min_matches
+                )
+                
+                print(f"✅ New model trained: {result['version']}")
+                print(f"   Accuracy: {result['accuracy']:.1%}")
+                print(f"   Home MAE: {result['home_mae']:.2f}")
+                print(f"   Away MAE: {result['away_mae']:.2f}")
+                
+                if result.get('is_best_model'):
+                    print(f"🏆 New model is now active (best performer)")
+                else:
+                    print(f"📊 New model saved but previous model remains active")
+                    
+            except Exception as e:
+                print(f"❌ Model training failed: {e}")
+                print("⚠️  Continuing with existing model...")
+        else:
+            print("\n⏭️  Step 5/6: Skipping model training (use --train to enable)")
+        
+        # Step 6: Generate predictions
+        print("\n🎯 Step 6/6: Generating predictions...")
+        try:
+            prediction_service = EnhancedMatchPredictionService()
+            
+            # Generate predictions
+            prediction_service.predict_upcoming_matches()
+            
+            print("✅ Predictions generated successfully!")
+            print(f"📁 Results saved to: output/match_predictions.csv")
+            
+        except Exception as e:
+            print(f"❌ Prediction generation failed: {e}")
+            return
+        
+        # Summary
+        print("\n" + "=" * 60)
+        print("🎉 Pipeline completed successfully!")
+        print("\n📋 Summary:")
+        print("   ✅ Fresh data fetched (matches, stats, upcoming)")
+        if args.train_new_model:
+            print("   ✅ New model trained and evaluated")
+        print("   ✅ Predictions generated with latest data")
+        print("\n📁 Check these files:")
+        print("   • output/match_predictions.csv - Latest predictions")
+        print("   • output/upcoming_matches.json - Upcoming matches data")
+        print("   • logs/ - Detailed execution logs")
+        
+        if not args.train_new_model:
+            print("\n💡 Tip: Use --train flag to train a new model with the fresh data")
+            
+    except Exception as e:
+        print(f"\n❌ Pipeline failed with error: {e}")
+        print("📋 Check the logs directory for detailed error information")
+
+
 def main():
     """
     Main entry point for the CLI.
@@ -343,6 +470,19 @@ def main():
     compare_parser.add_argument('version1', help='First model version (e.g., v1.0.1)')
     compare_parser.add_argument('version2', help='Second model version (e.g., v1.0.2)')
 
+    # Pipeline command - Run complete workflow
+    pipeline_parser = subparsers.add_parser('run-pipeline', help='Run complete prediction pipeline with fresh data')
+    pipeline_parser.add_argument('--train', action='store_true', dest='train_new_model', 
+                                help='Train a new model with the fresh data')
+    pipeline_parser.add_argument('--refresh-token', action='store_true', 
+                                help='Force refresh authentication token')
+    pipeline_parser.add_argument('--history-days', type=int, default=90, 
+                                help='Number of days of match history to fetch')
+    pipeline_parser.add_argument('--training-days', type=int, default=60, 
+                                help='Number of days of history to use for training')
+    pipeline_parser.add_argument('--min-matches', type=int, default=5, 
+                                help='Minimum matches per player for training')
+
     args = parser.parse_args()
 
     if args.command == 'fetch-token':
@@ -367,6 +507,8 @@ def main():
         activate_model_version(args)
     elif args.command == 'compare-models':
         compare_model_versions(args)
+    elif args.command == 'run-pipeline':
+        run_pipeline(args)
     else:
         parser.print_help()
 
