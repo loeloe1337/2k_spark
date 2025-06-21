@@ -1,0 +1,39 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: 2k_spark_backend
+    ports:
+      - "5000:5000"
+    env_file:
+      - .env
+    environment:
+      - API_HOST=0.0.0.0
+      - API_PORT=5000
+      - CORS_ORIGINS=*
+      - SELENIUM_HEADLESS=true
+      - SELENIUM_TIMEOUT=10
+      - REFRESH_INTERVAL=3600
+      - MATCH_HISTORY_DAYS=90
+      - UPCOMING_MATCHES_DAYS=30
+      # Supabase environment variables will be loaded from .env file
+    volumes:
+      # Mount code for development (live reload)
+      - ./backend:/app/backend
+      # Mount data directories to persist data
+      - ./output:/app/output
+      - ./logs:/app/logs
+      # Mount requirements for development
+      - ./requirements.txt:/app/requirements.txt
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  default:
+    name: 2k_spark_network

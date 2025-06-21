@@ -24,12 +24,16 @@ var/
 venv/
 ENV/
 env/
+.venv/
+env.bak/
+venv.bak/
 
 # IDE
 .idea/
 .vscode/
 *.swp
 *.swo
+*~
 
 # Project specific
 cache/token.txt
@@ -40,7 +44,47 @@ app.log
 .env.test.local
 .env.production.local
 
-# Next.js
+# Application logs
+logs/*.log
+*.log
+
+# Output data files (backup - real data in database)
+output/*.json
+
+# Docker
+docker-volumes/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# OS specific files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Web drivers
+chromedriver*
+geckodriver*
+
+# Database files
+*.sqlite
+*.db
+*.sql.backup
+
+# Test files
+.pytest_cache/
+.coverage
+htmlcov/
+test-results/
+
+# Next.js (if frontend is added)
 .next/
 out/
 node_modules/
@@ -51,9 +95,17 @@ yarn-error.log*
 # Vercel
 .vercel
 
-# Data files
+# Data files that shouldn't be committed
 data/raw/*.json
 data/processed/*.json
+datasets/
+*.csv
+*.xlsx
+
+# Secrets and API keys
+secrets/
+.secrets
+config/secrets.py
 
 # Keep important JSON files
 !package.json

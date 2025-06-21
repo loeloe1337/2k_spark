@@ -38,7 +38,7 @@ SELENIUM_TIMEOUT = 10  # seconds
 # Refresh settings
 REFRESH_INTERVAL = 3600  # seconds (1 hour)
 MATCH_HISTORY_DAYS = 90  # days of match history to fetch
-UPCOMING_MATCHES_DAYS = 30  # days of upcoming matches to fetch
+UPCOMING_MATCHES_DAYS = int(os.environ.get("UPCOMING_MATCHES_DAYS", 30))  # days of upcoming matches to fetch
 
 # Date format settings
 DATE_FORMAT = "%Y-%m-%d %H:%M:%S"
@@ -46,3 +46,8 @@ API_DATE_FORMAT = "%Y-%m-%d %H:%M"  # Format for API requests
 
 # Timezone settings
 DEFAULT_TIMEZONE = "US/Eastern"
+
+# Supabase settings
+SUPABASE_URL = os.environ.get("SUPABASE_URL", "")
+SUPABASE_KEY = os.environ.get("SUPABASE_KEY", "")
+SUPABASE_SERVICE_ROLE_KEY = os.environ.get("SUPABASE_SERVICE_ROLE_KEY", "")

@@ -1,23 +1,28 @@
 # 2K Flash - NBA Data Analytics Pipeline
 
-[![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://python.org)
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.68%2B-green.svg)](https://fastapi.tiangolo.com)
+[![Python](https://img.shields.io/badge/Python-3.11-blue.svg)](https://python.org)
+[![FastAPI](https://img.shields.io/badge/FastAPI-Latest-green.svg)](https://fastapi.tiangolo.com)
+[![Docker](https://img.shields.io/badge/Docker-Enabled-blue.svg)](https://docker.com)
+[![Supabase](https://img.shields.io/badge/Supabase-Database-green.svg)](https://supabase.com)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ## Overview
 
-The 2K Flash project is a comprehensive NBA data analytics pipeline that fetches, processes, and serves basketball match data through a modern FastAPI-based web service. The system integrates multiple data sources and provides real-time access to match history, upcoming games, player statistics, and live scores.
+The 2K Flash project is a comprehensive NBA data analytics pipeline that fetches, processes, and serves basketball match data through a modern FastAPI-based web service. The system integrates multiple data sources, provides real-time access to match data, and includes full database persistence with Supabase.
 
 ## Features
 
-- 🏀 **Real-time NBA Data**: Fetch live scores and match updates
+- 🏀 **Real-time NBA Data**: Fetch live scores and match updates from H2H GG League API
 - 📊 **Player Analytics**: Comprehensive player statistics and performance metrics
 - 🔮 **Match Predictions**: Historical data analysis for upcoming games
 - 🚀 **FastAPI Backend**: High-performance REST API with automatic documentation
+- 🐳 **Docker Containerized**: Full containerization for easy deployment
+- 🗄️ **Supabase Database**: Persistent data storage with PostgreSQL
 - 🌐 **CORS Support**: Ready for web frontend integration
 - 📝 **Structured Logging**: Comprehensive logging for monitoring and debugging
 - 🔧 **CLI Tools**: Command-line interface for data management
 - 🔐 **Token Management**: Secure authentication token handling
+- 📈 **Health Monitoring**: Built-in health checks and system monitoring
 
 ## Architecture
 
@@ -26,17 +31,18 @@ The 2K Flash project is a comprehensive NBA data analytics pipeline that fetches
 │   Data Sources  │    │   Data Pipeline │    │   API Service   │
 │                 │    │                 │    │                 │
 │ • H2H GG League │───▶│ • Token Fetcher │───▶│ • FastAPI Server│
-│ • Live Scores   │    │ • Data Fetchers │    │ • CORS Support  │
+│ • Live Scores   │    │ • Data Fetchers │    │ • Docker Container│
 │   API           │    │ • Processors    │    │ • Auto Docs     │
 └─────────────────┘    └─────────────────┘    └─────────────────┘
          │                       │                       │
          │                       ▼                       ▼
          │              ┌─────────────────┐    ┌─────────────────┐
-│              │  File Storage   │    │   Client Apps   │
+         │              │ Supabase Database│    │   Client Apps   │
          │              │                 │    │                 │
-         └──────────────▶│ • JSON Files    │    │ • Web Frontend  │
-                        │ • Logs          │    │ • Mobile Apps   │
-                        │ • Auth Tokens   │    │ • Third Party   │
+         └──────────────▶│ • Match History │    │ • Web Frontend  │
+                        │ • Player Stats  │    │ • Mobile Apps   │
+                        │ • Upcoming      │    │ • Third Party   │
+                        │   Matches       │    │   Integrations  │
                         └─────────────────┘    └─────────────────┘
 ```
 
@@ -46,31 +52,42 @@ The 2K Flash project is a comprehensive NBA data analytics pipeline that fetches
 2k_spark/
 ├── backend/                    # Backend application code
 │   ├── app/                    # Main application entry points
-│   │   ├── api.py             # FastAPI server
+│   │   ├── api.py             # FastAPI server with Docker health checks
 │   │   ├── cli.py             # Command-line interface
 │   │   └── fetch_data_explore.py
 │   ├── config/                # Configuration management
 │   │   ├── logging_config.py  # Logging configuration
-│   │   └── settings.py        # Application settings
+│   │   └── settings.py        # Application settings with Supabase config
 │   ├── core/                  # Core business logic
 │   │   └── data/             # Data processing pipeline
 │   │       ├── fetchers/     # Data fetching modules
 │   │       └── processors/   # Data processing modules
 │   ├── services/              # Business services
-│   │   ├── data_service.py   # Data management service
+│   │   ├── data_service.py   # Data management service with DB integration
+│   │   ├── supabase_service.py # Supabase database operations
 │   │   └── live_scores_service.py
 │   └── utils/                 # Utility functions
 │       ├── logging.py        # Logging utilities
 │       ├── time.py           # Time utilities
 │       └── validation.py     # Data validation
-├── output/                    # Generated data files
+├── output/                    # Generated data files (backup/local)
 │   ├── auth_token.json       # Authentication tokens
 │   ├── match_history.json    # Historical match data
 │   ├── player_stats.json     # Player statistics
 │   └── upcoming_matches.json # Upcoming matches
 ├── logs/                      # Application logs
 ├── Docs/                      # Documentation
-└── requirements.txt           # Python dependencies
+│   ├── pipeline_functionality.md
+│   └── supabase_docker_plan.md
+├── Dockerfile                 # Docker container configuration
+├── docker-compose.yml         # Docker Compose setup
+├── .dockerignore             # Docker ignore file
+├── .env                      # Environment variables (not in git)
+├── .env.template             # Environment template
+├── schema.sql                # Database schema
+├── migrate_data.py           # Data migration script
+├── SUPABASE_SETUP.md         # Supabase setup guide
+└── requirements.txt          # Python dependencies with Supabase
 ```
 
 ## Installation
@@ -110,19 +127,46 @@ The 2K Flash project is a comprehensive NBA data analytics pipeline that fetches
 
 ## Usage
 
-### API Server
+### Docker (Recommended)
 
-Start the FastAPI server:
+The easiest way to run the application is using Docker:
 
 ```bash
-cd backend/app
-python api.py
+# Build and start the services
+docker-compose up --build
+
+# Run in detached mode
+docker-compose up -d
+
+# View logs
+docker-compose logs -f
+
+# Stop the services
+docker-compose down
 ```
 
 The API will be available at:
-- **API Base URL**: `http://localhost:8000`
-- **Interactive Docs**: `http://localhost:8000/docs`
-- **ReDoc**: `http://localhost:8000/redoc`
+- **API Base URL**: `http://localhost:5000`
+- **Interactive Docs**: `http://localhost:5000/docs`
+- **ReDoc**: `http://localhost:5000/redoc`
+- **Health Check**: `http://localhost:5000/api/health`
+
+### Local Development
+
+For local development without Docker:
+
+1. **Create virtual environment and install dependencies** (see Installation section)
+
+2. **Start the FastAPI server**:
+   ```bash
+   cd backend/app
+   python api.py
+   ```
+
+The API will be available at:
+- **API Base URL**: `http://localhost:5000`
+- **Interactive Docs**: `http://localhost:5000/docs`
+- **ReDoc**: `http://localhost:5000/redoc`
 
 ### CLI Commands
 
@@ -151,11 +195,13 @@ python cli.py start-server
 
 ### Core Endpoints
 
-- `GET /` - Health check and API information
-- `GET /matches/history` - Get historical match data
-- `GET /matches/upcoming` - Get upcoming matches
-- `GET /players/stats` - Get player statistics
-- `GET /scores/live` - Get live scores
+- `GET /api/health` - Health check and API status
+- `GET /api/system/status` - System status including database connectivity
+- `POST /api/system/setup-database` - Database setup verification
+- `GET /api/upcoming-matches` - Get upcoming matches (live from H2H GG League)
+- `GET /api/player-stats` - Get player statistics (from database)
+- `GET /api/live-scores` - Get live NBA scores 
+- `GET /api/live-scores` - Get live NBA scores
 
 ### Example API Usage
 
@@ -163,11 +209,11 @@ python cli.py start-server
 import requests
 
 # Get player statistics
-response = requests.get("http://localhost:8000/players/stats")
+response = requests.get("http://localhost:5000/api/player-stats")
 player_stats = response.json()
 
 # Get upcoming matches
-response = requests.get("http://localhost:8000/matches/upcoming")
+response = requests.get("http://localhost:5000/api/upcoming-matches")
 upcoming = response.json()
 ```
 
@@ -246,15 +292,55 @@ For support and questions:
 
 ## Roadmap
 
-- [ ] Database integration (PostgreSQL/MongoDB)
+- [x] Docker containerization
+- [x] Health check endpoint
+- [x] Database integration (Supabase PostgreSQL)
+- [x] Real-time data fetching from H2H GG League API
+- [x] System monitoring and status endpoints
+- [ ] Data migration from JSON to database (script available)
 - [ ] Real-time WebSocket updates
 - [ ] Machine learning predictions
-- [ ] Docker containerization
 - [ ] Comprehensive test suite
 - [ ] Performance monitoring
 - [ ] Rate limiting and caching
 - [ ] User authentication system
+- [ ] Frontend dashboard
+- [ ] CI/CD pipeline
+
+## Technologies Used
+
+- **Backend**: Python 3.11, FastAPI, Uvicorn
+- **Database**: Supabase (PostgreSQL)
+- **Containerization**: Docker, Docker Compose
+- **Data Sources**: H2H GG League API, Live Scores API
+- **Web Scraping**: Selenium, Chrome WebDriver
+- **Data Processing**: Pandas, NumPy
+- **Monitoring**: Built-in health checks, structured logging
 
 ---
 
 **Built with ❤️ for NBA analytics enthusiasts**
+
+## Quick Start with Docker + Supabase
+
+1. **Clone and build the project**:
+   ```bash
+   git clone <your-repo-url>
+   cd 2k_spark
+   docker-compose build
+   ```
+
+2. **Set up Supabase** (see [SUPABASE_SETUP.md](SUPABASE_SETUP.md) for detailed instructions):
+   - Create a Supabase project
+   - Copy `.env.template` to `.env` and configure your Supabase credentials
+   - Run the database schema from `schema.sql`
+
+3. **Start the application**:
+   ```bash
+   docker-compose up -d
+   ```
+
+4. **Access the API**:
+   - API Base URL: http://localhost:5000
+   - Interactive Docs: http://localhost:5000/docs
+   - Health Check: http://localhost:5000/api/health

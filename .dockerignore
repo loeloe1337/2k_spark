@@ -1,0 +1,93 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Documentation
+*.md
+Docs/
+
+# Logs (we'll mount these as volumes)
+logs/*.log
+
+# Node modules (if any)
+node_modules/
+
+# Test files
+*test*
+*Test*
+
+# Temporary files
+*.tmp
+*.temp
+
+# Docker files
+Dockerfile*
+docker-compose*
+.dockerignore
+
+# Database and migration files (not needed in container)
+schema.sql
+migrate_data.py
+
+# Environment templates
+.env.template
+
+# Setup guides
+SUPABASE_SETUP.md
+
+# Coverage and test results
+.coverage
+htmlcov/
+.pytest_cache/
+test-results/
+
+# Backup files
+*.bak
+*.backup

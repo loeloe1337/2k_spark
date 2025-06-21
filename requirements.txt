@@ -17,5 +17,8 @@ uvicorn[standard]
 # HTTP requests
 requests
 
+# Database (Supabase)
+supabase
+
 # Utilities
 joblib
