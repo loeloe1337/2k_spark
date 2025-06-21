@@ -45,10 +45,12 @@ app.log
 .env.production.local
 
 # Application logs
+logs/
 logs/*.log
 *.log
 
 # Output data files (backup - real data in database)
+output/
 output/*.json
 
 # Docker
