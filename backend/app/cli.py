@@ -19,7 +19,7 @@ from core.data.fetchers import TokenFetcher
 from core.data.fetchers.match_history import MatchHistoryFetcher
 from core.data.fetchers.upcoming_matches import UpcomingMatchesFetcher
 from core.data.processors.player_stats import PlayerStatsProcessor
-from services.match_prediction_service import MatchPredictionService
+from services.enhanced_prediction_service import EnhancedMatchPredictionService
 
 logger = get_data_fetcher_logger()
 
@@ -93,12 +93,12 @@ def calculate_player_stats(args):
 @log_exceptions(logger)
 def train_prediction_model(args):
     """
-    Train the match prediction model.
+    Train the match prediction model with versioning.
 
     Args:
         args (argparse.Namespace): Command-line arguments
     """
-    prediction_service = MatchPredictionService()
+    prediction_service = EnhancedMatchPredictionService()
     
     print(f"Preparing training data with {args.days} days of history...")
     training_df = prediction_service.prepare_training_data(
@@ -107,7 +107,24 @@ def train_prediction_model(args):
     )
     
     print(f"Training model on {len(training_df)} samples...")
-    metrics = prediction_service.train_model(training_df=training_df, save_model=True)
+    version, metrics = prediction_service.train_model_with_versioning(
+        training_df=training_df, 
+        auto_activate=True,
+        performance_threshold=0.6
+    )
+    
+    print(f"\n=== Model Training Results ===")
+    print(f"Model Version: {version}")
+    print(f"Validation Accuracy: {metrics.get('val_winner_accuracy', 0):.3f}")
+    print(f"Home Score MAE: {metrics.get('val_home_mae', 0):.2f}")
+    print(f"Away Score MAE: {metrics.get('val_away_mae', 0):.2f}")
+    print(f"Training Samples: {len(training_df)}")
+    
+    # List all model versions
+    models_df = prediction_service.list_model_versions()
+    if not models_df.empty:
+        print(f"\n=== Available Model Versions ===")
+        print(models_df.to_string(index=False))
     
     print("\n=== Training Results ===")
     print(f"Winner Prediction Accuracy: {metrics['val_winner_accuracy']:.3f}")
@@ -126,7 +143,7 @@ def predict_matches(args):
     Args:
         args (argparse.Namespace): Command-line arguments
     """
-    prediction_service = MatchPredictionService()
+    prediction_service = EnhancedMatchPredictionService()
     
     print("Generating predictions for upcoming matches...")
     predictions_df = prediction_service.predict_upcoming_matches(load_model=True)
@@ -163,7 +180,7 @@ def evaluate_model(args):
     Args:
         args (argparse.Namespace): Command-line arguments
     """
-    prediction_service = MatchPredictionService()
+    prediction_service = EnhancedMatchPredictionService()
     
     print(f"Evaluating model on last {args.test_days} days of matches...")
     metrics = prediction_service.evaluate_model(test_days_back=args.test_days)
@@ -185,7 +202,7 @@ def show_feature_importance(args):
     Args:
         args (argparse.Namespace): Command-line arguments
     """
-    prediction_service = MatchPredictionService()
+    prediction_service = EnhancedMatchPredictionService()
     
     print("Getting feature importance...")
     importance_df = prediction_service.get_feature_importance()
@@ -193,6 +210,92 @@ def show_feature_importance(args):
     print(f"\n=== Top {args.top_n} Most Important Features ===")
     for i, row in importance_df.head(args.top_n).iterrows():
         print(f"{i+1:2d}. {row['feature']:<40} {row['importance']:.4f}")
+
+
+@log_execution_time(logger)
+@log_exceptions(logger)
+def list_model_versions(args):
+    """
+    List all available model versions with their performance metrics.
+
+    Args:
+        args (argparse.Namespace): Command-line arguments
+    """
+    prediction_service = EnhancedMatchPredictionService()
+    
+    print("Listing all available model versions...")
+    versions_df = prediction_service.list_model_versions()
+    
+    if versions_df.empty:
+        print("No trained models found.")
+        return
+    
+    print(f"\n=== Available Model Versions ===")
+    print(f"{'Version':<12} {'Active':<8} {'Accuracy':<10} {'Home MAE':<10} {'Away MAE':<10} {'Training Date':<20}")
+    print("-" * 80)
+    
+    for _, row in versions_df.iterrows():
+        active_mark = "YES" if row['is_active'] else "NO"
+        accuracy = f"{row['val_winner_accuracy']:.3f}" if row['val_winner_accuracy'] is not None else "N/A"
+        home_mae = f"{row['val_home_mae']:.2f}" if row['val_home_mae'] is not None else "N/A"
+        away_mae = f"{row['val_away_mae']:.2f}" if row['val_away_mae'] is not None else "N/A"
+        training_date = row['training_date'][:19] if row['training_date'] != "Unknown" else "Unknown"
+        
+        print(f"{row['version']:<12} {active_mark:<8} {accuracy:<10} {home_mae:<10} {away_mae:<10} {training_date:<20}")
+
+
+@log_execution_time(logger)
+@log_exceptions(logger)
+def activate_model_version(args):
+    """
+    Activate a specific model version.
+
+    Args:
+        args (argparse.Namespace): Command-line arguments
+    """
+    prediction_service = EnhancedMatchPredictionService()
+    
+    try:
+        prediction_service.activate_model_version(args.version)
+        print(f"Successfully activated model version: {args.version}")
+        
+        # Show updated versions list
+        print("\nUpdated model versions:")
+        list_model_versions(args)
+        
+    except ValueError as e:
+        print(f"Error: {e}")
+
+
+@log_execution_time(logger)
+@log_exceptions(logger)
+def compare_model_versions(args):
+    """
+    Compare performance between two model versions.
+
+    Args:
+        args (argparse.Namespace): Command-line arguments
+    """
+    prediction_service = EnhancedMatchPredictionService()
+    
+    try:
+        comparison = prediction_service.compare_model_versions(args.version1, args.version2)
+        
+        print(f"\n=== Model Comparison: {args.version1} vs {args.version2} ===")
+        print(f"Better Model: {comparison['better_model']}")
+        print(f"Winner Accuracy Difference: {comparison['winner_accuracy_diff']:+.3f}")
+        print(f"Home MAE Difference: {comparison['home_mae_diff']:+.2f}")
+        print(f"Away MAE Difference: {comparison['away_mae_diff']:+.2f}")
+        
+        if comparison['winner_accuracy_diff'] > 0:
+            print(f"\n{args.version1} has higher accuracy by {comparison['winner_accuracy_diff']:.3f}")
+        elif comparison['winner_accuracy_diff'] < 0:
+            print(f"\n{args.version2} has higher accuracy by {-comparison['winner_accuracy_diff']:.3f}")
+        else:
+            print(f"\nBoth models have the same accuracy")
+            
+    except ValueError as e:
+        print(f"Error: {e}")
 
 
 def main():
@@ -230,6 +333,16 @@ def main():
     importance_parser = subparsers.add_parser('feature-importance', help='Show feature importance')
     importance_parser.add_argument('--top-n', type=int, default=20, help='Number of top features to show')
 
+    # Model versioning commands
+    list_versions_parser = subparsers.add_parser('list-models', help='List all available model versions')
+    
+    activate_parser = subparsers.add_parser('activate-model', help='Activate a specific model version')
+    activate_parser.add_argument('version', help='Model version to activate (e.g., v1.0.1)')
+    
+    compare_parser = subparsers.add_parser('compare-models', help='Compare two model versions')
+    compare_parser.add_argument('version1', help='First model version (e.g., v1.0.1)')
+    compare_parser.add_argument('version2', help='Second model version (e.g., v1.0.2)')
+
     args = parser.parse_args()
 
     if args.command == 'fetch-token':
@@ -248,6 +361,12 @@ def main():
         evaluate_model(args)
     elif args.command == 'feature-importance':
         show_feature_importance(args)
+    elif args.command == 'list-models':
+        list_model_versions(args)
+    elif args.command == 'activate-model':
+        activate_model_version(args)
+    elif args.command == 'compare-models':
+        compare_model_versions(args)
     else:
         parser.print_help()
 

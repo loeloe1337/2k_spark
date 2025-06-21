@@ -23,7 +23,7 @@ from config.logging_config import get_api_logger
 from utils.logging import log_execution_time, log_exceptions
 from services.live_scores_service import LiveScoresService
 from services.data_service import DataService
-from services.match_prediction_service import MatchPredictionService
+from services.enhanced_prediction_service import EnhancedMatchPredictionService
 
 # Initialize FastAPI app
 app = FastAPI(title="2K Flash API", description="API server for the 2K Flash application", version="1.0.0")
@@ -40,7 +40,7 @@ app.add_middleware(
 # Initialize logger and data service
 logger = get_api_logger()
 data_service = DataService()
-prediction_service = MatchPredictionService()
+prediction_service = EnhancedMatchPredictionService()
 
 
 @app.get('/api/health')
@@ -437,13 +437,17 @@ def train_prediction_model(days_back: int = 60, min_matches_per_player: int = 5)
             days_back=days_back,
             min_matches_per_player=min_matches_per_player
         )
-        
-        # Train the model
-        metrics = prediction_service.train_model(training_df=training_df, save_model=True)
+          # Train the model with versioning
+        version, metrics = prediction_service.train_model_with_versioning(
+            training_df=training_df, 
+            auto_activate=True,
+            performance_threshold=0.6
+        )
         
         return {
             "status": "success",
             "message": "Model trained successfully",
+            "model_version": version,
             "training_samples": len(training_df),
             "metrics": {
                 "winner_accuracy": round(metrics['val_winner_accuracy'], 3),
@@ -469,9 +473,8 @@ def get_match_predictions():
     """
     try:
         logger.info("Generating match predictions")
-        
-        # Generate predictions
-        predictions_df = prediction_service.predict_upcoming_matches(load_model=True)
+          # Generate predictions using best model
+        predictions_df = prediction_service.predict_with_best_model(load_model=True)
         
         if predictions_df.empty:
             return {
@@ -635,6 +638,144 @@ def get_predictions_summary():
         
     except Exception as e:
         logger.error(f"Error getting predictions summary: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get('/api/ml/models')
+def list_model_versions():
+    """
+    List all available model versions with their performance metrics.
+    
+    Returns:
+        dict: List of model versions and their metrics
+    """
+    try:
+        logger.info("Listing model versions")
+        
+        versions_df = prediction_service.list_model_versions()
+        
+        if versions_df.empty:
+            return {
+                "status": "success",
+                "message": "No trained models found",
+                "models": [],
+                "timestamp": datetime.now().isoformat()
+            }
+        
+        # Convert to list of dictionaries
+        models_list = versions_df.to_dict('records')
+        
+        return {
+            "status": "success",
+            "model_count": len(models_list),
+            "models": models_list,
+            "timestamp": datetime.now().isoformat()
+        }
+        
+    except Exception as e:
+        logger.error(f"Error listing model versions: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post('/api/ml/models/{version}/activate')
+def activate_model_version(version: str):
+    """
+    Activate a specific model version.
+    
+    Args:
+        version: Model version to activate (e.g., v1.0.1)
+        
+    Returns:
+        dict: Activation result
+    """
+    try:
+        logger.info(f"Activating model version: {version}")
+        
+        prediction_service.activate_model_version(version)
+        
+        return {
+            "status": "success",
+            "message": f"Successfully activated model version: {version}",
+            "active_version": version,
+            "timestamp": datetime.now().isoformat()
+        }
+        
+    except ValueError as e:
+        logger.error(f"Error activating model version {version}: {str(e)}")
+        raise HTTPException(status_code=404, detail=str(e))
+    except Exception as e:
+        logger.error(f"Error activating model version {version}: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get('/api/ml/models/compare/{version1}/{version2}')
+def compare_model_versions(version1: str, version2: str):
+    """
+    Compare performance between two model versions.
+    
+    Args:
+        version1: First model version (e.g., v1.0.1)
+        version2: Second model version (e.g., v1.0.2)
+        
+    Returns:
+        dict: Comparison results
+    """
+    try:
+        logger.info(f"Comparing model versions: {version1} vs {version2}")
+        
+        comparison = prediction_service.compare_model_versions(version1, version2)
+        
+        return {
+            "status": "success",
+            "comparison": comparison,
+            "timestamp": datetime.now().isoformat()
+        }
+        
+    except ValueError as e:
+        logger.error(f"Error comparing model versions: {str(e)}")
+        raise HTTPException(status_code=404, detail=str(e))
+    except Exception as e:
+        logger.error(f"Error comparing model versions: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get('/api/ml/models/active')
+def get_active_model():
+    """
+    Get information about the currently active model.
+    
+    Returns:
+        dict: Active model information
+    """
+    try:
+        logger.info("Getting active model information")
+        
+        active_version = prediction_service._get_active_model_version()
+        
+        if not active_version:
+            return {
+                "status": "success",
+                "message": "No active model found",
+                "active_model": None,
+                "timestamp": datetime.now().isoformat()
+            }
+        
+        # Get model metadata
+        metadata = prediction_service._load_model_metadata(active_version)
+        
+        return {
+            "status": "success",
+            "active_model": {
+                "version": active_version,
+                "training_date": metadata.get("training_date", "Unknown"),
+                "performance_metrics": metadata.get("performance_metrics", {}),
+                "training_info": metadata.get("training_info", {})
+            },
+            "timestamp": datetime.now().isoformat()
+        }
+        
+    except Exception as e:
+        logger.error(f"Error getting active model: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
 

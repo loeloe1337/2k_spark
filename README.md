@@ -14,10 +14,12 @@
 
 - 🏀 **Real-time NBA Data**: Fetch live scores and match updates from H2H GG League API
 - 🤖 **Unified ML Model**: Single XGBoost multi-output model predicting both home and away scores, with winner derived from score predictions
+- 🔄 **Model Versioning**: Automatic model versioning with best model selection and performance tracking
 - 🎯 **Consistent Predictions**: No conflicting winner vs. score predictions - all outcomes derived from the same unified model
 - 🧠 **Advanced Features**: 52+ engineered features including player stats, head-to-head history, recent form, team performance
 - 📊 **Player Analytics**: Comprehensive player statistics and performance metrics with team-specific analysis
 - 🔮 **Smart Predictions**: Historical data analysis with ~67% winner accuracy and ~6.1 MAE for scores
+- 🎛️ **Model Management**: CLI and API endpoints for listing, comparing, and activating model versions
 - 🔧 **Model Optimization**: Bayesian optimization for hyperparameter tuning and feature selection
 - ✅ **Real-time Validation**: Automatic prediction tracking and accuracy measurement against actual results
 - 🚀 **FastAPI Backend**: High-performance REST API with automatic documentation
@@ -125,7 +127,8 @@ win_probability = sigmoid_transform(score_diff)
 │   │       └── storage.py    # Data storage utilities
 │   ├── services/              # Business services
 │   │   ├── data_service.py   # Data management service with DB integration
-│   │   ├── match_prediction_service.py # End-to-end prediction service
+│   │   ├── enhanced_prediction_service.py # Enhanced prediction service with versioning
+│   │   ├── match_prediction_service.py # Base prediction service
 │   │   ├── supabase_service.py # Supabase database operations
 │   │   └── live_scores_service.py # Live scores integration
 │   └── utils/                 # Utility functions
@@ -250,14 +253,14 @@ python app/cli.py fetch-history           # Fetch match history
 python app/cli.py fetch-upcoming          # Fetch upcoming matches  
 python app/cli.py calculate-stats         # Calculate player statistics
 
-# Machine Learning - Unified Model
-python app/cli.py train-model --days 30   # Train unified prediction model
-python app/cli.py predict-matches         # Generate predictions for upcoming matches
-
-# Legacy Commands (for comparison)
-python app/cli.py train-winner-model      # Train separate winner prediction model
-python app/cli.py train-score-model       # Train separate score prediction model
-python app/cli.py list-models             # List all trained models
+# Machine Learning - Enhanced Model with Versioning
+python app/cli.py train-model --days 30   # Train unified prediction model with versioning
+python app/cli.py predict-matches         # Generate predictions using best model
+python app/cli.py list-models             # List all model versions
+python app/cli.py activate-model v1.0.2   # Activate specific model version
+python app/cli.py compare-models v1.0.1 v1.0.2  # Compare model versions
+python app/cli.py evaluate-model --test-days 7   # Evaluate model performance
+python app/cli.py feature-importance --top-n 20  # Show feature importance
 
 # Server Management
 python app/api.py                         # Start FastAPI server
@@ -289,9 +292,21 @@ python app/cli.py predict-matches
 
 ### Machine Learning Endpoints
 
-- `POST /api/ml/train` - Train the unified prediction model
-- `GET /api/ml/predictions` - Get predictions for upcoming matches
+- `POST /api/ml/train` - Train the unified prediction model with versioning
+- `GET /api/ml/predictions` - Get predictions for upcoming matches (uses best model)
 - `GET /api/ml/model-performance` - Get model performance metrics
+- `GET /api/ml/feature-importance` - Get feature importance from trained model
+- `POST /api/ml/retrain` - Retrain model with fresh data
+
+### Model Versioning Endpoints
+
+- `GET /api/ml/models` - List all available model versions
+- `POST /api/ml/models/{version}/activate` - Activate a specific model version
+- `GET /api/ml/models/compare/{version1}/{version2}` - Compare two model versions
+- `GET /api/ml/models/active` - Get information about the currently active model
+
+### Data Management Endpoints
+
 - `POST /api/data/fetch-matches` - Fetch fresh match data
 - `POST /api/data/calculate-stats` - Recalculate player statistics
 - `POST /api/data/refresh-all` - Complete data refresh pipeline
@@ -483,3 +498,62 @@ Unlike other prediction systems that use separate models for winner and score pr
    - API Base URL: http://localhost:5000
    - Interactive Docs: http://localhost:5000/docs
    - Health Check: http://localhost:5000/api/health
+
+## Model Versioning
+
+The enhanced prediction system includes automatic model versioning and best model selection:
+
+### CLI Commands
+
+```bash
+# Train a new model version with automatic versioning
+python app/cli.py train-model --days 60 --min-matches 5
+
+# List all available model versions
+python app/cli.py list-models
+
+# Activate a specific model version
+python app/cli.py activate-model v1.0.2
+
+# Compare two model versions
+python app/cli.py compare-models v1.0.1 v1.0.2
+```
+
+### Features
+
+- **Automatic Versioning**: Each trained model gets a unique version (v1.0.0, v1.0.1, etc.)
+- **Best Model Selection**: System automatically selects the best performing model based on validation accuracy
+- **Performance Tracking**: Detailed metrics stored for each model version
+- **Easy Switching**: Activate any previous model version with a single command
+- **Model Comparison**: Compare performance between different model versions
+
+### API Endpoints for Model Management
+
+- `GET /api/ml/models` - List all available model versions
+- `POST /api/ml/models/{version}/activate` - Activate a specific model version
+- `GET /api/ml/models/compare/{version1}/{version2}` - Compare two model versions
+
+## Database Schema
+
+The project uses Supabase (PostgreSQL) with a comprehensive schema that supports both core data storage and ML model versioning:
+
+### Schema Files
+
+- **`schema.sql`** - Complete database schema with all tables
+- **`schema_original.sql`** - Original base schema (for reference)
+- **`migrations/`** - Applied database migrations
+  - `001_prediction_system_enhancement.sql` - Model versioning tables
+  - `002_core_tables_player_enhancement.sql` - Player column additions
+
+### Core Tables
+
+- `matches` - Historical match data with player information
+- `player_stats` - Player statistics and performance metrics
+- `upcoming_matches` - Scheduled matches for prediction
+
+### ML Model Tables
+
+- `model_registry` - Model versions and metadata
+- `match_predictions` - Prediction results and tracking
+- `feature_importance` - Feature importance per model version
+- `model_performance` - Model performance over time
