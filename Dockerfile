@@ -31,6 +31,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the application code
+COPY test_api.py .
 COPY backend/ ./backend/
 COPY output/ ./output/
 COPY logs/ ./logs/
@@ -46,4 +47,4 @@ HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
     CMD curl -f http://localhost:10000/api/health || exit 1
 
 # Command to run the application
-CMD ["sh", "-c", "python -m uvicorn backend.app.api:app --host 0.0.0.0 --port ${PORT:-10000}"]
+CMD ["uvicorn", "backend.app.api:app", "--host", "0.0.0.0", "--port", "10000"]
