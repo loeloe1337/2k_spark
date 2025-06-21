@@ -50,6 +50,29 @@ data_service = DataService()
 prediction_service = EnhancedMatchPredictionService()
 
 
+@app.get('/')
+def root():
+    """
+    Root endpoint providing basic API information.
+    
+    Returns:
+        dict: API information
+    """
+    return {
+        "message": "2K Flash API",
+        "version": "1.0.0",
+        "description": "API server for the 2K Flash application",
+        "endpoints": {
+            "health": "/api/health",
+            "status": "/api/system-status",
+            "upcoming_matches": "/api/upcoming-matches",
+            "player_stats": "/api/data/player-stats",
+            "run_pipeline": "/api/run-pipeline",
+            "docs": "/docs"
+        }
+    }
+
+
 @app.get('/api/health')
 def health_check():
     """
