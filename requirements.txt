@@ -6,6 +6,11 @@ scipy
 python-dateutil
 pytz
 
+# Machine Learning
+scikit-learn
+xgboost
+lightgbm
+
 # Web scraping and browser automation
 selenium
 webdriver-manager

@@ -23,6 +23,7 @@ from config.logging_config import get_api_logger
 from utils.logging import log_execution_time, log_exceptions
 from services.live_scores_service import LiveScoresService
 from services.data_service import DataService
+from services.match_prediction_service import MatchPredictionService
 
 # Initialize FastAPI app
 app = FastAPI(title="2K Flash API", description="API server for the 2K Flash application", version="1.0.0")
@@ -39,6 +40,7 @@ app.add_middleware(
 # Initialize logger and data service
 logger = get_api_logger()
 data_service = DataService()
+prediction_service = MatchPredictionService()
 
 
 @app.get('/api/health')
@@ -412,6 +414,227 @@ def refresh_all_data():
         
     except Exception as e:
         logger.error(f"Error during complete data refresh: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post('/api/ml/train')
+def train_prediction_model(days_back: int = 60, min_matches_per_player: int = 5):
+    """
+    Train the match prediction model with historical data.
+    
+    Args:
+        days_back: Number of days of match history to use for training
+        min_matches_per_player: Minimum matches required for a player to be included
+        
+    Returns:
+        dict: Training results and metrics
+    """
+    try:
+        logger.info(f"Training prediction model with {days_back} days of data")
+        
+        # Prepare training data
+        training_df = prediction_service.prepare_training_data(
+            days_back=days_back,
+            min_matches_per_player=min_matches_per_player
+        )
+        
+        # Train the model
+        metrics = prediction_service.train_model(training_df=training_df, save_model=True)
+        
+        return {
+            "status": "success",
+            "message": "Model trained successfully",
+            "training_samples": len(training_df),
+            "metrics": {
+                "winner_accuracy": round(metrics['val_winner_accuracy'], 3),
+                "home_score_mae": round(metrics['val_home_mae'], 2),
+                "away_score_mae": round(metrics['val_away_mae'], 2),
+                "total_score_mae": round(metrics['val_total_mae'], 2)
+            },
+            "timestamp": datetime.now().isoformat()
+        }
+        
+    except Exception as e:
+        logger.error(f"Error training prediction model: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get('/api/ml/predictions')
+def get_match_predictions():
+    """
+    Get predictions for upcoming matches.
+    
+    Returns:
+        dict: Match predictions with winner and score predictions
+    """
+    try:
+        logger.info("Generating match predictions")
+        
+        # Generate predictions
+        predictions_df = prediction_service.predict_upcoming_matches(load_model=True)
+        
+        if predictions_df.empty:
+            return {
+                "status": "success",
+                "message": "No upcoming matches to predict",
+                "predictions": [],
+                "timestamp": datetime.now().isoformat()
+            }
+        
+        # Get prediction summary
+        summary = prediction_service.get_prediction_summary(predictions_df)
+        
+        return {
+            "status": "success",
+            "message": f"Generated predictions for {summary['total_matches']} matches",
+            "summary": summary,
+            "timestamp": datetime.now().isoformat()
+        }
+        
+    except Exception as e:
+        logger.error(f"Error generating predictions: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get('/api/ml/model-performance')
+def get_model_performance(test_days: int = 7):
+    """
+    Evaluate model performance on recent matches.
+    
+    Args:
+        test_days: Number of recent days to use for evaluation
+        
+    Returns:
+        dict: Model performance metrics
+    """
+    try:
+        logger.info(f"Evaluating model performance on last {test_days} days")
+        
+        # Evaluate model
+        metrics = prediction_service.evaluate_model(test_days_back=test_days)
+        
+        return {
+            "status": "success",
+            "evaluation_period_days": test_days,
+            "metrics": {
+                "test_samples": metrics['test_samples'],
+                "winner_accuracy": round(metrics['winner_accuracy'], 3),
+                "home_score_mae": round(metrics['home_score_mae'], 2),
+                "away_score_mae": round(metrics['away_score_mae'], 2),
+                "total_score_mae": round(metrics['total_score_mae'], 2)
+            },
+            "timestamp": datetime.now().isoformat()
+        }
+        
+    except Exception as e:
+        logger.error(f"Error evaluating model: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get('/api/ml/feature-importance')
+def get_feature_importance():
+    """
+    Get feature importance from the trained model.
+    
+    Returns:
+        dict: Feature importance rankings
+    """
+    try:
+        logger.info("Getting feature importance")
+        
+        # Get feature importance
+        importance_df = prediction_service.get_feature_importance()
+        
+        # Convert to list of dictionaries
+        importance_list = importance_df.to_dict('records')
+        
+        return {
+            "status": "success",
+            "feature_count": len(importance_list),
+            "features": importance_list,
+            "timestamp": datetime.now().isoformat()
+        }
+        
+    except Exception as e:
+        logger.error(f"Error getting feature importance: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post('/api/ml/retrain')
+def retrain_model(days_back: int = 60):
+    """
+    Retrain the model with fresh data.
+    
+    Args:
+        days_back: Number of days of history to include in retraining
+        
+    Returns:
+        dict: Retraining results
+    """
+    try:
+        logger.info(f"Retraining model with {days_back} days of fresh data")
+        
+        # Retrain model
+        metrics = prediction_service.retrain_with_new_data(days_back=days_back)
+        
+        return {
+            "status": "success",
+            "message": "Model retrained successfully",
+            "metrics": {
+                "winner_accuracy": round(metrics['val_winner_accuracy'], 3),
+                "home_score_mae": round(metrics['val_home_mae'], 2),
+                "away_score_mae": round(metrics['val_away_mae'], 2),
+                "total_score_mae": round(metrics['val_total_mae'], 2)
+            },
+            "timestamp": datetime.now().isoformat()
+        }
+        
+    except Exception as e:
+        logger.error(f"Error retraining model: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get('/api/ml/predictions/summary')
+def get_predictions_summary():
+    """
+    Get a simplified summary of current predictions.
+    
+    Returns:
+        dict: Simplified prediction summary
+    """
+    try:
+        # Try to load existing predictions first
+        predictions_file = Path("output/match_predictions.csv")
+        
+        if predictions_file.exists():
+            import pandas as pd
+            predictions_df = pd.read_csv(predictions_file)
+            summary = prediction_service.get_prediction_summary(predictions_df)
+        else:
+            # Generate fresh predictions
+            predictions_df = prediction_service.predict_upcoming_matches(load_model=True)
+            summary = prediction_service.get_prediction_summary(predictions_df)
+        
+        # Create simplified summary
+        simplified_predictions = []
+        for pred in summary.get('predictions', []):
+            simplified_predictions.append({
+                'match': f"{pred['home_player']} vs {pred['away_player']}",
+                'predicted_winner': pred['predicted_winner'],
+                'confidence': pred['confidence'],
+                'predicted_total_score': pred['predicted_scores']['total']
+            })
+        
+        return {
+            "status": "success",
+            "total_matches": summary.get('total_matches', 0),
+            "average_confidence": round(summary.get('average_confidence', 0), 3),
+            "predictions": simplified_predictions,
+            "timestamp": datetime.now().isoformat()
+        }
+        
+    except Exception as e:
+        logger.error(f"Error getting predictions summary: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
 
