@@ -1,8 +1,0 @@
-{
-  "framework": "nextjs",
-  "buildCommand": "npm run vercel-build",
-  "outputDirectory": ".next",
-  "env": {
-    "NEXT_PUBLIC_API_URL": "https://2k-spark-backend.onrender.com"
-  }
-}

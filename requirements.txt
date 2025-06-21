@@ -6,28 +6,16 @@ scipy
 python-dateutil
 pytz
 
-# Machine learning and modeling
-scikit-learn
-xgboost
-lightgbm
-catboost
-
-# Model optimization and hyperparameter tuning
-scikit-optimize
-
-# Advanced validation and model selection
-imbalanced-learn
-
 # Web scraping and browser automation
 selenium
 webdriver-manager
 
 # API Server
-flask
-flask-cors
+fastapi
+uvicorn[standard]
 
 # HTTP requests
 requests
 
-# Utilities for enhanced features
+# Utilities
 joblib

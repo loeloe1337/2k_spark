@@ -14,10 +14,6 @@ LOG_DIR.mkdir(exist_ok=True)
 # Log file paths
 API_LOG = LOG_DIR / "api.log"
 DASHBOARD_LOG = LOG_DIR / "dashboard.log"
-MODEL_TUNING_LOG = LOG_DIR / "model_tuning.log"
-SCORE_MODEL_TRAINING_LOG = LOG_DIR / "score_model_training.log"
-UPCOMING_MATCHES_LOG = LOG_DIR / "upcoming_matches.log"
-PREDICTION_REFRESH_LOG = LOG_DIR / "prediction_refresh.log"
 DATA_FETCHER_LOG = LOG_DIR / "data_fetcher.log"
 
 # Default log format
@@ -78,22 +74,6 @@ def get_api_logger():
 
 def get_dashboard_logger():
     return configure_logger("dashboard", DASHBOARD_LOG)
-
-
-def get_model_tuning_logger():
-    return configure_logger("model_tuning", MODEL_TUNING_LOG)
-
-
-def get_score_model_training_logger():
-    return configure_logger("score_model_training", SCORE_MODEL_TRAINING_LOG)
-
-
-def get_upcoming_matches_logger():
-    return configure_logger("upcoming_matches", UPCOMING_MATCHES_LOG)
-
-
-def get_prediction_refresh_logger():
-    return configure_logger("prediction_refresh", PREDICTION_REFRESH_LOG)
 
 
 def get_data_fetcher_logger():

@@ -8,18 +8,17 @@ from pathlib import Path
 # Base directories
 BASE_DIR = Path(__file__).resolve().parent.parent
 OUTPUT_DIR = BASE_DIR.parent / "output"
-MODELS_DIR = BASE_DIR.parent / "models"
+LOG_DIR = BASE_DIR.parent / "logs"
 
 # Ensure directories exist
 OUTPUT_DIR.mkdir(exist_ok=True)
-MODELS_DIR.mkdir(exist_ok=True)
+LOG_DIR.mkdir(exist_ok=True)
 
 # Data files
 MATCH_HISTORY_FILE = OUTPUT_DIR / "match_history.json"
 PLAYER_STATS_FILE = OUTPUT_DIR / "player_stats.json"
 UPCOMING_MATCHES_FILE = OUTPUT_DIR / "upcoming_matches.json"
-PREDICTIONS_FILE = OUTPUT_DIR / "upcoming_match_predictions.json"
-PREDICTION_HISTORY_FILE = OUTPUT_DIR / "prediction_history.json"
+AUTH_TOKEN_FILE = OUTPUT_DIR / "auth_token.json"
 
 # API settings
 API_HOST = os.environ.get("API_HOST", "0.0.0.0")
@@ -35,11 +34,6 @@ H2H_DEFAULT_TOURNAMENT_ID = 1
 # Selenium settings
 SELENIUM_HEADLESS = True
 SELENIUM_TIMEOUT = 10  # seconds
-
-# Model settings
-DEFAULT_RANDOM_STATE = 42
-MODEL_REGISTRY_FILE = MODELS_DIR / "model_registry.json"
-SCORE_MODEL_REGISTRY_FILE = MODELS_DIR / "score_model_registry.json"
 
 # Refresh settings
 REFRESH_INTERVAL = 3600  # seconds (1 hour)

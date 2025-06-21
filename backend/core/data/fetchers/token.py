@@ -19,7 +19,7 @@ except ImportError:
     print("Also ensure Chrome/Chromium browser is installed")
     exit(1)
 
-from config.settings import H2H_WEBSITE_URL, H2H_TOKEN_LOCALSTORAGE_KEY, SELENIUM_HEADLESS, SELENIUM_TIMEOUT
+from config.settings import H2H_WEBSITE_URL, H2H_TOKEN_LOCALSTORAGE_KEY, SELENIUM_HEADLESS, SELENIUM_TIMEOUT, AUTH_TOKEN_FILE
 from config.logging_config import get_data_fetcher_logger
 from utils.logging import log_execution_time, log_exceptions
 
@@ -48,7 +48,7 @@ class TokenFetcher:
         self.timeout = timeout
         self.token = None
         self.token_timestamp = None
-        self.token_cache_file = Path("auth_token.json")
+        self.token_cache_file = AUTH_TOKEN_FILE
     
     @log_execution_time(logger)
     @log_exceptions(logger)

@@ -59,54 +59,8 @@ class LiveScoresService:
             'live_updated_at': datetime.now().isoformat()
         }
     
-    def match_with_predictions(self, live_scores: List[Dict], predictions: List[Dict]) -> List[Dict]:
-        """Match live scores with existing predictions."""
-        matched_data = []
-        
-        for live_match in live_scores:
-            processed_live = self.process_live_match(live_match)
-            
-            # Try to find matching prediction based on participant names
-            matching_prediction = None
-            participant_a = processed_live.get('participant_a_name', '').lower()
-            participant_b = processed_live.get('participant_b_name', '').lower()
-            
-            for prediction in predictions:
-                home_player = prediction.get('homePlayer', {}).get('name', '').lower()
-                away_player = prediction.get('awayPlayer', {}).get('name', '').lower()
-                
-                # Check if participants match (in either order)
-                if ((participant_a in home_player or home_player in participant_a) and
-                    (participant_b in away_player or away_player in participant_b)) or \
-                   ((participant_a in away_player or away_player in participant_a) and
-                    (participant_b in home_player or home_player in participant_b)):
-                    matching_prediction = prediction
-                    break
-            
-            if matching_prediction:
-                # Merge live data with prediction
-                merged_match = matching_prediction.copy()
-                merged_match['live_scores'] = processed_live
-                merged_match['has_live_scores'] = True
-                matched_data.append(merged_match)
-            else:
-                # Create a basic match structure for unmatched live games
-                unmatched_match = {
-                    'id': processed_live['external_id'],
-                    'fixtureId': processed_live['external_id'],
-                    'homePlayer': {'name': processed_live['participant_a_name']},
-                    'awayPlayer': {'name': processed_live['participant_b_name']},
-                    'fixtureStart': processed_live['start_date'],
-                    'live_scores': processed_live,
-                    'has_live_scores': True,
-                    'prediction_available': False
-                }
-                matched_data.append(unmatched_match)
-        
-        return matched_data
-    
-    def get_live_matches_with_predictions(self, predictions: List[Dict] = None) -> Dict:
-        """Get live matches merged with predictions."""
+    def get_live_matches(self) -> Dict:
+        """Get live matches data."""
         live_scores = self.fetch_live_scores()
         
         if not live_scores:
@@ -117,24 +71,20 @@ class LiveScoresService:
                 'error': 'No live data available'
             }
         
-        if predictions:
-            matched_data = self.match_with_predictions(live_scores, predictions)
-        else:
-            # Process live scores without predictions
-            matched_data = []
-            for live_match in live_scores:
-                processed_live = self.process_live_match(live_match)
-                match_data = {
-                    'id': processed_live['external_id'],
-                    'fixtureId': processed_live['external_id'],
-                    'homePlayer': {'name': processed_live['participant_a_name']},
-                    'awayPlayer': {'name': processed_live['participant_b_name']},
-                    'fixtureStart': processed_live['start_date'],
-                    'live_scores': processed_live,
-                    'has_live_scores': True,
-                    'prediction_available': False
-                }
-                matched_data.append(match_data)
+        # Process live scores
+        matched_data = []
+        for live_match in live_scores:
+            processed_live = self.process_live_match(live_match)
+            match_data = {
+                'id': processed_live['external_id'],
+                'fixtureId': processed_live['external_id'],
+                'homePlayer': {'name': processed_live['participant_a_name']},
+                'awayPlayer': {'name': processed_live['participant_b_name']},
+                'fixtureStart': processed_live['start_date'],
+                'live_scores': processed_live,
+                'has_live_scores': True
+            }
+            matched_data.append(match_data)
         
         return {
             'matches': matched_data,
