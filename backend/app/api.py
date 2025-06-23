@@ -1085,23 +1085,37 @@ def run_pipeline_background(request_data: dict):
                     }
                     pipeline_results["steps_completed"].append("predictions")
                     logger.info(f"[OK] Generated predictions for {len(simplified_predictions)} matches")
-                    
-                    # Save predictions to database
+                      # Save predictions to database
                     if supabase_service.is_connected():
                         try:
                             logger.info("[SAVE] Saving predictions to database...")
+                            
+                            # Get the active model version from prediction service
+                            try:
+                                active_model_version = prediction_service._get_active_model_version()
+                                if not active_model_version:
+                                    active_model_version = "v1.0.0"  # Default fallback
+                            except:
+                                active_model_version = pipeline_results["summary"].get("model_version", "v1.0.0")
+                            
                             # Convert predictions for database storage
                             db_predictions = []
                             for pred in summary.get('predictions', []):
+                                # Calculate home win probability from confidence
+                                home_score = float(pred['predicted_scores']['home'])
+                                away_score = float(pred['predicted_scores']['away'])
+                                home_win_prob = home_score / (home_score + away_score) if (home_score + away_score) > 0 else 0.5
+                                
                                 db_pred = {
                                     "match_id": f"{pred['home_player']}_{pred['away_player']}_{datetime.now().strftime('%Y%m%d')}",
-                                    "model_version": pipeline_results["summary"].get("model_version", "unknown"),
+                                    "model_version": active_model_version,
                                     "home_player": pred['home_player'],
                                     "away_player": pred['away_player'],
                                     "predicted_home_score": float(pred['predicted_scores']['home']),
                                     "predicted_away_score": float(pred['predicted_scores']['away']),
                                     "predicted_total_score": float(pred['predicted_scores']['total']),
                                     "predicted_winner": pred['predicted_winner'],
+                                    "home_win_probability": float(home_win_prob),
                                     "confidence_score": float(pred['confidence'])
                                 }
                                 db_predictions.append(db_pred)

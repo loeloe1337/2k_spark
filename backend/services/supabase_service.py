@@ -286,8 +286,7 @@ class SupabaseService:
             logger.error("Supabase client not initialized")
             return False
 
-        try:
-            # Prepare predictions for insertion
+        try:            # Prepare predictions for insertion
             prediction_records = []
             for pred in predictions:
                 record = {
@@ -299,6 +298,7 @@ class SupabaseService:
                     'predicted_away_score': pred.get('predicted_away_score'),
                     'predicted_total_score': pred.get('predicted_total_score'),
                     'predicted_winner': pred.get('predicted_winner'),
+                    'home_win_probability': pred.get('home_win_probability'),
                     'confidence_score': pred.get('confidence_score'),
                     'prediction_date': datetime.now(timezone.utc).isoformat()
                 }
