@@ -24,6 +24,14 @@ RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key
     && apt-get install -y google-chrome-stable \
     && rm -rf /var/lib/apt/lists/*
 
+# Install ChromeDriver
+RUN CHROME_DRIVER_VERSION=$(curl -s https://storage.googleapis.com/chrome-for-testing-public/last-known-good-versions-with-downloads.json | grep -oP '"linux64":\[{"url":"[^"]*","version":"\K[0-9.]*' | head -1) \
+    && wget -q --continue -P /tmp/ "https://storage.googleapis.com/chrome-for-testing-public/${CHROME_DRIVER_VERSION}/linux64/chromedriver-linux64.zip" \
+    && unzip /tmp/chromedriver-linux64.zip -d /tmp/ \
+    && mv /tmp/chromedriver-linux64/chromedriver /usr/local/bin/ \
+    && chmod +x /usr/local/bin/chromedriver \
+    && rm -rf /tmp/chromedriver*
+
 # Copy requirements first for better caching
 COPY requirements.txt .
 
@@ -47,4 +55,4 @@ HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
     CMD curl -f http://localhost:10000/api/health || exit 1
 
 # Command to run the application
-CMD ["uvicorn", "simple_test_api:app", "--host", "0.0.0.0", "--port", "10000"]
+CMD ["uvicorn", "backend.app.api:app", "--host", "0.0.0.0", "--port", "10000"]
