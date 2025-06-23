@@ -69,6 +69,9 @@ def root():
             "player_stats": "/api/player-stats",
             "run_pipeline": "/api/run-pipeline",
             "pipeline_status": "/api/pipeline-status",
+            "pipeline_results": "/api/pipeline-results",
+            "predictions": "/api/ml/predictions",
+            "predictions_summary": "/api/ml/predictions/summary",
             "docs": "/docs"
         }
     }
@@ -820,6 +823,7 @@ class PipelineRequest(BaseModel):
     history_days: int = 90
     training_days: int = 60
     min_matches: int = 5
+    return_predictions: bool = True  # New parameter to include predictions in response
 
 
 @app.post('/api/run-pipeline')
@@ -869,15 +873,16 @@ def run_pipeline_endpoint(request: PipelineRequest, background_tasks: Background
             pipeline_results["errors"].append(error_msg)
             logger.error(f"❌ {error_msg}")
             # Continue anyway
-        
-        # Return immediate response and run heavy operations in background
+          # Return immediate response and run heavy operations in background
         if len(pipeline_results["errors"]) == 0:
             background_tasks.add_task(run_pipeline_background, request.dict())
             pipeline_results.update({
                 "status": "accepted",
                 "message": "Pipeline started successfully. Heavy operations running in background.",
-                "note": "Due to resource constraints, Selenium token fetching and ML training run in background. Check logs or other endpoints for results.",
+                "note": "Due to resource constraints, Selenium token fetching and ML training run in background. Check results endpoint when complete.",
                 "available_endpoints": {
+                    "check_pipeline_results": "/api/pipeline-results",
+                    "check_pipeline_status": "/api/pipeline-status", 
                     "check_upcoming_matches": "/api/upcoming-matches",
                     "check_player_stats": "/api/player-stats", 
                     "check_system_status": "/api/system-status"
@@ -904,6 +909,16 @@ def run_pipeline_background(request_data: dict):
     Args:
         request_data (dict): Pipeline configuration parameters
     """
+    pipeline_results = {
+        "status": "running",
+        "timestamp": datetime.now().isoformat(),
+        "steps_completed": [],
+        "steps_failed": [],
+        "summary": {},
+        "errors": [],
+        "predictions": None
+    }
+    
     try:
         logger.info("🔄 Starting background pipeline execution...")
         
@@ -915,9 +930,12 @@ def run_pipeline_background(request_data: dict):
             token_fetcher.timeout = 30  # Reduce from default
             token = token_fetcher.get_token(force_refresh=request_data.get('refresh_token', False))
             logger.info("✅ Authentication token retrieved")
+            pipeline_results["steps_completed"].append("token_fetch")
         except Exception as e:
             logger.error(f"❌ Token fetch failed: {str(e)}")
             logger.info("⚠️  Continuing without fresh token...")
+            pipeline_results["steps_failed"].append("token_fetch")
+            pipeline_results["errors"].append(f"Token fetch failed: {str(e)}")
         
         # Step 3: Fetch match history (use existing data if fetch fails)
         try:
@@ -925,9 +943,13 @@ def run_pipeline_background(request_data: dict):
             match_fetcher = MatchHistoryFetcher(days_back=request_data.get('history_days', 30))  # Reduce days
             matches = match_fetcher.fetch_match_history(save_to_file=True)
             logger.info(f"✅ Match history updated: {len(matches) if matches else 0} matches")
+            pipeline_results["steps_completed"].append("match_history")
+            pipeline_results["summary"]["match_history_count"] = len(matches) if matches else 0
         except Exception as e:
             logger.error(f"❌ Match history fetch failed: {str(e)}")
             logger.info("⚠️  Using existing match data...")
+            pipeline_results["steps_failed"].append("match_history")
+            pipeline_results["errors"].append(f"Match history fetch failed: {str(e)}")
         
         # Step 4: Calculate player statistics
         try:
@@ -937,8 +959,12 @@ def run_pipeline_background(request_data: dict):
             matches = match_fetcher.load_from_file()
             player_stats = stats_processor.calculate_player_stats(matches, save_to_file=True)
             logger.info(f"✅ Player statistics updated: {len(player_stats) if player_stats else 0} players")
+            pipeline_results["steps_completed"].append("player_stats")
+            pipeline_results["summary"]["player_stats_count"] = len(player_stats) if player_stats else 0
         except Exception as e:
             logger.error(f"❌ Player stats calculation failed: {str(e)}")
+            pipeline_results["steps_failed"].append("player_stats")
+            pipeline_results["errors"].append(f"Player stats calculation failed: {str(e)}")
         
         # Step 5: Fetch upcoming matches
         try:
@@ -946,11 +972,14 @@ def run_pipeline_background(request_data: dict):
             upcoming_fetcher = UpcomingMatchesFetcher()
             upcoming_matches = upcoming_fetcher.fetch_upcoming_matches(save_to_file=True)
             logger.info(f"✅ Upcoming matches updated: {len(upcoming_matches) if upcoming_matches else 0} matches")
+            pipeline_results["steps_completed"].append("upcoming_matches")
+            pipeline_results["summary"]["upcoming_matches_count"] = len(upcoming_matches) if upcoming_matches else 0
         except Exception as e:
             logger.error(f"❌ Upcoming matches fetch failed: {str(e)}")
+            pipeline_results["steps_failed"].append("upcoming_matches")
+            pipeline_results["errors"].append(f"Upcoming matches fetch failed: {str(e)}")
         
-        # Step 6: Train model (only if explicitly requested and we have resources)
-        if request_data.get('train_new_model', False):
+        # Step 6: Train model (only if explicitly requested and we have resources)        if request_data.get('train_new_model', False):
             try:
                 logger.info("🤖 Training prediction model...")
                 prediction_service = EnhancedMatchPredictionService()
@@ -964,13 +993,90 @@ def run_pipeline_background(request_data: dict):
                     performance_threshold=0.5  # Lower threshold for deployment
                 )
                 logger.info(f"✅ Model trained: {version}")
+                pipeline_results["steps_completed"].append("model_training")
+                pipeline_results["summary"]["model_version"] = str(version)
+                # Convert metrics to JSON-serializable format
+                json_metrics = {}
+                for key, value in metrics.items():
+                    if hasattr(value, 'item'):  # numpy scalar
+                        json_metrics[key] = float(value.item())
+                    elif isinstance(value, (int, float, str, bool)):
+                        json_metrics[key] = value
+                    else:
+                        json_metrics[key] = str(value)
+                pipeline_results["summary"]["model_metrics"] = json_metrics
             except Exception as e:
                 logger.error(f"❌ Model training failed: {str(e)}")
+                pipeline_results["steps_failed"].append("model_training")
+                pipeline_results["errors"].append(f"Model training failed: {str(e)}")
         
-        logger.info("🎉 Background pipeline completed!")
+        # Step 7: Generate predictions (if requested)
+        if request_data.get('return_predictions', True):
+            try:
+                logger.info("� Generating predictions for upcoming matches...")
+                prediction_service = EnhancedMatchPredictionService()
+                predictions_df = prediction_service.predict_with_best_model(load_model=True)
+                
+                if not predictions_df.empty:
+                    summary = prediction_service.get_prediction_summary(predictions_df)
+                      # Create simplified predictions for the response
+                    simplified_predictions = []
+                    for pred in summary.get('predictions', []):
+                        simplified_predictions.append({
+                            'match': f"{pred['home_player']} vs {pred['away_player']}",
+                            'predicted_winner': pred['predicted_winner'],
+                            'confidence': float(pred['confidence']),  # Convert to regular Python float
+                            'predicted_total_score': float(pred['predicted_scores']['total']),
+                            'home_score': float(pred['predicted_scores']['home']),
+                            'away_score': float(pred['predicted_scores']['away'])
+                        })
+                    
+                    pipeline_results["predictions"] = {
+                        "total_matches": int(summary.get('total_matches', 0)),
+                        "average_confidence": float(summary.get('average_confidence', 0)),
+                        "matches": simplified_predictions
+                    }
+                    pipeline_results["steps_completed"].append("predictions")
+                    logger.info(f"✅ Generated predictions for {len(simplified_predictions)} matches")
+                else:
+                    pipeline_results["predictions"] = {
+                        "total_matches": 0,
+                        "average_confidence": 0,
+                        "matches": [],
+                        "message": "No upcoming matches found to predict"
+                    }
+                    pipeline_results["steps_completed"].append("predictions")
+                    logger.info("✅ No upcoming matches to predict")
+                    
+            except Exception as e:
+                logger.error(f"❌ Prediction generation failed: {str(e)}")
+                pipeline_results["steps_failed"].append("predictions")
+                pipeline_results["errors"].append(f"Prediction generation failed: {str(e)}")
+                pipeline_results["predictions"] = None
+        
+        # Final status
+        pipeline_results["status"] = "completed"
+        pipeline_results["completion_timestamp"] = datetime.now().isoformat()
+        
+        # Save results to a temporary file for retrieval
+        results_file = Path("output/pipeline_results.json")
+        results_file.parent.mkdir(exist_ok=True)
+        with open(results_file, 'w') as f:
+            json.dump(pipeline_results, f, indent=2)
+        
+        logger.info("�🎉 Background pipeline completed!")
         
     except Exception as e:
         logger.error(f"❌ Background pipeline failed: {str(e)}")
+        pipeline_results["status"] = "failed"
+        pipeline_results["completion_timestamp"] = datetime.now().isoformat()
+        pipeline_results["errors"].append(f"Pipeline failed: {str(e)}")
+        
+        # Save error results
+        results_file = Path("output/pipeline_results.json")
+        results_file.parent.mkdir(exist_ok=True)
+        with open(results_file, 'w') as f:
+            json.dump(pipeline_results, f, indent=2)
 
 
 @app.get('/api/pipeline-status')
@@ -1019,6 +1125,43 @@ def get_pipeline_status():
             "timestamp": datetime.now().isoformat(),
             "error": str(e)
         }
+
+
+@app.get('/api/pipeline-results')
+@log_execution_time(logger)
+@log_exceptions(logger)
+def get_pipeline_results():
+    """
+    Get the results from the most recent pipeline execution.
+    
+    Returns:
+        dict: Pipeline execution results including predictions if available
+    """
+    try:
+        results_file = Path("output/pipeline_results.json")
+        
+        if not results_file.exists():
+            return {
+                "status": "no_results",
+                "message": "No pipeline results found. Run the pipeline first.",
+                "timestamp": datetime.now().isoformat()
+            }
+        
+        # Load the results
+        with open(results_file, 'r') as f:
+            results = json.load(f)
+        
+        # Add additional metadata
+        import os
+        file_time = datetime.fromtimestamp(os.path.getmtime(results_file))
+        results["results_file_timestamp"] = file_time.isoformat()
+        results["results_age_minutes"] = round((datetime.now() - file_time).total_seconds() / 60, 1)
+        
+        return results
+        
+    except Exception as e:
+        logger.error(f"Error getting pipeline results: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 def run_api_server():
