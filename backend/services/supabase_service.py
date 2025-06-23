@@ -214,21 +214,23 @@ class SupabaseService:
             match_records = []
             for match in matches:
                 record = {
-                    'match_id': match.get('id'),
+                    'match_id': match.get('match_id', f"{match.get('home_team', '')}_{match.get('away_team', '')}_{datetime.now().strftime('%Y%m%d')}"),
                     'home_team': match.get('home_team'),
                     'away_team': match.get('away_team'),
-                    'scheduled_date': match.get('date'),
+                    'home_player': match.get('home_player'),
+                    'away_player': match.get('away_player'),
+                    'scheduled_date': match.get('scheduled_date') or match.get('match_date'),
                     'tournament_id': match.get('tournament_id'),
+                    'tournament_name': match.get('tournament_name'),
                     'status': match.get('status', 'scheduled'),
                     'raw_data': match,
-                    'created_at': datetime.now(timezone.utc).isoformat(),
                     'updated_at': datetime.now(timezone.utc).isoformat()
                 }
                 match_records.append(record)
 
             # Insert or update upcoming matches
             result = self.client.table('upcoming_matches').upsert(
-                match_records,
+                match_records, 
                 on_conflict='match_id'
             ).execute()
 
@@ -239,30 +241,81 @@ class SupabaseService:
             logger.error(f"Error saving upcoming matches: {str(e)}")
             return False
 
-    def get_upcoming_matches(self, limit: int = 50) -> List[Dict[str, Any]]:
+    def save_model_registry(self, model_data: Dict[str, Any]) -> bool:
         """
-        Get upcoming matches from the database.
+        Save model metadata to the model registry.
         
         Args:
-            limit (int): Maximum number of matches to return
+            model_data (Dict): Model metadata
             
         Returns:
-            List[Dict]: List of upcoming matches
+            bool: True if successful, False otherwise
         """
         if not self.client:
             logger.error("Supabase client not initialized")
-            return []
+            return False
 
         try:
-            result = self.client.table('upcoming_matches').select('*').order(
-                'scheduled_date', desc=False
-            ).limit(limit).execute()
+            # First deactivate any existing active models
+            if model_data.get('is_active', False):
+                self.client.table('model_registry').update({
+                    'is_active': False
+                }).eq('model_name', model_data.get('model_name')).execute()
 
-            return result.data if result.data else []
+            # Insert new model record
+            result = self.client.table('model_registry').upsert([model_data], on_conflict='model_name,model_version').execute()
+
+            logger.info(f"Successfully saved model {model_data.get('model_name')} {model_data.get('model_version')} to registry")
+            return True
 
         except Exception as e:
-            logger.error(f"Error fetching upcoming matches: {str(e)}")
-            return []
+            logger.error(f"Error saving model registry: {str(e)}")
+            return False
+
+    def save_match_predictions(self, predictions: List[Dict[str, Any]]) -> bool:
+        """
+        Save match predictions to the database.
+        
+        Args:
+            predictions (List[Dict]): List of match predictions
+            
+        Returns:
+            bool: True if successful, False otherwise
+        """
+        if not self.client:
+            logger.error("Supabase client not initialized")
+            return False
+
+        try:
+            # Prepare predictions for insertion
+            prediction_records = []
+            for pred in predictions:
+                record = {
+                    'match_id': pred.get('match_id'),
+                    'model_version': pred.get('model_version'),
+                    'home_player': pred.get('home_player'),
+                    'away_player': pred.get('away_player'),
+                    'predicted_home_score': pred.get('predicted_home_score'),
+                    'predicted_away_score': pred.get('predicted_away_score'),
+                    'predicted_total_score': pred.get('predicted_total_score'),
+                    'predicted_winner': pred.get('predicted_winner'),
+                    'confidence_score': pred.get('confidence_score'),
+                    'prediction_date': datetime.now(timezone.utc).isoformat()
+                }
+                prediction_records.append(record)
+
+            # Insert predictions
+            result = self.client.table('match_predictions').upsert(
+                prediction_records, 
+                on_conflict='match_id,model_version'
+            ).execute()
+
+            logger.info(f"Successfully saved {len(prediction_records)} predictions to database")
+            return True
+
+        except Exception as e:
+            logger.error(f"Error saving match predictions: {str(e)}")
+            return False
 
     # Utility Methods
     def test_connection(self) -> bool:

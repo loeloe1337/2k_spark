@@ -540,8 +540,8 @@ The project uses Supabase (PostgreSQL) with a comprehensive schema that supports
 ### Schema Files
 
 - **`schema.sql`** - Complete database schema with all tables
-- **`schema_original.sql`** - Original base schema (for reference)
-- **`migrations/`** - Applied database migrations
+- **`migrations/`** - Database migration history for tracking changes
+  - `000_original_schema.sql` - Original base schema (historical reference)
   - `001_prediction_system_enhancement.sql` - Model versioning tables
   - `002_core_tables_player_enhancement.sql` - Player column additions
 

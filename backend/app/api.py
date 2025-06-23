@@ -26,6 +26,7 @@ from utils.logging import log_execution_time, log_exceptions
 from services.live_scores_service import LiveScoresService
 from services.data_service import DataService
 from services.enhanced_prediction_service import EnhancedMatchPredictionService
+from services.supabase_service import SupabaseService
 # Import CLI functionality for pipeline
 from core.data.fetchers import TokenFetcher
 from core.data.fetchers.match_history import MatchHistoryFetcher
@@ -48,6 +49,7 @@ app.add_middleware(
 logger = get_api_logger()
 data_service = DataService()
 prediction_service = EnhancedMatchPredictionService()
+supabase_service = SupabaseService()
 
 
 @app.get('/')
@@ -858,20 +860,20 @@ def run_pipeline_endpoint(request: PipelineRequest, background_tasks: Background
             "errors": []
         }
         
-        logger.info("🚀 Starting API Pipeline execution...")
+        logger.info("[START] Starting API Pipeline execution...")
         
         # Step 1: Authentication token (quick test)
         try:
-            logger.info("📝 Step 1/6: Testing authentication...")
+            logger.info("[AUTH] Step 1/6: Testing authentication...")
             # Just test if we can import the TokenFetcher without actually fetching
             from core.data.fetchers import TokenFetcher
             pipeline_results["steps_completed"].append("authentication_check")
-            logger.info("✅ Authentication module ready")
+            logger.info("[OK] Authentication module ready")
         except Exception as e:
             error_msg = f"Authentication check failed: {str(e)}"
             pipeline_results["steps_failed"].append("authentication_check")
             pipeline_results["errors"].append(error_msg)
-            logger.error(f"❌ {error_msg}")
+            logger.error(f"[ERROR] {error_msg}")
             # Continue anyway
           # Return immediate response and run heavy operations in background
         if len(pipeline_results["errors"]) == 0:
@@ -893,7 +895,7 @@ def run_pipeline_endpoint(request: PipelineRequest, background_tasks: Background
         
     except Exception as e:
         error_msg = f"Pipeline failed with unexpected error: {str(e)}"
-        logger.error(f"❌ {error_msg}")
+        logger.error(f"[ERROR] {error_msg}")
         return {
             "status": "error",
             "timestamp": datetime.now().isoformat(),
@@ -920,68 +922,95 @@ def run_pipeline_background(request_data: dict):
     }
     
     try:
-        logger.info("🔄 Starting background pipeline execution...")
+        logger.info("[RUN] Starting background pipeline execution...")
         
         # Step 2: Fetch authentication token (with timeout protection)
         try:
-            logger.info("📝 Fetching authentication token...")
+            logger.info("[AUTH] Fetching authentication token...")
             token_fetcher = TokenFetcher()
             # Set shorter timeout for deployment environment
             token_fetcher.timeout = 30  # Reduce from default
             token = token_fetcher.get_token(force_refresh=request_data.get('refresh_token', False))
-            logger.info("✅ Authentication token retrieved")
+            logger.info("[OK] Authentication token retrieved")
             pipeline_results["steps_completed"].append("token_fetch")
         except Exception as e:
-            logger.error(f"❌ Token fetch failed: {str(e)}")
-            logger.info("⚠️  Continuing without fresh token...")
+            logger.error(f"[ERROR] Token fetch failed: {str(e)}")
+            logger.info("[WARN]  Continuing without fresh token...")
             pipeline_results["steps_failed"].append("token_fetch")
-            pipeline_results["errors"].append(f"Token fetch failed: {str(e)}")
-        
-        # Step 3: Fetch match history (use existing data if fetch fails)
+            pipeline_results["errors"].append(f"Token fetch failed: {str(e)}")          # Step 3: Fetch match history (use existing data if fetch fails)
         try:
-            logger.info("📊 Fetching match history...")
+            logger.info("[FETCH] Fetching match history...")
             match_fetcher = MatchHistoryFetcher(days_back=request_data.get('history_days', 30))  # Reduce days
             matches = match_fetcher.fetch_match_history(save_to_file=True)
-            logger.info(f"✅ Match history updated: {len(matches) if matches else 0} matches")
+            logger.info(f"[OK] Match history updated: {len(matches) if matches else 0} matches")
             pipeline_results["steps_completed"].append("match_history")
-            pipeline_results["summary"]["match_history_count"] = len(matches) if matches else 0
+            pipeline_results["summary"]["match_history_count"] = len(matches) if matches else 0            # Save to database
+            if matches and supabase_service.is_connected():
+                try:
+                    logger.info(">>> Saving match history to database...")
+                    supabase_service.save_match_history(matches)
+                    logger.info("=== Match history saved to database")
+                except Exception as db_e:
+                    logger.warning(f"!!! Database save failed for match history: {str(db_e)}")
+            
         except Exception as e:
-            logger.error(f"❌ Match history fetch failed: {str(e)}")
-            logger.info("⚠️  Using existing match data...")
+            logger.error(f"[ERROR] Match history fetch failed: {str(e)}")
+            logger.info("[WARN]  Using existing match data...")
             pipeline_results["steps_failed"].append("match_history")
             pipeline_results["errors"].append(f"Match history fetch failed: {str(e)}")
         
         # Step 4: Calculate player statistics
         try:
-            logger.info("🏀 Calculating player statistics...")
+            logger.info("[STATS] Calculating player statistics...")
             stats_processor = PlayerStatsProcessor()
             match_fetcher = MatchHistoryFetcher()
             matches = match_fetcher.load_from_file()
             player_stats = stats_processor.calculate_player_stats(matches, save_to_file=True)
-            logger.info(f"✅ Player statistics updated: {len(player_stats) if player_stats else 0} players")
+            logger.info(f"[OK] Player statistics updated: {len(player_stats) if player_stats else 0} players")
             pipeline_results["steps_completed"].append("player_stats")
             pipeline_results["summary"]["player_stats_count"] = len(player_stats) if player_stats else 0
+            
+            # Save to database
+            if player_stats and supabase_service.is_connected():
+                try:
+                    logger.info("[SAVE] Saving player statistics to database...")
+                    supabase_service.save_player_stats(player_stats)
+                    logger.info("[OK] Player statistics saved to database")
+                except Exception as db_e:
+                    logger.warning(f"[WARN] Database save failed for player stats: {str(db_e)}")
+            
         except Exception as e:
-            logger.error(f"❌ Player stats calculation failed: {str(e)}")
+            logger.error(f"[ERROR] Player stats calculation failed: {str(e)}")
             pipeline_results["steps_failed"].append("player_stats")
             pipeline_results["errors"].append(f"Player stats calculation failed: {str(e)}")
         
         # Step 5: Fetch upcoming matches
         try:
-            logger.info("🔮 Fetching upcoming matches...")
+            logger.info("[FETCH] Fetching upcoming matches...")
             upcoming_fetcher = UpcomingMatchesFetcher()
             upcoming_matches = upcoming_fetcher.fetch_upcoming_matches(save_to_file=True)
-            logger.info(f"✅ Upcoming matches updated: {len(upcoming_matches) if upcoming_matches else 0} matches")
+            logger.info(f"[OK] Upcoming matches updated: {len(upcoming_matches) if upcoming_matches else 0} matches")
             pipeline_results["steps_completed"].append("upcoming_matches")
             pipeline_results["summary"]["upcoming_matches_count"] = len(upcoming_matches) if upcoming_matches else 0
+            
+            # Save to database
+            if upcoming_matches and supabase_service.is_connected():
+                try:
+                    logger.info("[SAVE] Saving upcoming matches to database...")
+                    supabase_service.save_upcoming_matches(upcoming_matches)
+                    logger.info("[OK] Upcoming matches saved to database")
+                except Exception as db_e:
+                    logger.warning(f"[WARN] Database save failed for upcoming matches: {str(db_e)}")
+            
         except Exception as e:
-            logger.error(f"❌ Upcoming matches fetch failed: {str(e)}")
+            logger.error(f"[ERROR] Upcoming matches fetch failed: {str(e)}")
             pipeline_results["steps_failed"].append("upcoming_matches")
             pipeline_results["errors"].append(f"Upcoming matches fetch failed: {str(e)}")
         
-        # Step 6: Train model (only if explicitly requested and we have resources)        if request_data.get('train_new_model', False):
+        # Step 6: Train model (only if explicitly requested and we have resources)
+        if request_data.get('train_new_model', False):
             try:
-                logger.info("🤖 Training prediction model...")
+                logger.info("[MODEL] Training prediction model...")
                 prediction_service = EnhancedMatchPredictionService()
                 training_df = prediction_service.prepare_training_data(
                     days_back=request_data.get('training_days', 30),  # Reduce for resource constraints
@@ -992,7 +1021,7 @@ def run_pipeline_background(request_data: dict):
                     auto_activate=True,
                     performance_threshold=0.5  # Lower threshold for deployment
                 )
-                logger.info(f"✅ Model trained: {version}")
+                logger.info(f"[OK] Model trained: {version}")
                 pipeline_results["steps_completed"].append("model_training")
                 pipeline_results["summary"]["model_version"] = str(version)
                 # Convert metrics to JSON-serializable format
@@ -1005,21 +1034,39 @@ def run_pipeline_background(request_data: dict):
                     else:
                         json_metrics[key] = str(value)
                 pipeline_results["summary"]["model_metrics"] = json_metrics
+                
+                # Save model metadata to database
+                if supabase_service.is_connected():
+                    try:
+                        logger.info("[SAVE] Saving model metadata to database...")
+                        model_data = {
+                            "model_name": "nba2k_match_predictor",
+                            "model_version": str(version),
+                            "model_type": "unified_prediction",
+                            "performance_metrics": json_metrics,
+                            "is_active": True,
+                            "training_samples": len(training_df) if 'training_df' in locals() else 0
+                        }
+                        supabase_service.save_model_registry(model_data)
+                        logger.info("[OK] Model metadata saved to database")
+                    except Exception as db_e:
+                        logger.warning(f"[WARN] Database save failed for model metadata: {str(db_e)}")
+                        
             except Exception as e:
-                logger.error(f"❌ Model training failed: {str(e)}")
+                logger.error(f"[ERROR] Model training failed: {str(e)}")
                 pipeline_results["steps_failed"].append("model_training")
                 pipeline_results["errors"].append(f"Model training failed: {str(e)}")
-        
-        # Step 7: Generate predictions (if requested)
+          # Step 7: Generate predictions (if requested)
         if request_data.get('return_predictions', True):
             try:
-                logger.info("� Generating predictions for upcoming matches...")
+                logger.info("[PREDICT] Generating predictions for upcoming matches...")
                 prediction_service = EnhancedMatchPredictionService()
                 predictions_df = prediction_service.predict_with_best_model(load_model=True)
                 
                 if not predictions_df.empty:
                     summary = prediction_service.get_prediction_summary(predictions_df)
-                      # Create simplified predictions for the response
+                    
+                    # Create simplified predictions for the response
                     simplified_predictions = []
                     for pred in summary.get('predictions', []):
                         simplified_predictions.append({
@@ -1037,7 +1084,33 @@ def run_pipeline_background(request_data: dict):
                         "matches": simplified_predictions
                     }
                     pipeline_results["steps_completed"].append("predictions")
-                    logger.info(f"✅ Generated predictions for {len(simplified_predictions)} matches")
+                    logger.info(f"[OK] Generated predictions for {len(simplified_predictions)} matches")
+                    
+                    # Save predictions to database
+                    if supabase_service.is_connected():
+                        try:
+                            logger.info("[SAVE] Saving predictions to database...")
+                            # Convert predictions for database storage
+                            db_predictions = []
+                            for pred in summary.get('predictions', []):
+                                db_pred = {
+                                    "match_id": f"{pred['home_player']}_{pred['away_player']}_{datetime.now().strftime('%Y%m%d')}",
+                                    "model_version": pipeline_results["summary"].get("model_version", "unknown"),
+                                    "home_player": pred['home_player'],
+                                    "away_player": pred['away_player'],
+                                    "predicted_home_score": float(pred['predicted_scores']['home']),
+                                    "predicted_away_score": float(pred['predicted_scores']['away']),
+                                    "predicted_total_score": float(pred['predicted_scores']['total']),
+                                    "predicted_winner": pred['predicted_winner'],
+                                    "confidence_score": float(pred['confidence'])
+                                }
+                                db_predictions.append(db_pred)
+                            
+                            supabase_service.save_match_predictions(db_predictions)
+                            logger.info("[OK] Predictions saved to database")
+                        except Exception as db_e:
+                            logger.warning(f"[WARN] Database save failed for predictions: {str(db_e)}")
+                    
                 else:
                     pipeline_results["predictions"] = {
                         "total_matches": 0,
@@ -1046,10 +1119,10 @@ def run_pipeline_background(request_data: dict):
                         "message": "No upcoming matches found to predict"
                     }
                     pipeline_results["steps_completed"].append("predictions")
-                    logger.info("✅ No upcoming matches to predict")
+                    logger.info("[OK] No upcoming matches to predict")
                     
             except Exception as e:
-                logger.error(f"❌ Prediction generation failed: {str(e)}")
+                logger.error(f"[ERROR] Prediction generation failed: {str(e)}")
                 pipeline_results["steps_failed"].append("predictions")
                 pipeline_results["errors"].append(f"Prediction generation failed: {str(e)}")
                 pipeline_results["predictions"] = None
@@ -1064,10 +1137,10 @@ def run_pipeline_background(request_data: dict):
         with open(results_file, 'w') as f:
             json.dump(pipeline_results, f, indent=2)
         
-        logger.info("�🎉 Background pipeline completed!")
+        logger.info("[DONE] Background pipeline completed!")
         
     except Exception as e:
-        logger.error(f"❌ Background pipeline failed: {str(e)}")
+        logger.error(f"[ERROR] Background pipeline failed: {str(e)}")
         pipeline_results["status"] = "failed"
         pipeline_results["completion_timestamp"] = datetime.now().isoformat()
         pipeline_results["errors"].append(f"Pipeline failed: {str(e)}")

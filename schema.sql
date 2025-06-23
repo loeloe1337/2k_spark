@@ -104,7 +104,8 @@ CREATE TABLE IF NOT EXISTS match_predictions (
     actual_winner VARCHAR(200),
     prediction_correct BOOLEAN,
     created_at TIMESTAMPTZ DEFAULT NOW(),
-    updated_at TIMESTAMPTZ DEFAULT NOW()
+    updated_at TIMESTAMPTZ DEFAULT NOW(),
+    UNIQUE(match_id, model_version)
 );
 
 -- Feature importance table to track which features matter most
