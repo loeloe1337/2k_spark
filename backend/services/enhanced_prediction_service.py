@@ -36,8 +36,7 @@ class EnhancedMatchPredictionService(MatchPredictionService):
         # Get the latest version and increment patch number
         latest_version = max(existing_versions, key=lambda v: self._version_to_tuple(v))
         major, minor, patch = self._version_to_tuple(latest_version)
-        return f"v{major}.{minor}.{patch + 1}"
-    
+        return f"v{major}.{minor}.{patch + 1}"    
     def _version_to_tuple(self, version: str) -> Tuple[int, int, int]:
         """Convert version string to tuple for comparison."""
         version_clean = version.replace('v', '')
@@ -47,7 +46,11 @@ class EnhancedMatchPredictionService(MatchPredictionService):
     def _get_existing_versions(self) -> List[str]:
         """Get list of existing model versions."""
         versions = []
+        # Only match the main model files, not scaler or features files
         for model_file in self.models_dir.glob(f"{self.model_name}_v*.joblib"):
+            # Skip scaler files
+            if "_scaler.joblib" in model_file.name:
+                continue
             version = model_file.stem.replace(f"{self.model_name}_", "")
             versions.append(version)
         return versions
