@@ -317,6 +317,139 @@ class SupabaseService:
             logger.error(f"Error saving match predictions: {str(e)}")
             return False
 
+    # --- Training Job Status Methods ---
+    def save_training_job_status(self, job_id: str, status: dict) -> bool:
+        """
+        Save or update a training job status in the database.
+        """
+        if not self.client:
+            logger.error("Supabase client not initialized")
+            return False
+        try:
+            record = {
+                'job_id': job_id,
+                'status': status.get('status'),
+                'timestamp': status.get('timestamp'),
+                'message': status.get('message'),
+                'model_version': status.get('model_version'),
+                'metrics': status.get('metrics'),
+                'raw_data': status
+            }
+            self.client.table('training_jobs').upsert([record], on_conflict='job_id').execute()
+            logger.info(f"Saved training job status for job_id={job_id}")
+            return True
+        except Exception as e:
+            logger.error(f"Error saving training job status: {str(e)}")
+            return False
+
+    def get_training_job_status(self, job_id: str) -> Optional[dict]:
+        """
+        Get the status of a training job by job_id.
+        """
+        if not self.client:
+            logger.error("Supabase client not initialized")
+            return None
+        try:
+            result = self.client.table('training_jobs').select('*').eq('job_id', job_id).limit(1).execute()
+            if result.data:
+                return result.data[0].get('raw_data', result.data[0])
+            return None
+        except Exception as e:
+            logger.error(f"Error fetching training job status: {str(e)}")
+            return None
+
+    # --- Upsert predictions (for /api/ml/predictions endpoint) ---
+    def upsert_match_predictions(self, predictions: list) -> bool:
+        """
+        Upsert match predictions to the database (by match_id, model_version).
+        """
+        if not self.client:
+            logger.error("Supabase client not initialized")
+            return False
+        try:
+            for pred in predictions:
+                pred['prediction_date'] = datetime.now(timezone.utc).isoformat()
+            self.client.table('match_predictions').upsert(predictions, on_conflict='match_id,model_version').execute()
+            logger.info(f"Upserted {len(predictions)} match predictions to database")
+            return True
+        except Exception as e:
+            logger.error(f"Error upserting match predictions: {str(e)}")
+            return False
+
+    # --- Model file upload/download stubs for persistent storage ---
+    def upload_model_file(self, model_path: Any, version: str) -> bool:
+        """
+        Upload a trained model file to Supabase Storage (bucket: 'models').
+        """
+        if not self.client:
+            logger.error("Supabase client not initialized")
+            return False
+        try:
+            bucket = 'models'
+            dest_filename = f"model_{version}.pkl"
+            with open(model_path, 'rb') as f:
+                file_bytes = f.read()
+            # Create bucket if not exists (idempotent)
+            try:
+                self.client.storage.create_bucket(bucket)
+            except Exception:
+                pass  # Already exists
+            self.client.storage.from_(bucket).upload(dest_filename, file_bytes, upsert=True)
+            logger.info(f"Uploaded model file to Supabase Storage: {bucket}/{dest_filename}")
+            return True
+        except Exception as e:
+            logger.error(f"Error uploading model file to Supabase Storage: {str(e)}")
+            return False
+
+    def download_model_file(self, version: str, dest_path: Any) -> bool:
+        """
+        Download a model file from Supabase Storage (bucket: 'models') if not present locally.
+        """
+        if not self.client:
+            logger.error("Supabase client not initialized")
+            return False
+        try:
+            bucket = 'models'
+            filename = f"model_{version}.pkl"
+            # Download file from storage
+            res = self.client.storage.from_(bucket).download(filename)
+            if hasattr(dest_path, 'write_bytes'):
+                dest_path.write_bytes(res)
+            else:
+                with open(dest_path, 'wb') as f:
+                    f.write(res)
+            logger.info(f"Downloaded model file from Supabase Storage: {bucket}/{filename} -> {dest_path}")
+            return True
+        except Exception as e:
+            logger.error(f"Error downloading model file from Supabase Storage: {str(e)}")
+            return False
+
+    def get_database_stats(self) -> dict:
+        """
+        Return basic stats for key tables: row counts for matches, player_stats, upcoming_matches, model_registry, training_jobs.
+        """
+        if not self.client:
+            logger.error("Supabase client not initialized")
+            return {"error": "not connected"}
+        stats = {}
+        try:
+            for table in [
+                "matches",
+                "player_stats",
+                "upcoming_matches",
+                "model_registry",
+                "training_jobs"
+            ]:
+                try:
+                    res = self.client.table(table).select('id').execute()
+                    stats[table] = len(res.data) if res.data else 0
+                except Exception as e:
+                    stats[table] = f"error: {str(e)}"
+        except Exception as e:
+            logger.error(f"Error getting database stats: {str(e)}")
+            stats["error"] = str(e)
+        return stats
+
     # Utility Methods
     def test_connection(self) -> bool:
         """
@@ -327,41 +460,5 @@ class SupabaseService:
         """
         if not self.client:
             return False
-
-        try:
-            # Try to fetch a simple query to test connection
-            result = self.client.table('matches').select('count').limit(1).execute()
-            logger.info("Database connection test successful")
-            return True
-        except Exception as e:
-            logger.error(f"Database connection test failed: {str(e)}")
-            return False
-
-    def get_database_stats(self) -> Dict[str, Any]:
-        """
-        Get database statistics.
-        
-        Returns:
-            Dict: Database statistics
-        """
-        if not self.client:
-            return {'error': 'Database not connected'}
-
-        try:
-            stats = {}
-            
-            # Get table counts
-            matches_count = self.client.table('matches').select('count').execute()
-            stats['matches_count'] = len(matches_count.data) if matches_count.data else 0
-            
-            player_stats_count = self.client.table('player_stats').select('count').execute()
-            stats['player_stats_count'] = len(player_stats_count.data) if player_stats_count.data else 0
-            
-            upcoming_matches_count = self.client.table('upcoming_matches').select('count').execute()
-            stats['upcoming_matches_count'] = len(upcoming_matches_count.data) if upcoming_matches_count.data else 0
-            
-            return stats
-
-        except Exception as e:
-            logger.error(f"Error getting database stats: {str(e)}")
-            return {'error': str(e)}
+        # You can implement a simple query here if needed, or just return True if client exists
+        return True

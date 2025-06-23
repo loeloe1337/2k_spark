@@ -6,6 +6,7 @@ import json
 import sys
 from datetime import datetime
 from pathlib import Path
+from uuid import uuid4
 
 # Add the parent directory to the Python path so we can import our modules
 current_dir = Path(__file__).resolve().parent
@@ -232,34 +233,28 @@ def get_player_stats():
     try:
         # Try to get from database first, fallback to file
         player_stats = data_service.get_data_from_database_or_file('stats')
-        
         # If no data found, try to calculate from match history
         if not player_stats:
             logger.info("No player stats found, calculating from match history...")
             player_stats = data_service.calculate_and_save_player_stats()
-        
         # If still no data, return empty list
         if not player_stats:
             logger.warning("No player statistics available")
             return []
-
-        # If data is already in list format from database, return as is
+        # If data is already in list format from database, return only a sample for logging and response
         if isinstance(player_stats, list):
-            logger.info(f"Returning {len(player_stats)} player statistics")
-            return player_stats
-
+            sample = player_stats[:10]  # Only return first 10 for preview
+            logger.info(f"Returning {len(player_stats)} player statistics. Sample: {sample}")
+            return player_stats[:50]  # Only return first 50 players in API response
         # Convert dict format to list if needed
         stats_list = []
         for player_id, stats in player_stats.items():
-            # Add player ID to stats
             stats['id'] = player_id
             stats_list.append(stats)
-
-        # Sort by win rate (descending)
         stats_list.sort(key=lambda x: x.get('win_rate', 0), reverse=True)
-
-        logger.info(f"Returning statistics for {len(stats_list)} players")
-        return stats_list
+        sample = stats_list[:10]
+        logger.info(f"Returning statistics for {len(stats_list)} players. Sample: {sample}")
+        return stats_list[:50]  # Only return first 50 players in API response
     except Exception as e:
         logger.error(f"Error retrieving player statistics: {str(e)}")
         # Return empty list on error
@@ -454,34 +449,61 @@ def refresh_all_data():
 
 
 @app.post('/api/ml/train')
-def train_prediction_model(days_back: int = 60, min_matches_per_player: int = 5):
+def train_prediction_model(days_back: int = 60, min_matches_per_player: int = 5, background_tasks: BackgroundTasks = None):
     """
-    Train the match prediction model with historical data.
-    
-    Args:
-        days_back: Number of days of match history to use for training
-        min_matches_per_player: Minimum matches required for a player to be included
-        
-    Returns:
-        dict: Training results and metrics
+    Start model training in the background and return immediately.
+    Returns a job_id for status tracking.
     """
+    job_id = str(uuid4())
+    status = {
+        "job_id": job_id,
+        "status": "started",
+        "timestamp": datetime.now().isoformat(),
+        "message": "Model training started in background. Check /api/ml/train-status?job_id=... for updates."
+    }
+    # Save status to DB
     try:
-        logger.info(f"Training prediction model with {days_back} days of data")
-        
-        # Prepare training data
+        supabase_service.save_training_job_status(job_id, status)
+    except Exception as e:
+        logger.error(f"Error saving training job status to DB: {str(e)}")
+    # Launch background task
+    if background_tasks is not None:
+        background_tasks.add_task(train_model_background, days_back, min_matches_per_player, job_id)
+    else:
+        import threading
+        threading.Thread(target=train_model_background, args=(days_back, min_matches_per_player, job_id)).start()
+    return status
+
+def train_model_background(days_back: int, min_matches_per_player: int, job_id: str):
+    try:
+        logger.info(f"[BG] Training prediction model with {days_back} days of data (job_id={job_id})")
+        status = {
+            "job_id": job_id,
+            "status": "running",
+            "timestamp": datetime.now().isoformat(),
+            "message": "Model training in progress..."
+        }
+        supabase_service.save_training_job_status(job_id, status)
         training_df = prediction_service.prepare_training_data(
             days_back=days_back,
             min_matches_per_player=min_matches_per_player
         )
-          # Train the model with versioning
         version, metrics = prediction_service.train_model_with_versioning(
-            training_df=training_df, 
+            training_df=training_df,
             auto_activate=True,
             performance_threshold=0.6
         )
-        
-        return {
+        # --- Model file persistence stub ---
+        try:
+            model_path = prediction_service.get_model_path(version)
+            if model_path and model_path.exists():
+                supabase_service.upload_model_file(model_path, version)
+        except Exception as e:
+            logger.warning(f"[BG] Model file upload failed: {str(e)}")
+        status = {
+            "job_id": job_id,
             "status": "success",
+            "timestamp": datetime.now().isoformat(),
             "message": "Model trained successfully",
             "model_version": version,
             "training_samples": len(training_df),
@@ -490,14 +512,35 @@ def train_prediction_model(days_back: int = 60, min_matches_per_player: int = 5)
                 "home_score_mae": round(metrics['val_home_mae'], 2),
                 "away_score_mae": round(metrics['val_away_mae'], 2),
                 "total_score_mae": round(metrics['val_total_mae'], 2)
-            },
-            "timestamp": datetime.now().isoformat()
+            }
         }
-        
+        supabase_service.save_training_job_status(job_id, status)
+        logger.info(f"[BG] Model training complete: {version}")
     except Exception as e:
-        logger.error(f"Error training prediction model: {str(e)}")
-        raise HTTPException(status_code=500, detail=str(e))
+        logger.error(f"[BG] Error training prediction model: {str(e)}")
+        status = {
+            "job_id": job_id,
+            "status": "error",
+            "timestamp": datetime.now().isoformat(),
+            "message": f"Error training prediction model: {str(e)}"
+        }
+        supabase_service.save_training_job_status(job_id, status)
 
+@app.get('/api/ml/train-status')
+def get_train_status(job_id: Optional[str] = None):
+    """
+    Get the status of a model training job by job_id.
+    """
+    if not job_id:
+        return {"status": "error", "message": "Missing job_id parameter."}
+    try:
+        status = supabase_service.get_training_job_status(job_id)
+        if not status:
+            return {"status": "not_found", "message": f"No training job found for job_id {job_id}"}
+        return status
+    except Exception as e:
+        logger.error(f"Error fetching training job status: {str(e)}")
+        return {"status": "error", "message": str(e)}
 
 @app.get('/api/ml/predictions')
 def get_match_predictions():
@@ -509,9 +552,7 @@ def get_match_predictions():
     """
     try:
         logger.info("Generating match predictions")
-          # Generate predictions using best model
         predictions_df = prediction_service.predict_with_best_model(load_model=True)
-        
         if predictions_df.empty:
             return {
                 "status": "success",
@@ -519,20 +560,41 @@ def get_match_predictions():
                 "predictions": [],
                 "timestamp": datetime.now().isoformat()
             }
-        
-        # Get prediction summary
         summary = prediction_service.get_prediction_summary(predictions_df)
-        
+        # --- Upsert predictions to DB ---
+        if supabase_service.is_connected():
+            try:
+                active_model_version = prediction_service._get_active_model_version() or "v1.0.0"
+                db_predictions = []
+                for pred in summary.get('predictions', []):
+                    home_score = float(pred['predicted_scores']['home'])
+                    away_score = float(pred['predicted_scores']['away'])
+                    home_win_prob = home_score / (home_score + away_score) if (home_score + away_score) > 0 else 0.5
+                    db_pred = {
+                        "match_id": f"{pred['home_player']}_{pred['away_player']}_{datetime.now().strftime('%Y%m%d')}",
+                        "model_version": active_model_version,
+                        "home_player": pred['home_player'],
+                        "away_player": pred['away_player'],
+                        "predicted_home_score": home_score,
+                        "predicted_away_score": away_score,
+                        "predicted_total_score": float(pred['predicted_scores']['total']),
+                        "predicted_winner": pred['predicted_winner'],
+                        "home_win_probability": home_win_prob,
+                        "confidence_score": float(pred['confidence'])
+                    }
+                    db_predictions.append(db_pred)
+                supabase_service.upsert_match_predictions(db_predictions)
+            except Exception as db_e:
+                logger.warning(f"[WARN] Database upsert failed for predictions: {str(db_e)}")
         return {
             "status": "success",
             "message": f"Generated predictions for {summary['total_matches']} matches",
             "summary": summary,
             "timestamp": datetime.now().isoformat()
         }
-        
     except Exception as e:
         logger.error(f"Error generating predictions: {str(e)}")
-        raise HTTPException(status_code=500, detail=str(e))
+        return {"status": "error", "message": str(e)}
 
 
 @app.get('/api/ml/model-performance')
