@@ -441,7 +441,9 @@ class SupabaseService:
                 "training_jobs"
             ]:
                 try:
-                    res = self.client.table(table).select('id').execute()
+                    # Use 'id' for all except training_jobs, which may not have 'id' in all rows
+                    select_col = 'id' if table != 'training_jobs' else 'job_id'
+                    res = self.client.table(table).select(select_col).execute()
                     stats[table] = len(res.data) if res.data else 0
                 except Exception as e:
                     stats[table] = f"error: {str(e)}"
