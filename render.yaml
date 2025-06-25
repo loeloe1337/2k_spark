@@ -13,13 +13,20 @@ uvicorn backend.app.api:app --host 0.0.0.0 --port $PORT
 # API_HOST - 0.0.0.0 (for Render)
 # API_PORT - $PORT (Render provides this)
 # CORS_ORIGINS - ["*"] or your frontend domains
+# SELENIUM_HEADLESS - true (required for container environment)
+# SELENIUM_TIMEOUT - 30 (reduced for container environment)
 
 # Health Check URL
 # /api/health
 
-# Dockerfile (Alternative deployment method)
+# Docker Alternative for Render
+# If using Docker build on Render, use this Dockerfile configuration:
 # FROM python:3.11-slim
 # WORKDIR /app
+# ENV PYTHONDONTWRITEBYTECODE=1
+# ENV PYTHONUNBUFFERED=1
+# ENV PYTHONPATH=/app
+# ENV PORT=10000
 # COPY requirements.txt .
 # RUN pip install -r requirements.txt
 # COPY . .
@@ -33,5 +40,7 @@ uvicorn backend.app.api:app --host 0.0.0.0 --port $PORT
 # 4. Health check endpoint: /api/health
 # 5. The job system handles all long-running operations to avoid timeouts
 # 6. Database migrations run automatically via Supabase
-# 7. Model files are stored in Supabase Storage
+# 7. Model files are stored in Supabase Storage or recreated on restart
 # 8. Background jobs prevent Render request timeouts
+# 9. Chrome/Selenium may require special configuration in containers
+# 10. Set SELENIUM_HEADLESS=true and reduce timeouts for container environment

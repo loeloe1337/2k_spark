@@ -36,13 +36,14 @@ class JobType(Enum):
 
 class JobService:
     """
-    Service for managing background jobs with database persistence.
+    Service for managing background jobs with database persistence and fallback.
     """
     
     def __init__(self):
         self.supabase = SupabaseService()
         self.workers = {}  # Store running worker threads
         self.job_handlers = {}  # Registry of job type handlers
+        self.local_jobs = {}  # Fallback storage when database is unavailable
         self._register_handlers()
     
     def _register_handlers(self):
@@ -96,40 +97,59 @@ class JobService:
             
             if self.supabase.is_connected():
                 self.supabase.client.table('job_queue').insert(job_data).execute()
-                logger.info(f"Created job {job_id} of type {job_type.value}")
+                logger.info(f"Created job {job_id} of type {job_type.value} in database")
             else:
-                logger.error("Cannot create job: Supabase not connected")
-                return None
+                # Fallback to local storage when database is unavailable
+                self.local_jobs[job_id] = job_data
+                logger.warning(f"Database unavailable - created job {job_id} of type {job_type.value} in local storage")
                 
             return job_id
             
         except Exception as e:
             logger.error(f"Error creating job: {str(e)}")
-            return None
+            # Try local storage as fallback
+            try:
+                job_data = {
+                    'job_id': job_id,
+                    'job_type': job_type.value,
+                    'status': JobStatus.PENDING.value,
+                    'priority': priority,
+                    'payload': payload,
+                    'created_at': datetime.now(timezone.utc).isoformat(),
+                    'updated_at': datetime.now(timezone.utc).isoformat()
+                }
+                self.local_jobs[job_id] = job_data
+                logger.warning(f"Created job {job_id} in local storage as fallback")
+                return job_id
+            except Exception as local_e:
+                logger.error(f"Failed to create job locally: {str(local_e)}")
+                return None
     
     def get_job_status(self, job_id: str) -> Optional[Dict[str, Any]]:
         """Get job status and details."""
         try:
-            if not self.supabase.is_connected():
-                return None
-                
-            result = self.supabase.client.table('job_queue').select('*').eq('job_id', job_id).limit(1).execute()
+            if self.supabase.is_connected():
+                result = self.supabase.client.table('job_queue').select('*').eq('job_id', job_id).limit(1).execute()
+                if result.data:
+                    return result.data[0]
             
-            if result.data:
-                return result.data[0]
+            # Check local storage as fallback
+            if job_id in self.local_jobs:
+                return self.local_jobs[job_id]
+                
             return None
             
         except Exception as e:
             logger.error(f"Error getting job status: {str(e)}")
+            # Try local storage as fallback
+            if job_id in self.local_jobs:
+                return self.local_jobs[job_id]
             return None
     
     def update_job_status(self, job_id: str, status: JobStatus, progress: int = None, 
                          result: Dict = None, error_message: str = None):
-        """Update job status in database."""
+        """Update job status in database and/or local storage."""
         try:
-            if not self.supabase.is_connected():
-                return False
-                
             update_data = {
                 'status': status.value,
                 'updated_at': datetime.now(timezone.utc).isoformat()
@@ -145,9 +165,16 @@ class JobService:
                 update_data['started_at'] = datetime.now(timezone.utc).isoformat()
             if status in [JobStatus.COMPLETED, JobStatus.FAILED, JobStatus.CANCELLED]:
                 update_data['completed_at'] = datetime.now(timezone.utc).isoformat()
-                
-            self.supabase.client.table('job_queue').update(update_data).eq('job_id', job_id).execute()
-            logger.info(f"Updated job {job_id} status to {status.value}")
+            
+            # Update in database if connected
+            if self.supabase.is_connected():
+                self.supabase.client.table('job_queue').update(update_data).eq('job_id', job_id).execute()
+                logger.info(f"Updated job {job_id} status to {status.value} in database")
+            
+            # Always update local storage as well
+            if job_id in self.local_jobs:
+                self.local_jobs[job_id].update(update_data)
+                logger.info(f"Updated job {job_id} status to {status.value} in local storage")
             return True
             
         except Exception as e:

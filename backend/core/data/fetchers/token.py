@@ -98,90 +98,112 @@ class TokenFetcher:
             str: Authentication token or None if failed
         """
         driver = None
-        try:
-            # Setup Chrome options with enhanced configuration
-            chrome_options = Options()
-            if self.headless:
-                chrome_options.add_argument("--headless")
-            
-            # Core stability options
-            chrome_options.add_argument("--no-sandbox")
-            chrome_options.add_argument("--disable-dev-shm-usage")
-            chrome_options.add_argument("--window-size=1920,1080")
-            
-            # GPU-related options to fix GPU errors
-            chrome_options.add_argument("--disable-gpu")
-            chrome_options.add_argument("--disable-gpu-sandbox")
-            chrome_options.add_argument("--disable-software-rasterizer")
-            chrome_options.add_argument("--disable-background-timer-throttling")
-            chrome_options.add_argument("--disable-backgrounding-occluded-windows")
-            chrome_options.add_argument("--disable-renderer-backgrounding")
-            chrome_options.add_argument("--disable-features=VizDisplayCompositor")
-            chrome_options.add_argument("--disable-features=TranslateUI")
-            chrome_options.add_argument("--disable-ipc-flooding-protection")
-            chrome_options.add_argument("--use-gl=swiftshader")
-            chrome_options.add_argument("--disable-vulkan")
-            chrome_options.add_argument("--disable-d3d11")
-            chrome_options.add_argument("--disable-accelerated-2d-canvas")
-            chrome_options.add_argument("--disable-accelerated-jpeg-decoding")
-            chrome_options.add_argument("--disable-accelerated-mjpeg-decode")
-            chrome_options.add_argument("--disable-accelerated-video-decode")
-            chrome_options.add_argument("--disable-accelerated-video-encode")
-            
-            # Anti-detection options
-            chrome_options.add_argument("--disable-blink-features=AutomationControlled")
-            chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
-            chrome_options.add_experimental_option('useAutomationExtension', False)
-            
-            # Additional stability options (but keep JavaScript enabled)
-            chrome_options.add_argument("--disable-extensions")
-            chrome_options.add_argument("--disable-plugins")
-            chrome_options.add_argument("--disable-images")
-            chrome_options.add_argument("--disable-default-apps")
-            chrome_options.add_argument("--disable-logging")
-            chrome_options.add_argument("--silent")
-            chrome_options.add_argument("--log-level=3")
-            
-            # Initialize the Chrome driver
-            logger.debug("Starting Chrome browser...")
-            driver = webdriver.Chrome(options=chrome_options)
-            driver.set_page_load_timeout(self.timeout)
-            
-            # Add script to avoid detection
-            driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
-            
-            logger.debug(f"Navigating to {self.website_url}")
-            driver.get(self.website_url)
-            
-            logger.debug("Page loaded successfully. Waiting for token to be set...")
-            
-            # Wait a moment for the page to fully load and set the token
-            time.sleep(3)
-            
-            # Extract token from local storage using JavaScript
-            token = driver.execute_script(f"""
-                return localStorage.getItem('{self.token_key}');
-            """)
-            
-            if token:
-                logger.debug(f"Successfully extracted token: {token[:50]}...")
-                return token
-            else:
-                logger.warning(f"No token found in local storage with key '{self.token_key}'")
-                return None
+        max_retries = 3
+        
+        for attempt in range(max_retries):
+            try:
+                logger.info(f"Token fetch attempt {attempt + 1}/{max_retries}")
                 
-        except TimeoutException:
-            logger.error(f"Timeout: Page failed to load within {self.timeout} seconds")
-            return None
-        except WebDriverException as e:
-            logger.error(f"WebDriver error: {e}")
-            return None
-        except Exception as e:
-            logger.error(f"Error fetching token: {e}")
-            return None
-        finally:
-            if driver:
-                driver.quit()
+                # Setup Chrome options with enhanced configuration
+                chrome_options = Options()
+                if self.headless:
+                    chrome_options.add_argument("--headless")
+                
+                # Essential container compatibility options
+                chrome_options.add_argument("--no-sandbox")
+                chrome_options.add_argument("--disable-dev-shm-usage")
+                chrome_options.add_argument("--window-size=1920,1080")
+                chrome_options.add_argument("--disable-gpu")
+                chrome_options.add_argument("--disable-gpu-sandbox")
+                chrome_options.add_argument("--disable-software-rasterizer")
+                chrome_options.add_argument("--disable-background-timer-throttling")
+                chrome_options.add_argument("--disable-backgrounding-occluded-windows")
+                chrome_options.add_argument("--disable-renderer-backgrounding")
+                chrome_options.add_argument("--disable-features=VizDisplayCompositor")
+                chrome_options.add_argument("--disable-features=TranslateUI")
+                chrome_options.add_argument("--disable-ipc-flooding-protection")
+                chrome_options.add_argument("--use-gl=swiftshader")
+                chrome_options.add_argument("--disable-vulkan")
+                chrome_options.add_argument("--disable-d3d11")
+                chrome_options.add_argument("--disable-accelerated-2d-canvas")
+                chrome_options.add_argument("--disable-accelerated-jpeg-decoding")
+                chrome_options.add_argument("--disable-accelerated-mjpeg-decode")
+                chrome_options.add_argument("--disable-accelerated-video-decode")
+                chrome_options.add_argument("--disable-accelerated-video-encode")
+                
+                # Anti-detection options
+                chrome_options.add_argument("--disable-blink-features=AutomationControlled")
+                chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
+                chrome_options.add_experimental_option('useAutomationExtension', False)
+                
+                # Additional stability options
+                chrome_options.add_argument("--disable-extensions")
+                chrome_options.add_argument("--disable-plugins")
+                chrome_options.add_argument("--disable-images")
+                chrome_options.add_argument("--disable-default-apps")
+                chrome_options.add_argument("--disable-logging")
+                chrome_options.add_argument("--silent")
+                chrome_options.add_argument("--log-level=3")
+                
+                # Memory optimization for containers
+                chrome_options.add_argument("--memory-pressure-off")
+                chrome_options.add_argument("--max_old_space_size=4096")
+                
+                logger.debug("Starting Chrome browser...")
+                driver = webdriver.Chrome(options=chrome_options)
+                driver.set_page_load_timeout(min(self.timeout, 30))  # Cap at 30 seconds for containers
+                
+                # Add script to avoid detection
+                driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
+                
+                logger.debug(f"Navigating to {self.website_url}")
+                driver.get(self.website_url)
+                
+                logger.debug("Page loaded successfully. Waiting for token to be set...")
+                
+                # Wait for page to fully load with shorter timeout in containers
+                time.sleep(min(3, max(1, self.timeout // 5)))
+                
+                # Extract token from local storage using JavaScript
+                token = driver.execute_script(f"""
+                    return localStorage.getItem('{self.token_key}');
+                """)
+                
+                if token:
+                    logger.info(f"Successfully extracted token on attempt {attempt + 1}")
+                    return token
+                else:
+                    logger.warning(f"No token found in local storage with key '{self.token_key}' on attempt {attempt + 1}")
+                    if attempt < max_retries - 1:
+                        time.sleep(2 ** attempt)  # Exponential backoff
+                        continue
+                    return None
+                    
+            except TimeoutException:
+                logger.error(f"Timeout: Page failed to load within {self.timeout} seconds on attempt {attempt + 1}")
+                if attempt < max_retries - 1:
+                    time.sleep(2 ** attempt)
+                    continue
+            except WebDriverException as e:
+                logger.error(f"WebDriver error on attempt {attempt + 1}: {e}")
+                if attempt < max_retries - 1:
+                    time.sleep(2 ** attempt)
+                    continue
+            except Exception as e:
+                logger.error(f"Error fetching token on attempt {attempt + 1}: {e}")
+                if attempt < max_retries - 1:
+                    time.sleep(2 ** attempt)
+                    continue
+            finally:
+                if driver:
+                    try:
+                        driver.quit()
+                    except Exception:
+                        pass  # Ignore cleanup errors
+                    driver = None
+        
+        logger.error(f"Failed to fetch token after {max_retries} attempts")
+        return None
     
     def _load_cached_token(self) -> Optional[str]:
         """

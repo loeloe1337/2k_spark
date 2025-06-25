@@ -52,9 +52,38 @@ app.add_middleware(
 
 # Initialize logger and data service
 logger = get_api_logger()
-data_service = DataService()
-prediction_service = EnhancedMatchPredictionService()
-supabase_service = SupabaseService()
+try:
+    data_service = DataService()
+    prediction_service = EnhancedMatchPredictionService()
+    supabase_service = SupabaseService()
+    logger.info("All services initialized successfully")
+except Exception as e:
+    logger.error(f"Error initializing services: {str(e)}")
+    # Initialize with minimal functionality
+    data_service = None
+    prediction_service = None
+    supabase_service = None
+
+
+def ensure_data_service():
+    """Ensure data service is available or raise appropriate error."""
+    if data_service is None:
+        raise HTTPException(status_code=503, detail="Data service not available - check logs for initialization errors")
+    return data_service
+
+
+def ensure_prediction_service():
+    """Ensure prediction service is available or raise appropriate error."""
+    if prediction_service is None:
+        raise HTTPException(status_code=503, detail="Prediction service not available - check logs for initialization errors")
+    return prediction_service
+
+
+def ensure_supabase_service():
+    """Ensure Supabase service is available or return None for graceful degradation."""
+    if supabase_service is None:
+        logger.warning("Supabase service not available - using local storage fallback")
+    return supabase_service
 
 
 @app.get('/')
@@ -109,12 +138,55 @@ def health_check():
     Returns:
         dict: Health status information
     """
-    return {
+    status = {
         "status": "healthy",
         "timestamp": datetime.now().isoformat(),
         "service": "2K Flash API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "components": {
+            "api": "healthy",
+            "data_service": "unknown",
+            "prediction_service": "unknown",
+            "database": "unknown"
+        }
     }
+    
+    # Check data service
+    try:
+        if data_service is not None:
+            status["components"]["data_service"] = "healthy"
+        else:
+            status["components"]["data_service"] = "unavailable"
+    except Exception:
+        status["components"]["data_service"] = "error"
+    
+    # Check prediction service
+    try:
+        if prediction_service is not None:
+            status["components"]["prediction_service"] = "healthy"
+        else:
+            status["components"]["prediction_service"] = "unavailable"
+    except Exception:
+        status["components"]["prediction_service"] = "error"
+    
+    # Check database
+    try:
+        if supabase_service is not None and supabase_service.is_connected():
+            status["components"]["database"] = "connected"
+        else:
+            status["components"]["database"] = "disconnected"
+    except Exception:
+        status["components"]["database"] = "error"
+    
+    # Overall status based on critical components
+    if status["components"]["api"] == "healthy":
+        # API is healthy even if other components have issues
+        # This allows the service to start even with database issues
+        pass
+    else:
+        status["status"] = "unhealthy"
+    
+    return status
 
 
 @app.get('/api/system-status')
@@ -128,6 +200,9 @@ def get_system_status():
         dict: System status information
     """
     try:
+        if data_service is None:
+            raise HTTPException(status_code=503, detail="Data service not available")
+            
         status = data_service.get_system_status()
         status.update({
             "timestamp": datetime.now().isoformat(),
@@ -140,7 +215,9 @@ def get_system_status():
         return {
             "status": "error",
             "timestamp": datetime.now().isoformat(),
-            "error": str(e)
+            "error": str(e),
+            "service": "2K Flash API",
+            "version": "1.0.0"
         }
 
 

@@ -22,7 +22,7 @@ AUTH_TOKEN_FILE = OUTPUT_DIR / "auth_token.json"
 
 # API settings
 API_HOST = os.environ.get("API_HOST", "0.0.0.0")
-API_PORT = int(os.environ.get("API_PORT", 5000))
+API_PORT = int(os.environ.get("PORT", os.environ.get("API_PORT", 5000)))  # Use PORT for Render compatibility
 CORS_ORIGINS = os.environ.get("CORS_ORIGINS", "*").split(",")
 
 # H2H GG League API settings
@@ -31,9 +31,18 @@ H2H_WEBSITE_URL = "https://h2hggl.com/en/match/NB122120625"
 H2H_TOKEN_LOCALSTORAGE_KEY = "sis-hudstats-token"
 H2H_DEFAULT_TOURNAMENT_ID = 1
 
-# Selenium settings
-SELENIUM_HEADLESS = True
-SELENIUM_TIMEOUT = 10  # seconds
+# Selenium settings - optimized for container environments
+SELENIUM_HEADLESS = os.environ.get("SELENIUM_HEADLESS", "True").lower() == "true"
+SELENIUM_TIMEOUT = int(os.environ.get("SELENIUM_TIMEOUT", 30))  # Reduced default for containers
+
+# Container environment detection
+IS_CONTAINER = os.environ.get("CONTAINER", "false").lower() == "true" or os.path.exists("/.dockerenv")
+IS_RENDER = os.environ.get("RENDER", "false").lower() == "true" or "render.com" in os.environ.get("RENDER_EXTERNAL_URL", "")
+
+# Adjust settings for container environments
+if IS_CONTAINER or IS_RENDER:
+    SELENIUM_HEADLESS = True
+    SELENIUM_TIMEOUT = min(SELENIUM_TIMEOUT, 30)  # Cap at 30 seconds for containers
 
 # Refresh settings
 REFRESH_INTERVAL = 3600  # seconds (1 hour)
