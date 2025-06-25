@@ -4,6 +4,7 @@ API server for the 2K Flash application.
 
 import json
 import sys
+import pandas as pd
 from datetime import datetime
 from pathlib import Path
 from uuid import uuid4
@@ -1616,139 +1617,6 @@ def get_job_statistics():
     except Exception as e:
         logger.error(f"Error getting job statistics: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
-
-
-@app.post('/api/data/quick-refresh')
-@log_execution_time(logger)
-@log_exceptions(logger)
-def quick_data_refresh(refresh_token: bool = False, return_predictions: bool = True):
-    """
-    Quick data refresh without model training.
-    
-    Args:
-        refresh_token: Whether to refresh authentication token
-        return_predictions: Whether to generate predictions
-        
-    Returns:
-        dict: Job information for tracking
-    """
-    try:
-        payload = {
-            "history_days": 20,  # Reduced for quick refresh
-            "train_model": False,
-            "return_predictions": return_predictions,
-            "refresh_token": refresh_token,
-            "requested_at": datetime.now().isoformat()
-        }
-        
-        job_id = job_service.create_and_start_job(
-            job_type=JobType.QUICK_DATA_REFRESH,
-            payload=payload,
-            priority=1
-        )
-        
-        if not job_id:
-            raise HTTPException(status_code=500, detail="Failed to create quick refresh job")
-        
-        return {
-            "status": "started",
-            "job_id": job_id,
-            "job_type": "quick_data_refresh",
-            "message": "Quick data refresh job started",
-            "estimated_duration": "2-5 minutes",
-            "job_status_url": f"/api/jobs/{job_id}",
-            "timestamp": datetime.now().isoformat()
-        }
-        
-    except Exception as e:
-        logger.error(f"Error starting quick refresh job: {str(e)}")
-        raise HTTPException(status_code=500, detail=str(e))
-
-
-@app.post('/api/ml/generate-predictions')
-@log_execution_time(logger)
-@log_exceptions(logger)  
-def generate_predictions_job():
-    """
-    Generate predictions using existing data and models.
-    
-    Returns:
-        dict: Job information for tracking
-    """
-    try:
-        payload = {
-            "requested_at": datetime.now().isoformat()
-        }
-        
-        job_id = job_service.create_and_start_job(
-            job_type=JobType.PREDICTION_GENERATION,
-            payload=payload,
-            priority=0  # Lower priority
-        )
-        
-        if not job_id:
-            raise HTTPException(status_code=500, detail="Failed to create prediction job")
-        
-        return {
-            "status": "started",
-            "job_id": job_id,
-            "job_type": "prediction_generation",
-            "message": "Prediction generation job started",
-            "estimated_duration": "1-3 minutes",
-            "job_status_url": f"/api/jobs/{job_id}",
-            "timestamp": datetime.now().isoformat()
-        }
-        
-    except Exception as e:
-        logger.error(f"Error starting prediction job: {str(e)}")
-        raise HTTPException(status_code=500, detail=str(e))
-
-
-@app.get('/api/system/health')
-@log_execution_time(logger)
-@log_exceptions(logger)
-def system_health_check():
-    """
-    Comprehensive system health check.
-    
-    Returns:
-        dict: Detailed system health status
-    """
-    try:
-        return health_monitor.check_system_health()
-    except Exception as e:
-        logger.error(f"Health check failed: {str(e)}")
-        return {
-            "overall_status": "error",
-            "timestamp": datetime.now().isoformat(),
-            "error": str(e),
-            "message": "Health check service failed"
-        }
-
-
-@app.get('/api/system/health/history')
-@log_execution_time(logger)
-@log_exceptions(logger)
-def system_health_history(hours: int = 24):
-    """
-    Get system health history.
-    
-    Args:
-        hours: Number of hours of history to retrieve
-        
-    Returns:
-        dict: Health check history
-    """
-    try:
-        if hours < 1 or hours > 168:  # Limit to 1 week
-            raise HTTPException(status_code=400, detail="Hours must be between 1 and 168")
-        
-        return health_monitor.get_health_history(hours)
-    except Exception as e:
-        logger.error(f"Health history retrieval failed: {str(e)}")
-        raise HTTPException(status_code=500, detail=str(e))
-
-    # ...existing code...
 
 
 def run_api_server():
