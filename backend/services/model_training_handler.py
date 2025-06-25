@@ -11,6 +11,7 @@ from typing import Dict, Any
 from config.logging_config import get_api_logger
 from services.enhanced_prediction_service import EnhancedMatchPredictionService
 from services.supabase_service import SupabaseService
+from services.job_service import JobStatus
 
 logger = get_api_logger()
 
@@ -49,7 +50,7 @@ class ModelTrainingHandler:
             logger.info(f"[JOB {job_id}] Starting model training with optimized parameters")
             
             # Step 1: Prepare training data (10% progress)
-            job_service.update_job_status(job_id, job_service.JobStatus.RUNNING, progress=10)
+            job_service.update_job_status(job_id, JobStatus.RUNNING, progress=10)
             logger.info(f"[JOB {job_id}] Preparing training data...")
             
             training_df = self.prediction_service.prepare_training_data(
@@ -63,7 +64,7 @@ class ModelTrainingHandler:
             logger.info(f"[JOB {job_id}] Training data prepared: {len(training_df)} samples")
             
             # Step 2: Train model with optimizations (50% progress)
-            job_service.update_job_status(job_id, job_service.JobStatus.RUNNING, progress=30)
+            job_service.update_job_status(job_id, JobStatus.RUNNING, progress=30)
             logger.info(f"[JOB {job_id}] Training model...")
             
             # Use optimized training parameters for cloud deployment
@@ -77,7 +78,7 @@ class ModelTrainingHandler:
                 reduced_complexity=True
             )
             
-            job_service.update_job_status(job_id, job_service.JobStatus.RUNNING, progress=70)
+            job_service.update_job_status(job_id, JobStatus.RUNNING, progress=70)
             logger.info(f"[JOB {job_id}] Model training completed: {version}")
             
             # Step 3: Upload model to cloud storage (80% progress)
@@ -95,7 +96,7 @@ class ModelTrainingHandler:
             except Exception as e:
                 logger.warning(f"[JOB {job_id}] Model file upload failed: {str(e)}")
             
-            job_service.update_job_status(job_id, job_service.JobStatus.RUNNING, progress=90)
+            job_service.update_job_status(job_id, JobStatus.RUNNING, progress=90)
             
             # Step 4: Save model metadata to database
             logger.info(f"[JOB {job_id}] Saving model metadata...")

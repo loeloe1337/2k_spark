@@ -19,6 +19,7 @@ sys.path.append(str(backend_dir))
 from config.logging_config import get_api_logger
 from services.supabase_service import SupabaseService
 from services.enhanced_prediction_service import EnhancedMatchPredictionService
+from services.job_service import JobStatus
 from core.data.fetchers import TokenFetcher
 from core.data.fetchers.match_history import MatchHistoryFetcher
 from core.data.fetchers.upcoming_matches import UpcomingMatchesFetcher
@@ -71,28 +72,28 @@ class DataPipelineHandler:
             logger.info(f"[JOB {job_id}] Starting full data pipeline")
             
             # Step 1: Token Authentication (5% progress)
-            job_service.update_job_status(job_id, job_service.JobStatus.RUNNING, progress=5)
+            job_service.update_job_status(job_id, JobStatus.RUNNING, progress=5)
             token_result = self._fetch_token_step(job_id, payload, result)
             
             # Step 2: Fetch Match History (25% progress)
-            job_service.update_job_status(job_id, job_service.JobStatus.RUNNING, progress=15)
+            job_service.update_job_status(job_id, JobStatus.RUNNING, progress=15)
             matches_result = self._fetch_matches_step(job_id, payload, result)
             
             # Step 3: Process Player Stats (45% progress)
-            job_service.update_job_status(job_id, job_service.JobStatus.RUNNING, progress=35)
+            job_service.update_job_status(job_id, JobStatus.RUNNING, progress=35)
             stats_result = self._process_stats_step(job_id, payload, result)
             
             # Step 4: Fetch Upcoming Matches (65% progress)
-            job_service.update_job_status(job_id, job_service.JobStatus.RUNNING, progress=55)
+            job_service.update_job_status(job_id, JobStatus.RUNNING, progress=55)
             upcoming_result = self._fetch_upcoming_step(job_id, payload, result)
             
             # Step 5: Generate Predictions (85% progress)
-            job_service.update_job_status(job_id, job_service.JobStatus.RUNNING, progress=75)
+            job_service.update_job_status(job_id, JobStatus.RUNNING, progress=75)
             predictions_result = self._generate_predictions_step(job_id, payload, result)
             
             # Step 6: Model Training (if requested) (95% progress)
             if payload.get('train_model', False):
-                job_service.update_job_status(job_id, job_service.JobStatus.RUNNING, progress=85)
+                job_service.update_job_status(job_id, JobStatus.RUNNING, progress=85)
                 training_result = self._train_model_step(job_id, payload, result)
             
             # Finalize
@@ -428,12 +429,12 @@ class PredictionGenerationHandler(DataPipelineHandler):
             }
             
             logger.info(f"[JOB {job_id}] Starting prediction generation job")
-            job_service.update_job_status(job_id, job_service.JobStatus.RUNNING, progress=10)
+            job_service.update_job_status(job_id, JobStatus.RUNNING, progress=10)
             
             # Generate predictions
             predictions_success = self._generate_predictions_step(job_id, payload, result)
             
-            job_service.update_job_status(job_id, job_service.JobStatus.RUNNING, progress=90)
+            job_service.update_job_status(job_id, JobStatus.RUNNING, progress=90)
             
             # Finalize
             total_time = time.time() - start_time
