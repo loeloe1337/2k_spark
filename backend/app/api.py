@@ -958,7 +958,7 @@ def run_pipeline_endpoint(request: PipelineRequest):
             },
             "configuration": {
                 "history_days": request.history_days,
-                "train_model": request.train_model,
+                "train_model": request.train_new_model,
                 "return_predictions": request.return_predictions,
                 "refresh_token": request.refresh_token
             },
