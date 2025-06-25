@@ -925,11 +925,11 @@ def run_pipeline_endpoint(request: PipelineRequest):
         # Prepare job payload
         payload = {
             "history_days": request.history_days,
-            "train_model": request.train_model,
+            "train_model": request.train_new_model,
             "return_predictions": request.return_predictions,
             "refresh_token": request.refresh_token,
-            "training_days_back": getattr(request, 'training_days_back', 20),
-            "min_matches_per_player": getattr(request, 'min_matches_per_player', 2),
+            "training_days_back": getattr(request, 'training_days', 20),
+            "min_matches_per_player": getattr(request, 'min_matches', 2),
             "performance_threshold": getattr(request, 'performance_threshold', 0.5),
             "auto_activate": getattr(request, 'auto_activate', True),
             "requested_at": datetime.now().isoformat()
