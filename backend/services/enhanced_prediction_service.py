@@ -313,3 +313,91 @@ class EnhancedMatchPredictionService(MatchPredictionService):
         }
         
         return comparison
+    
+    @log_execution_time(logger)
+    @log_exceptions(logger)
+    def train_model_with_versioning(self, training_df: pd.DataFrame, auto_activate: bool = True, 
+                                    performance_threshold: float = 0.6, max_training_time: int = 300,
+                                    early_stopping: bool = True, reduced_complexity: bool = True) -> Tuple[str, Dict]:
+        """
+        Train a new model with cloud optimizations and versioning.
+        
+        Args:
+            training_df: Training data
+            auto_activate: Whether to automatically activate if performance is good
+            performance_threshold: Minimum performance to activate model
+            max_training_time: Maximum training time in seconds (for cloud deployment)
+            early_stopping: Enable early stopping to prevent timeouts
+            reduced_complexity: Use reduced model complexity for faster training
+            
+        Returns:
+            Tuple of (version, metrics)
+        """
+        start_time = datetime.now()
+        version = self._generate_model_version()
+        
+        logger.info(f"Training model {version} with cloud optimizations")
+        logger.info(f"Training data shape: {training_df.shape}")
+        logger.info(f"Max training time: {max_training_time}s, Early stopping: {early_stopping}")
+        
+        # Initialize model with optimizations
+        model = MatchPredictionModel(
+            model_name=self.model_name,
+            max_training_time=max_training_time,
+            early_stopping=early_stopping,
+            reduced_complexity=reduced_complexity
+        )
+        
+        # Train with timeout protection
+        try:
+            metrics = model.train(training_df, timeout_seconds=max_training_time)
+            
+            # Save model files
+            model_path = self.models_dir / f"{self.model_name}_{version}.joblib"
+            scaler_path = self.models_dir / f"{self.model_name}_{version}_scaler.joblib"
+            features_path = self.models_dir / f"{self.model_name}_{version}_features.json"
+            
+            model.save_model(str(model_path))
+            
+            # Save metadata
+            metadata = {
+                "version": version,
+                "training_date": datetime.now().isoformat(),
+                "training_samples": len(training_df),
+                "performance_metrics": metrics,
+                "training_info": {
+                    "days_back": getattr(model, 'days_back', 'unknown'),
+                    "features_count": len(model.feature_columns) if hasattr(model, 'feature_columns') else 'unknown',
+                    "training_duration_seconds": (datetime.now() - start_time).total_seconds(),
+                    "max_training_time": max_training_time,
+                    "early_stopping": early_stopping,
+                    "reduced_complexity": reduced_complexity
+                },
+                "cloud_optimized": True,
+                "model_paths": {
+                    "model": str(model_path),
+                    "scaler": str(scaler_path) if scaler_path.exists() else None,
+                    "features": str(features_path) if features_path.exists() else None
+                }
+            }
+            
+            metadata_path = self.models_dir / f"{self.model_name}_{version}_metadata.json"
+            with open(metadata_path, 'w') as f:
+                json.dump(metadata, f, indent=2)
+            
+            # Check if model should be activated
+            winner_accuracy = metrics.get('val_winner_accuracy', 0)
+            if auto_activate and winner_accuracy >= performance_threshold:
+                self.activate_model_version(version)
+                logger.info(f"Model {version} automatically activated (accuracy: {winner_accuracy:.3f})")
+            else:
+                logger.info(f"Model {version} not activated (accuracy: {winner_accuracy:.3f} < threshold: {performance_threshold})")
+            
+            training_duration = (datetime.now() - start_time).total_seconds()
+            logger.info(f"Model {version} training completed in {training_duration:.1f}s")
+            
+            return version, metrics
+            
+        except Exception as e:
+            logger.error(f"Model training failed: {str(e)}")
+            raise

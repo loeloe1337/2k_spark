@@ -25,5 +25,8 @@ requests
 # Database (Supabase)
 supabase
 
+# System monitoring
+psutil
+
 # Utilities
 joblib

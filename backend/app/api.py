@@ -28,6 +28,9 @@ from services.live_scores_service import LiveScoresService
 from services.data_service import DataService
 from services.enhanced_prediction_service import EnhancedMatchPredictionService
 from services.supabase_service import SupabaseService
+from services.job_service import job_service, JobType, JobStatus
+from services.model_training_handler import model_training_handler
+from services.health_monitor import health_monitor
 # Import CLI functionality for pipeline
 from core.data.fetchers import TokenFetcher
 from core.data.fetchers.match_history import MatchHistoryFetcher
@@ -75,7 +78,24 @@ def root():
             "pipeline_results": "/api/pipeline-results",
             "predictions": "/api/ml/predictions",
             "predictions_summary": "/api/ml/predictions/summary",
+            "model_training": "/api/ml/train",
+            "job_management": "/api/jobs",
+            "system_health": "/api/system/health",
             "docs": "/docs"
+        },
+        "job_system": {
+            "description": "All long-running operations use the job system for background processing",
+            "supported_job_types": [
+                "model_training",
+                "data_pipeline", 
+                "quick_data_refresh",
+                "prediction_generation"
+            ],
+            "monitoring": {
+                "job_status": "/api/jobs/{job_id}",
+                "job_list": "/api/jobs",
+                "system_health": "/api/system/health"
+            }
         }
     }
 
@@ -449,82 +469,49 @@ def refresh_all_data():
 
 
 @app.post('/api/ml/train')
-def train_prediction_model(days_back: int = 60, min_matches_per_player: int = 5, background_tasks: BackgroundTasks = None):
+def train_prediction_model(days_back: int = 30, min_matches_per_player: int = 3, 
+                          performance_threshold: float = 0.5):
     """
-    Start model training in the background and return immediately.
+    Start model training using the new job system.
     Returns a job_id for status tracking.
     """
-    job_id = str(uuid4())
-    status = {
-        "job_id": job_id,
-        "status": "started",
-        "timestamp": datetime.now().isoformat(),
-        "message": "Model training started in background. Check /api/ml/train-status?job_id=... for updates."
-    }
-    # Save status to DB
     try:
-        supabase_service.save_training_job_status(job_id, status)
-    except Exception as e:
-        logger.error(f"Error saving training job status to DB: {str(e)}")
-    # Launch background task
-    if background_tasks is not None:
-        background_tasks.add_task(train_model_background, days_back, min_matches_per_player, job_id)
-    else:
-        import threading
-        threading.Thread(target=train_model_background, args=(days_back, min_matches_per_player, job_id)).start()
-    return status
-
-def train_model_background(days_back: int, min_matches_per_player: int, job_id: str):
-    try:
-        logger.info(f"[BG] Training prediction model with {days_back} days of data (job_id={job_id})")
-        status = {
-            "job_id": job_id,
-            "status": "running",
-            "timestamp": datetime.now().isoformat(),
-            "message": "Model training in progress..."
+        # Create training job payload
+        payload = {
+            "days_back": days_back,
+            "min_matches_per_player": min_matches_per_player,
+            "performance_threshold": performance_threshold,
+            "requested_at": datetime.now().isoformat()
         }
-        supabase_service.save_training_job_status(job_id, status)
-        training_df = prediction_service.prepare_training_data(
-            days_back=days_back,
-            min_matches_per_player=min_matches_per_player
+        
+        # Create job in queue
+        job_id = job_service.create_job(
+            job_type=JobType.MODEL_TRAINING,
+            payload=payload,
+            priority=1  # High priority for training jobs
         )
-        version, metrics = prediction_service.train_model_with_versioning(
-            training_df=training_df,
-            auto_activate=True,
-            performance_threshold=0.6
-        )
-        # --- Model file persistence stub ---
-        try:
-            model_path = prediction_service.get_model_path(version)
-            if model_path and model_path.exists():
-                supabase_service.upload_model_file(model_path, version)
-        except Exception as e:
-            logger.warning(f"[BG] Model file upload failed: {str(e)}")
-        status = {
+        
+        if not job_id:
+            raise HTTPException(status_code=500, detail="Failed to create training job")
+        
+        # Start job execution
+        success = job_service.start_job(job_id, model_training_handler.train_model_job)
+        
+        if not success:
+            raise HTTPException(status_code=500, detail="Failed to start training job")
+        
+        return {
             "job_id": job_id,
-            "status": "success",
-            "timestamp": datetime.now().isoformat(),
-            "message": "Model trained successfully",
-            "model_version": version,
-            "training_samples": len(training_df),
-            "metrics": {
-                "winner_accuracy": round(metrics['val_winner_accuracy'], 3),
-                "home_score_mae": round(metrics['val_home_mae'], 2),
-                "away_score_mae": round(metrics['val_away_mae'], 2),
-                "total_score_mae": round(metrics['val_total_mae'], 2)
-            }
+            "status": "started",
+            "message": "Model training job created and started. Check /api/ml/train-status?job_id=... for updates.",
+            "estimated_duration": "5-10 minutes",
+            "check_status_url": f"/api/ml/train-status?job_id={job_id}",
+            "timestamp": datetime.now().isoformat()
         }
-        supabase_service.save_training_job_status(job_id, status)
-        logger.info(f"[BG] Model training complete: {version}")
+        
     except Exception as e:
-        logger.error(f"[BG] Error training prediction model: {str(e)}")
-        status = {
-            "job_id": job_id,
-            "status": "error",
-            "timestamp": datetime.now().isoformat(),
-            "message": f"Error training prediction model: {str(e)}"
-        }
-        supabase_service.save_training_job_status(job_id, status)
+        logger.error(f"Error starting training job: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
 
 @app.get('/api/ml/train-status')
 def get_train_status(job_id: Optional[str] = None):
@@ -533,11 +520,32 @@ def get_train_status(job_id: Optional[str] = None):
     """
     if not job_id:
         return {"status": "error", "message": "Missing job_id parameter."}
+    
     try:
-        status = supabase_service.get_training_job_status(job_id)
-        if not status:
+        # Get job status from new job system
+        job_status = job_service.get_job_status(job_id)
+        
+        if not job_status:
             return {"status": "not_found", "message": f"No training job found for job_id {job_id}"}
-        return status
+        
+        # Format response to match expected format
+        response = {
+            "job_id": job_status.get('job_id'),
+            "status": job_status.get('status'),
+            "progress": job_status.get('progress', 0),
+            "message": job_status.get('error_message') if job_status.get('status') == 'failed' else "Job in progress",
+            "created_at": job_status.get('created_at'),
+            "updated_at": job_status.get('updated_at'),
+            "started_at": job_status.get('started_at'),
+            "completed_at": job_status.get('completed_at')
+        }
+        
+        # Add result details if completed
+        if job_status.get('result'):
+            response.update(job_status['result'])
+        
+        return response
+        
     except Exception as e:
         logger.error(f"Error fetching training job status: {str(e)}")
         return {"status": "error", "message": str(e)}
@@ -893,11 +901,11 @@ class PipelineRequest(BaseModel):
 @app.post('/api/run-pipeline')
 @log_execution_time(logger)
 @log_exceptions(logger)
-def run_pipeline_endpoint(request: PipelineRequest, background_tasks: BackgroundTasks):
+def run_pipeline_endpoint(request: PipelineRequest):
     """
-    Run the complete prediction pipeline with fresh data via API.
+    Run the complete prediction pipeline using the job system.
     
-    This endpoint executes the full workflow:
+    This endpoint creates a background job for the full workflow:
     1. Fetch authentication token (if needed)
     2. Fetch latest match history  
     3. Fetch latest player statistics
@@ -907,63 +915,59 @@ def run_pipeline_endpoint(request: PipelineRequest, background_tasks: Background
     
     Args:
         request (PipelineRequest): Pipeline configuration parameters
-        background_tasks (BackgroundTasks): FastAPI background tasks
         
     Returns:
-        dict: Pipeline execution results and summary
+        dict: Job information for tracking pipeline execution
     """
     try:
-        pipeline_results = {
-            "status": "started",
-            "timestamp": datetime.now().isoformat(),
-            "steps_completed": [],
-            "steps_failed": [],
-            "summary": {},
-            "errors": []
+        logger.info("[PIPELINE] Starting pipeline job creation...")
+        
+        # Prepare job payload
+        payload = {
+            "history_days": request.history_days,
+            "train_model": request.train_model,
+            "return_predictions": request.return_predictions,
+            "refresh_token": request.refresh_token,
+            "training_days_back": getattr(request, 'training_days_back', 20),
+            "min_matches_per_player": getattr(request, 'min_matches_per_player', 2),
+            "performance_threshold": getattr(request, 'performance_threshold', 0.5),
+            "auto_activate": getattr(request, 'auto_activate', True),
+            "requested_at": datetime.now().isoformat()
         }
         
-        logger.info("[START] Starting API Pipeline execution...")
+        # Create and start pipeline job
+        job_id = job_service.create_and_start_job(
+            job_type=JobType.DATA_PIPELINE,
+            payload=payload,
+            priority=2  # High priority for full pipeline
+        )
         
-        # Step 1: Authentication token (quick test)
-        try:
-            logger.info("[AUTH] Step 1/6: Testing authentication...")
-            # Just test if we can import the TokenFetcher without actually fetching
-            from core.data.fetchers import TokenFetcher
-            pipeline_results["steps_completed"].append("authentication_check")
-            logger.info("[OK] Authentication module ready")
-        except Exception as e:
-            error_msg = f"Authentication check failed: {str(e)}"
-            pipeline_results["steps_failed"].append("authentication_check")
-            pipeline_results["errors"].append(error_msg)
-            logger.error(f"[ERROR] {error_msg}")
-            # Continue anyway
-          # Return immediate response and run heavy operations in background
-        if len(pipeline_results["errors"]) == 0:
-            background_tasks.add_task(run_pipeline_background, request.dict())
-            pipeline_results.update({
-                "status": "accepted",
-                "message": "Pipeline started successfully. Heavy operations running in background.",
-                "note": "Due to resource constraints, Selenium token fetching and ML training run in background. Check results endpoint when complete.",
-                "available_endpoints": {
-                    "check_pipeline_results": "/api/pipeline-results",
-                    "check_pipeline_status": "/api/pipeline-status", 
-                    "check_upcoming_matches": "/api/upcoming-matches",
-                    "check_player_stats": "/api/player-stats", 
-                    "check_system_status": "/api/system-status"
-                }
-            })
+        if not job_id:
+            raise HTTPException(status_code=500, detail="Failed to create pipeline job")
         
-        return pipeline_results
+        return {
+            "status": "started",
+            "job_id": job_id,
+            "job_type": "data_pipeline",
+            "message": "Pipeline job created and started. This will run all data fetching, processing, and optional model training.",
+            "estimated_duration": "5-15 minutes depending on options",
+            "monitoring": {
+                "job_status_url": f"/api/jobs/{job_id}",
+                "job_list_url": "/api/jobs",
+                "system_health_url": "/api/system/health"
+            },
+            "configuration": {
+                "history_days": request.history_days,
+                "train_model": request.train_model,
+                "return_predictions": request.return_predictions,
+                "refresh_token": request.refresh_token
+            },
+            "timestamp": datetime.now().isoformat()
+        }
         
     except Exception as e:
-        error_msg = f"Pipeline failed with unexpected error: {str(e)}"
-        logger.error(f"[ERROR] {error_msg}")
-        return {
-            "status": "error",
-            "timestamp": datetime.now().isoformat(),
-            "error": error_msg,
-            "message": "Pipeline failed to start"
-        }
+        logger.error(f"[PIPELINE] Error starting pipeline job: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 def run_pipeline_background(request_data: dict):
@@ -1228,6 +1232,137 @@ def run_pipeline_background(request_data: dict):
             json.dump(pipeline_results, f, indent=2)
 
 
+@app.post('/api/data/quick-refresh')
+@log_execution_time(logger)
+@log_exceptions(logger)
+def quick_data_refresh(refresh_token: bool = False, return_predictions: bool = True):
+    """
+    Quick data refresh without model training.
+    
+    Args:
+        refresh_token: Whether to refresh authentication token
+        return_predictions: Whether to generate predictions
+        
+    Returns:
+        dict: Job information for tracking
+    """
+    try:
+        payload = {
+            "history_days": 20,  # Reduced for quick refresh
+            "train_model": False,
+            "return_predictions": return_predictions,
+            "refresh_token": refresh_token,
+            "requested_at": datetime.now().isoformat()
+        }
+        
+        job_id = job_service.create_and_start_job(
+            job_type=JobType.QUICK_DATA_REFRESH,
+            payload=payload,
+            priority=1
+        )
+        
+        if not job_id:
+            raise HTTPException(status_code=500, detail="Failed to create quick refresh job")
+        
+        return {
+            "status": "started",
+            "job_id": job_id,
+            "job_type": "quick_data_refresh",
+            "message": "Quick data refresh job started",
+            "estimated_duration": "2-5 minutes",
+            "job_status_url": f"/api/jobs/{job_id}",
+            "timestamp": datetime.now().isoformat()
+        }
+        
+    except Exception as e:
+        logger.error(f"Error starting quick refresh job: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post('/api/ml/generate-predictions')
+@log_execution_time(logger)
+@log_exceptions(logger)  
+def generate_predictions_job():
+    """
+    Generate predictions using existing data and models.
+    
+    Returns:
+        dict: Job information for tracking
+    """
+    try:
+        payload = {
+            "requested_at": datetime.now().isoformat()
+        }
+        
+        job_id = job_service.create_and_start_job(
+            job_type=JobType.PREDICTION_GENERATION,
+            payload=payload,
+            priority=0  # Lower priority
+        )
+        
+        if not job_id:
+            raise HTTPException(status_code=500, detail="Failed to create prediction job")
+        
+        return {
+            "status": "started",
+            "job_id": job_id,
+            "job_type": "prediction_generation",
+            "message": "Prediction generation job started",
+            "estimated_duration": "1-3 minutes",
+            "job_status_url": f"/api/jobs/{job_id}",
+            "timestamp": datetime.now().isoformat()
+        }
+        
+    except Exception as e:
+        logger.error(f"Error starting prediction job: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get('/api/system/health')
+@log_execution_time(logger)
+@log_exceptions(logger)
+def system_health_check():
+    """
+    Comprehensive system health check.
+    
+    Returns:
+        dict: Detailed system health status
+    """
+    try:
+        return health_monitor.check_system_health()
+    except Exception as e:
+        logger.error(f"Health check failed: {str(e)}")
+        return {
+            "overall_status": "error",
+            "timestamp": datetime.now().isoformat(),
+            "error": str(e),
+            "message": "Health check service failed"
+        }
+
+
+@app.get('/api/system/health/history')
+@log_execution_time(logger)
+@log_exceptions(logger)
+def system_health_history(hours: int = 24):
+    """
+    Get system health history.
+    
+    Args:
+        hours: Number of hours of history to retrieve
+        
+    Returns:
+        dict: Health check history
+    """
+    try:
+        if hours < 1 or hours > 168:  # Limit to 1 week
+            raise HTTPException(status_code=400, detail="Hours must be between 1 and 168")
+        
+        return health_monitor.get_health_history(hours)
+    except Exception as e:
+        logger.error(f"Health history retrieval failed: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 @app.get('/api/pipeline-status')
 def get_pipeline_status():
     """
@@ -1311,6 +1446,309 @@ def get_pipeline_results():
     except Exception as e:
         logger.error(f"Error getting pipeline results: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
+
+
+# Job Management Endpoints
+@app.get('/api/jobs')
+def list_jobs(job_type: Optional[str] = None, status: Optional[str] = None, limit: int = 20):
+    """
+    List jobs with optional filtering.
+    
+    Args:
+        job_type: Filter by job type (model_training, data_pipeline, etc.)
+        status: Filter by status (pending, running, completed, failed)
+        limit: Maximum number of jobs to return
+        
+    Returns:
+        dict: List of jobs with their status
+    """
+    try:
+        if not supabase_service.is_connected():
+            raise HTTPException(status_code=503, detail="Database not connected")
+        
+        query = supabase_service.client.table('job_queue').select('*')
+        
+        if job_type:
+            query = query.eq('job_type', job_type)
+        if status:
+            query = query.eq('status', status)
+            
+        result = query.order('created_at', desc=True).limit(limit).execute()
+        
+        jobs = result.data if result.data else []
+        
+        return {
+            "status": "success",
+            "jobs": jobs,
+            "total": len(jobs),
+            "timestamp": datetime.now().isoformat()
+        }
+        
+    except Exception as e:
+        logger.error(f"Error listing jobs: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get('/api/jobs/{job_id}')
+def get_job_details(job_id: str):
+    """
+    Get detailed information about a specific job.
+    
+    Args:
+        job_id: Unique job identifier
+        
+    Returns:
+        dict: Job details including status, progress, and results
+    """
+    try:
+        job_details = job_service.get_job_status(job_id)
+        
+        if not job_details:
+            raise HTTPException(status_code=404, detail=f"Job {job_id} not found")
+        
+        return {
+            "status": "success",
+            "job": job_details,
+            "timestamp": datetime.now().isoformat()
+        }
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error getting job details: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post('/api/jobs/{job_id}/cancel')
+def cancel_job(job_id: str):
+    """
+    Cancel a running or pending job.
+    
+    Args:
+        job_id: Unique job identifier
+        
+    Returns:
+        dict: Cancellation result
+    """
+    try:
+        success = job_service.cancel_job(job_id)
+        
+        if not success:
+            raise HTTPException(status_code=400, detail=f"Failed to cancel job {job_id}")
+        
+        return {
+            "status": "success",
+            "message": f"Job {job_id} has been cancelled",
+            "job_id": job_id,
+            "timestamp": datetime.now().isoformat()
+        }
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error cancelling job: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.delete('/api/jobs/cleanup')
+def cleanup_old_jobs(days: int = 7):
+    """
+    Clean up completed jobs older than specified days.
+    
+    Args:
+        days: Number of days old jobs to keep
+        
+    Returns:
+        dict: Cleanup result
+    """
+    try:
+        success = job_service.cleanup_old_jobs(days_old=days)
+        
+        if not success:
+            raise HTTPException(status_code=500, detail="Failed to cleanup old jobs")
+        
+        return {
+            "status": "success",
+            "message": f"Cleaned up jobs older than {days} days",
+            "timestamp": datetime.now().isoformat()
+        }
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error cleaning up jobs: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get('/api/system/job-stats')
+def get_job_statistics():
+    """
+    Get statistics about job queue and execution.
+    
+    Returns:
+        dict: Job statistics
+    """
+    try:
+        if not supabase_service.is_connected():
+            raise HTTPException(status_code=503, detail="Database not connected")
+        
+        # Get job counts by status
+        stats = {}
+        for status in ['pending', 'running', 'completed', 'failed', 'cancelled']:
+            result = supabase_service.client.table('job_queue').select('id').eq('status', status).execute()
+            stats[f"{status}_jobs"] = len(result.data) if result.data else 0
+        
+        # Get recent jobs (last 24 hours)
+        recent_cutoff = datetime.now().replace(hour=datetime.now().hour - 24)
+        recent_result = supabase_service.client.table('job_queue').select('id').gte(
+            'created_at', recent_cutoff.isoformat()
+        ).execute()
+        stats['recent_jobs_24h'] = len(recent_result.data) if recent_result.data else 0
+        
+        return {
+            "status": "success",
+            "statistics": stats,
+            "timestamp": datetime.now().isoformat()
+        }
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error getting job statistics: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post('/api/data/quick-refresh')
+@log_execution_time(logger)
+@log_exceptions(logger)
+def quick_data_refresh(refresh_token: bool = False, return_predictions: bool = True):
+    """
+    Quick data refresh without model training.
+    
+    Args:
+        refresh_token: Whether to refresh authentication token
+        return_predictions: Whether to generate predictions
+        
+    Returns:
+        dict: Job information for tracking
+    """
+    try:
+        payload = {
+            "history_days": 20,  # Reduced for quick refresh
+            "train_model": False,
+            "return_predictions": return_predictions,
+            "refresh_token": refresh_token,
+            "requested_at": datetime.now().isoformat()
+        }
+        
+        job_id = job_service.create_and_start_job(
+            job_type=JobType.QUICK_DATA_REFRESH,
+            payload=payload,
+            priority=1
+        )
+        
+        if not job_id:
+            raise HTTPException(status_code=500, detail="Failed to create quick refresh job")
+        
+        return {
+            "status": "started",
+            "job_id": job_id,
+            "job_type": "quick_data_refresh",
+            "message": "Quick data refresh job started",
+            "estimated_duration": "2-5 minutes",
+            "job_status_url": f"/api/jobs/{job_id}",
+            "timestamp": datetime.now().isoformat()
+        }
+        
+    except Exception as e:
+        logger.error(f"Error starting quick refresh job: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post('/api/ml/generate-predictions')
+@log_execution_time(logger)
+@log_exceptions(logger)  
+def generate_predictions_job():
+    """
+    Generate predictions using existing data and models.
+    
+    Returns:
+        dict: Job information for tracking
+    """
+    try:
+        payload = {
+            "requested_at": datetime.now().isoformat()
+        }
+        
+        job_id = job_service.create_and_start_job(
+            job_type=JobType.PREDICTION_GENERATION,
+            payload=payload,
+            priority=0  # Lower priority
+        )
+        
+        if not job_id:
+            raise HTTPException(status_code=500, detail="Failed to create prediction job")
+        
+        return {
+            "status": "started",
+            "job_id": job_id,
+            "job_type": "prediction_generation",
+            "message": "Prediction generation job started",
+            "estimated_duration": "1-3 minutes",
+            "job_status_url": f"/api/jobs/{job_id}",
+            "timestamp": datetime.now().isoformat()
+        }
+        
+    except Exception as e:
+        logger.error(f"Error starting prediction job: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get('/api/system/health')
+@log_execution_time(logger)
+@log_exceptions(logger)
+def system_health_check():
+    """
+    Comprehensive system health check.
+    
+    Returns:
+        dict: Detailed system health status
+    """
+    try:
+        return health_monitor.check_system_health()
+    except Exception as e:
+        logger.error(f"Health check failed: {str(e)}")
+        return {
+            "overall_status": "error",
+            "timestamp": datetime.now().isoformat(),
+            "error": str(e),
+            "message": "Health check service failed"
+        }
+
+
+@app.get('/api/system/health/history')
+@log_execution_time(logger)
+@log_exceptions(logger)
+def system_health_history(hours: int = 24):
+    """
+    Get system health history.
+    
+    Args:
+        hours: Number of hours of history to retrieve
+        
+    Returns:
+        dict: Health check history
+    """
+    try:
+        if hours < 1 or hours > 168:  # Limit to 1 week
+            raise HTTPException(status_code=400, detail="Hours must be between 1 and 168")
+        
+        return health_monitor.get_health_history(hours)
+    except Exception as e:
+        logger.error(f"Health history retrieval failed: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+    # ...existing code...
 
 
 def run_api_server():

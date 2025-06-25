@@ -1,0 +1,37 @@
+# Render Deployment Configuration for 2K Spark NBA Prediction System
+
+# Build Command
+pip install -r requirements.txt
+
+# Start Command  
+uvicorn backend.app.api:app --host 0.0.0.0 --port $PORT
+
+# Environment Variables Required:
+# SUPABASE_URL - Your Supabase project URL
+# SUPABASE_ANON_KEY - Your Supabase anonymous key  
+# SUPABASE_SERVICE_ROLE_KEY - Your Supabase service role key
+# API_HOST - 0.0.0.0 (for Render)
+# API_PORT - $PORT (Render provides this)
+# CORS_ORIGINS - ["*"] or your frontend domains
+
+# Health Check URL
+# /api/health
+
+# Dockerfile (Alternative deployment method)
+# FROM python:3.11-slim
+# WORKDIR /app
+# COPY requirements.txt .
+# RUN pip install -r requirements.txt
+# COPY . .
+# EXPOSE $PORT
+# CMD uvicorn backend.app.api:app --host 0.0.0.0 --port $PORT
+
+# Notes for Render Deployment:
+# 1. Set auto-deploy from Git repository
+# 2. Use Python 3.11 runtime
+# 3. Configure environment variables in Render dashboard
+# 4. Health check endpoint: /api/health
+# 5. The job system handles all long-running operations to avoid timeouts
+# 6. Database migrations run automatically via Supabase
+# 7. Model files are stored in Supabase Storage
+# 8. Background jobs prevent Render request timeouts
