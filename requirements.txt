@@ -12,8 +12,10 @@ xgboost>=1.5.0
 lightgbm>=3.2.0
 
 # Web scraping and browser automation
-selenium>=4.0.0
-webdriver-manager>=3.8.0
+selenium==4.21.0
+# webdriver-manager is optional fallback; keep or remove as you like:
+webdriver-manager==4.0.2
+
 
 # API Server
 fastapi>=0.70.0

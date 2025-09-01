@@ -495,9 +495,9 @@ Unlike other prediction systems that use separate models for winner and score pr
    ```
 
 4. **Access the API**:
-   - API Base URL: http://localhost:5000
-   - Interactive Docs: http://localhost:5000/docs
-   - Health Check: http://localhost:5000/api/health
+   - API Base URL: http://localhost:10000
+   - Interactive Docs: http://localhost:10000/docs
+   - Health Check: http://localhost:10000/api/health
 
 ## Model Versioning
 

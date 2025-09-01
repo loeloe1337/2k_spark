@@ -1,0 +1,37 @@
+Run in the background (recommended during dev):
+
+docker compose up -d
+# or: docker-compose up -d
+
+
+Tail logs:
+
+docker compose logs -f backend
+
+
+Health check:
+
+curl -s http://localhost:10000/api/health
+# or open http://localhost:10000/docs in your browser
+
+If it stops without you pressing anything
+
+Check status/exit code:
+
+docker ps -a | grep 2k_spark_backend
+docker inspect -f '{{.State.Status}} {{.State.ExitCode}}' 2k_spark_backend
+
+
+ExitCode 0 = graceful stop.
+
+Non-zero = error; then run:
+
+docker compose logs --tail=200 backend
+
+Small quality-of-life tweak
+
+In docker-compose.yml, add a restart policy so it comes back after reboots:
+
+services:
+  backend:
+    restart: unless-stopped
